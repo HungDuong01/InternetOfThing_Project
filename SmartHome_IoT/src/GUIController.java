@@ -40,6 +40,7 @@ public class GUIController {
 
     public void setClient(SmartHomeClient client) {
 	// method used to set and connect client class with this GUI
+    	
 	this.client = client;
     }
 
