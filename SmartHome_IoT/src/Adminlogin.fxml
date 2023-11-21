@@ -58,6 +58,11 @@
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+            <Button layoutX="7.0" layoutY="22.0" mnemonicParsing="false" onAction="#Loginbuttonpressed" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -95,7 +100,7 @@
          <children>
             <ImageView fitHeight="154.0" fitWidth="147.0" layoutX="34.0" layoutY="15.0">
                <image>
-                  <Image url="@../eclipse-workspace/SmartHome_IoT/src/icons8-admin-100-removebg-preview.png" />
+                  <Image url="@icons8-admin-100-removebg-preview.png" />
                </image>
             </ImageView>
          </children>
