@@ -71,6 +71,7 @@ public class SmartHomeClient extends AbstractClient {
 	}
 	
 	
+	
 	 /* ---------------------- SMART THERMOSTAT PAGE --------------------------- */
 	
 	

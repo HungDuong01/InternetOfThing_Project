@@ -34,6 +34,7 @@ public class GUI extends Application {
 
 	client.connectToServer();
 
+	
 	controller.setClient(client);
 
 	// attach scene graph to scene
