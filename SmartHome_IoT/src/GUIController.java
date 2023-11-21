@@ -44,9 +44,7 @@ public class GUIController {
     }
 
     /*
-     * ----------------------------------- WELCOME PAGE
-     * --------------------------------------
-     */
+     * ----------------------------------- WELCOME PAGE-------------------------------------- */
 
     @FXML
     private GridPane welcomePane;
@@ -76,10 +74,7 @@ public class GUIController {
 
     }
 
-    /*
-     * ------------------------------------ LOGIN PAGE
-     * ---------------------------------------
-     */
+    /* ------------------------------------ LOGIN PAGE --------------------------------------- */
 
     @FXML
     private TextField emailTextField;
@@ -138,7 +133,25 @@ public class GUIController {
 
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
 
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene cameraScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(cameraScene);
+    	    client.sendToServer("Camera");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
     }
 
     @FXML
@@ -155,16 +168,35 @@ public class GUIController {
 	    Scene lightScene = new Scene(root);
 	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
 	    stage.setScene(lightScene);
+	    client.sendToServer("Light");
 	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 	} catch (IOException e) {
 	    e.printStackTrace();
-	}
+		}
 
     }
 
     @FXML
     void smartLockButtonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
 
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene lockScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(lockScene);
+    	    client.sendToServer("Lock");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
     }
 
     @FXML
@@ -181,7 +213,7 @@ public class GUIController {
 	    Scene thermostatScene = new Scene(root);
 	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
 	    stage.setScene(thermostatScene);
-	    client.sendToServer("thermoData");
+	    client.sendToServer("Thermo");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -190,12 +222,27 @@ public class GUIController {
 
     @FXML
     void waterSystemButtonPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
 
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene waterScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(waterScene);
+    	    client.sendToServer("Water");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
     }
-
-    /*
-     * ---------------------- MAIN MENU PAGE END ---------------------------------
-     */
+    /*---------------------- MAIN MENU PAGE END --------------------------------- */
 
     /* ---------------------- SMART THERMOSTAT PAGE ----------------------- */
 
@@ -217,7 +264,7 @@ public class GUIController {
 
 	} else {
 	    System.err.println("Error - SmartHomeClient not set in the controller");
-	}
+		}
 
     }
 
@@ -269,7 +316,7 @@ public class GUIController {
 	    stage.setScene(mainMenuScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
-	}
+		}
 
     }
 
@@ -302,12 +349,13 @@ public class GUIController {
     @FXML
     void brightnessSliderChanged(MouseEvent event) {
 
-    	 brightnessSlider.valueProperty().addListener(new ChangeListener<Number>() {
-             @Override
-             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                 brightnessLabel.setText("Value: " + String.valueOf(newValue.intValue()));
-             }
-         });    
+    	brightnessSlider.setValue(50);
+    	
+    	brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+    		
+        brightnessLabel.setText(String.format("%.0f", newValue.doubleValue()));
+             
+    	 });
 
     }
 
