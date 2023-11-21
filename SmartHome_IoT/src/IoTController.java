@@ -50,35 +50,40 @@ public class IoTController {
 
     }
 
-// --- UPDATE THE STATUS OF DEVICES ---
+// --- UPDATE AND GET THE STATUS OF DEVICES ---
 
-    public Boolean setDeviceStatus(String device, boolean status) {
-	boolean returnStatus = false;
+    public void setDeviceStatus(String device, boolean status) {
 	switch (device) {
 	case "thermo":
 	    devices.get(0).setDeviceStatus(status);
-	    returnStatus = devices.get(0).getDeviceStatus();
 	    break;
 	case "light":
 	    devices.get(1).setDeviceStatus(status);
-	    returnStatus = devices.get(1).getDeviceStatus();
 	    break;
 	case "lock":
 	    devices.get(2).setDeviceStatus(status);
-	    returnStatus = devices.get(2).getDeviceStatus();
 	    break;
 	case "water":
 	    devices.get(3).setDeviceStatus(status);
-	    returnStatus = devices.get(3).getDeviceStatus();
 	    break;
 	case "camera":
 	    devices.get(4).setDeviceStatus(status);
-	    returnStatus = devices.get(4).getDeviceStatus();
 	    break;
 	default:
 	    break;
 	}
+
+    }
+
+    public Boolean getDeviceStatus(Integer deviceID) {
+	Boolean returnStatus = null;
+	for (int i = 0; i < devices.size(); i++) {
+	    if (deviceID == devices.get(i).deviceID()) {
+		returnStatus = devices.get(i).getDeviceStatus();
+	    }
+	}
 	return returnStatus;
+
     }
 
 // --- END ---

@@ -38,6 +38,8 @@ public class IoTServer extends AbstractServer {
 	THERMOSTAT, LIGHT, LOCK, WATER, CAMERA
     }
 
+    private DeviceType devType = null;
+
     private List<ConnectionToClient> client;
 
     public IoTServer(int port) {
@@ -54,9 +56,10 @@ public class IoTServer extends AbstractServer {
 
 	System.out.println("Message received: " + receivedStr + " from " + client);
 
-// --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
+// --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if ("increase".equals(receivedStr)) {
+	// USER ONLY CAN DECREASE THE TEMPERATURE WHEN THE LIGHT IS ON
+	if ("increase".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 	    serverController.increaseTemperature(1);
 	    try {
@@ -68,8 +71,8 @@ public class IoTServer extends AbstractServer {
 		e.printStackTrace();
 	    }
 	}
-
-	if ("decrease".equals(receivedStr)) {
+	// USER ONLY CAN DECREASE THE TEMPERATURE WHEN THE LIGHT IS ON
+	if ("decrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
 	    // ACTIONS TO DECREASE TEMPERATURE
 	    serverController.decreaseTemperature(1);
 	    try {
@@ -85,8 +88,8 @@ public class IoTServer extends AbstractServer {
 	if ("thermostatON".equals(receivedStr)) {
 	    // ACTIONS TO TURN ON THERMOSTAT
 	    try {
-		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("thermo", true));
+		// SET THE VALUE OF DEVICE STATUS TO TRUE == ON
+		serverController.setDeviceStatus("thermo", true);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -95,8 +98,8 @@ public class IoTServer extends AbstractServer {
 	if ("thermostatOFF".equals(receivedStr)) {
 	    // ACTIONS TO TURNING OFF THERMOSTAT
 	    try {
-		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("thermo", false));
+		// SET THE VALUE OF DEVICE STATUS TO TRUE == OFF
+		serverController.setDeviceStatus("thermo", false);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -119,7 +122,7 @@ public class IoTServer extends AbstractServer {
 	}
 
 	if ("".equals(receivedStr)) {
-	    // Actions for decrease the temperature
+	    // ACTIONS TO SET THE LIGHT COLOR
 	    serverController.decreaseTemperature(1);
 	    try {
 		sendToAllClients(serverController.getUpdateTemp());
@@ -130,21 +133,21 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("".equals(receivedStr)) {
+	if ("lightON".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING ON LIGHT
 	    try {
-		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("light", true));
+		// SET THE VALUE OF DEVICE STATUS TO TRUE == ON
+		serverController.setDeviceStatus("light", true);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
 	}
 
-	if ("".equals(receivedStr)) {
+	if ("lightOFF".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING OFF LIGHT
 	    try {
-		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("light", false));
+		// SET THE VALUE OF DEVICE STATUS TO TRUE == OFF
+		serverController.setDeviceStatus("light", false);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
