@@ -76,6 +76,11 @@ public class GUIController {
     }
 
     /*
+     * "Thermostat:increase" Pasrse and split(:) Device: Action:
+     * 
+     */
+
+    /*
      * ------------------------------------ LOGIN PAGE
      * ---------------------------------------
      */
