@@ -13,6 +13,8 @@
  * ------------------------------------------------------------------------------------
  */
 
+//hassan
+
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -45,7 +47,7 @@ public class GUIController {
     }
 
     
-    //fortune edited 
+    
     
     /*
      * ----------------------------------- WELCOME PAGE-------------------------------------- */
