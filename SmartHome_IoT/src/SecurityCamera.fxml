@@ -62,17 +62,34 @@
                </font>
             </Label>
             <MenuButton layoutX="76.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: white;" text="12:00 AM">
+               <font>
+                  <Font name="Heiti TC Light" size="13.0" />
+               </font>
                <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
                   <MenuItem mnemonicParsing="false" text="1:00 AM" />
                   <MenuItem mnemonicParsing="false" text="2:00 AM" />
                   <MenuItem mnemonicParsing="false" text="3:00 AM" />
                   <MenuItem mnemonicParsing="false" text="4:00 AM" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                  <MenuItem mnemonicParsing="false" text="5:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="6:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="7:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="8:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="9:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="10:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="11:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="12:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="1:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="2:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="3:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="4:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="5:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="6:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="7:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="8:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="9:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="10:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="11:00 PM" />
                </items>
-               <font>
-                  <Font name="Heiti TC Light" size="13.0" />
-               </font>
             </MenuButton>
          </children>
       </Pane>
@@ -83,14 +100,35 @@
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
             </Label>
-            <MenuButton layoutX="22.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="18:00 AM">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="1:00 AM" />
-                  <MenuItem mnemonicParsing="false" text="2:00 AM" />
-               </items>
+            <MenuButton layoutX="22.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="12:00 AM">
                <font>
                   <Font name="Heiti TC Light" size="13.0" />
                </font>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="1:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="2:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="3:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="4:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="5:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="6:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="7:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="8:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="9:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="10:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="11:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="12:00 AM" />
+                  <MenuItem mnemonicParsing="false" text="1:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="2:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="3:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="4:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="5:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="6:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="7:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="8:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="9:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="10:00 PM" />
+                  <MenuItem mnemonicParsing="false" text="11:00 PM" />
+               </items>
             </MenuButton>
          </children>
       </Pane>
