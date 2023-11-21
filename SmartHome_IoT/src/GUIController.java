@@ -193,7 +193,7 @@ public class GUIController {
 	    Scene lightScene = new Scene(root);
 	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
 	    stage.setScene(lightScene);
-	    client.sendToServer("Light");
+	    client.sendToServer("lightData");
 	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 	} catch (IOException e) {
 	    e.printStackTrace();
@@ -238,7 +238,7 @@ public class GUIController {
 	    Scene thermostatScene = new Scene(root);
 	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
 	    stage.setScene(thermostatScene);
-	    client.sendToServer("Thermo");
+	    client.sendToServer("thermoData");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -313,7 +313,12 @@ public class GUIController {
     @FXML
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
-	
+	try {
+		client.sendToServer("thermostatOFF");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 
     }
@@ -321,7 +326,12 @@ public class GUIController {
     @FXML
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
-	
+	try {
+		client.sendToServer("thermostatON");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
     }
 
