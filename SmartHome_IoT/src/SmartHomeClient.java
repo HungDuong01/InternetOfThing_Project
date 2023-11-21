@@ -70,21 +70,9 @@ public class SmartHomeClient extends AbstractClient {
 		
 	}
 	
-    public void sendEnumToServer(String messageType) {
-        if (isConnected()) {
-            try {
-                sendToServer(messageType);
-                System.out.println("Sent MessageType to server: " + messageType);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("Not connected to server.");
-        }
-    }
 	
+	 /* ---------------------- SMART THERMOSTAT PAGE --------------------------- */
 	
-	// send to server
 	
 	public void temperatureIncrement() {
 		// if client is connected to server do the following actions
@@ -106,7 +94,7 @@ public class SmartHomeClient extends AbstractClient {
 	
 	
 
-	void  temperatureDecrement() throws IOException {
+	public void  temperatureDecrement() throws IOException {
 		try{
 
 			// Send message to decrease to the server
@@ -122,8 +110,30 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 	
+	 /* --------------------------- SMART LIGHT PAGE -------------------------- */
 	
-
+	public void lightStatus()
+	{
+		
+		
+	}
+	
+	
+	public void lightBrightnessUpdate(int brightness)
+	{
+		
+		
+	}
+	
+	
+	public void lightColorUpdate()
+	{
+		
+		
+	}
+	
+	
+	 /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
 	@Override
 	protected void handleMessageFromServer(Object msg) {
 

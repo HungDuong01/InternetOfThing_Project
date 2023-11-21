@@ -30,6 +30,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class GUIController {
 
@@ -239,12 +241,16 @@ public class GUIController {
     @FXML
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
+	
+	
 
     }
 
     @FXML
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
+	
+	
     }
 
     @FXML
@@ -295,6 +301,13 @@ public class GUIController {
 
     @FXML
     void brightnessSliderChanged(MouseEvent event) {
+
+    	 brightnessSlider.valueProperty().addListener(new ChangeListener<Number>() {
+             @Override
+             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                 brightnessLabel.setText("Value: " + String.valueOf(newValue.intValue()));
+             }
+         });    
 
     }
 
