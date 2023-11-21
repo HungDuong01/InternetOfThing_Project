@@ -56,7 +56,7 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
-	if ("increase".equals(receivedStr)) {
+	if ("thermoIncrease".equals(receivedStr)) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 	    serverController.increaseTemperature(1);
 	    try {
@@ -69,7 +69,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("decrease".equals(receivedStr)) {
+	if ("thermoDecrease".equals(receivedStr)) {
 	    // ACTIONS TO DECREASE TEMPERATURE
 	    serverController.decreaseTemperature(1);
 	    try {
@@ -106,31 +106,29 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if ("".equals(receivedStr)) {
+	if ("lightBrightnessIncrease".equals(receivedStr)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    serverController.increaseLightBrightness((Integer) msg);
+	    serverController.increaseLightBrightness(10);
 	    try {
-		sendToAllClients(serverController.getUpdateTemp());
-
+		serverController.getLightBrightness();
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}
 
-	if ("".equals(receivedStr)) {
+	if ("lightBrightnessDecrease".equals(receivedStr)) {
 	    // Actions for decrease the temperature
-	    serverController.decreaseTemperature(1);
+	    serverController.decreaseLightBrightness(10);
 	    try {
-		sendToAllClients(serverController.getUpdateTemp());
-
+		serverController.getLightBrightness();
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}
 
-	if ("".equals(receivedStr)) {
+	if ("lightON".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING ON LIGHT
 	    try {
 		// SEND BACK THE LIGHT STATUS
@@ -140,7 +138,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("".equals(receivedStr)) {
+	if ("lightOFF".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING OFF LIGHT
 	    try {
 		// SEND BACK THE LIGHT STATUS
@@ -184,5 +182,3 @@ public class IoTServer extends AbstractServer {
     }
 
 }
-
-// test esof 3050 

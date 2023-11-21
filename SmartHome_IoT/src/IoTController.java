@@ -109,8 +109,12 @@ public class IoTController {
 	return ((SmartLight) devices.get(1)).getColor();
     }
 
-    public void setLightBrightness(Integer brightness) {
-	((SmartLight) devices.get(1)).setBrightness(brightness);
+    public void increaseLightBrightness(Integer brightness) {
+	((SmartLight) devices.get(1)).increaseBrightness(brightness);
+    }
+
+    public void decreaseLightBrightness(Integer brightness) {
+	((SmartLight) devices.get(1)).decreaseBrightness(brightness);
     }
 
     public Integer getLightBrightness() {
