@@ -1,4 +1,17 @@
-
+/* ------------------------------------------------------------------------------------
+ * SmartLight.java
+ * 
+ * Copyright (c) 2023 Venos Tech. All rights reserved
+ * 
+ * Related Documents: 
+ *    Specification Document 
+ *    Design Document
+ * 
+ * File created by Said Hassan
+ * 
+ * Associated file: 
+ * ------------------------------------------------------------------------------------
+ */
 import java.io.IOException;
 import javafx.application.Platform;
 import com.lloseng.ocsf.client.AbstractClient;

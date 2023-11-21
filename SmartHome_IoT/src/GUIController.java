@@ -1,5 +1,19 @@
-import java.io.IOException;
+/* ------------------------------------------------------------------------------------
+ * SmartLight.java
+ * 
+ * Copyright (c) 2023 Venos Tech. All rights reserved
+ * 
+ * Related Documents: 
+ *    Specification Document 
+ *    Design Document
+ * 
+ * File created by Said Hassan on 11/08/2023
+ * 
+ * Associated file: 
+ * ------------------------------------------------------------------------------------
+ */
 
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -311,7 +325,7 @@ public class GUIController {
 	    // Perform any necessary operations or setup on the controller
 
 	    Scene mainMenuScene = new Scene(root);
-	    Stage stage = (Stage) historyMessageBox.getScene().getWindow();
+	    Stage stage = (Stage) colorPicker.getScene().getWindow();
 	    stage.setScene(mainMenuScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
