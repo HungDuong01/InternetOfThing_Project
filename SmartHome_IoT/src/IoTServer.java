@@ -108,7 +108,7 @@ public class IoTServer extends AbstractServer {
 
 	if ("".equals(receivedStr)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    serverController.setLightBrightness((Integer) msg);
+	   // serverController.setLightBrightness((Integer) msg);
 	    try {
 		sendToAllClients(serverController.getUpdateTemp());
 
