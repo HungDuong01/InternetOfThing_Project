@@ -44,6 +44,9 @@ public class GUIController {
 	this.client = client;
     }
 
+    
+    //fortune edited 
+    
     /*
      * ----------------------------------- WELCOME PAGE-------------------------------------- */
 
