@@ -233,9 +233,11 @@ public class GUIController {
 	    loader.setController(this);
 
 	    Parent root = loader.load();
+	    
 
 	    // Perform any necessary operations or setup on the controller
 
+	    
 	    Scene thermostatScene = new Scene(root);
 	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
 	    stage.setScene(thermostatScene);
