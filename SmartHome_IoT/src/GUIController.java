@@ -109,11 +109,29 @@ public class GUIController {
     void signupButtonPressed(ActionEvent event) {
 
     }
+    
+    @FXML
+    void backButtonPressed(ActionEvent event) {
+
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) loginPane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+    }
 
     /*
-     * ------------------------------------ MAIN MENU PAGE
-     * ---------------------------------------
-     */
+     * ------------------------------------ MAIN MENU PAGE--------------------------------------- */
 
     @FXML
     private GridPane mainMenupane;
@@ -134,7 +152,7 @@ public class GUIController {
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
     	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
 
     	    loader.setController(this);
 
@@ -242,9 +260,9 @@ public class GUIController {
 
     	}
     }
-    /*---------------------- MAIN MENU PAGE END --------------------------------- */
+    /*------------------------------- MAIN MENU PAGE END --------------------------------- */
 
-    /* ---------------------- SMART THERMOSTAT PAGE ----------------------- */
+    /* ----------------------------------- SMART THERMOSTAT PAGE ----------------------- */
 
     @FXML
     private TextArea historyMessageBox;
