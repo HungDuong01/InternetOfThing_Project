@@ -58,7 +58,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-            <Button layoutX="7.0" layoutY="24.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="37.0" prefWidth="77.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+            <Button layoutX="7.0" layoutY="24.0" mnemonicParsing="false" onAction="#BackButtonPressedOnUserLogIn" prefHeight="37.0" prefWidth="77.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>

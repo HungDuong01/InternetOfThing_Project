@@ -106,7 +106,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button layoutX="16.0" layoutY="11.0" mnemonicParsing="false" onAction="#Returnbuttonpressed" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+            <Button layoutX="16.0" layoutY="11.0" mnemonicParsing="false" onAction="#BackButtonPressedOnUserSignUp" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Light" size="18.0" />
                </font>
