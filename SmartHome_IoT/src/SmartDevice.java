@@ -51,3 +51,4 @@ public abstract class SmartDevice {
     public abstract String alertMessage(String action);
 
 }
+
