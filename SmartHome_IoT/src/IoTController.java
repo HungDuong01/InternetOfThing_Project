@@ -109,12 +109,8 @@ public class IoTController {
 	return ((SmartLight) devices.get(1)).getColor();
     }
 
-    public void increaseLightBrightness(Integer brightness) {
-	((SmartLight) devices.get(1)).increaseBrightness(brightness);
-    }
-
-    public void decreaseLightBrightness(Integer brightness) {
-	((SmartLight) devices.get(1)).decreaseBrightness(brightness);
+    public void setLightBrightness(Integer brightness) {
+	((SmartLight) devices.get(1)).setBrightness(brightness);
     }
 
     public Integer getLightBrightness() {
@@ -138,7 +134,6 @@ public class IoTController {
 // --- END ---
 
 // --- CALL FUNCTION FROM THE USER CLASS ---
-
     public void setUserInformation(String accountName, String userName, String password, String email) {
 
     }

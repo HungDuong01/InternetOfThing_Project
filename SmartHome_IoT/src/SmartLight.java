@@ -32,12 +32,8 @@ public class SmartLight extends SmartDevice {
 // --- END ---
 
 // --- SETTER AND GETTER FUNCTIONS FOR CHANGING THE LIGHT'S BRIGHTNESS --- 
-    public void increaseBrightness(Integer brightness) {
-	this.brightness += brightness;
-    }
-
-    public void decreaseBrightness(Integer brightness) {
-	this.brightness -= brightness;
+    public void setBrightness(Integer brightness) {
+	this.brightness = brightness;
     }
 
     public Integer getBrightness() {

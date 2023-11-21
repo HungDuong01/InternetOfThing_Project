@@ -108,7 +108,7 @@ public class IoTServer extends AbstractServer {
 
 	if ("".equals(receivedStr)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    serverController.setLightBrightness((Integer) msg);
+	   // serverController.setLightBrightness((Integer) msg);
 	    try {
 		sendToAllClients(serverController.getUpdateTemp());
 
@@ -184,3 +184,6 @@ public class IoTServer extends AbstractServer {
     }
 
 }
+
+
+// test esof 3050 
