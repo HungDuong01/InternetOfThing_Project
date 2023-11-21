@@ -14,6 +14,7 @@
  */
 
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,8 +31,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 public class GUIController {
 
@@ -44,7 +43,9 @@ public class GUIController {
     }
 
     /*
-     * ----------------------------------- WELCOME PAGE-------------------------------------- */
+     * ----------------------------------- WELCOME
+     * PAGE--------------------------------------
+     */
 
     @FXML
     private GridPane welcomePane;
@@ -74,7 +75,10 @@ public class GUIController {
 
     }
 
-    /* ------------------------------------ LOGIN PAGE --------------------------------------- */
+    /*
+     * ------------------------------------ LOGIN PAGE
+     * ---------------------------------------
+     */
 
     @FXML
     private TextField emailTextField;
@@ -133,25 +137,24 @@ public class GUIController {
 
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene cameraScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(cameraScene);
-    	    client.sendToServer("Camera");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene cameraScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(cameraScene);
+	    client.sendToServer("Camera");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
 
     @FXML
@@ -172,31 +175,30 @@ public class GUIController {
 	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 	} catch (IOException e) {
 	    e.printStackTrace();
-		}
+	}
 
     }
 
     @FXML
     void smartLockButtonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene lockScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(lockScene);
-    	    client.sendToServer("Lock");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene lockScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(lockScene);
+	    client.sendToServer("Lock");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
 
     @FXML
@@ -222,25 +224,24 @@ public class GUIController {
 
     @FXML
     void waterSystemButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene waterScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(waterScene);
-    	    client.sendToServer("Water");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene waterScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(waterScene);
+	    client.sendToServer("Water");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
     /*---------------------- MAIN MENU PAGE END --------------------------------- */
 
@@ -264,7 +265,7 @@ public class GUIController {
 
 	} else {
 	    System.err.println("Error - SmartHomeClient not set in the controller");
-		}
+	}
 
     }
 
@@ -288,16 +289,13 @@ public class GUIController {
     @FXML
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
-	
-	
 
     }
 
     @FXML
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
-	
-	
+
     }
 
     @FXML
@@ -316,7 +314,7 @@ public class GUIController {
 	    stage.setScene(mainMenuScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
-		}
+	}
 
     }
 
@@ -349,13 +347,13 @@ public class GUIController {
     @FXML
     void brightnessSliderChanged(MouseEvent event) {
 
-    	brightnessSlider.setValue(50);
-    	
-    	brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-    		
-        brightnessLabel.setText(String.format("%.0f", newValue.doubleValue()));
-             
-    	 });
+	brightnessSlider.setValue(50);
+
+	brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+	    brightnessLabel.setText(String.format("%.0f", newValue.doubleValue()));
+
+	});
 
     }
 
