@@ -71,6 +71,7 @@ public class SmartHomeClient extends AbstractClient {
 	}
 	
 	
+	
 	 /* ---------------------- SMART THERMOSTAT PAGE --------------------------- */
 	
 	
@@ -80,7 +81,7 @@ public class SmartHomeClient extends AbstractClient {
 	try{
 
 	// Send message to decrease to the server
-		sendToServer("increase");
+		sendToServer("thermoIncrease");
 		// Display message on the console after decrementing the temperature
 		System.out.println("Sent temperature increase of " + getTempData() +  " request to server");
 	} catch(IOException e)
@@ -98,7 +99,7 @@ public class SmartHomeClient extends AbstractClient {
 		try{
 
 			// Send message to decrease to the server
-			sendToServer("decrease");
+			sendToServer("thermoDecrease");
 			// Display message on the console after decrementing the temperature
 			System.out.println("Sent temperature decrease of " + getTempData() +  " request to server");
 		} catch(IOException e)
