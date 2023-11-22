@@ -527,7 +527,7 @@ public class GUIController {
     public void displayColor(String color1) {
 	try {
 	    Color color = Color.web(color1);
-	    Platform.runLater(() -> colorPicker.setValue(color));
+	    colorPicker.setValue(color);
 
 	    fortuneArt1.setFill(color);
 	    fortuneArt2.setFill(color);

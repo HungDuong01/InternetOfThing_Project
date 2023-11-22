@@ -170,7 +170,7 @@ public class IoTServer extends AbstractServer {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		sendToAllClients(serverController.getLightColor());
-		// sendToAllClients(serverController.getLightBrightness());
+		sendToAllClients(serverController.getLightBrightness());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

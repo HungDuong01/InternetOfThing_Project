@@ -156,21 +156,24 @@ public class SmartHomeClient extends AbstractClient {
     /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
     @Override
     protected void handleMessageFromServer(Object msg) {
+	try {
+	    if (msg instanceof Integer) {
+		// handle temperature from server and set it.
+		setTempData((int) msg);
+		// Proper Asynchronous Execution. Set the label text on thermostat GUI
+		Platform.runLater(() -> controller.setTextTemperature(getTempData()));
+	    }
 
-	if (msg instanceof Integer) {
-	    // handle temperature from server and set it.
-	    setTempData((int) msg);
-	    // Proper Asynchronous Execution. Set the label text on thermostat GUI
-	    Platform.runLater(() -> controller.setTextTemperature(getTempData()));
-	}
+	    if (msg instanceof String) {
+		String receivedColor = (String) msg;
+		System.out.println("Received message: " + receivedColor);
 
-	if (msg instanceof String) {
-	    String receivedColor = (String) msg;
-	    System.out.println("Received message: " + receivedColor);
+		Platform.runLater(() -> controller.displayColor(receivedColor));
+	    }
 
-	    Platform.runLater(() -> controller.displayColor(receivedColor));
+	} catch (Exception e) {
+	    e.printStackTrace();
 	}
 
     }
-
 }

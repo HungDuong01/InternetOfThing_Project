@@ -19,6 +19,8 @@ public class SmartLight extends SmartDevice {
     public SmartLight(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
+	this.color = "0xffffff";
+	this.brightness = 50;
     }
 
 // --- SETTER AND GETTER FUNCTIONS FOR CHANGING THE LIGHT'S COLOR ---
