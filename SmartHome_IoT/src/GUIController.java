@@ -462,7 +462,7 @@ public class GUIController {
 	fortuneArt8.setFill(color);
 	fortuneArt9.setFill(color);
 	fortuneArt10.setFill(color);
-
+// New 
     }
 
     @FXML
