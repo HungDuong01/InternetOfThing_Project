@@ -29,14 +29,14 @@ public class GUI extends Application {
 
 	GUIController controller = loader.getController();
 	loader.setController(controller);
-
+/*
 	SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
 
 	client.connectToServer();
 
 	
 	controller.setClient(client);
-
+*/
 	// attach scene graph to scene
 	Scene scene = new Scene(root);
 

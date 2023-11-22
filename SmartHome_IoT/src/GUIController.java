@@ -76,7 +76,7 @@ public class GUIController {
     	    // Perform any necessary operations or setup on the controller
 
     	    Scene welcomePageScene = new Scene(root);
-    	    Stage stage = (Stage) welcomePane.getScene().getWindow();
+    	    Stage stage = (Stage) Firstpagepane.getScene().getWindow();
     	    stage.setScene(welcomePageScene);
     	} catch (IOException e) {
     	    e.printStackTrace();
@@ -201,7 +201,7 @@ public class GUIController {
     	    // Perform any necessary operations or setup on the controller
 
     	    Scene FirstpageScene = new Scene(root);
-    	    Stage stage = (Stage) loginPane.getScene().getWindow();
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
     	    stage.setScene(FirstpageScene);
     	} catch (IOException e) {
     	    e.printStackTrace();
