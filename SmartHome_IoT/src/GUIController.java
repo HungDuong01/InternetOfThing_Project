@@ -490,11 +490,14 @@ public class GUIController {
 
     @FXML
     void decreaseButtonEntered(MouseEvent event) {
+    	decreaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+    	
 
     }
 
     @FXML
     void decreaseButtonExited(MouseEvent event) {
+    	decreaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
 

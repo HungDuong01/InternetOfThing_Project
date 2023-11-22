@@ -109,19 +109,31 @@ public class SmartHomeClient extends AbstractClient {
 	try {
 
 	    // Send message to increase the brightness to the server
-	    sendToServer("lightDecrease");
+	    sendToServer("lightincrease");
 	    // Display message on the console after sending message
-	    System.out.println("Sent brightness decrease of request to server");
+	    System.out.println("Sent brightness increase of request to server");
 	} catch (IOException e) {
 	    // Error handle message
 	    e.printStackTrace();
-	    System.err.println("Error sending brightness decrease");
+	    System.err.println("Error sending brightness increase");
 
 	}
 
     }
 
     public void lightBrightnessDecreaseUpdate() {
+    	try {
+
+    	    // Send message to Decrease the brightness to the server
+    	    sendToServer("lightDecrease");
+    	    // Display message on the console after sending message
+    	    System.out.println("Sent brightness decrease of request to server");
+    	} catch (IOException e) {
+    	    // Error handle message
+    	    e.printStackTrace();
+    	    System.err.println("Error sending brightness decrease");
+
+    	}
 
     }
 
