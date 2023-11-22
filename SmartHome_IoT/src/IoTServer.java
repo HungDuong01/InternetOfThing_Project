@@ -31,7 +31,6 @@ public class IoTServer extends AbstractServer {
 
     // A reference to the IoTController class
     private IoTController serverController; // Use the controller to access the function from
-    // smart devices
 
     private enum DeviceType {
 
@@ -56,22 +55,10 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
-	if ("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
+	if ("thermoIncrease".equals(receivedStr)
+		|| "thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
 	    // ACTIONS TO INCREASE TEMPERATURE
-	    serverController.increaseTemperature(1);
-	    try {
-		// SEND BACK THE UPDATED TEMPERATURE
-		sendToAllClients(serverController.getUpdateTemp());
-
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
-	}
-
-	if ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
-	    // ACTIONS TO DECREASE TEMPERATURE
-	    serverController.decreaseTemperature(1);
+	    serverController.updateTemperature(receivedStr, 1);
 	    try {
 		// SEND BACK THE UPDATED TEMPERATURE
 		sendToAllClients(serverController.getUpdateTemp());
@@ -142,6 +129,16 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
+	if (receivedStr.contains("0x")) {
+	    // ACTIONS TO CHANGE LIGHT COLOR
+	    serverController.setLightColor(receivedStr);
+	    try {
+		sendToAllClients(serverController.getLightColor());
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
+
 	if ("lightON".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING ON LIGHT
 	    serverController.setDeviceStatus("light", true);
@@ -168,7 +165,7 @@ public class IoTServer extends AbstractServer {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		sendToAllClients(serverController.getLightColor());
-		sendToAllClients(serverController.getLightBrightness());
+		// sendToAllClients(serverController.getLightBrightness());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -89,12 +89,13 @@ public class IoTController {
 
 // --- CALL FUNCTIONS FROM THE SMART THERMOSTAT CLASS ---
 
-    public void increaseTemperature(Integer temperature) {
-	((SmartThermostat) devices.get(0)).increase(temperature);
-    }
-
-    public void decreaseTemperature(Integer temperature) {
-	((SmartThermostat) devices.get(0)).decrease(temperature);
+    public void updateTemperature(String msg, Integer temperature) {
+	if ("thermoIncrease".equals(msg)) {
+	    ((SmartThermostat) devices.get(0)).increase(temperature);
+	}
+	if ("thermoDecrease".equals(msg)) {
+	    ((SmartThermostat) devices.get(0)).decrease(temperature);
+	}
     }
 
     public Integer getUpdateTemp() {
