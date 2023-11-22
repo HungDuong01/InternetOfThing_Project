@@ -472,13 +472,13 @@ public class GUIController {
 
     @FXML
     void increaseButtonEntered(MouseEvent event) {
-	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black");
+	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black;");
 
     }
 
     @FXML
     void increaseButtonExited(MouseEvent event) {
-	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white");
+	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white;");
     }
 
     @FXML
