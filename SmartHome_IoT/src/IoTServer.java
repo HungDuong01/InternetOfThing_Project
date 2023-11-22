@@ -56,7 +56,7 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
-	if ("thermoIncrease".equals(receivedStr)) {
+	if ("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 	    serverController.increaseTemperature(1);
 	    try {
@@ -69,7 +69,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("thermoDecrease".equals(receivedStr)) {
+	if ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
 	    // ACTIONS TO DECREASE TEMPERATURE
 	    serverController.decreaseTemperature(1);
 	    try {
@@ -84,9 +84,11 @@ public class IoTServer extends AbstractServer {
 
 	if ("thermostatON".equals(receivedStr)) {
 	    // ACTIONS TO TURN ON THERMOSTAT
+	    serverController.setDeviceStatus("thermo", true);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("thermo", true));
+		sendToAllClients(serverController.getDeviceStatus(0));
+		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -94,14 +96,25 @@ public class IoTServer extends AbstractServer {
 
 	if ("thermostatOFF".equals(receivedStr)) {
 	    // ACTIONS TO TURNING OFF THERMOSTAT
+	    serverController.setDeviceStatus("thermo", false);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("thermo", false));
+		sendToAllClients(serverController.getDeviceStatus(0));
+		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
 	}
-	// Chan Hung//
+
+	if ("thermoData".equals(receivedStr)) {
+	    try {
+		// RETURN DATA FROM THE SERVER TO CLIENTS
+		sendToAllClients(serverController.getUpdateTemp());
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	    }
+	}
 
 // --- END ---	
 
@@ -131,9 +144,10 @@ public class IoTServer extends AbstractServer {
 
 	if ("lightON".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING ON LIGHT
+	    serverController.setDeviceStatus("light", true);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("light", true));
+		sendToAllClients(serverController.getDeviceStatus(1));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -141,10 +155,22 @@ public class IoTServer extends AbstractServer {
 
 	if ("lightOFF".equals(receivedStr)) {
 	    // ACTIONS FOR TURNING OFF LIGHT
+	    serverController.setDeviceStatus("light", false);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.setDeviceStatus("light", false));
+		sendToAllClients(serverController.getDeviceStatus(1));
 	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
+
+	if ("lightData".equals(receivedStr)) {
+	    try {
+		// RETURN DATA FROM THE SERVER TO CLIENTS
+		sendToAllClients(serverController.getLightColor());
+		sendToAllClients(serverController.getLightBrightness());
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}
@@ -154,17 +180,6 @@ public class IoTServer extends AbstractServer {
 // --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
 // --- END ---
-
-	if ("thermoData".equals(receivedStr))
-
-	{
-	    try {
-		sendToAllClients(serverController.getUpdateTemp());
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
-	}
 
     }
 

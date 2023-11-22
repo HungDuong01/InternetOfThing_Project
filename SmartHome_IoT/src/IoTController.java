@@ -36,7 +36,7 @@ public class IoTController {
 
     public IoTController() {
 	devices = new ArrayList<SmartDevice>();
-	thermo = new SmartThermostat(0, false);
+	thermo = new SmartThermostat(0, true); // testing turning on off function
 	light = new SmartLight(1, false);
 	lock = new SmartLock(2, false);
 	water = new SmartWaterSystem(3, false);
@@ -52,33 +52,36 @@ public class IoTController {
 
 // --- UPDATE THE STATUS OF DEVICES ---
 
-    public Boolean setDeviceStatus(String device, boolean status) {
-	boolean returnStatus = false;
+    public void setDeviceStatus(String device, boolean status) {
 	switch (device) {
 	case "thermo":
 	    devices.get(0).setDeviceStatus(status);
-	    returnStatus = devices.get(0).getDeviceStatus();
 	    break;
 	case "light":
 	    devices.get(1).setDeviceStatus(status);
-	    returnStatus = devices.get(1).getDeviceStatus();
 	    break;
 	case "lock":
 	    devices.get(2).setDeviceStatus(status);
-	    returnStatus = devices.get(2).getDeviceStatus();
 	    break;
 	case "water":
 	    devices.get(3).setDeviceStatus(status);
-	    returnStatus = devices.get(3).getDeviceStatus();
 	    break;
 	case "camera":
 	    devices.get(4).setDeviceStatus(status);
-	    returnStatus = devices.get(4).getDeviceStatus();
 	    break;
 	default:
 	    break;
 	}
-	return returnStatus;
+    }
+
+    public boolean getDeviceStatus(int device) {
+	boolean tempStatus = false;
+	for (int i = 0; i < devices.size(); i++) {
+	    if (devices.get(i).deviceID() == device) {
+		tempStatus = devices.get(i).getDeviceStatus();
+	    }
+	}
+	return tempStatus;
     }
 
 // --- END ---
