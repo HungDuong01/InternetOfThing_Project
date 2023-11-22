@@ -48,6 +48,7 @@ public class IoTServer extends AbstractServer {
     }
 
     // NEW
+
     @Override
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 	// TODO Auto-generated method stub

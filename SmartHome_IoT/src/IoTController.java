@@ -75,6 +75,7 @@ public class IoTController {
     }
 
 // NEW
+
     public boolean getDeviceStatus(int device) {
 	boolean tempStatus = false;
 	for (int i = 0; i < devices.size(); i++) {
