@@ -9,15 +9,19 @@
  * 
  * File created by Said Hassan on 11/08/2023
  * 
- * Associated file: 
+ * * Associated file: 
+ * ------------------
+ * 
+ * Contributor Fortune:
+ * --------------------
+
  * ------------------------------------------------------------------------------------
  */
 
-//hassan
-//
 
 import java.io.IOException;
 
+import javafx.animation.FillTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +40,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.scene.layout.Pane;
 
 public class GUIController {
 
@@ -48,7 +54,37 @@ public class GUIController {
 	this.client = client;
 
     }
+    /*
+     * ----------------------------------- FIRST
+     * PAGE--------------------------------------
+     */
+    
+    ///-->>>>
+    @FXML
+    private Pane Firstpagepane;
 
+    @FXML
+    void conitinueButtonPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene welcomePageScene = new Scene(root);
+    	    Stage stage = (Stage) welcomePane.getScene().getWindow();
+    	    stage.setScene(welcomePageScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+    //----->>>>
+
+    
     /*
      * ----------------------------------- WELCOME
      * PAGE--------------------------------------
@@ -154,6 +190,21 @@ public class GUIController {
 
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Firstpage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene FirstpageScene = new Scene(root);
+    	    Stage stage = (Stage) loginPane.getScene().getWindow();
+    	    stage.setScene(FirstpageScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
@@ -398,6 +449,8 @@ public class GUIController {
     private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6, fortuneArt7,
 	    fortuneArt8, fortuneArt9, fortuneArt10;
 
+    
+
     @FXML
     void increaseBrightnessButton(ActionEvent event) {
 
@@ -414,6 +467,31 @@ public class GUIController {
     @FXML
     void colorPickerValueChanged(ActionEvent event) {
 	String colorVal = String.valueOf(colorPicker.getValue());
+	//
+	// Create an array of the Polygon shapes
+    Polygon[] polygons = {fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5,
+                            fortuneArt6, fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10};
+
+    // Duration for the transition
+    Duration duration = Duration.seconds(1.0);
+
+    // Calculate the duration for each polygon
+    double durationPerPolygon = duration.toMillis() / polygons.length;
+    double currentDuration = 0;
+
+ // Apply FillTransition to each polygon with a delay
+    for (Polygon polygon : polygons) {
+        FillTransition ft = new FillTransition(duration, polygon);
+        ft.setFromValue((Color) polygon.getFill());
+        ft.setToValue(colorPicker.getValue());
+        ft.setDelay(Duration.millis(currentDuration));
+        ft.play();
+        currentDuration += durationPerPolygon;
+    }
+
+  
+	
+	//end of code 
 
 	System.out.println(colorVal);
 	client.lightColorUpdate(colorVal);
