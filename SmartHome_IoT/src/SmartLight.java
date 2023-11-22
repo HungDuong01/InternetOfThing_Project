@@ -46,7 +46,7 @@ public class SmartLight extends SmartDevice {
 // --- END ---
 
     @Override
-    public String alertMessage(String action) {
+    public String alertMessage() {
 	// TODO Auto-generated method stub
 	return "";
 

@@ -48,7 +48,6 @@ public abstract class SmartDevice {
 
     // Abstract method to be implemented by subclasses for device-specific
     // functionality
-    public abstract String alertMessage(String action);
+    public abstract String alertMessage();
 
 }
-

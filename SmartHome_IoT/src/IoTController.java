@@ -50,7 +50,7 @@ public class IoTController {
 
     }
 
-// --- UPDATE THE STATUS OF DEVICES ---
+// --- FUNCTIONS TO UPDATE AND RETURN THE STATUS OF DEVICES ---
 
     public void setDeviceStatus(String device, boolean status) {
 	switch (device) {
@@ -74,7 +74,6 @@ public class IoTController {
 	}
     }
 
-// NEW
     public boolean getDeviceStatus(int device) {
 	boolean tempStatus = false;
 	for (int i = 0; i < devices.size(); i++) {
@@ -83,6 +82,20 @@ public class IoTController {
 	    }
 	}
 	return tempStatus;
+    }
+
+// --- END ---
+
+// --- FUNCTION TO RETURN SMARTDEVICE ALERT MESSAGE ---
+
+    public String getDeviceAlertMessage(int device) {
+	String tempStr = null;
+	for (int i = 0; i < devices.size(); i++) {
+	    if (devices.get(i).deviceID() == device) {
+		tempStr = devices.get(i).alertMessage();
+	    }
+	}
+	return tempStr;
     }
 
 // --- END ---

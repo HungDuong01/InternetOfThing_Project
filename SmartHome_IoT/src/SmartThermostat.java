@@ -43,7 +43,7 @@ public class SmartThermostat extends SmartDevice {
 // --- END --- 
 
     @Override
-    public String alertMessage(String action) {
+    public String alertMessage() {
 	// TODO Auto-generated method stub
 	return "Please note that the current temperature settings in your house is not ideal for maintaining optimal health conditions.";
 

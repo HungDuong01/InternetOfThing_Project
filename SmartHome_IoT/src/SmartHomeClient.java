@@ -35,8 +35,7 @@ public class SmartHomeClient extends AbstractClient {
 
     // setter and getter method to handle the temperature from server
     public void setTempData(int temp) {
-	this.temp = temp + 1;
-
+	this.temp = temp;
     }
 
     public int getTempData() {
@@ -109,7 +108,7 @@ public class SmartHomeClient extends AbstractClient {
 	try {
 
 	    // Send message to increase the brightness to the server
-	    sendToServer("lightincrease");
+	    sendToServer("lightBrightnessIncrease");
 	    // Display message on the console after sending message
 	    System.out.println("Sent brightness increase of request to server");
 	} catch (IOException e) {
@@ -122,18 +121,18 @@ public class SmartHomeClient extends AbstractClient {
     }
 
     public void lightBrightnessDecreaseUpdate() {
-    	try {
+	try {
 
-    	    // Send message to Decrease the brightness to the server
-    	    sendToServer("lightDecrease");
-    	    // Display message on the console after sending message
-    	    System.out.println("Sent brightness decrease of request to server");
-    	} catch (IOException e) {
-    	    // Error handle message
-    	    e.printStackTrace();
-    	    System.err.println("Error sending brightness decrease");
+	    // Send message to Decrease the brightness to the server
+	    sendToServer("lightBrightnessDecrease");
+	    // Display message on the console after sending message
+	    System.out.println("Sent brightness decrease of request to server");
+	} catch (IOException e) {
+	    // Error handle message
+	    e.printStackTrace();
+	    System.err.println("Error sending brightness decrease");
 
-    	}
+	}
 
     }
 

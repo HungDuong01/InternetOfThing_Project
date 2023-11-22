@@ -51,7 +51,7 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedStr = (String) msg;
 
-	System.out.println("Message received: " + receivedStr + " from " + client);
+	System.out.println("Request received from : " + client + "\nMessage content: " + receivedStr);
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
@@ -60,16 +60,21 @@ public class IoTServer extends AbstractServer {
 	    // ACTIONS TO INCREASE TEMPERATURE
 	    serverController.updateTemperature(receivedStr, 1);
 	    try {
-		// SEND BACK THE UPDATED TEMPERATURE
-		sendToAllClients(serverController.getUpdateTemp());
+		if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
+		    // SEND BACK THE UPDATED TEMPERATURE
+		    sendToAllClients(serverController.getUpdateTemp());
+		    sendToAllClients(serverController.getDeviceAlertMessage(0));
+		} else
+		    sendToAllClients(serverController.getUpdateTemp());
 
+		System.out.println("Thermo updated temperature: " + serverController.getUpdateTemp());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}
 
-	if ("thermostatON".equals(receivedStr)) {
+	if ("thermoON".equals(receivedStr)) {
 	    // ACTIONS TO TURN ON THERMOSTAT
 	    serverController.setDeviceStatus("thermo", true);
 	    try {
@@ -81,7 +86,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("thermostatOFF".equals(receivedStr)) {
+	if ("thermoOFF".equals(receivedStr)) {
 	    // ACTIONS TO TURNING OFF THERMOSTAT
 	    serverController.setDeviceStatus("thermo", false);
 	    try {

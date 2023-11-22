@@ -18,7 +18,6 @@
  * ------------------------------------------------------------------------------------
  */
 
-
 import java.io.IOException;
 
 import javafx.animation.FillTransition;
@@ -37,11 +36,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.layout.Pane;
 
 public class GUIController {
 
@@ -58,34 +57,33 @@ public class GUIController {
      * ----------------------------------- FIRST
      * PAGE--------------------------------------
      */
-    
-    ///-->>>>
+
+    /// -->>>>
     //
     @FXML
     private Pane Firstpagepane;
 
     @FXML
     void conitinueButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene welcomePageScene = new Scene(root);
-    	    Stage stage = (Stage) Firstpagepane.getScene().getWindow();
-    	    stage.setScene(welcomePageScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene welcomePageScene = new Scene(root);
+	    Stage stage = (Stage) Firstpagepane.getScene().getWindow();
+	    stage.setScene(welcomePageScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
-    //----->>>>
+    // ----->>>>
 
-    
     /*
      * ----------------------------------- WELCOME
      * PAGE--------------------------------------
@@ -191,21 +189,21 @@ public class GUIController {
 
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Firstpage.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Firstpage.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene FirstpageScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(FirstpageScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene FirstpageScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(FirstpageScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
@@ -372,7 +370,7 @@ public class GUIController {
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
 	try {
-	    client.sendToServer("thermostatOFF");
+	    client.sendToServer("thermoOFF");
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -384,7 +382,7 @@ public class GUIController {
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
 	try {
-	    client.sendToServer("thermostatON");
+	    client.sendToServer("thermoON");
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -450,8 +448,6 @@ public class GUIController {
     private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6, fortuneArt7,
 	    fortuneArt8, fortuneArt9, fortuneArt10;
 
-    
-
     @FXML
     void increaseBrightnessButton(ActionEvent event) {
 
@@ -470,29 +466,27 @@ public class GUIController {
 	String colorVal = String.valueOf(colorPicker.getValue());
 	//
 	// Create an array of the Polygon shapes
-    Polygon[] polygons = {fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5,
-                            fortuneArt6, fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10};
+	Polygon[] polygons = { fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6,
+		fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10 };
 
-    // Duration for the transition
-    Duration duration = Duration.seconds(1.0);
+	// Duration for the transition
+	Duration duration = Duration.seconds(1.0);
 
-    // Calculate the duration for each polygon
-    double durationPerPolygon = duration.toMillis() / polygons.length;
-    double currentDuration = 0;
+	// Calculate the duration for each polygon
+	double durationPerPolygon = duration.toMillis() / polygons.length;
+	double currentDuration = 0;
 
- // Apply FillTransition to each polygon with a delay
-    for (Polygon polygon : polygons) {
-        FillTransition ft = new FillTransition(duration, polygon);
-        ft.setFromValue((Color) polygon.getFill());
-        ft.setToValue(colorPicker.getValue());
-        ft.setDelay(Duration.millis(currentDuration));
-        ft.play();
-        currentDuration += durationPerPolygon;
-    }
+	// Apply FillTransition to each polygon with a delay
+	for (Polygon polygon : polygons) {
+	    FillTransition ft = new FillTransition(duration, polygon);
+	    ft.setFromValue((Color) polygon.getFill());
+	    ft.setToValue(colorPicker.getValue());
+	    ft.setDelay(Duration.millis(currentDuration));
+	    ft.play();
+	    currentDuration += durationPerPolygon;
+	}
 
-  
-	
-	//end of code 
+	// end of code
 
 	System.out.println(colorVal);
 	client.lightColorUpdate(colorVal);
@@ -558,25 +552,28 @@ public class GUIController {
 
     @FXML
     void increaseButtonEntered(MouseEvent event) {
-	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	increaseBrightnessButton
+		.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
 
     }
 
     @FXML
     void increaseButtonExited(MouseEvent event) {
-	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+	increaseBrightnessButton
+		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
     }
 
     @FXML
     void decreaseButtonEntered(MouseEvent event) {
-    	decreaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
-    	
+	decreaseBrightnessButton
+		.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
 
     }
 
     @FXML
     void decreaseButtonExited(MouseEvent event) {
-    	decreaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+	decreaseBrightnessButton
+		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
 

@@ -24,19 +24,18 @@ public class GUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("Firstpage.fxml"));
+	FXMLLoader loader = new FXMLLoader(getClass().getResource("FirstPage.fxml"));
 	Parent root = loader.load();
 
 	GUIController controller = loader.getController();
 	loader.setController(controller);
-/*
+
 	SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
 
 	client.connectToServer();
 
-	
 	controller.setClient(client);
-*/
+
 	// attach scene graph to scene
 	Scene scene = new Scene(root);
 

@@ -20,7 +20,7 @@ public class SmartWaterSystem extends SmartDevice {
     }
 
     @Override
-    public String alertMessage(String action) {
+    public String alertMessage() {
 	// TODO Auto-generated method stub
 	return "";
     }

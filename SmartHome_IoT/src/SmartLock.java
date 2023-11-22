@@ -22,7 +22,7 @@ public class SmartLock extends SmartDevice {
     }
 
     @Override
-    public String alertMessage(String action) {
+    public String alertMessage() {
 	// TODO Auto-generated method stub
 	return "Intruder alert: There's someone breaking into the house right now!";
     }
