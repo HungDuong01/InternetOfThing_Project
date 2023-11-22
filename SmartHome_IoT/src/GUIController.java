@@ -17,6 +17,7 @@
 //
 
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,41 +29,30 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-
-
-
-
 
 public class GUIController {
 
     // one to one association
     private SmartHomeClient client;
-    
- 
 
     public void setClient(SmartHomeClient client) {
 	// method used to set and connect client class with this GUI
-    	
-	this.client = client;
-    
-    }
-    
-    
 
-    
+	this.client = client;
+
+    }
+
     /*
-     * ----------------------------------- WELCOME PAGE-------------------------------------- */
+     * ----------------------------------- WELCOME
+     * PAGE--------------------------------------
+     */
 
     @FXML
     private GridPane welcomePane;
@@ -92,7 +82,10 @@ public class GUIController {
 
     }
 
-    /* ------------------------------------ LOGIN PAGE --------------------------------------- */
+    /*
+     * ------------------------------------ LOGIN PAGE
+     * ---------------------------------------
+     */
 
     @FXML
     private TextField emailTextField;
@@ -127,29 +120,31 @@ public class GUIController {
     void signupButtonPressed(ActionEvent event) {
 
     }
-    
+
     @FXML
     void backButtonPressed(ActionEvent event) {
 
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene mainMenuScene = new Scene(root);
-    	    Stage stage = (Stage) loginPane.getScene().getWindow();
-    	    stage.setScene(mainMenuScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene mainMenuScene = new Scene(root);
+	    Stage stage = (Stage) loginPane.getScene().getWindow();
+	    stage.setScene(mainMenuScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
     }
 
     /*
-     * ------------------------------------ MAIN MENU PAGE--------------------------------------- */
+     * ------------------------------------ MAIN MENU
+     * PAGE---------------------------------------
+     */
 
     @FXML
     private GridPane mainMenupane;
@@ -169,25 +164,24 @@ public class GUIController {
 
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene cameraScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(cameraScene);
-    	    client.sendToServer("Camera");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene cameraScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(cameraScene);
+	    client.sendToServer("Camera");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
 
     @FXML
@@ -208,32 +202,30 @@ public class GUIController {
 	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 	} catch (IOException e) {
 	    e.printStackTrace();
-		}
-	
+	}
 
     }
 
     @FXML
     void smartLockButtonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene lockScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(lockScene);
-    	    client.sendToServer("Lock");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene lockScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(lockScene);
+	    client.sendToServer("Lock");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
 
     @FXML
@@ -244,11 +236,9 @@ public class GUIController {
 	    loader.setController(this);
 
 	    Parent root = loader.load();
-	    
 
 	    // Perform any necessary operations or setup on the controller
 
-	    
 	    Scene thermostatScene = new Scene(root);
 	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
 	    stage.setScene(thermostatScene);
@@ -257,34 +247,35 @@ public class GUIController {
 	    e.printStackTrace();
 	}
 
-
     }
 
     @FXML
     void waterSystemButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene waterScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(waterScene);
-    	    client.sendToServer("Water");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	
+	    Scene waterScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(waterScene);
+	    client.sendToServer("Water");
+	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+	} catch (IOException e) {
+	    e.printStackTrace();
 
-    	}
+	}
     }
     /*------------------------------- MAIN MENU PAGE END --------------------------------- */
 
-    /* ----------------------------------- SMART THERMOSTAT PAGE ----------------------- */
+    /*
+     * ----------------------------------- SMART THERMOSTAT PAGE
+     * -----------------------
+     */
 
     @FXML
     private TextArea historyMessageBox;
@@ -304,7 +295,7 @@ public class GUIController {
 
 	} else {
 	    System.err.println("Error - SmartHomeClient not set in the controller");
-		}
+	}
 
     }
 
@@ -329,12 +320,11 @@ public class GUIController {
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
 	try {
-		client.sendToServer("thermostatOFF");
+	    client.sendToServer("thermostatOFF");
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
 	}
-	
 
     }
 
@@ -342,12 +332,12 @@ public class GUIController {
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
 	try {
-		client.sendToServer("thermostatON");
+	    client.sendToServer("thermostatON");
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
 	}
-	
+
     }
 
     @FXML
@@ -366,7 +356,7 @@ public class GUIController {
 	    stage.setScene(mainMenuScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
-		}
+	}
 
     }
 
@@ -378,7 +368,6 @@ public class GUIController {
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
 
-   
     @FXML
     private Label brightnessLabel;
 
@@ -393,49 +382,37 @@ public class GUIController {
 
     @FXML
     private MenuButton toScheduleTime;
-    
+
     @FXML
     private Button increaseBrightnessButton;
-    
+
     @FXML
     private Button decreaseBrightnessButton;
-    
-    
+
     // Shapes in the SDSmartLight Page
     @FXML
-    private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4,
-    fortuneArt5, fortuneArt6, fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10;
-    
-    
-    
-    
-    
+    private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6, fortuneArt7,
+	    fortuneArt8, fortuneArt9, fortuneArt10;
 
-    
     @FXML
-    void increaseBrightnessButton(ActionEvent event){
-    	
-    	client.lightBrightnessIncreaseUpdate();
-    	
-    	
+    void increaseBrightnessButton(ActionEvent event) {
+
+	client.lightBrightnessIncreaseUpdate();
+
     }
-    
-    
+
     @FXML
-    void decreaseBrightnessButton(ActionEvent event){
-    	client.lightBrightnessDecreaseUpdate();
-    	
+    void decreaseBrightnessButton(ActionEvent event) {
+	client.lightBrightnessDecreaseUpdate();
+
     }
-    
-    
 
     @FXML
     void colorPickerValueChanged(ActionEvent event) {
-    String colorVal = String.valueOf(colorPicker.getValue());
-    
-    
-    System.out.println(colorVal);
-    client.lightColorUpdate(colorVal);
+	String colorVal = String.valueOf(colorPicker.getValue());
+
+	System.out.println(colorVal);
+	client.lightColorUpdate(colorVal);
 
     }
 
@@ -468,61 +445,52 @@ public class GUIController {
 	}
 
     }
-    
+
     // Display color on polygons
-    public void displayColor(String color1)
-    {
-    	
-    	Color color =  Color.web(color1);
-    	colorPicker.setValue(color);
-    	fortuneArt1.setFill(color);
-    	fortuneArt2.setFill(color);
-    	fortuneArt3.setFill(color);
-    	fortuneArt4.setFill(color);
-    	fortuneArt5.setFill(color);
-    	fortuneArt6.setFill(color);
-    	fortuneArt7.setFill(color);
-    	fortuneArt8.setFill(color);
-    	fortuneArt9.setFill(color);
-    	fortuneArt10.setFill(color);
-    	
+    public void displayColor(String color1) {
+
+	Color color = Color.web(color1);
+	Platform.runLater(() -> colorPicker.setValue(color));
+
+	fortuneArt1.setFill(color);
+	fortuneArt2.setFill(color);
+	fortuneArt3.setFill(color);
+	fortuneArt4.setFill(color);
+	fortuneArt5.setFill(color);
+	fortuneArt6.setFill(color);
+	fortuneArt7.setFill(color);
+	fortuneArt8.setFill(color);
+	fortuneArt9.setFill(color);
+	fortuneArt10.setFill(color);
+
     }
 
     @FXML
     void saveScheduleButton(ActionEvent event) {
-    	
 
     }
-    
+
     @FXML
-    void increaseButtonEntered(MouseEvent event)
-    {
-    	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black");
-    	
-    	
-    	
+    void increaseButtonEntered(MouseEvent event) {
+	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black");
+
     }
-    
+
     @FXML
-    void increaseButtonExited(MouseEvent event)
-    {
-    	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white");
+    void increaseButtonExited(MouseEvent event) {
+	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white");
     }
-    
+
     @FXML
-    void decreaseButtonEntered(MouseEvent event)
-    {
-    	
+    void decreaseButtonEntered(MouseEvent event) {
+
     }
-    
+
     @FXML
-    void decreaseButtonExited(MouseEvent event)
-    {
-    	
+    void decreaseButtonExited(MouseEvent event) {
+
     }
 
 }
-
-
 
 // comment
