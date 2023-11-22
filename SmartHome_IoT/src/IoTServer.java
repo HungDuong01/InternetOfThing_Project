@@ -55,8 +55,8 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
-	if ("thermoIncrease".equals(receivedStr)
-		|| "thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true) {
+	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)
+		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 	    serverController.updateTemperature(receivedStr, 1);
 	    try {
