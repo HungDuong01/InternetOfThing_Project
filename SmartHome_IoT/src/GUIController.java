@@ -361,7 +361,11 @@ public class GUIController {
     }
 
     public void setTextTemperature(int msg) {
-	Platform.runLater(() -> temperatureLabel.setText(String.valueOf(msg)));
+	try {
+	    Platform.runLater(() -> temperatureLabel.setText(String.valueOf(msg)));
+	} catch (Exception e) {
+	    System.out.println("Server sent updated data to all client");
+	}
     }
 
     /* ---------------------- SMART THERMOSTAT PAGE END ----------------------- */
@@ -448,20 +452,23 @@ public class GUIController {
 
     // Display color on polygons
     public void displayColor(String color1) {
+	try {
+	    Color color = Color.web(color1);
+	    Platform.runLater(() -> colorPicker.setValue(color));
 
-	Color color = Color.web(color1);
-	Platform.runLater(() -> colorPicker.setValue(color));
-
-	fortuneArt1.setFill(color);
-	fortuneArt2.setFill(color);
-	fortuneArt3.setFill(color);
-	fortuneArt4.setFill(color);
-	fortuneArt5.setFill(color);
-	fortuneArt6.setFill(color);
-	fortuneArt7.setFill(color);
-	fortuneArt8.setFill(color);
-	fortuneArt9.setFill(color);
-	fortuneArt10.setFill(color);
+	    fortuneArt1.setFill(color);
+	    fortuneArt2.setFill(color);
+	    fortuneArt3.setFill(color);
+	    fortuneArt4.setFill(color);
+	    fortuneArt5.setFill(color);
+	    fortuneArt6.setFill(color);
+	    fortuneArt7.setFill(color);
+	    fortuneArt8.setFill(color);
+	    fortuneArt9.setFill(color);
+	    fortuneArt10.setFill(color);
+	} catch (Exception e) {
+	    System.out.println("Server sent updated data to all client");
+	}
 // NEW
     }
 
