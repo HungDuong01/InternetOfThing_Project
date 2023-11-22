@@ -14,6 +14,8 @@
  */
 import java.io.IOException;
 import javafx.application.Platform;
+import javafx.scene.paint.Color;
+
 import com.lloseng.ocsf.client.AbstractClient;
 
 /*
@@ -42,6 +44,8 @@ public class SmartHomeClient extends AbstractClient {
 	{
 		return this.temp;
 	}
+	
+	
 	
 	
 	
@@ -113,25 +117,61 @@ public class SmartHomeClient extends AbstractClient {
 	
 	 /* --------------------------- SMART LIGHT PAGE -------------------------- */
 	
-	public void lightStatus()
-	{
+	public void lightStatus(){
 		
 		
 	}
 	
 	
-	public void lightBrightnessUpdate(int brightness)
-	{
+	public void lightBrightnessIncreaseUpdate(){
+		try{
+
+			// Send message to increase the brightness to the server
+			sendToServer("lightDecrease");
+			// Display message on the console after sending message
+			System.out.println("Sent brightness decrease of request to server");
+		} catch(IOException e)
+		{
+			// Error handle message
+			e.printStackTrace();
+			System.err.println("Error sending brightness decrease");
+
+		}
+		
+	
+		
+		
+	}
+	
+	public void lightBrightnessDecreaseUpdate() {
+		
+	}
+	
+	
+	
+	
+	public void lightColorUpdate(String color){
+		
+		try{
+
+			// Send message to increase the brightness to the server
+			sendToServer(color);
+			// Display message on the console after sending message
+			System.out.println("Sent color change request to server");
+		} catch(IOException e)
+		{
+			// Error handle message
+			e.printStackTrace();
+			System.err.println("Error sending color change");
+
+		}
 		
 		
 	}
 	
 	
-	public void lightColorUpdate()
-	{
-		
-		
-	}
+	
+	
 	
 	
 	 /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
@@ -146,8 +186,22 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	 	//Display message on console
 		System.out.println("Received message: " +  getTempData());
+		
+		
+		if(msg instanceof String)
+		{
+			String receivedColor = (String) msg;
+			System.out.println("Received message: " + receivedColor);
+			
+			Platform.runLater(() -> controller.displayColor(receivedColor));
+			
+			
+			
+		}
 
 	}
+	
+	
 		
 
 		

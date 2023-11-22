@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -31,24 +32,34 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+
+
+
+
 
 public class GUIController {
 
     // one to one association
     private SmartHomeClient client;
+    
+ 
 
     public void setClient(SmartHomeClient client) {
 	// method used to set and connect client class with this GUI
     	
 	this.client = client;
+    
     }
+    
+    
 
-    
-    
     
     /*
      * ----------------------------------- WELCOME PAGE-------------------------------------- */
@@ -246,6 +257,7 @@ public class GUIController {
 	    e.printStackTrace();
 	}
 
+
     }
 
     @FXML
@@ -366,9 +378,7 @@ public class GUIController {
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
 
-    @FXML
-    private Slider brightnessSlider;
-
+   
     @FXML
     private Label brightnessLabel;
 
@@ -383,22 +393,49 @@ public class GUIController {
 
     @FXML
     private MenuButton toScheduleTime;
-
+    
     @FXML
-    void brightnessSliderChanged(MouseEvent event) {
+    private Button increaseBrightnessButton;
+    
+    @FXML
+    private Button decreaseBrightnessButton;
+    
+    
+    // Shapes in the SDSmartLight Page
+    @FXML
+    private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4,
+    fortuneArt5, fortuneArt6, fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10;
+    
+    
+    
+    
+    
 
-    	brightnessSlider.setValue(50);
+    
+    @FXML
+    void increaseBrightnessButton(ActionEvent event){
     	
-    	brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-    		
-        brightnessLabel.setText(String.format("%.0f", newValue.doubleValue()));
-             
-    	 });
-
+    	client.lightBrightnessIncreaseUpdate();
+    	
+    	
     }
+    
+    
+    @FXML
+    void decreaseBrightnessButton(ActionEvent event){
+    	client.lightBrightnessDecreaseUpdate();
+    	
+    }
+    
+    
 
     @FXML
     void colorPickerValueChanged(ActionEvent event) {
+    String colorVal = String.valueOf(colorPicker.getValue());
+    
+    
+    System.out.println(colorVal);
+    client.lightColorUpdate(colorVal);
 
     }
 
@@ -431,10 +468,57 @@ public class GUIController {
 	}
 
     }
+    
+    // Display color on polygons
+    public void displayColor(String color1)
+    {
+    	
+    	Color color =  Color.web(color1);
+    	colorPicker.setValue(color);
+    	fortuneArt1.setFill(color);
+    	fortuneArt2.setFill(color);
+    	fortuneArt3.setFill(color);
+    	fortuneArt4.setFill(color);
+    	fortuneArt5.setFill(color);
+    	fortuneArt6.setFill(color);
+    	fortuneArt7.setFill(color);
+    	fortuneArt8.setFill(color);
+    	fortuneArt9.setFill(color);
+    	fortuneArt10.setFill(color);
+    	
+    }
 
     @FXML
     void saveScheduleButton(ActionEvent event) {
+    	
 
+    }
+    
+    @FXML
+    void increaseButtonEntered(MouseEvent event)
+    {
+    	increaseBrightnessButton.setStyle("-fx-text-fill: white; -fx-background-color: black");
+    	
+    	
+    	
+    }
+    
+    @FXML
+    void increaseButtonExited(MouseEvent event)
+    {
+    	increaseBrightnessButton.setStyle("-fx-text-fill: black; -fx-background-color: white");
+    }
+    
+    @FXML
+    void decreaseButtonEntered(MouseEvent event)
+    {
+    	
+    }
+    
+    @FXML
+    void decreaseButtonExited(MouseEvent event)
+    {
+    	
     }
 
 }

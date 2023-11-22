@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="607.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -43,7 +42,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <children>
-            <ImageView fitHeight="276.0" fitWidth="192.0" layoutX="-20.0" layoutY="-64.0">
+            <ImageView fitHeight="276.0" fitWidth="192.0" layoutX="-20.0" layoutY="-79.0">
                <image>
                   <Image url="@smart%20light.png" />
                </image>
@@ -55,17 +54,17 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <children>
-            <Label fx:id="brightnessLabel" layoutY="-45.0" prefHeight="89.0" prefWidth="72.0" text="50">
+            <Label fx:id="brightnessLabel" layoutY="-17.0" prefHeight="103.0" prefWidth="72.0" text="50">
                <font>
                   <Font name="Heiti TC Medium" size="57.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="37.0" prefHeight="26.0" prefWidth="83.0" text="Brightness">
+            <Label layoutX="14.0" layoutY="85.0" prefHeight="32.0" prefWidth="83.0" text="Brightness">
                <font>
                   <Font name="Heiti TC Light" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="66.0" layoutY="-50.0" prefHeight="103.0" prefWidth="53.0" text="\%">
+            <Label layoutX="66.0" layoutY="-15.0" prefHeight="96.0" prefWidth="53.0" text="\%">
                <font>
                   <Font name="Heiti TC Medium" size="57.0" />
                </font>
@@ -173,44 +172,41 @@
                   <Font name="Heiti TC Light" size="13.0" />
                </font>
             </MenuButton>
+            <Polygon fx:id="fortuneArt2" layoutX="14.0" layoutY="54.0" points="-26.0, 16.0, 64.0, 95.0, -26.0, -58.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt1" layoutX="33.0" layoutY="39.0" points="-50.0, -60.0, 50.0, 103.0, -33.0, -69.5" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
-            <Slider fx:id="brightnessSlider" layoutX="118.0" layoutY="-98.0" onDragDetected="#brightnessSliderChanged" orientation="VERTICAL" prefHeight="278.0" prefWidth="15.0" style="-fx-background-color: black;" value="50.0" />
-         </children>
-      </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
-         <children>
-            <Label layoutX="100.0" layoutY="29.0" prefHeight="22.0" prefWidth="120.0" text="Notification">
+            <Button fx:id="increaseBrightnessButton" layoutX="113.0" layoutY="-35.0" mnemonicParsing="false" onAction="#increaseBrightnessButton" onMouseEntered="#increaseButtonEntered" onMouseExited="#increaseButtonExited" prefHeight="131.0" prefWidth="26.0" style="-fx-background-color: white; -fx-text-fill: green; -fx-border-color: black;" text="+" />
+            <Button fx:id="decreaseBrightnessButton" layoutX="113.0" layoutY="96.0" mnemonicParsing="false" onAction="#decreaseBrightnessButton" onMouseEntered="#decreaseButtonEntered" onMouseExited="#decreaseButtonExited" prefHeight="131.0" prefWidth="28.0" style="-fx-background-color: white; -fx-text-fill: red; -fx-border-color: black;" text="-">
                <font>
-                  <Font name="Heiti TC Medium" size="21.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
-         <children>
-            <Label layoutX="111.0" layoutY="20.0" opacity="0.68" text="Low" />
+            </Button>
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Label layoutX="109.0" layoutY="-10.0" opacity="0.68" text="High" />
+            <Label layoutX="109.0" layoutY="42.0" opacity="0.68" prefHeight="32.0" prefWidth="38.0" text="High">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
          </children>
       </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
          <children>
-            <TextArea fx:id="colorNotification" layoutX="-117.0" layoutY="-2.0" prefHeight="96.0" prefWidth="272.0" />
+            <Polygon fx:id="fortuneArt4" layoutX="37.0" layoutY="24.0" points="-50.0, 40.0, -6.0, -5.0, -37.0, -85.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt5" layoutX="64.0" layoutY="31.0" points="-61.0, 33.0, -17.0, 27.0, -17.0, -21.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt3" layoutX="76.0" layoutY="10.0" points="-70.0, -88.0, -39.0, 0.0, -3.0, -28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt6" layoutX="76.0" layoutY="24.0" points="-21.0, -14.0, -21.0, 48.0, 23.0, -52.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt7" layoutX="111.0" layoutY="32.0" points="-46.0, 40.0, 5.0, -13.0, -4.0, -52.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt8" layoutX="127.0" layoutY="54.0" points="-47.0, 13.0, 9.0, 4.0, 0.0, -39.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt9" layoutX="137.0" layoutY="64.0" points="7.0, -6.0, 46.0, -6.0, -21.0, -84.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="fortuneArt10" layoutX="126.0" layoutY="35.0" points="121.0, 23.0, 67.0, 23.0, -11.0, -65.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8" />
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <ColorPicker fx:id="colorPicker" onAction="#colorPickerValueChanged" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label prefHeight="22.0" prefWidth="105.0" text="Color" GridPane.rowIndex="3">
+      <Label prefHeight="22.0" prefWidth="75.0" text="Color" GridPane.rowIndex="3">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
@@ -218,5 +214,19 @@
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <ColorPicker fx:id="colorPicker" layoutX="-38.0" layoutY="16.0" onAction="#colorPickerValueChanged" prefHeight="26.0" prefWidth="123.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <children>
+            <Label layoutX="108.0" layoutY="52.0" opacity="0.68" prefHeight="32.0" prefWidth="34.0" text="Low">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </GridPane>
