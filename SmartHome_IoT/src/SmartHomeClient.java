@@ -64,9 +64,9 @@ public class SmartHomeClient extends AbstractClient {
 
     }
 
-    /* ------------------------- SMART THERMOSTAT PAGE --------------------------- */
+    /* --------------------- SMART THERMOSTAT PAGE --------------------- */
 
-    public void temperatureIncrement() {
+    public void temperatureIncrementToServer() {
 	// if client is connected to server do the following actions
 
 	try {
@@ -83,7 +83,7 @@ public class SmartHomeClient extends AbstractClient {
 	}
     }
 
-    public void temperatureDecrement() throws IOException {
+    public void temperatureDecrementToServer() throws IOException {
 	try {
 
 	    // Send message to decrease to the server
@@ -95,7 +95,28 @@ public class SmartHomeClient extends AbstractClient {
 	    e.printStackTrace();
 	    System.err.println("Error sending temperature decrease");
 
-	}
+		}
+    }
+    
+    public void thermostatOnToServer()
+    {
+    	try {
+    	    sendToServer("thermoON");
+    	} catch (IOException e) {
+    	    // TODO Auto-generated catch block
+    	    e.printStackTrace();
+    	}
+    }
+    
+    
+    public void thermostatOffToServer()
+    {
+    	try {
+    	    sendToServer("thermoOFF");
+    	} catch (IOException e) {
+    	    // TODO Auto-generated catch block
+    	    e.printStackTrace();
+    	}
     }
 
     /* --------------------------- SMART LIGHT PAGE -------------------------- */
@@ -134,8 +155,10 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
-    }
+  }
 
+    
+    
     public void lightColorUpdate(String color) {
 
 	try {
@@ -151,9 +174,37 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
+  }
+    
+    // Send message to Server to Turn OFF
+    public void smartLightOnToServer()
+    {
+    	try {
+    	    sendToServer("lightON");
+    	} catch (IOException e) {
+    	    // TODO Auto-generated catch block
+    	    e.printStackTrace();
+    	}
+    	
     }
+    
+    // Send message to Server to Turn ON
+    public void smartLightOffToServer()
+    {
+    	try {
+    	    sendToServer("lightOFF");
+    	} catch (IOException e) {
+    	    // TODO Auto-generated catch block
+    	    e.printStackTrace();
+    	}
+    	
+    }
+    
+    
+    
 
     /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
+    
     @Override
     protected void handleMessageFromServer(Object msg) {
 

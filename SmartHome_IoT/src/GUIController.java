@@ -15,7 +15,7 @@
  * Contributor Fortune:
  * --------------------
 
- * ------------------------------------------------------------------------------------
+ * ------------------------------------------------------------------------------
  */
 
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class GUIController {
 
     }
     /*
-     * ----------------------------------- WELCOME PAGE-------------------------------------- */
+     * --------------------------- WELCOME PAGE----------------------------- */
 
    
     @FXML
@@ -81,7 +81,7 @@ public class GUIController {
     }
    
 
-    /*----------------------------------- USER/ADMIN PAGE-------------------------------------- */
+    /*----------------------- USER/ADMIN PAGE--------------------------- */
 
     @FXML
     private GridPane userAdminPane;
@@ -112,7 +112,7 @@ public class GUIController {
     }
 
     /*
-     * ------------------------------------ USER LOGIN PAGE --------------------------------------- */
+     * ------------------------ USER LOGIN PAGE ------------------------ */
 
     @FXML
     private TextField emailTextField;
@@ -168,10 +168,7 @@ public class GUIController {
 	}
     }
 
-    /*
-     * ------------------------------------ MAIN MENU
-     * PAGE---------------------------------------
-     */
+    /* ----------------------- MAIN MENU PAGE-------------------------*/
 
     @FXML
     private GridPane mainMenupane;
@@ -182,7 +179,7 @@ public class GUIController {
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
 
 	    loader.setController(this);
 
@@ -313,7 +310,7 @@ public class GUIController {
 	}
     }
 
-    /* ----------------------------------- SMART THERMOSTAT PAGE ----------------------- */
+    /*------------------------ SMART THERMOSTAT PAGE ----------------------- */
 
     @FXML
     private TextArea historyMessageBox;
@@ -325,7 +322,7 @@ public class GUIController {
     void decreaseTemperatureButton(ActionEvent event) throws IOException {
 	if (client != null) {
 	    // Use method in client class to send the data
-	    client.temperatureDecrement();
+	    client.temperatureDecrementToServer();
 	    // Decrement the value inside the GUI after sending the data
 
 	    // Show the data on the GUI
@@ -341,42 +338,37 @@ public class GUIController {
     void increaseTemperatureButton(ActionEvent event) {
 	if (client != null) {
 	    // Use method in client class to send the data
-	    client.temperatureIncrement();
-	    // Decrement the value inside the GUI after sending the data
+	    client.temperatureIncrementToServer();
 
-	    // Show the data on the GUI
-
-	    temperatureLabel.setText(String.valueOf(client.getTempData()));
 
 	} else {
 	    System.err.println("Error - SmartHomeClient not set in the controller");
-	}
+		}
 
     }
 
+    
+    // Turn OFF button pressed then call method in client
     @FXML
     void offButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(false);
-	try {
-	    client.sendToServer("thermoOFF");
-	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
+	
+	client.thermostatOffToServer();
+
 
     }
+    
+    // Turn ON button pressed then call method in client
 
     @FXML
     void onButtonPressed(ActionEvent event) {
 	temperatureLabel.setVisible(true);
-	try {
-	    client.sendToServer("thermoON");
-	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
+	client.thermostatOnToServer();
+
 
     }
+    
+    // Return Back to Main Menu by Scene Switching.
 
     @FXML
     void returnButtonPressed(ActionEvent event) {
@@ -387,8 +379,6 @@ public class GUIController {
 
 	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
-
 	    Scene mainMenuScene = new Scene(root);
 	    Stage stage = (Stage) historyMessageBox.getScene().getWindow();
 	    stage.setScene(mainMenuScene);
@@ -396,8 +386,10 @@ public class GUIController {
 	    e.printStackTrace();
 	}
 
-    }
-
+  }
+    
+    // Method to set temperature label after increment/decrement
+    
     public void setTextTemperature(int msg) {
 	try {
 	    Platform.runLater(() -> temperatureLabel.setText(String.valueOf(msg)));
@@ -405,8 +397,6 @@ public class GUIController {
 	    System.out.println("Server sent updated data to all client");
 	}
     }
-
-    /* ---------------------- SMART THERMOSTAT PAGE END ----------------------- */
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
 
@@ -483,13 +473,17 @@ public class GUIController {
 
     @FXML
     void offSmartLightButton(ActionEvent event) {
+    	client.smartLightOffToServer();
 
     }
 
     @FXML
     void onSmartLightButton(ActionEvent event) {
+    	client.smartLightOnToServer();
 
     }
+    
+    //Return Button back to Main Menu in the Smart Light Page
 
     @FXML
     void returnSmartLightButton(ActionEvent event) {
@@ -509,7 +503,7 @@ public class GUIController {
 	    e.printStackTrace();
 	}
 
-    }
+  }
 
     // Display color on polygons
     public void displayColor(String color1) {
@@ -537,6 +531,9 @@ public class GUIController {
     void saveScheduleButton(ActionEvent event) {
 
     }
+    
+    
+    // Color Change when mouse enters buttons
 
     @FXML
     void increaseButtonEntered(MouseEvent event) {
