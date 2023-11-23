@@ -53,7 +53,7 @@ public class IoTController {
 	// --- END ---
 
 	// --- INITIALIZE ACCOUNTS ---
-	// accounts = new ArrayList<Account>();
+	accounts = new ArrayList<Account>();
 	// --- END ---
 
     }
