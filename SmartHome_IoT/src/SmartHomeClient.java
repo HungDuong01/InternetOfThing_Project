@@ -1,6 +1,6 @@
 
 /* ------------------------------------------------------------------------------------
- * SmartLight.java
+ * SmartHomeClient.java
  * 
  * Copyright (c) 2023 Venos Tech. All rights reserved
  * 
@@ -64,7 +64,7 @@ public class SmartHomeClient extends AbstractClient {
 
     }
 
-    /* ---------------------- SMART THERMOSTAT PAGE --------------------------- */
+    /* ------------------------- SMART THERMOSTAT PAGE --------------------------- */
 
     public void temperatureIncrement() {
 	// if client is connected to server do the following actions

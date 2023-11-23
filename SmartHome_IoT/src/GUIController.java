@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------------------------
- * SmartLight.java
+ * GUIController.java
  * 
  * Copyright (c) 2023 Venos Tech. All rights reserved
  * 
@@ -54,19 +54,16 @@ public class GUIController {
 
     }
     /*
-     * ----------------------------------- FIRST
-     * PAGE--------------------------------------
-     */
+     * ----------------------------------- WELCOME PAGE-------------------------------------- */
 
-    /// -->>>>
-    //
+   
     @FXML
-    private Pane Firstpagepane;
+    private Pane welcomePane;
 
     @FXML
     void conitinueButtonPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
 
 	    loader.setController(this);
 
@@ -75,28 +72,23 @@ public class GUIController {
 	    // Perform any necessary operations or setup on the controller
 
 	    Scene welcomePageScene = new Scene(root);
-	    Stage stage = (Stage) Firstpagepane.getScene().getWindow();
+	    Stage stage = (Stage) welcomePane.getScene().getWindow();
 	    stage.setScene(welcomePageScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
 
     }
-    // ----->>>>
+   
 
-    /*
-     * ----------------------------------- WELCOME
-     * PAGE--------------------------------------
-     */
+    /*----------------------------------- USER/ADMIN PAGE-------------------------------------- */
 
     @FXML
-    private GridPane welcomePane;
+    private GridPane userAdminPane;
 
     @FXML
     void adminButtonPressed(ActionEvent event) {
     	
-    	
-
     }
 
     @FXML
@@ -111,7 +103,7 @@ public class GUIController {
 	    // Perform any necessary operations or setup on the controller
 
 	    Scene mainMenuScene = new Scene(root);
-	    Stage stage = (Stage) welcomePane.getScene().getWindow();
+	    Stage stage = (Stage) userAdminPane.getScene().getWindow();
 	    stage.setScene(mainMenuScene);
 	} catch (IOException e) {
 	    e.printStackTrace();
@@ -120,9 +112,7 @@ public class GUIController {
     }
 
     /*
-     * ------------------------------------ LOGIN PAGE
-     * ---------------------------------------
-     */
+     * ------------------------------------ USER LOGIN PAGE --------------------------------------- */
 
     @FXML
     private TextField emailTextField;
@@ -322,12 +312,8 @@ public class GUIController {
 
 	}
     }
-    /*------------------------------- MAIN MENU PAGE END --------------------------------- */
 
-    /*
-     * ----------------------------------- SMART THERMOSTAT PAGE
-     * -----------------------
-     */
+    /* ----------------------------------- SMART THERMOSTAT PAGE ----------------------- */
 
     @FXML
     private TextArea historyMessageBox;
