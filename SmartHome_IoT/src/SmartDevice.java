@@ -19,8 +19,8 @@
  * ------------------------------------------------------------------------------------
  */
 public abstract class SmartDevice {
-    private int deviceID;
-    private boolean status;
+    private Integer deviceID;
+    private Boolean status;
 
     // Constructor
     public SmartDevice(Integer deviceID, boolean status) {
@@ -41,7 +41,7 @@ public abstract class SmartDevice {
 	this.status = status;
     }
 
-    public boolean getDeviceStatus() {
+    public Boolean getDeviceStatus() {
 	return status;
     }
 // --- END ---

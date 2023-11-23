@@ -27,7 +27,6 @@ import com.lloseng.ocsf.server.ConnectionToClient;
 
 public class IoTServer extends AbstractServer {
 
-   
     // A reference to the IoTController class
     private IoTController serverController; // Use the controller to access the function from
 
@@ -44,6 +43,8 @@ public class IoTServer extends AbstractServer {
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 	// TODO Auto-generated method stub
 	String receivedStr = (String) msg;
+	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
+		updateLockStatusStr;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedStr);
 
@@ -52,14 +53,16 @@ public class IoTServer extends AbstractServer {
 	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)
 		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)) {
 	    // ACTIONS TO INCREASE TEMPERATURE
-	    serverController.updateTemperature(receivedStr, 1);
+	    serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
+	    updateTempStr = serverController.getUpdateTemp().toString();
 	    try {
+		// If the temperature below 15 or above 26 => send back alert message
 		if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
 		    // SEND BACK THE UPDATED TEMPERATURE
-		    sendToAllClients(serverController.getUpdateTemp());
-		    sendToAllClients(serverController.getDeviceAlertMessage(0));
+		    sendToAllClients("Thermostat:" + updateTempStr);
+		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
 		} else
-		    sendToAllClients(serverController.getUpdateTemp());
+		    sendToAllClients("Thermostat:" + serverController.getUpdateTemp());
 		System.out.println("Thermo updated temperature: " + serverController.getUpdateTemp());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -69,10 +72,11 @@ public class IoTServer extends AbstractServer {
 
 	if ("thermoON".equals(receivedStr)) {
 	    // ACTIONS TO TURN ON THERMOSTAT
-	    serverController.setDeviceStatus("thermo", true);
+	    serverController.setDeviceStatus("thermo", true); // Call function to change the thermostat status
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.getDeviceStatus(0));
+		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
+		sendToAllClients("Thermostat:" + updateThermoStatusStr);
 		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -81,10 +85,11 @@ public class IoTServer extends AbstractServer {
 
 	if ("thermoOFF".equals(receivedStr)) {
 	    // ACTIONS TO TURNING OFF THERMOSTAT
-	    serverController.setDeviceStatus("thermo", false);
+	    serverController.setDeviceStatus("thermo", false); // Call function to change the thermostat status
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.getDeviceStatus(0));
+		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
+		sendToAllClients("Thermostat:" + updateThermoStatusStr);
 		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -94,7 +99,10 @@ public class IoTServer extends AbstractServer {
 	if ("thermoData".equals(receivedStr)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
-		sendToAllClients(serverController.getUpdateTemp());
+		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
+		updateTempStr = serverController.getUpdateTemp().toString();
+		sendToAllClients("Thermostat:" + updateTempStr);
+		sendToAllClients("Thermostat:" + updateThermoStatusStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -111,19 +119,23 @@ public class IoTServer extends AbstractServer {
 	    serverController.updateBrightness(receivedStr, 10);
 	    try {
 		// SEND BACK THE UPDATED BRIGHTNESS
-		sendToAllClients(serverController.getUpdateBrightness());
-		System.out.println("Thermo updated temperature: " + serverController.getUpdateBrightness());
+		updateBrightnessStr = serverController.getUpdateBrightness().toString();
+		sendToAllClients("Light:" + updateBrightnessStr);
+		System.out.println("Light updated brightness: " + serverController.getUpdateBrightness());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
+	    
 	}
 
 	if (receivedStr.contains("0x")) {
 	    // ACTIONS TO CHANGE LIGHT COLOR
 	    serverController.setLightColor(receivedStr);
 	    try {
-		sendToAllClients(serverController.getLightColor());
+		updateLightColorStr = serverController.getLightColor().toString();
+		sendToAllClients("Light:" + updateLightColorStr);
+		System.out.println("Light updated color: " + serverController.getLightColor());
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -134,7 +146,9 @@ public class IoTServer extends AbstractServer {
 	    serverController.setDeviceStatus("light", true);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.getDeviceStatus(1));
+		updateLightStatusStr = serverController.getDeviceStatus(1).toString();
+		sendToAllClients("Light:" + updateLightStatusStr);
+		System.out.println("Light updated status: " + serverController.getDeviceStatus(1));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -145,7 +159,9 @@ public class IoTServer extends AbstractServer {
 	    serverController.setDeviceStatus("light", false);
 	    try {
 		// SEND BACK THE LIGHT STATUS
-		sendToAllClients(serverController.getDeviceStatus(1));
+		updateLightStatusStr = serverController.getDeviceStatus(1).toString();
+		sendToAllClients("Light:" + updateLightStatusStr);
+		System.out.println("Light updated status: " + serverController.getDeviceStatus(1));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -154,8 +170,12 @@ public class IoTServer extends AbstractServer {
 	if ("lightData".equals(receivedStr)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
-		sendToAllClients(serverController.getLightColor());
-		sendToAllClients(serverController.getUpdateBrightness());
+		updateBrightnessStr = serverController.getUpdateBrightness().toString();
+		updateLightStatusStr = serverController.getDeviceStatus(1).toString();
+		updateLightColorStr = serverController.getLightColor().toString();
+		sendToAllClients("Light:" + updateBrightnessStr);
+		sendToAllClients("Light:" + updateLightStatusStr);
+		sendToAllClients("Light:" + updateLightColorStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -167,18 +187,32 @@ public class IoTServer extends AbstractServer {
 // --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
 	if ("lockON".equals(receivedStr)) {
-
+	    serverController.setDeviceStatus("lock", true);
+	    try {
+		// SEND BACK THE LOCK STATUS
+		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+		sendToAllClients("Lock:" + updateLockStatusStr);
+		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 	}
 
 	if ("lockOFF".equals(receivedStr)) {
-
+	    serverController.setDeviceStatus("lock", false);
+	    try {
+		// SEND BACK THE LOCK STATUS
+		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+		sendToAllClients("Lock:" + updateLockStatusStr);
+		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 	}
 
 // --- END ---
 
     }
-
-    // If the message indicates to increase the temperature of the thermostat
 
     public static void main(String[] args) {
 	int port = 2010;

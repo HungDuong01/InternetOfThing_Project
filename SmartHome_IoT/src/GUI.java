@@ -30,11 +30,7 @@ public class GUI extends Application {
 	GUIController controller = loader.getController();
 	loader.setController(controller);
 
-
-
-   SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
-
-
+	SmartHomeClient client = new SmartHomeClient("10.100.25.77", 2010, controller);
 
    client.connectToServer();
 
@@ -43,6 +39,7 @@ public class GUI extends Application {
 
 
 //
+
 	// attach scene graph to scene
 	Scene scene = new Scene(root);
 
@@ -59,6 +56,7 @@ public class GUI extends Application {
 
     public static void main(String[] args) {
 
+    	
 	// launch contact app object and start method
 	launch(args);
 
