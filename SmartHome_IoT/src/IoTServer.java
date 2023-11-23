@@ -30,11 +30,6 @@ public class IoTServer extends AbstractServer {
     // A reference to the IoTController class
     private IoTController serverController; // Use the controller to access the function from
 
-    private enum DeviceType {
-
-	THERMOSTAT, LIGHT, LOCK, WATER, CAMERA
-    }
-
     private List<ConnectionToClient> client;
 
     public IoTServer(int port) {
@@ -49,7 +44,7 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedStr = (String) msg;
 
-	System.out.println("Request received from : " + client + "\nMessage content: " + receivedStr);
+	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedStr);
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
@@ -64,7 +59,6 @@ public class IoTServer extends AbstractServer {
 		    sendToAllClients(serverController.getDeviceAlertMessage(0));
 		} else
 		    sendToAllClients(serverController.getUpdateTemp());
-
 		System.out.println("Thermo updated temperature: " + serverController.getUpdateTemp());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -178,6 +172,14 @@ public class IoTServer extends AbstractServer {
 // --- END ---
 
 // --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
+
+	if ("lockON".equals(receivedStr)) {
+
+	}
+
+	if ("lockOFF".equals(receivedStr)) {
+
+	}
 
 // --- END ---
 
