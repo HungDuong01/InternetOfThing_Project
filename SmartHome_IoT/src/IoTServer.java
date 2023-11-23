@@ -27,6 +27,8 @@ import com.lloseng.ocsf.server.ConnectionToClient;
 
 public class IoTServer extends AbstractServer {
 
+    // TESTING 2
+
     // A reference to the IoTController class
     private IoTController serverController; // Use the controller to access the function from
 
