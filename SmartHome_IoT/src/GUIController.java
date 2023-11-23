@@ -86,6 +86,21 @@ public class GUIController {
 
     @FXML
     void adminButtonPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) userAdminPane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
@@ -143,6 +158,21 @@ public class GUIController {
 
     @FXML
     void signupButtonPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserSignUp.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) loginPane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
@@ -166,6 +196,11 @@ public class GUIController {
 	}
     }
 
+    /*
+     * ------------------------ USER LOGIN PAGE --------------------*/
+    
+    
+    
     
      /*---------------- MAIN MENU ---------------------*/
 

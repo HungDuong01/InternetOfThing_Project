@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="357.0" fitWidth="477.0" layoutX="433.0" layoutY="-2.0">
          <image>
@@ -127,14 +127,6 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button id="smartLockbutton" fx:id="lockButton" graphicTextGap="1.0" layoutX="562.0" layoutY="518.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#smartLockButtonpressed" onMouseEntered="#lockCursorEntered" onMouseExited="#lockCursorExited" prefHeight="64.0" prefWidth="139.0" style="-fx-text-fill: black; -fx-background-color: white;" text="Smart Lock " wrapText="true">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Button>
       <Button id="smartCamerabutton" fx:id="cameraButton" graphicTextGap="1.0" layoutX="740.0" layoutY="518.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#smartCameraButtonpressed" onMouseEntered="#cameraCursorEntered" onMouseExited="#cameraCursorExited" prefHeight="64.0" prefWidth="139.0" style="-fx-text-fill: black; -fx-background-color: white;" text="Smart Camera" wrapText="true">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
@@ -159,9 +151,9 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="164.0" fitWidth="109.0" layoutX="577.0" layoutY="347.0">
+      <ImageView fitHeight="291.0" fitWidth="125.0" layoutX="577.0" layoutY="280.0">
          <image>
-            <Image url="@Smart%20Door%20Lock.png" />
+            <Image url="@Smart_lock_with_touch_and_WiFi_security___black_style_with_touchscreen_keypad_lock_2023-removebg-preview.png" />
          </image>
          <effect>
             <DropShadow />
@@ -176,5 +168,13 @@
          </effect>
       </ImageView>
       <Label layoutX="375.0" layoutY="594.0" opacity="0.52" prefHeight="26.0" prefWidth="187.0" text="              Designed by VenosTech  " />
+      <Button id="smartLockbutton" fx:id="lockButton" graphicTextGap="1.0" layoutX="562.0" layoutY="518.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#smartLockButtonpressed" onMouseEntered="#lockCursorEntered" onMouseExited="#lockCursorExited" prefHeight="64.0" prefWidth="139.0" style="-fx-text-fill: black; -fx-background-color: white;" text="Smart Lock " wrapText="true">
+         <font>
+            <Font name="Heiti TC Medium" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
    </children>
 </Pane>

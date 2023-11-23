@@ -72,7 +72,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" stroke="BLACK" strokeType="INSIDE" width="612.0" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Label layoutY="3.0" prefHeight="52.0" prefWidth="200.0" text="Sign  Up" textFill="WHITE">
+            <Label layoutX="12.0" layoutY="3.0" prefHeight="52.0" prefWidth="204.0" text="Sign  Up" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Light" size="47.0" />
                </font>

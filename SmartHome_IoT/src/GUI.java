@@ -31,11 +31,11 @@ public class GUI extends Application {
 	loader.setController(controller);
 
 
-    SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
+  //  SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
 
-    client.connectToServer();
+   // client.connectToServer();
 
-    controller.setClient(client);
+   // controller.setClient(client);
 
 	
 
