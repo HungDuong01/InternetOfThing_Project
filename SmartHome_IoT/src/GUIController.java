@@ -126,7 +126,7 @@ public class GUIController {
     @FXML
     void loginButtonPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
 
 	    loader.setController(this);
 
@@ -465,7 +465,7 @@ public class GUIController {
     @FXML
     void returnButtonPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
 
 	    loader.setController(this);
 
@@ -580,7 +580,7 @@ public class GUIController {
     @FXML
     void returnSmartLightButton(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
 
 	    loader.setController(this);
 
