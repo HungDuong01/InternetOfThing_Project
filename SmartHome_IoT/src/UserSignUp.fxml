@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="Signuppane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="612.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Signupcontroller">
+<GridPane fx:id="Signuppane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="612.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -104,15 +104,7 @@
             <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#Signupbuttonpressed" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: black;" text="SignUp" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Button layoutX="16.0" layoutY="11.0" mnemonicParsing="false" onAction="#Returnbuttonpressed" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: black;" text="Back" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Light" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
          <children>
             <Label layoutX="5.0" layoutY="9.0" prefHeight="17.0" prefWidth="142.0" text="Already have an account " />

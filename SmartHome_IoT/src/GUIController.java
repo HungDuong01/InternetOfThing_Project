@@ -2,10 +2,19 @@
  * GUIController.java
  * 
  * Copyright (c) 2023 Venos Tech. All rights reserved
+ *  Description:
+ * This Java code is part of a software application developed by Fortune Ogulewe, Said Hassan
+ * for Venos Tech. It includes functionality for IOT device system 
  * 
  * Related Documents: 
  *    Specification Document 
  *    Design Document
+ * 
+ * Disclaimer:
+ * This code is provided as-is, without any warranty or support. Use it at your
+ * own risk. The author and Venos Tech shall not be liable for any damages or
+ * issues arising from the use of this code.
+ * 
  * 
  * File created by Said Hassan on 11/08/2023
  * 
@@ -30,6 +39,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
@@ -180,7 +190,7 @@ public class GUIController {
     void backButtonPressed(ActionEvent event) {
 
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
 
 	    loader.setController(this);
 
@@ -197,11 +207,205 @@ public class GUIController {
     }
 
     /*
-     * ------------------------ USER LOGIN PAGE --------------------*/
+     * ------------------------ USER SIGNUP PAGE --------------------*/
+    
+    @FXML
+    private TextField EmailTextField;
+
+    @FXML
+    private TextField FirstnameTextField;
+
+    @FXML
+    private TextField LastnameTextField;
+
+    @FXML
+    private TextField PassordTextField;
+
+    @FXML
+    private TextField ReenterpasswordTetxtField;
+
+    @FXML
+    private GridPane Signuppane;
+
+    
+
+    @FXML
+    void Signupbuttonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene SignupScene = new Scene(root);
+    	    Stage stage = (Stage) Signuppane.getScene().getWindow();
+    	    stage.setScene(SignupScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+
+    @FXML
+    void loginbuttonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene SignupScene = new Scene(root);
+    	    Stage stage = (Stage) Signuppane.getScene().getWindow();
+    	    stage.setScene(SignupScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+
+    
+    /*
+     * ------------------------ ADMIN lOGIN PAGE --------------------*/
+    
+    @FXML
+    private TextField AdminEmailTextField;
+
+    @FXML
+    private GridPane AdminloginGridpane;
+
+    @FXML
+    private PasswordField AdminpasswordTextField;
+
+    @FXML
+    void Loginbuttonpressed(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
+    
+            loader.setController(this);
+    
+            Parent root = loader.load();
+    
+            // Perform any necessary operations or setup on the controller
+    
+            Scene AdminloginScene = new Scene(root);
+            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+            stage.setScene(AdminloginScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void Registerbuttonpressed(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminRegister.fxml"));
+    
+            loader.setController(this);
+    
+            Parent root = loader.load();
+    
+            // Perform any necessary operations or setup on the controller
+    
+            Scene AdminloginScene = new Scene(root);
+            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+            stage.setScene(AdminloginScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void backbuttonpressed(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
+    
+            loader.setController(this);
+    
+            Parent root = loader.load();
+    
+            // Perform any necessary operations or setup on the controller
+    
+            Scene AdminloginScene = new Scene(root);
+            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+            stage.setScene(AdminloginScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    /*
+     * ------------------------ ADMIN REGISTER PAGE --------------------*/
+    @FXML
+    private TextField AdminFirstnameTextField;
+
+    @FXML
+    private TextField AdminLastnameTextField;
+
+    @FXML
+    private TextField AdminRegEmailTextField;
+
+    @FXML
+    private TextField AdminRegpasswordTextField;
+
+    @FXML
+    private GridPane Adminregisterpane;
+
+    @FXML
+    private TextField AdminrepasswordTextField;
+
+    @FXML
+    void AdminRegisterbuttonpressed(ActionEvent event) {
+    	 try {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+ 
+             loader.setController(this);
+ 
+             Parent root = loader.load();
+ 
+             // Perform any necessary operations or setup on the controller
+ 
+             Scene AdminregisterScene = new Scene(root);
+             Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+             stage.setScene(AdminregisterScene);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+    }
+
+    @FXML
+    void Adminloginbuttonpressed(ActionEvent event) {
+    	 try {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+ 
+             loader.setController(this);
+ 
+             Parent root = loader.load();
+ 
+             // Perform any necessary operations or setup on the controller
+ 
+             Scene AdminregisterScene = new Scene(root);
+             Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+             stage.setScene(AdminregisterScene);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+    }
+
+   
     
     
-    
-    
+
      /*---------------- MAIN MENU ---------------------*/
 
     @FXML
@@ -420,6 +624,75 @@ public class GUIController {
     @FXML
     void lockCursorExited(MouseEvent event) {
 	lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+    }
+    
+    
+    /*---------------- ADMIN ROOM MENU ---------------------*/
+    
+    @FXML
+    private GridPane Adminmainroompane;
+
+    @FXML
+    private TextField DeviceIdTextField;
+
+    @FXML
+    private TextArea Deviceinfotextarea;
+
+    @FXML
+    private ListView<?> Devicelistview;
+
+    @FXML
+    private TextField DevicenameTextField;
+
+    @FXML
+    private TextField searchTextField;
+
+    @FXML
+    private Label useridlabel;
+
+    @FXML
+    void AddnewDevicebuttonpressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void Logoutbuttonpressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SaveDevicebuttonpressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SearchTextField(ActionEvent event) {
+
+    }
+
+    @FXML
+    void returnhomegifclicked(MouseEvent event) {
+    	 try {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+     
+             loader.setController(this);
+     
+             Parent root = loader.load();
+     
+             // Perform any necessary operations or setup on the controller
+     
+             Scene AdminmainroomScene = new Scene(root);
+             Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
+             stage.setScene(AdminmainroomScene);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+    }
+
+    @FXML
+    void searchbuttonpressed(ActionEvent event) {
 
     }
 

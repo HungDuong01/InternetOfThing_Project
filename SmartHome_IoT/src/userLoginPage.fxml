@@ -102,7 +102,7 @@
          <children>
             <ImageView fitHeight="144.0" fitWidth="133.0" layoutX="27.0" layoutY="8.0">
                <image>
-                  <Image url="@images/icons8-client-100-removebg-preview.png" />
+                  <Image url="@icons8-client-100-removebg-preview.png" />
                </image>
             </ImageView>
          </children>
