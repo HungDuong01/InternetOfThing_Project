@@ -126,7 +126,7 @@ public class GUIController {
     @FXML
     void loginButtonPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenuPage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
 
 	    loader.setController(this);
 
@@ -169,33 +169,85 @@ public class GUIController {
     }
 
     /*
-     * ------------------------------------ MAIN MENU
-     * PAGE---------------------------------------
-     */
+     * ------------------------------------ MAIN MENU--------------------------------------- */
 
     @FXML
-    private GridPane mainMenupane;
+    private Button ThermoButton;
+
+    @FXML
+    private Button cameraButton;
+
+    @FXML
+    private Button lightButton;
+
+    @FXML
+    private Button lockButton;
 
     @FXML
     private Label userNameMainMenu;
 
     @FXML
+    private Button waterButton;
+
+    @FXML
+    private Pane mainMenupane;
+    
+    @FXML
+    void cameraCursorEntered(MouseEvent event) {
+    	cameraButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void cameraCursorExited(MouseEvent event) {
+    	cameraButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void lightCursorEntered(MouseEvent event) {
+    	lightButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+
+    }
+
+    @FXML
+    void lightCursorExited(MouseEvent event) {
+    	lightButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+
+    }
+
+    @FXML
+    void lockCursorEntered(MouseEvent event) {
+    	lockButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void lockCursorExited(MouseEvent event) {
+    	lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+
+    }
+
+    @FXML
     void logoutMainMenuPressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminpage.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene FirstpageScene = new Scene(root);
-	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-	    stage.setScene(FirstpageScene);
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+    	    Scene FirstpageScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(FirstpageScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
@@ -206,112 +258,143 @@ public class GUIController {
 
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene cameraScene = new Scene(root);
-	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-	    stage.setScene(cameraScene);
-	    client.sendToServer("Camera");
-	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-	} catch (IOException e) {
-	    e.printStackTrace();
+    	    Scene cameraScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(cameraScene);
+    	    client.sendToServer("Camera");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
 
-	}
+    	}
+
     }
 
     @FXML
     void smartLightButtonpressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDSmartLight.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDSmartLight.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene lightScene = new Scene(root);
-	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-	    stage.setScene(lightScene);
-	    client.sendToServer("lightData");
-	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+    	    Scene lightScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(lightScene);
+    	    client.sendToServer("lightData");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
     @FXML
     void smartLockButtonpressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene lockScene = new Scene(root);
-	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-	    stage.setScene(lockScene);
-	    client.sendToServer("Lock");
-	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-	} catch (IOException e) {
-	    e.printStackTrace();
+    	    Scene lockScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(lockScene);
+    	    client.sendToServer("Lock");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
 
-	}
+    	}
+
     }
 
     @FXML
     void smartThermostatButtonPressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene thermostatScene = new Scene(root);
-	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
-	    stage.setScene(thermostatScene);
-	    client.sendToServer("thermoData");
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+    	    Scene thermostatScene = new Scene(root);
+    	    Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
+    	    stage.setScene(thermostatScene);
+    	    client.sendToServer("thermoData");
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+
+    @FXML
+    void thermCursorEntered(MouseEvent event) {
+    	ThermoButton
+		.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+
+    }
+
+    @FXML
+    void thermCursorExited(MouseEvent event) {
+    	ThermoButton
+		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void waterCursorEntered(MouseEvent event) {
+    	waterButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void waterCursorExited(MouseEvent event) {
+    	waterButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
 
     @FXML
     void waterSystemButtonPressed(ActionEvent event) {
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
 
-	    loader.setController(this);
+    	    loader.setController(this);
 
-	    Parent root = loader.load();
+    	    Parent root = loader.load();
 
-	    // Perform any necessary operations or setup on the controller
+    	    // Perform any necessary operations or setup on the controller
 
-	    Scene waterScene = new Scene(root);
-	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-	    stage.setScene(waterScene);
-	    client.sendToServer("Water");
-	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-	} catch (IOException e) {
-	    e.printStackTrace();
+    	    Scene waterScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(waterScene);
+    	    client.sendToServer("Water");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
 
-	}
+    	}
+
     }
+
 
     /* ----------------------------------- SMART THERMOSTAT PAGE ----------------------- */
 
@@ -381,7 +464,7 @@ public class GUIController {
     @FXML
     void returnButtonPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenuPage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
 
 	    loader.setController(this);
 
@@ -494,7 +577,7 @@ public class GUIController {
     @FXML
     void returnSmartLightButton(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenuPage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
 
 	    loader.setController(this);
 
