@@ -28,19 +28,14 @@ public class IoTController {
     private SmartDevice lock;
     private SmartDevice water;
     private SmartDevice camera;
-//    thermo = new SmartThermostat(0, false);
-//    light = new SmartLight(1, false);
-//    lock = new SmartLock(2, false);
-//	water = new SmartWaterSystem(3, false);
-//	camera = new SmartSecurityCamera(4, false);
 
     public IoTController() {
 	devices = new ArrayList<SmartDevice>();
-	thermo = new SmartThermostat(0, true); // testing turning on off function
-	light = new SmartLight(1, false);
-	lock = new SmartLock(2, false);
-	water = new SmartWaterSystem(3, false);
-	camera = new SmartSecurityCamera(4, false);
+	thermo = new SmartThermostat(0, true);
+	light = new SmartLight(1, true);
+	lock = new SmartLock(2, true);
+	water = new SmartWaterSystem(3, true);
+	camera = new SmartSecurityCamera(4, true);
 
 	devices.add(thermo.deviceID(), thermo);
 	devices.add(light.deviceID(), light);

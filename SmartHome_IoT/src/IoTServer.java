@@ -1,6 +1,5 @@
 /* ------------------------------------------------------------------------------------
  * IoTServer.java
-
  * 
  * Copyright (c) 2023 Venos Tech. All rights reserved
  * 
@@ -14,11 +13,10 @@
  * ------------------------------------------------------------------------------------
  */
 
-/* Strings used:
-	LIGHT, LOCK, THERMOSTAT, CAMERA, WATER_SYSTEM, TEMPERATURE_INCREMENT, TEMPERATURE_DECREMENT,
-	LIGHT_STATUS, LIGHT_BRIGHTNESS_UPDATE, LIGHT_COLOR_UPDATE, WATER_USAGE, WATER_LIMIT, USER_INFO, LOCK_STATUS,
-	CAMERA_ANGLE
-	
+/* Strings used to compare with the message received from the clients:
+ * 1. thermoData, thermoIncrease, thermoDecrease, thermoON, thermoOFF.
+ * 2. lightData, lightBrightnessIncrease, lightBrightnessDecrease, hex - decimal value.
+ * 3. lockData, lockON, lockOFF, lock
 */
 
 import java.util.ArrayList;
