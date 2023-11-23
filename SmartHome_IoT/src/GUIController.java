@@ -860,13 +860,17 @@ public class GUIController {
 
     @FXML
     void offSmartLightButton(ActionEvent event) {
-	client.smartLightOffToServer();
+    	
+    brightnessLabel.setVisible(false);
+    client.smartLightOffToServer();
 
     }
 
     @FXML
     void onSmartLightButton(ActionEvent event) {
-	client.smartLightOnToServer();
+	
+    brightnessLabel.setVisible(true);	
+    client.smartLightOnToServer();
 
     }
 
@@ -947,6 +951,20 @@ public class GUIController {
 		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
+    
+    public void setTextLightBrightness(int msg) {
+    	  try {
+    	      Platform.runLater(() -> brightnessLabel.setText(String.valueOf(msg)));
+    	  } catch (Exception e) {
+    	      System.out.println("Server sent updated data to all client");
+    	  }
+    	}
+    	  
+    	  public void setAlertMessagesetTextLightBrightness(String msg)
+    	  {
+    	      Platform.runLater(() -> colorNotification.setText(msg));
+    	  }
+    
 
     /*
      * ----------- SMART SECURITY CAMERA PAGE----------------*/

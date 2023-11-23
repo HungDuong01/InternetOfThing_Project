@@ -178,7 +178,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
-            <Button fx:id="increaseBrightnessButton" layoutX="113.0" layoutY="-35.0" mnemonicParsing="false" onAction="#increaseBrightnessButton" onMouseEntered="#increaseButtonEntered" onMouseExited="#increaseButtonExited" prefHeight="131.0" prefWidth="30.0" style="-fx-background-color: white; -fx-text-fill: green; -fx-border-color: black;" text=" +">
+            <Button fx:id="increaseBrightnessButton" layoutX="113.0" layoutY="-35.0" mnemonicParsing="false" onAction="#increaseBrightnessButton" onMouseEntered="#increaseButtonEntered" onMouseExited="#increaseButtonExited" prefHeight="131.0" prefWidth="30.0" style="-fx-background-color: white; -fx-text-fill: green; -fx-border-color: black;" text="+">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
