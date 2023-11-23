@@ -158,11 +158,25 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <children>
             <TextField fx:id="searchTextField" layoutX="5.0" layoutY="43.0" onAction="#SearchTextField" prefHeight="32.0" prefWidth="183.0" />
-            <Button layoutX="195.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchbuttonpressed" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Search" textFill="WHITE">
+            <Button layoutX="187.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchbuttonpressed" prefHeight="32.0" prefWidth="105.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Search" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Light" size="17.0" />
                </font>
             </Button>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+         <children>
+            <ImageView fitHeight="31.0" fitWidth="79.0" layoutX="69.0" layoutY="57.0" onMouseClicked="#returnhomegifclicked">
+               <image>
+                  <Image url="@../../../../Downloads/icons8-home.gif" />
+               </image>
+            </ImageView>
+            <Label layoutX="35.0" layoutY="93.0" prefHeight="21.0" prefWidth="123.0" text="Return to main">
+               <font>
+                  <Font name="Heiti TC Light" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
