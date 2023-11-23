@@ -952,6 +952,7 @@ public class GUIController {
 // NEW
     }
 
+    
     @FXML
     void saveScheduleButton(ActionEvent event) {
 

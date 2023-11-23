@@ -241,6 +241,7 @@ public class SmartHomeClient extends AbstractClient {
             		Platform.runLater(() -> controller.setTextTemperature(data));
             		
             	}
+            	
             }
             
             // Receiving Data for Smart Light
