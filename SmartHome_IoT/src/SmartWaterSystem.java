@@ -1,3 +1,5 @@
+import java.time.LocalTime;
+
 /* ------------------------------------------------------------------------------------
  * SmartWaterSystem.java
  * 
@@ -14,9 +16,20 @@
  */
 public class SmartWaterSystem extends SmartDevice {
 
+    private LocalTime startTime;
+    private LocalTime endTime;
+
     public SmartWaterSystem(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
+    }
+
+    public void setStartTime(LocalTime startTime) {
+	this.startTime = startTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+	this.endTime = endTime;
     }
 
     @Override

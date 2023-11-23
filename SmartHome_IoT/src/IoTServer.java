@@ -104,22 +104,14 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if ("lightBrightnessIncrease".equals(receivedStr)) {
+	if (("lightBrightnessIncrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)
+		|| ("lightBrightnessDecrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    serverController.increaseLightBrightness(10);
+	    serverController.updateBrightness(receivedStr, 10);
 	    try {
-		serverController.getLightBrightness();
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
-	}
-
-	if ("lightBrightnessDecrease".equals(receivedStr)) {
-	    // Actions for decrease the temperature
-	    serverController.decreaseLightBrightness(10);
-	    try {
-		serverController.getLightBrightness();
+		// SEND BACK THE UPDATED BRIGHTNESS
+		sendToAllClients(serverController.getUpdateBrightness());
+		System.out.println("Thermo updated temperature: " + serverController.getUpdateBrightness());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -162,7 +154,7 @@ public class IoTServer extends AbstractServer {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		sendToAllClients(serverController.getLightColor());
-		sendToAllClients(serverController.getLightBrightness());
+		sendToAllClients(serverController.getUpdateBrightness());
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

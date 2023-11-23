@@ -14,8 +14,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fitHeight="357.0" fitWidth="477.0" layoutX="433.0" layoutY="-2.0">
+         <image>
+            <Image url="@mainMenuBackgrPic-removebg-preview.png" />
+         </image>
+      </ImageView>
       <MenuButton layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#mainMenuDropDown" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: white;" text="Menu">
          <items>
             <MenuItem mnemonicParsing="false" text="AboutUs" />
@@ -171,21 +176,5 @@
          </effect>
       </ImageView>
       <Label layoutX="375.0" layoutY="594.0" opacity="0.52" prefHeight="26.0" prefWidth="187.0" text="              Designed by VenosTech  " />
-      <ImageView fitHeight="164.0" fitWidth="387.0" layoutX="48.0" layoutY="138.0">
-         <image>
-            <Image url="@main.gif" />
-         </image>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="417.0" layoutX="458.0" layoutY="135.0">
-         <image>
-            <Image url="@main2.gif" />
-         </image>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
    </children>
 </Pane>

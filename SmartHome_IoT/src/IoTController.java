@@ -14,6 +14,8 @@
  *                  SmartDevice.java (many to one) 
  * ------------------------------------------------------------------------------------
  */
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class IoTController {
     private SmartDevice lock;
     private SmartDevice water;
     private SmartDevice camera;
+
+    private LocalTime scheduleTime;
 
     public IoTController() {
 	devices = new ArrayList<SmartDevice>();
@@ -122,15 +126,16 @@ public class IoTController {
 	return ((SmartLight) devices.get(1)).getColor();
     }
 
-    public void increaseLightBrightness(Integer brightness) {
-	((SmartLight) devices.get(1)).increaseBrightness(brightness);
+    public void updateBrightness(String msg, Integer brightness) {
+	if ("lightBrightnessIncrease".equals(msg)) {
+	    ((SmartThermostat) devices.get(1)).increase(brightness);
+	}
+	if ("lightBrightnessDecrease".equals(msg)) {
+	    ((SmartThermostat) devices.get(1)).decrease(brightness);
+	}
     }
 
-    public void decreaseLightBrightness(Integer brightness) {
-	((SmartLight) devices.get(1)).decreaseBrightness(brightness);
-    }
-
-    public Integer getLightBrightness() {
+    public Integer getUpdateBrightness() {
 	return ((SmartLight) devices.get(1)).getBrightness();
     }
 
@@ -146,6 +151,12 @@ public class IoTController {
 
     public void setWaterLimit(Integer waterLimit) {
 
+    }
+
+    public void decodeTimeValue(String timeAsStr) {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+	scheduleTime = LocalTime.parse(timeAsStr, formatter);
+	// ((SmartWaterSystem) devices.get(3)).setScheduleTime(scheduleTime);
     }
 
 // --- END ---
