@@ -244,6 +244,7 @@ public class SmartHomeClient extends AbstractClient {
             	
             }
             
+            
             // Receiving Data for Smart Light
             else if(device.equals("Light"))
             {
