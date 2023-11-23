@@ -214,12 +214,20 @@ public class SmartHomeClient extends AbstractClient {
 	    // Proper Asynchronous Execution. Set the label text on thermostat GUI
 	    Platform.runLater(() -> controller.setTextTemperature(getTempData()));
 	}
-
+	
+	// Display Thermostat Alert Message
 	if (msg instanceof String) {
-	    String receivedColor = (String) msg;
-	    System.out.println("Received message: " + receivedColor);
+	    String receivedmsg = (String) msg;
+	    
+	    if(receivedmsg.contains("Please")) {
+	    	
+	    	Platform.runLater(() -> controller.setAlertMessageThermostat(receivedmsg));
+	    }
+	    
+	    // Display Color in Smart Light Page
+	    System.out.println("Received message: " + receivedmsg);
 
-	    Platform.runLater(() -> controller.displayColor(receivedColor));
+	    Platform.runLater(() -> controller.displayColor(receivedmsg));
 	}
 
     }
