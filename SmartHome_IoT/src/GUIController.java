@@ -53,9 +53,8 @@ public class GUIController {
 	this.client = client;
 
     }
-    /*
-     * --------------------------- WELCOME PAGE-----------------------------
-     */
+    
+     /* --------------------------- WELCOME PAGE-----------------------*/
 
     @FXML
     private Pane welcomePane;
@@ -111,8 +110,7 @@ public class GUIController {
     }
 
     /*
-     * ------------------------ USER LOGIN PAGE ------------------------
-     */
+     * ------------------------ USER LOGIN PAGE --------------------*/
 
     @FXML
     private TextField emailTextField;
@@ -168,10 +166,8 @@ public class GUIController {
 	}
     }
 
-    /*
-     * ------------------------------------ MAIN
-     * MENU---------------------------------------
-     */
+    
+     /*---------------- MAIN MENU ---------------------*/
 
     @FXML
     private Button ThermoButton;
@@ -392,10 +388,7 @@ public class GUIController {
 
     }
 
-    /*
-     * ----------------------------------- SMART THERMOSTAT PAGE
-     * -----------------------
-     */
+    /* ---------------- SMART THERMOSTAT PAGE------------*/
 
     @FXML
     private TextArea historyMessageBox;
@@ -643,9 +636,8 @@ public class GUIController {
     }
 
     /*
-     * ---------------------- SMART SECURITY CAMERA PAGE
-     * --------------------------------
-     */
+     * ----------- SMART SECURITY CAMERA PAGE----------------*/
+     
 
     @FXML
     private GridPane securityCameraPane;
