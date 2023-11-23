@@ -194,44 +194,7 @@ public class GUIController {
     @FXML
     private Pane mainMenupane;
     
-    @FXML
-    void cameraCursorEntered(MouseEvent event) {
-    	cameraButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
 
-    }
-
-    @FXML
-    void cameraCursorExited(MouseEvent event) {
-    	cameraButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
-
-    }
-
-    @FXML
-    void lightCursorEntered(MouseEvent event) {
-    	lightButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
-
-
-    }
-
-    @FXML
-    void lightCursorExited(MouseEvent event) {
-    	lightButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
-
-
-    }
-
-    @FXML
-    void lockCursorEntered(MouseEvent event) {
-    	lockButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
-
-    }
-
-    @FXML
-    void lockCursorExited(MouseEvent event) {
-    	lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
-
-
-    }
 
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
@@ -248,7 +211,7 @@ public class GUIController {
     	    // Perform any necessary operations or setup on the controller
 
     	    Scene FirstpageScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    Stage stage = (Stage) waterButton.getScene().getWindow();
     	    stage.setScene(FirstpageScene);
     	} catch (IOException e) {
     	    e.printStackTrace();
@@ -349,6 +312,31 @@ public class GUIController {
     	}
 
     }
+    
+
+
+    @FXML
+    void waterSystemButtonPressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene waterScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(waterScene);
+    	    client.sendToServer("Water");
+    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+
+    	}
+
+    }
 
     @FXML
     void thermCursorEntered(MouseEvent event) {
@@ -377,26 +365,43 @@ public class GUIController {
 
     }
 
+    
     @FXML
-    void waterSystemButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
+    void cameraCursorEntered(MouseEvent event) {
+    	cameraButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
 
-    	    loader.setController(this);
+    }
 
-    	    Parent root = loader.load();
+    @FXML
+    void cameraCursorExited(MouseEvent event) {
+    	cameraButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
-    	    // Perform any necessary operations or setup on the controller
+    }
 
-    	    Scene waterScene = new Scene(root);
-    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
-    	    stage.setScene(waterScene);
-    	    client.sendToServer("Water");
-    	    // SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
-    	} catch (IOException e) {
-    	    e.printStackTrace();
+    @FXML
+    void lightCursorEntered(MouseEvent event) {
+    	lightButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
 
-    	}
+
+    }
+
+    @FXML
+    void lightCursorExited(MouseEvent event) {
+    	lightButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
+
+    }
+
+    @FXML
+    void lockCursorEntered(MouseEvent event) {
+    	lockButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+
+    }
+
+    @FXML
+    void lockCursorExited(MouseEvent event) {
+    	lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
+
 
     }
 
@@ -653,7 +658,140 @@ public class GUIController {
 		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
+    
+    
+    /* ---------------------- SMART SECURITY CAMERA PAGE -------------------------------- */
+    
+    @FXML 
+    private GridPane securityCameraPane;
+    
+    
+    // Return to Main Menu from Camera Page
+    @FXML
+    void returnSecurityCameraButton(ActionEvent event) {
+    	
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) securityCameraPane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
+    	
+    }
+
+    @FXML
+    void saveScheduleCameraButton(ActionEvent event) {
+
+    }
+    
+    
+    
+    
+    /* ---------------------- SMART WATER SYSTEM PAGE -------------------------*/
+    
+    @FXML
+    private TextArea waterUsageHistoryArea;
+
+    //Return to Main Menu Page from Water System Page
+    @FXML
+    void returnWaterSystemButton(ActionEvent event) {
+    	
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) waterUsageHistoryArea.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
+
+    }
+
+    @FXML
+    void saveDateWaterSystemButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveTimeWaterSystemButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveWaterLimitButton(ActionEvent event) {
+
+    }
+    
+    
+    
+    
+    
+    /* ---------------------- SMART LOCK PAGE -------------------------------- */
+    
+    @FXML
+    private TextArea smartLockHistoryArea;
+
+    @FXML
+    void lockDoorButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void returnLockButton(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+
+    	    loader.setController(this);
+
+    	    Parent root = loader.load();
+
+    	    // Perform any necessary operations or setup on the controller
+
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) smartLockHistoryArea.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	
+
+    	}
+    	
+    	
+
+    }
+
+    @FXML
+    void unlockDoorButton(ActionEvent event) {
+
+    }
+    
+    
+    
+    
 
 }
 
-// comment
+
+
+
+
