@@ -118,13 +118,13 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <TextField layoutX="-55.0" layoutY="-1.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField layoutX="-55.0" layoutY="-1.0" prefHeight="26.0" prefWidth="69.0" />
             <Button layoutX="11.0" layoutY="34.0" mnemonicParsing="false" onAction="#saveWaterLimitButton" prefHeight="22.0" prefWidth="77.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
                <font>
                   <Font name="Heiti TC Light" size="13.0" />
                </font>
             </Button>
-            <Label layoutX="116.0" layoutY="-1.0" prefHeight="26.0" prefWidth="51.0" text="Unit">
+            <Label layoutX="17.0" layoutY="-1.0" prefHeight="26.0" prefWidth="22.0" text="ml">
                <font>
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
@@ -138,8 +138,8 @@
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="Fromtextfield" layoutY="101.0" prefHeight="26.0" prefWidth="51.0" promptText="12:00" />
-            <TextField fx:id="toTetxtField" layoutX="100.0" layoutY="100.0" prefHeight="26.0" prefWidth="51.0" promptText="5:00" />
+            <TextField fx:id="Fromtextfield" layoutY="101.0" prefHeight="26.0" prefWidth="59.0" promptText="HH:MM" />
+            <TextField fx:id="toTetxtField" layoutX="100.0" layoutY="100.0" prefHeight="26.0" prefWidth="59.0" promptText="HH:MM" />
          </children>
       </Pane>
    </children>
