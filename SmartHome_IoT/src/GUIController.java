@@ -407,6 +407,7 @@ public class GUIController {
     
 
      /*---------------- MAIN MENU ---------------------*/
+    
 
     @FXML
     private Button ThermoButton;
@@ -428,6 +429,27 @@ public class GUIController {
 
     @FXML
     private Pane mainMenupane;
+    
+    @FXML
+    void AdminroombuttonPressed(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
+    
+            loader.setController(this);
+    
+            Parent root = loader.load();
+    
+            // Perform any necessary operations or setup on the controller
+    
+            Scene AdminloginScene = new Scene(root);
+            Stage stage = (Stage)mainMenupane.getScene().getWindow();
+            stage.setScene(AdminloginScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {

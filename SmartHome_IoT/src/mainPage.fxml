@@ -23,6 +23,7 @@
       </ImageView>
       <MenuButton layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#mainMenuDropDown" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: white;" text="Menu">
          <items>
+            <MenuItem mnemonicParsing="false" onAction="#AdminroombuttonPressed" text="Adminroom" />
             <MenuItem mnemonicParsing="false" text="AboutUs" />
             <MenuItem mnemonicParsing="false" onAction="#logoutMainMenuPressed" text="Logout" />
          </items>
