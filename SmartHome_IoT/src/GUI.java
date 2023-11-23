@@ -31,7 +31,7 @@ public class GUI extends Application {
 	loader.setController(controller);
 
 
-    SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2010, controller);
+    SmartHomeClient client = new SmartHomeClient("192.168.250.102", 2010, controller);
 
     client.connectToServer();
 

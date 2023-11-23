@@ -470,6 +470,11 @@ public class GUIController {
 	} catch (Exception e) {
 	    System.out.println("Server sent updated data to all client");
 	}
+  }
+    
+    public void setAlertMessageThermostat(String msg)
+    {
+    	Platform.runLater(() -> historyMessageBox.setText(msg));
     }
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
