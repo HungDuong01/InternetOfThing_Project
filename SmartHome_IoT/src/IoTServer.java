@@ -126,6 +126,7 @@ public class IoTServer extends AbstractServer {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
+	    
 	}
 
 	if (receivedStr.contains("0x")) {

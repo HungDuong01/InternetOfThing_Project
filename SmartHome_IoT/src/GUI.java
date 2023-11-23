@@ -52,6 +52,7 @@ public class GUI extends Application {
 
     public static void main(String[] args) {
 
+    	
 	// launch contact app object and start method
 	launch(args);
 
