@@ -53,7 +53,7 @@ public class IoTController {
 	// --- END ---
 
 	// --- INITIALIZE ACCOUNTS ---
-	accounts = new ArrayList<Account>();
+	// accounts = new ArrayList<Account>();
 	// --- END ---
 
     }
@@ -137,10 +137,10 @@ public class IoTController {
 
     public void updateBrightness(String msg, Integer brightness) {
 	if ("lightBrightnessIncrease".equals(msg)) {
-	    ((SmartThermostat) devices.get(1)).increase(brightness);
+	    ((SmartLight) devices.get(1)).increaseBrightness(brightness);
 	}
 	if ("lightBrightnessDecrease".equals(msg)) {
-	    ((SmartThermostat) devices.get(1)).decrease(brightness);
+	    ((SmartLight) devices.get(1)).decreaseBrightness(brightness);
 	}
     }
 
