@@ -21,7 +21,7 @@ import java.util.List;
 
 public class IoTController {
     // List to hold accounts
-    // private List<Account> accounts;
+    private List<Account> accounts;
 
     // List to hold smart devices
     private List<SmartDevice> devices;
@@ -31,9 +31,13 @@ public class IoTController {
     private SmartDevice water;
     private SmartDevice camera;
 
+    private Account admin;
+    private Account user;
+
     private LocalTime scheduleTime;
 
     public IoTController() {
+	// --- INITIALIZE SMART DEVICES ---
 	devices = new ArrayList<SmartDevice>();
 	thermo = new SmartThermostat(0, true);
 	light = new SmartLight(1, true);
@@ -46,6 +50,11 @@ public class IoTController {
 	devices.add(lock.deviceID(), lock);
 	devices.add(water.deviceID(), water);
 	devices.add(camera.deviceID(), camera);
+	// --- END ---
+
+	// --- INITIALIZE ACCOUNTS ---
+	accounts = new ArrayList<Account>();
+	// --- END ---
 
     }
 
@@ -73,8 +82,8 @@ public class IoTController {
 	}
     }
 
-    public boolean getDeviceStatus(int device) {
-	boolean tempStatus = false;
+    public Boolean getDeviceStatus(int device) {
+	Boolean tempStatus = null;
 	for (int i = 0; i < devices.size(); i++) {
 	    if (devices.get(i).deviceID() == device) {
 		tempStatus = devices.get(i).getDeviceStatus();
@@ -161,8 +170,8 @@ public class IoTController {
 
 // --- END ---
 
-// --- CALL FUNCTION FROM THE USER CLASS ---
-    public void setUserInformation(String accountName, String userName, String password, String email) {
+// --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
+    public void setUserInformation(String userName, String password) {
 
     }
 
