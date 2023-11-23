@@ -207,28 +207,116 @@ public class SmartHomeClient extends AbstractClient {
     
     @Override
     protected void handleMessageFromServer(Object msg) {
+    	
+    	String message = (String) msg;
 
-	if (msg instanceof Integer) {
-	    // handle temperature from server and set it.
-	    setTempData((int) msg);
-	    // Proper Asynchronous Execution. Set the label text on thermostat GUI
-	    Platform.runLater(() -> controller.setTextTemperature(getTempData()));
-	}
-	
-	// Display Thermostat Alert Message
-	if (msg instanceof String) {
-	    String receivedmsg = (String) msg;
-	    
-	    if(receivedmsg.contains("Please")) {
-	    	
-	    	Platform.runLater(() -> controller.setAlertMessageThermostat(receivedmsg));
-	    }
-	    
-	    // Display Color in Smart Light Page
-	    System.out.println("Received message: " + receivedmsg);
 
-	    Platform.runLater(() -> controller.displayColor(receivedmsg));
-	}
+    	String[] parts = message.split(":");
+
+        if (parts.length >= 2) {
+            String device = (parts[0]);
+           
+            String data = parts[1];
+            
+            System.out.println("Received message from: " + device + ", with data: " + data);
+
+            
+            // Receiving Data for Thermostat
+            if(device.equals("Thermostat"))
+            {
+            	if(data.equals("ThermoON"))
+            	{
+            		
+            	}
+            	else if(data.equals("ThermoOFF"))
+            	{
+            		
+            	}
+            	else if(data.contains("Please"))
+            	{
+            		Platform.runLater(() -> controller.setAlertMessageThermostat(data));
+            		
+            	}
+            	else {
+            		Platform.runLater(() -> controller.setTextTemperature(data));
+            		
+            	}
+            }
+            
+            // Receiving Data for Smart Light
+            else if(device.equals("Light"))
+            {
+            	if(data.contains("0x"))
+            	{
+            		Platform.runLater(() -> controller.displayColor(data));
+            		
+            	}
+            	else if(data.contains(""))
+            	{
+            		
+            	}
+            	else
+            	{
+            		Platform.runLater(() -> controller.setTextLightBrightness(data));
+            	}
+            	
+            	
+            	
+            	
+            }
+            // Receiving Data for Smart Water System
+            else if(device.equals("Lock"))
+            {
+            	
+            	
+            	
+            	
+            }
+            
+            // Receiving Data for Smart Lock
+            else if(device.equals("Water"))
+            {
+            	
+            	
+            	
+            	
+            }
+            
+            // Receiving Data for Smart Security Camera
+            else if(device.equals("Camera"))
+            {
+            	
+            	
+            	
+            }
+            
+            
+            
+        }
+    	
+    	
+
+//	if (msg instanceof Integer) {
+//	    // handle temperature from server and set it.
+//	    setTempData((int) msg);
+//	    // Proper Asynchronous Execution. Set the label text on thermostat GUI
+//	    Platform.runLater(() -> controller.setTextTemperature(getTempData()));
+//	}
+//	
+//	// Display Thermostat Alert Message
+//	if (msg instanceof String) {
+//	    String receivedmsg = (String) msg;
+//	    
+//	    if(receivedmsg.contains("Please")) {
+//	    	
+//	    	Platform.runLater(() -> controller.setAlertMessageThermostat(receivedmsg));
+//	    }
+//	    
+//	    // Display Color in Smart Light Page
+//	    System.out.println("Received message: " + receivedmsg);
+//
+//	    Platform.runLater(() -> controller.displayColor(receivedmsg));
+//	}
 
     }
 }

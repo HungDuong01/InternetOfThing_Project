@@ -30,6 +30,7 @@
 import java.io.IOException;
 
 import javafx.animation.FillTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -794,9 +795,9 @@ public class GUIController {
 
     // Method to set temperature label after increment/decrement
 
-    public void setTextTemperature(int msg) {
+    public void setTextTemperature(String msg) {
 	try {
-	    Platform.runLater(() -> temperatureLabel.setText(String.valueOf(msg)));
+	    Platform.runLater(() -> temperatureLabel.setText(msg));
 	} catch (Exception e) {
 	    System.out.println("Server sent updated data to all client");
 	}
@@ -805,6 +806,15 @@ public class GUIController {
     public void setAlertMessageThermostat(String msg)
     {
     	Platform.runLater(() -> historyMessageBox.setText(msg));
+    	
+    	int displayDuration = 5000; // 5 seconds
+
+        // Create a pause transition for the display duration
+        PauseTransition pause = new PauseTransition(Duration.millis(displayDuration));
+        pause.setOnFinished(event -> {
+            // Clear the message after the specified duration
+        	Platform.runLater(() -> historyMessageBox.clear());
+        });
     }
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
@@ -835,6 +845,7 @@ public class GUIController {
     private Polygon fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6, fortuneArt7,
 	    fortuneArt8, fortuneArt9, fortuneArt10;
 
+    // Increase Brightness and send message to server
     @FXML
     void increaseBrightnessButton(ActionEvent event) {
 
@@ -842,6 +853,7 @@ public class GUIController {
 
     }
 
+    // Decrease Brightness and send message to server
     @FXML
     void decreaseBrightnessButton(ActionEvent event) {
 	client.lightBrightnessDecreaseUpdate();
@@ -974,17 +986,17 @@ public class GUIController {
 
     }
     
-    public void setTextLightBrightness(int msg) {
+    public void setTextLightBrightness(String msg) {
     	  try {
-    	      Platform.runLater(() -> brightnessLabel.setText(String.valueOf(msg)));
+    	      brightnessLabel.setText(msg);
     	  } catch (Exception e) {
     	      System.out.println("Server sent updated data to all client");
     	  }
     	}
-    	  
+   	  
     	  public void setAlertMessagesetTextLightBrightness(String msg)
     	  {
-    	      Platform.runLater(() -> colorNotification.setText(msg));
+    		  colorNotification.setText(msg);
     	  }
     
 
