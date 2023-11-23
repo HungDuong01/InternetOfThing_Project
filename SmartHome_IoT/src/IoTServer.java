@@ -43,7 +43,8 @@ public class IoTServer extends AbstractServer {
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 	// TODO Auto-generated method stub
 	String receivedStr = (String) msg;
-	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr;
+	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
+		updateLockStatusStr;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedStr);
 
@@ -184,11 +185,27 @@ public class IoTServer extends AbstractServer {
 // --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
 	if ("lockON".equals(receivedStr)) {
-
+	    serverController.setDeviceStatus("lock", true);
+	    try {
+		// SEND BACK THE LOCK STATUS
+		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+		sendToAllClients("Lock:" + updateLockStatusStr);
+		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 	}
 
 	if ("lockOFF".equals(receivedStr)) {
-
+	    serverController.setDeviceStatus("lock", false);
+	    try {
+		// SEND BACK THE LOCK STATUS
+		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+		sendToAllClients("Lock:" + updateLockStatusStr);
+		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 	}
 
 // --- END ---
