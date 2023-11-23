@@ -94,6 +94,8 @@ public class GUIController {
 
     @FXML
     void adminButtonPressed(ActionEvent event) {
+    	
+    	
 
     }
 
@@ -190,7 +192,7 @@ public class GUIController {
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Firstpage.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
 
 	    loader.setController(this);
 
