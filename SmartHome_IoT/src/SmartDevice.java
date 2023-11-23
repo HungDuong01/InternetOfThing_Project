@@ -23,7 +23,7 @@ public abstract class SmartDevice {
     private Boolean status;
 
     // Constructor
-    public SmartDevice(Integer deviceID, Boolean status) {
+    public SmartDevice(Integer deviceID, boolean status) {
 	this.deviceID = deviceID;
 	this.status = status;
     }

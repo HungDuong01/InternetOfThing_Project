@@ -30,11 +30,12 @@ public class GUI extends Application {
 	GUIController controller = loader.getController();
 	loader.setController(controller);
 
-	SmartHomeClient client = new SmartHomeClient("10.100.25.177", 2010, controller);
+	// SmartHomeClient client = new SmartHomeClient("10.100.154.57", 2010,
+	// controller);
 
-	client.connectToServer();
+	// client.connectToServer();
 
-	controller.setClient(client);
+	// controller.setClient(client);
 
 	// attach scene graph to scene
 	Scene scene = new Scene(root);
