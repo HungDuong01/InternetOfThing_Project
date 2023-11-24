@@ -678,7 +678,7 @@ public class GUIController {
 	// Method to set temperature label after increment/decrement
 	public void setTextTemperature(String msg) {
 		try {
-			Platform.runLater(() -> temperatureLabel.setText(msg));
+			temperatureLabel.setText(msg);
 		} catch (Exception e) {
 			System.out.println("Server sent updated data to all client");
 		}
@@ -686,7 +686,7 @@ public class GUIController {
 
 	// Set Text of Alert Msg sent from Server
 	public void setAlertMessageThermostat(String msg) {
-		Platform.runLater(() -> historyMessageBox.setText(msg));
+		historyMessageBox.setText(msg);
 	}
 
 	/* ---------------------- SMART LIGHT PAGE -------------------------------- */
