@@ -35,12 +35,11 @@ CAMERA_ANGLE
 */
 
 public class SmartHomeClient extends AbstractClient {
-// create instance of GUIController class
+	// create instance of GUIController class
 	private GUIController controller;
 	private int temp;
 
-// setter and getter method to handle the temperature from server
-
+	// setter and getter method to handle the temperature from server
 	public void setTempData(int temp) {
 		this.temp = temp;
 	}
@@ -48,17 +47,13 @@ public class SmartHomeClient extends AbstractClient {
 	public int getTempData() {
 
 		return this.temp;
-
 	}
 
-// Constructor with the parameters including the controller class
-
+	// Constructor with the parameters including the controller class
 	public SmartHomeClient(String host, int port, GUIController controller) {
 
 		super(host, port);
-
 		this.controller = controller;
-
 	}
 
 	public void connectToServer() {
@@ -73,6 +68,55 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	/* -------------------- MAIN MENU PAGE ------------------------- */
+
+	// Send Msg to Server When Main Menu Thermostat Button Pressed
+	public void thermostatMainMenuToServer() {
+		try {
+			sendToServer("thermoData");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Send Msg to Server When Main Menu Smart Light Button Pressed
+	public void lightMainMenuToServer() {
+		try {
+			sendToServer("lightData");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Send Msg to Server When Main Menu Water System Button Pressed
+	public void waterMainMenuToServer() {
+		try {
+			sendToServer("Water");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// Send Msg to Server When Main Menu Smart Lock Button Pressed
+	public void lockMainMenuToServer() {
+		try {
+			sendToServer("Lock");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Send Msg to Server When Main Menu Security Camera Button Pressed
+	public void cameraMainMenuToServer() {
+		try {
+			sendToServer("Camera");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	/* --------------------- SMART THERMOSTAT PAGE --------------------- */
 
 	public void temperatureIncrementToServer() {
@@ -81,7 +125,7 @@ public class SmartHomeClient extends AbstractClient {
 			// Send message to decrease to the server
 			sendToServer("thermoIncrease");
 			// Display message on the console after decrementing the temperature
-			System.out.println("Sent temperature increase of " + getTempData() + " request to server");
+			System.out.println("Sent Temperature Increase Message To Server");
 		} catch (IOException e) {
 			// Error handle message
 			e.printStackTrace();
@@ -94,11 +138,10 @@ public class SmartHomeClient extends AbstractClient {
 			// Send message to decrease to the server
 			sendToServer("thermoDecrease");
 			// Display message on the console after decrementing the temperature
-			System.out.println("Sent temperature decrease of " + getTempData() + " request to server");
+			System.out.println("Sent Temperature Decrease Message To Server");
 		} catch (IOException e) {
 			// Error handle message
 			e.printStackTrace();
-
 			System.err.println("Error sending temperature decrease");
 		}
 
@@ -108,7 +151,6 @@ public class SmartHomeClient extends AbstractClient {
 		try {
 			sendToServer("thermoON");
 		} catch (IOException e) {
-// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -117,7 +159,6 @@ public class SmartHomeClient extends AbstractClient {
 		try {
 			sendToServer("thermoOFF");
 		} catch (IOException e) {
-// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
@@ -130,7 +171,7 @@ public class SmartHomeClient extends AbstractClient {
 		// Status of light
 	}
 
-	public void lightBrightnessIncreaseUpdate() {
+	public void lightBrightnessIncreaseToServer() {
 		try {
 			// Send message to increase the brightness to the server
 			sendToServer("lightBrightnessIncrease");
@@ -143,7 +184,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
-	public void lightBrightnessDecreaseUpdate() {
+	public void lightBrightnessDecreaseToServer() {
 		try {
 			// Send message to Decrease the brightness to the server
 			sendToServer("lightBrightnessDecrease");
@@ -156,7 +197,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
-	public void lightColorUpdate(String color) {
+	public void lightColorChangeToServer(String color) {
 		try {
 			// Send message to increase the brightness to the server
 			sendToServer(color);
@@ -170,7 +211,6 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	// Send message to Server to Turn OFF
-
 	public void smartLightOnToServer() {
 		try {
 			sendToServer("lightON");
@@ -183,6 +223,24 @@ public class SmartHomeClient extends AbstractClient {
 	public void smartLightOffToServer() {
 		try {
 			sendToServer("lightOFF");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/* --------------------------- SMART LIGHT PAGE -------------------------- */
+
+	public void lockDoorMsgToServer() {
+		try {
+			sendToServer("lockON");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void unlockDoorMsgToServer() {
+		try {
+			sendToServer("lockOFF");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -221,6 +279,7 @@ public class SmartHomeClient extends AbstractClient {
 
 					Platform.runLater(() -> controller.setTextTemperature(data));
 					Platform.runLater(() -> controller.setAlertMessageThermostat(""));
+					System.out.println("Temperature Received From Server: " + data);
 				}
 			}
 
@@ -232,27 +291,35 @@ public class SmartHomeClient extends AbstractClient {
 				}
 
 				else if (data.contains("false")) {
-					//
+					Platform.runLater(() -> controller.setNotificationLight("Light: OFF"));
 				}
 
 				else if (data.contains("true")) {
-					//
+					Platform.runLater(() -> controller.setNotificationLight("Light: ON"));
 				}
 
 				else {
 
 					Platform.runLater(() -> controller.setTextLightBrightness(data));
+					Platform.runLater(() -> controller.setNotificationLight(""));
 				}
 			}
 
 			// Handling Received Data for Smart Water System From Server
-			if (device.equals("Water")) {
-				// data for water if statements here.
+			if (device.equals("Lock")) {
+
+				if (data.equals("true")) {
+					Platform.runLater(() -> controller.setLockHistoryArea("Door has been LOCKED by User"));
+				}
+
+				else if (data.equals("false")) {
+					Platform.runLater(() -> controller.setLockHistoryArea("Door has been UNLOCKED by User"));
+				}
 
 			}
 
 			// Handling Received Data for Smart Lock From Server
-			if (device.equals("Lock")) {
+			if (device.equals("Water")) {
 				// data for lock if statements here.
 
 			}

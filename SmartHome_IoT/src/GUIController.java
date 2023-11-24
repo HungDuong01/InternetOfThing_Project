@@ -81,7 +81,6 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/*----------------------- USER/ADMIN PAGE--------------------------- */
@@ -376,7 +375,6 @@ public class GUIController {
 
 	@FXML
 	void logoutMainMenuPressed(ActionEvent event) {
-
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminpage.fxml"));
 			loader.setController(this);
@@ -406,7 +404,7 @@ public class GUIController {
 			stage.setScene(cameraScene);
 
 			// SEND MSG TO SERVER TO RETRIEVE CAMERA DATA
-			client.sendToServer("Camera");
+			client.cameraMainMenuToServer();
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -424,9 +422,9 @@ public class GUIController {
 			Scene lightScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(lightScene);
-			client.sendToServer("lightData");
 
 			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+			client.lightMainMenuToServer();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -442,9 +440,9 @@ public class GUIController {
 			Scene lockScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(lockScene);
-			client.sendToServer("Lock");
 
-			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
+			// SEND MSG TO SERVER TO RETRIEVE LOCK DATA
+			client.lockMainMenuToServer();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -462,7 +460,7 @@ public class GUIController {
 			stage.setScene(thermostatScene);
 
 			// SEND MSG TO SERVER TO RETRIEVE THERMOSTAT DATA
-			client.sendToServer("thermoData");
+			client.thermostatMainMenuToServer();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -480,7 +478,7 @@ public class GUIController {
 			stage.setScene(waterScene);
 
 			// SEND MSG TO SERVER TO RETRIEVE WATER DATA
-			client.sendToServer("Water");
+			client.waterMainMenuToServer();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -725,13 +723,13 @@ public class GUIController {
 	// Increase Brightness and send message to server
 	@FXML
 	void increaseBrightnessButton(ActionEvent event) {
-		client.lightBrightnessIncreaseUpdate();
+		client.lightBrightnessIncreaseToServer();
 	}
 
 	// Decrease Brightness and send message to server
 	@FXML
 	void decreaseBrightnessButton(ActionEvent event) {
-		client.lightBrightnessDecreaseUpdate();
+		client.lightBrightnessDecreaseToServer();
 
 	}
 
@@ -761,7 +759,7 @@ public class GUIController {
 			currentDuration += durationPerPolygon;
 		}
 		System.out.println(colorVal);
-		client.lightColorUpdate(colorVal);
+		client.lightColorChangeToServer(colorVal);
 	}
 
 	// OFF Button on Smart Light Page sends Msg to Server
@@ -794,6 +792,10 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void setNotificationLight(String msg) {
+		Platform.runLater(() -> notiLightTextArea.setText(msg));
 	}
 
 	// Display Color on Polygons
@@ -931,9 +933,16 @@ public class GUIController {
 	@FXML
 	private TextArea smartLockHistoryArea;
 
+	// Send Msg to Server to Lock Door on Smart Lock Page
 	@FXML
 	void lockDoorButton(ActionEvent event) {
+		client.lockDoorMsgToServer();
+	}
 
+	// Send Msg to Server to Unlock Door on Smart Lock Page
+	@FXML
+	void unlockDoorButton(ActionEvent event) {
+		client.unlockDoorMsgToServer();
 	}
 
 	@FXML
@@ -951,9 +960,10 @@ public class GUIController {
 		}
 	}
 
-	@FXML
-	void unlockDoorButton(ActionEvent event) {
-		//
+	// Display Notification of Lock in Text Area
+	public void setLockHistoryArea(String msg) {
+
+		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
 	}
 
 }
