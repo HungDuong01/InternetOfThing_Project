@@ -3,23 +3,14 @@
 
 * SmartHomeClient.java
 
-*
-
 * Copyright (c) 2023 Venos Tech. All rights reserved
 
-*
-
 * Related Documents:
-
 * Specification Document
-
 * Design Document
 
-*
 
 * File created by Said Hassan
-
-*
 
 * Associated file:
 
@@ -44,19 +35,14 @@ CAMERA_ANGLE
 */
 
 public class SmartHomeClient extends AbstractClient {
-
 // create instance of GUIController class
-
 	private GUIController controller;
-
 	private int temp;
 
 // setter and getter method to handle the temperature from server
 
 	public void setTempData(int temp) {
-
 		this.temp = temp;
-
 	}
 
 	public int getTempData() {
@@ -126,21 +112,13 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	public void temperatureDecrementToServer() throws IOException {
-
 		try {
-
 // Send message to decrease to the server
-
 			sendToServer("thermoDecrease");
-
 // Display message on the console after decrementing the temperature
-
 			System.out.println("Sent temperature decrease of " + getTempData() + " request to server");
-
 		} catch (IOException e) {
-
 // Error handle message
-
 			e.printStackTrace();
 
 			System.err.println("Error sending temperature decrease");
@@ -188,7 +166,6 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	public void lightBrightnessIncreaseUpdate() {
-
 		try {
 
 // Send message to increase the brightness to the server
@@ -212,7 +189,6 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	public void lightBrightnessDecreaseUpdate() {
-
 		try {
 
 // Send message to Decrease the brightness to the server
@@ -238,20 +214,19 @@ public class SmartHomeClient extends AbstractClient {
 //
 
 	public void lightColorUpdate(String color) {
-
 		try {
 
-// Send message to increase the brightness to the server
+			// Send message to increase the brightness to the server
 
 			sendToServer(color);
 
-// Display message on the console after sending message
+			// Display message on the console after sending message
 
 			System.out.println("Sent color change request to server");
 
 		} catch (IOException e) {
 
-// Error handle message
+			// Error handle message
 
 			e.printStackTrace();
 
@@ -261,17 +236,14 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
-// Send message to Server to Turn OFF
+	// Send message to Server to Turn OFF
 
 	public void smartLightOnToServer() {
-
 		try {
 
 			sendToServer("lightON");
 
 		} catch (IOException e) {
-
-// TODO Auto-generated catch block
 
 			e.printStackTrace();
 
@@ -280,11 +252,9 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 // Send message to Server to Turn ON
-
 	public void smartLightOffToServer() {
 
 		try {
-
 			sendToServer("lightOFF");
 
 		} catch (IOException e) {
