@@ -1,26 +1,27 @@
 /* ------------------------------------------------------------------------------------
  * GUIController.java
- * 
+
+ *
  * Copyright (c) 2023 Venos Tech. All rights reserved
  *  Description:
  * This Java code is part of a software application developed by Fortune Ogulewe, Said Hassan
- * for Venos Tech. It includes functionality for IOT device system 
- * 
- * Related Documents: 
- *    Specification Document 
+ * for Venos Tech. It includes functionality for IOT device system
+ *
+ * Related Documents:
+ *    Specification Document
  *    Design Document
- * 
+ *
  * Disclaimer:
  * This code is provided as-is, without any warranty or support. Use it at your
  * own risk. The author and Venos Tech shall not be liable for any damages or
  * issues arising from the use of this code.
- * 
- * 
+ *
+ *
  * File created by Said Hassan on 11/08/2023
- * 
- * * Associated file: 
+ *
+ * * Associated file:
  * ------------------
- * 
+ *
  * Contributor Fortune:
  * --------------------
 
@@ -30,7 +31,6 @@
 import java.io.IOException;
 
 import javafx.animation.FillTransition;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,13 +59,13 @@ public class GUIController {
     private SmartHomeClient client;
 
     public void setClient(SmartHomeClient client) {
-	// method used to set and connect client class with this GUI
+// method used to set and connect client class with this GUI
 
 	this.client = client;
 
     }
-    
-     /* --------------------------- WELCOME PAGE-----------------------*/
+
+    /* --------------------------- WELCOME PAGE----------------------- */
 
     @FXML
     private Pane welcomePane;
@@ -97,21 +97,21 @@ public class GUIController {
 
     @FXML
     void adminButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene mainMenuScene = new Scene(root);
-    	    Stage stage = (Stage) userAdminPane.getScene().getWindow();
-    	    stage.setScene(mainMenuScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene mainMenuScene = new Scene(root);
+	    Stage stage = (Stage) userAdminPane.getScene().getWindow();
+	    stage.setScene(mainMenuScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
@@ -136,7 +136,8 @@ public class GUIController {
     }
 
     /*
-     * ------------------------ USER LOGIN PAGE --------------------*/
+     * ------------------------ USER LOGIN PAGE --------------------
+     */
 
     @FXML
     private TextField emailTextField;
@@ -169,21 +170,21 @@ public class GUIController {
 
     @FXML
     void signupButtonPressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserSignUp.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("UserSignUp.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene mainMenuScene = new Scene(root);
-    	    Stage stage = (Stage) loginPane.getScene().getWindow();
-    	    stage.setScene(mainMenuScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene mainMenuScene = new Scene(root);
+	    Stage stage = (Stage) loginPane.getScene().getWindow();
+	    stage.setScene(mainMenuScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
@@ -208,8 +209,9 @@ public class GUIController {
     }
 
     /*
-     * ------------------------ USER SIGNUP PAGE --------------------*/
-    
+     * ------------------------ USER SIGNUP PAGE --------------------
+     */
+
     @FXML
     private TextField EmailTextField;
 
@@ -228,52 +230,50 @@ public class GUIController {
     @FXML
     private GridPane Signuppane;
 
-    
-
     @FXML
     void Signupbuttonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene SignupScene = new Scene(root);
-    	    Stage stage = (Stage) Signuppane.getScene().getWindow();
-    	    stage.setScene(SignupScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene SignupScene = new Scene(root);
+	    Stage stage = (Stage) Signuppane.getScene().getWindow();
+	    stage.setScene(SignupScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
     @FXML
     void loginbuttonpressed(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 
-    	    loader.setController(this);
+	    loader.setController(this);
 
-    	    Parent root = loader.load();
+	    Parent root = loader.load();
 
-    	    // Perform any necessary operations or setup on the controller
+	    // Perform any necessary operations or setup on the controller
 
-    	    Scene SignupScene = new Scene(root);
-    	    Stage stage = (Stage) Signuppane.getScene().getWindow();
-    	    stage.setScene(SignupScene);
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	}
+	    Scene SignupScene = new Scene(root);
+	    Stage stage = (Stage) Signuppane.getScene().getWindow();
+	    stage.setScene(SignupScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
-    
     /*
-     * ------------------------ ADMIN lOGIN PAGE --------------------*/
-    
+     * ------------------------ ADMIN lOGIN PAGE --------------------
+     */
+
     @FXML
     private TextField AdminEmailTextField;
 
@@ -285,66 +285,67 @@ public class GUIController {
 
     @FXML
     void Loginbuttonpressed(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-    
-            loader.setController(this);
-    
-            Parent root = loader.load();
-    
-            // Perform any necessary operations or setup on the controller
-    
-            Scene AdminloginScene = new Scene(root);
-            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
-            stage.setScene(AdminloginScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminloginScene = new Scene(root);
+	    Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+	    stage.setScene(AdminloginScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
     @FXML
     void Registerbuttonpressed(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminRegister.fxml"));
-    
-            loader.setController(this);
-    
-            Parent root = loader.load();
-    
-            // Perform any necessary operations or setup on the controller
-    
-            Scene AdminloginScene = new Scene(root);
-            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
-            stage.setScene(AdminloginScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminRegister.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminloginScene = new Scene(root);
+	    Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+	    stage.setScene(AdminloginScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
     @FXML
     void backbuttonpressed(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
-    
-            loader.setController(this);
-    
-            Parent root = loader.load();
-    
-            // Perform any necessary operations or setup on the controller
-    
-            Scene AdminloginScene = new Scene(root);
-            Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
-            stage.setScene(AdminloginScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminloginScene = new Scene(root);
+	    Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+	    stage.setScene(AdminloginScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
-    
+
     /*
-     * ------------------------ ADMIN REGISTER PAGE --------------------*/
+     * ------------------------ ADMIN REGISTER PAGE --------------------
+     */
     @FXML
     private TextField AdminFirstnameTextField;
 
@@ -365,50 +366,45 @@ public class GUIController {
 
     @FXML
     void AdminRegisterbuttonpressed(ActionEvent event) {
-    	 try {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
- 
-             loader.setController(this);
- 
-             Parent root = loader.load();
- 
-             // Perform any necessary operations or setup on the controller
- 
-             Scene AdminregisterScene = new Scene(root);
-             Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
-             stage.setScene(AdminregisterScene);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminregisterScene = new Scene(root);
+	    Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+	    stage.setScene(AdminregisterScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
     @FXML
     void Adminloginbuttonpressed(ActionEvent event) {
-    	 try {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
- 
-             loader.setController(this);
- 
-             Parent root = loader.load();
- 
-             // Perform any necessary operations or setup on the controller
- 
-             Scene AdminregisterScene = new Scene(root);
-             Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
-             stage.setScene(AdminregisterScene);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminregisterScene = new Scene(root);
+	    Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+	    stage.setScene(AdminregisterScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
-   
-    
-    
-
-     /*---------------- MAIN MENU ---------------------*/
-    
+    /*---------------- MAIN MENU ---------------------*/
 
     @FXML
     private Button ThermoButton;
@@ -430,27 +426,26 @@ public class GUIController {
 
     @FXML
     private Pane mainMenupane;
-    
+
     @FXML
     void AdminroombuttonPressed(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-    
-            loader.setController(this);
-    
-            Parent root = loader.load();
-    
-            // Perform any necessary operations or setup on the controller
-    
-            Scene AdminloginScene = new Scene(root);
-            Stage stage = (Stage)mainMenupane.getScene().getWindow();
-            stage.setScene(AdminloginScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminloginScene = new Scene(root);
+	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+	    stage.setScene(AdminloginScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
-
 
     @FXML
     void logoutMainMenuPressed(ActionEvent event) {
@@ -649,10 +644,9 @@ public class GUIController {
 	lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
-    
-    
+
     /*---------------- ADMIN ROOM MENU ---------------------*/
-    
+
     @FXML
     private GridPane Adminmainroompane;
 
@@ -696,21 +690,21 @@ public class GUIController {
 
     @FXML
     void returnhomegifclicked(MouseEvent event) {
-    	 try {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-     
-             loader.setController(this);
-     
-             Parent root = loader.load();
-     
-             // Perform any necessary operations or setup on the controller
-     
-             Scene AdminmainroomScene = new Scene(root);
-             Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
-             stage.setScene(AdminmainroomScene);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
+	try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+
+	    loader.setController(this);
+
+	    Parent root = loader.load();
+
+	    // Perform any necessary operations or setup on the controller
+
+	    Scene AdminmainroomScene = new Scene(root);
+	    Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
+	    stage.setScene(AdminmainroomScene);
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
 
     }
 
@@ -719,7 +713,7 @@ public class GUIController {
 
     }
 
-    /* ---------------- SMART THERMOSTAT PAGE------------*/
+    /* ---------------- SMART THERMOSTAT PAGE------------------ */
 
     @FXML
     private TextArea historyMessageBox;
@@ -801,20 +795,11 @@ public class GUIController {
 	} catch (Exception e) {
 	    System.out.println("Server sent updated data to all client");
 	}
-  }
-    
-    public void setAlertMessageThermostat(String msg)
-    {
-    	Platform.runLater(() -> historyMessageBox.setText(msg));
-    	
-    	int displayDuration = 5000; // 5 seconds
+    }
 
-        // Create a pause transition for the display duration
-        PauseTransition pause = new PauseTransition(Duration.millis(displayDuration));
-        pause.setOnFinished(event -> {
-            // Clear the message after the specified duration
-        	Platform.runLater(() -> historyMessageBox.clear());
-        });
+    public void setAlertMessageThermostat(String msg) {
+	Platform.runLater(() -> historyMessageBox.setText(msg));
+
     }
 
     /* ---------------------- SMART LIGHT PAGE -------------------------------- */
@@ -863,19 +848,19 @@ public class GUIController {
     @FXML
     void colorPickerValueChanged(ActionEvent event) {
 	String colorVal = String.valueOf(colorPicker.getValue());
-	//
-	// Create an array of the Polygon shapes
+//
+// Create an array of the Polygon shapes
 	Polygon[] polygons = { fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6,
 		fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10 };
 
-	// Duration for the transition
+// Duration for the transition
 	Duration duration = Duration.seconds(1.0);
 
-	// Calculate the duration for each polygon
+// Calculate the duration for each polygon
 	double durationPerPolygon = duration.toMillis() / polygons.length;
 	double currentDuration = 0;
 
-	// Apply FillTransition to each polygon with a delay
+// Apply FillTransition to each polygon with a delay
 	for (Polygon polygon : polygons) {
 	    FillTransition ft = new FillTransition(duration, polygon);
 	    ft.setFromValue((Color) polygon.getFill());
@@ -885,7 +870,7 @@ public class GUIController {
 	    currentDuration += durationPerPolygon;
 	}
 
-	// end of code
+// end of code
 
 	System.out.println(colorVal);
 	client.lightColorUpdate(colorVal);
@@ -894,17 +879,17 @@ public class GUIController {
 
     @FXML
     void offSmartLightButton(ActionEvent event) {
-    	
-    brightnessLabel.setVisible(false);
-    client.smartLightOffToServer();
+
+	brightnessLabel.setVisible(false);
+	client.smartLightOffToServer();
 
     }
 
     @FXML
     void onSmartLightButton(ActionEvent event) {
-	
-    brightnessLabel.setVisible(true);	
-    client.smartLightOnToServer();
+
+	brightnessLabel.setVisible(true);
+	client.smartLightOnToServer();
 
     }
 
@@ -951,7 +936,7 @@ public class GUIController {
 	}
 // NEW
     }
-    
+
     @FXML
     void saveScheduleButton(ActionEvent event) {
 
@@ -985,24 +970,23 @@ public class GUIController {
 		.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
     }
-    
+
     public void setTextLightBrightness(String msg) {
-    	  try {
-    	      brightnessLabel.setText(msg);
-    	  } catch (Exception e) {
-    	      System.out.println("Server sent updated data to all client");
-    	  }
-    	}
-   	  
-    	  public void setAlertMessagesetTextLightBrightness(String msg)
-    	  {
-    		  colorNotification.setText(msg);
-    	  }
-    
+	try {
+	    Platform.runLater(() -> brightnessLabel.setText(msg));
+
+	} catch (Exception e) {
+	    System.out.println("Server sent updated data to all client");
+	}
+    }
+
+    public void setAlertMessagesetTextLightBrightness(String msg) {
+	Platform.runLater(() -> colorNotification.setText(msg));
+    }
 
     /*
-     * ----------- SMART SECURITY CAMERA PAGE----------------*/
-     
+     * ----------- SMART SECURITY CAMERA PAGE----------------
+     */
 
     @FXML
     private GridPane securityCameraPane;
@@ -1115,4 +1099,3 @@ public class GUIController {
     }
 
 }
-//test 
