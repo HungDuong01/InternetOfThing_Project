@@ -53,20 +53,23 @@ public class IoTServer extends AbstractServer {
 	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)
 		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)) {
 	    // ACTIONS TO INCREASE TEMPERATURE
-	    serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
-	    updateTempStr = serverController.getUpdateTemp().toString();
-	    try {
-		// If the temperature below 15 or above 26 => send back alert message
-		if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
-		    // SEND BACK THE UPDATED TEMPERATURE
-		    sendToAllClients("Thermostat:" + updateTempStr);
-		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
-		} else
-		    sendToAllClients("Thermostat:" + updateTempStr);
-		System.out.println("Thermo updated temperature: " + updateTempStr);
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	    if (serverController.getUpdateTemp() >= 10 || serverController.getUpdateTemp() <= 35) {
+		serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
+		updateTempStr = serverController.getUpdateTemp().toString();
+
+		try {
+		    // If the temperature below 15 or above 26 => send back alert message
+		    if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
+			// SEND BACK THE UPDATED TEMPERATURE
+			sendToAllClients("Thermostat:" + updateTempStr);
+			sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
+		    } else
+			sendToAllClients("Thermostat:" + updateTempStr);
+		    System.out.println("Thermo updated temperature: " + updateTempStr);
+		} catch (Exception e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
 	    }
 
 	}
@@ -118,20 +121,26 @@ public class IoTServer extends AbstractServer {
 	if (("lightBrightnessIncrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)
 		|| ("lightBrightnessDecrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    serverController.updateBrightness(receivedStr, 10);
-	    try {
-		// SEND BACK THE UPDATED BRIGHTNESS
-		updateBrightnessStr = serverController.getUpdateBrightness().toString();
-		sendToAllClients("Light:" + updateBrightnessStr);
-		System.out.println("Light updated brightness: " + serverController.getUpdateBrightness());
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	    if (serverController.getUpdateBrightness() >= 0 || serverController.getUpdateBrightness() <= 100) {
+		serverController.updateBrightness(receivedStr, 10);
+		try {
+		    // SEND BACK THE UPDATED BRIGHTNESS
+
+		    updateBrightnessStr = serverController.getUpdateBrightness().toString();
+		    sendToAllClients("Light:" + updateBrightnessStr);
+		    System.out.println("Light updated brightness: " + serverController.getUpdateBrightness());
+
+		} catch (Exception e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
 	    }
-// new
+
 	}
 
-	if (receivedStr.contains("0x")) {
+	if (receivedStr.contains("0x"))
+
+	{
 	    // ACTIONS TO CHANGE LIGHT COLOR
 	    serverController.setLightColor(receivedStr);
 	    try {
