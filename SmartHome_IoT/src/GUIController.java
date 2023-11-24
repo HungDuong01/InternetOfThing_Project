@@ -78,6 +78,7 @@ public class GUIController {
 			Scene welcomePageScene = new Scene(root);
 			Stage stage = (Stage) welcomePane.getScene().getWindow();
 			stage.setScene(welcomePageScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,6 +100,7 @@ public class GUIController {
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) userAdminPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -114,6 +116,7 @@ public class GUIController {
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) userAdminPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -140,6 +143,7 @@ public class GUIController {
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -155,6 +159,7 @@ public class GUIController {
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -170,6 +175,7 @@ public class GUIController {
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -205,6 +211,7 @@ public class GUIController {
 			Scene SignupScene = new Scene(root);
 			Stage stage = (Stage) Signuppane.getScene().getWindow();
 			stage.setScene(SignupScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -220,6 +227,7 @@ public class GUIController {
 			Scene SignupScene = new Scene(root);
 			Stage stage = (Stage) Signuppane.getScene().getWindow();
 			stage.setScene(SignupScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -246,6 +254,7 @@ public class GUIController {
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -260,6 +269,7 @@ public class GUIController {
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -274,6 +284,7 @@ public class GUIController {
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -304,7 +315,6 @@ public class GUIController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
-			// Perform any necessary operations or setup on the controller
 			Scene AdminregisterScene = new Scene(root);
 			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
@@ -322,6 +332,7 @@ public class GUIController {
 			Scene AdminregisterScene = new Scene(root);
 			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -477,7 +488,6 @@ public class GUIController {
 	}
 
 	// Buttons Changing Color when mouse is dragged over it.
-
 	@FXML
 	void thermCursorEntered(MouseEvent event) {
 		ThermoButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); "
@@ -590,25 +600,20 @@ public class GUIController {
 	void returnhomegifclicked(MouseEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminmainroomScene = new Scene(root);
 			Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
 			stage.setScene(AdminmainroomScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void searchbuttonpressed(ActionEvent event) {
-
+		//
 	}
 
 	/* ---------------- SMART THERMOSTAT PAGE------------------ */
@@ -619,20 +624,15 @@ public class GUIController {
 	@FXML
 	private Label temperatureLabel;
 
+	// Decrease Button and send msg to server
 	@FXML
 	void decreaseTemperatureButton(ActionEvent event) throws IOException {
 		if (client != null) {
 			// Use method in client class to send the data
 			client.temperatureDecrementToServer();
-			// Decrement the value inside the GUI after sending the data
-
-			// Show the data on the GUI
-			// setTextTemperature(temp);
-
 		} else {
 			System.err.println("Error - SmartHomeClient not set in the controller");
 		}
-
 	}
 
 	@FXML
@@ -644,20 +644,17 @@ public class GUIController {
 		} else {
 			System.err.println("Error - SmartHomeClient not set in the controller");
 		}
-
 	}
 
 	// Turn OFF button pressed then call method in client
 	@FXML
 	void offButtonPressed(ActionEvent event) {
+		// Set Text OFF
 		temperatureLabel.setVisible(false);
-
 		client.thermostatOffToServer();
-
 	}
 
 	// Turn ON button pressed then call method in client
-
 	@FXML
 	void onButtonPressed(ActionEvent event) {
 		temperatureLabel.setVisible(true);
@@ -666,27 +663,22 @@ public class GUIController {
 	}
 
 	// Return Back to Main Menu by Scene Switching.
-
 	@FXML
 	void returnButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) historyMessageBox.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	// Method to set temperature label after increment/decrement
-
 	public void setTextTemperature(String msg) {
 		try {
 			Platform.runLater(() -> temperatureLabel.setText(msg));
@@ -695,9 +687,9 @@ public class GUIController {
 		}
 	}
 
+	// Set Text of Alert Msg sent from Server
 	public void setAlertMessageThermostat(String msg) {
 		Platform.runLater(() -> historyMessageBox.setText(msg));
-
 	}
 
 	/* ---------------------- SMART LIGHT PAGE -------------------------------- */
@@ -734,9 +726,7 @@ public class GUIController {
 	// Increase Brightness and send message to server
 	@FXML
 	void increaseBrightnessButton(ActionEvent event) {
-
 		client.lightBrightnessIncreaseUpdate();
-
 	}
 
 	// Decrease Brightness and send message to server
@@ -746,22 +736,23 @@ public class GUIController {
 
 	}
 
+	// Color Picker on Smart Light Page Chosen
 	@FXML
 	void colorPickerValueChanged(ActionEvent event) {
 		String colorVal = String.valueOf(colorPicker.getValue());
-//
-// Create an array of the Polygon shapes
+
+		// Create an array of the Polygon shapes
 		Polygon[] polygons = { fortuneArt1, fortuneArt2, fortuneArt3, fortuneArt4, fortuneArt5, fortuneArt6,
 				fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10 };
 
-// Duration for the transition
+		// Duration for the transition
 		Duration duration = Duration.seconds(1.0);
 
-// Calculate the duration for each polygon
+		// Calculate the duration for each polygon
 		double durationPerPolygon = duration.toMillis() / polygons.length;
 		double currentDuration = 0;
 
-// Apply FillTransition to each polygon with a delay
+		// Apply FillTransition to each polygon with a delay
 		for (Polygon polygon : polygons) {
 			FillTransition ft = new FillTransition(duration, polygon);
 			ft.setFromValue((Color) polygon.getFill());
@@ -770,53 +761,43 @@ public class GUIController {
 			ft.play();
 			currentDuration += durationPerPolygon;
 		}
-
-// end of code
-
 		System.out.println(colorVal);
 		client.lightColorUpdate(colorVal);
-
 	}
 
+	// OFF Button on Smart Light Page sends Msg to Server
 	@FXML
 	void offSmartLightButton(ActionEvent event) {
 
 		brightnessLabel.setVisible(false);
 		client.smartLightOffToServer();
-
 	}
 
+	// ON Button on Smart Light page sends Msg to Server
 	@FXML
 	void onSmartLightButton(ActionEvent event) {
 
 		brightnessLabel.setVisible(true);
 		client.smartLightOnToServer();
-
 	}
 
 	// Return Button back to Main Menu in the Smart Light Page
-
 	@FXML
 	void returnSmartLightButton(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) colorPicker.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	// Display color on polygons
+	// Display Color on Polygons
 	public void displayColor(String color1) {
 		try {
 			Color color = Color.web(color1);
@@ -835,7 +816,6 @@ public class GUIController {
 		} catch (Exception e) {
 			System.out.println("Server sent updated data to all client");
 		}
-// NEW
 	}
 
 	@FXML
@@ -843,8 +823,7 @@ public class GUIController {
 
 	}
 
-	// Color Change when mouse enters buttons
-
+	// Color Change When Mouse Enters Buttons
 	@FXML
 	void increaseButtonEntered(MouseEvent event) {
 		increaseBrightnessButton
@@ -875,7 +854,6 @@ public class GUIController {
 	public void setTextLightBrightness(String msg) {
 		try {
 			Platform.runLater(() -> brightnessLabel.setText(msg));
-
 		} catch (Exception e) {
 			System.out.println("Server sent updated data to all client");
 		}
@@ -885,9 +863,7 @@ public class GUIController {
 		Platform.runLater(() -> colorNotification.setText(msg));
 	}
 
-	/*
-	 * ----------- SMART SECURITY CAMERA PAGE----------------
-	 */
+	/* ----------- SMART SECURITY CAMERA PAGE---------------- */
 
 	@FXML
 	private GridPane securityCameraPane;
@@ -898,26 +874,20 @@ public class GUIController {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-
 	}
 
 	@FXML
 	void saveScheduleCameraButton(ActionEvent event) {
-
+		//
 	}
 
 	/* ---------------------- SMART WATER SYSTEM PAGE ------------------------- */
@@ -931,21 +901,15 @@ public class GUIController {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) waterUsageHistoryArea.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-
 	}
 
 	@FXML
@@ -977,26 +941,20 @@ public class GUIController {
 	void returnLockButton(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) smartLockHistoryArea.getScene().getWindow();
 			stage.setScene(mainMenuScene);
+
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-
 	}
 
 	@FXML
 	void unlockDoorButton(ActionEvent event) {
-
+		//
 	}
-// new
+
 }
