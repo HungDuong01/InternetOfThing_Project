@@ -47,347 +47,344 @@ public class SmartHomeClient extends AbstractClient {
 
 // create instance of GUIController class
 
-    private GUIController controller;
+	private GUIController controller;
 
-    private int temp;
+	private int temp;
 
 // setter and getter method to handle the temperature from server
 
-    public void setTempData(int temp) {
+	public void setTempData(int temp) {
 
-	this.temp = temp;
+		this.temp = temp;
 
-    }
+	}
 
-    public int getTempData() {
+	public int getTempData() {
 
-	return this.temp;
+		return this.temp;
 
-    }
+	}
 
 // Constructor with the parameters including the controller class
 
-    public SmartHomeClient(String host, int port, GUIController controller) {
+	public SmartHomeClient(String host, int port, GUIController controller) {
 
-	super(host, port);
+		super(host, port);
 
-	this.controller = controller;
+		this.controller = controller;
 
-    }
+	}
 
-    public void connectToServer() {
+	public void connectToServer() {
 
-	try {
+		try {
 
 // OCSF method inherited from AbstractClient Class to open connection to a
 
 // server
 
-	    openConnection();
+			openConnection();
 
-	    System.out.println("Connected to server!");
+			System.out.println("Connected to server!");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error - Cannot connect to server!");
+			System.err.println("Error - Cannot connect to server!");
+
+		}
 
 	}
 
-    }
+	/* --------------------- SMART THERMOSTAT PAGE --------------------- */
 
-    /* --------------------- SMART THERMOSTAT PAGE --------------------- */
-
-    public void temperatureIncrementToServer() {
+	public void temperatureIncrementToServer() {
 
 // if client is connected to server do the following actions
 
-	try {
+		try {
 
 // Send message to decrease to the server
 
-	    sendToServer("thermoIncrease");
+			sendToServer("thermoIncrease");
 
 // Display message on the console after decrementing the temperature
 
-	    System.out.println("Sent temperature increase of " + getTempData() + " request to server");
+			System.out.println("Sent temperature increase of " + getTempData() + " request to server");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // Error handle message
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error sending temperature decrease");
+			System.err.println("Error sending temperature decrease");
+
+		}
 
 	}
 
-    }
+	public void temperatureDecrementToServer() throws IOException {
 
-    public void temperatureDecrementToServer() throws IOException {
-
-	try {
+		try {
 
 // Send message to decrease to the server
 
-	    sendToServer("thermoDecrease");
+			sendToServer("thermoDecrease");
 
 // Display message on the console after decrementing the temperature
 
-	    System.out.println("Sent temperature decrease of " + getTempData() + " request to server");
+			System.out.println("Sent temperature decrease of " + getTempData() + " request to server");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // Error handle message
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error sending temperature decrease");
+			System.err.println("Error sending temperature decrease");
+
+		}
 
 	}
 
-    }
+	public void thermostatOnToServer() {
 
-    public void thermostatOnToServer() {
+		try {
 
-	try {
+			sendToServer("thermoON");
 
-	    sendToServer("thermoON");
-
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // TODO Auto-generated catch block
 
-	    e.printStackTrace();
+			e.printStackTrace();
+
+		}
 
 	}
 
-    }
+	public void thermostatOffToServer() {
 
-    public void thermostatOffToServer() {
+		try {
 
-	try {
+			sendToServer("thermoOFF");
 
-	    sendToServer("thermoOFF");
-
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // TODO Auto-generated catch block
 
-	    e.printStackTrace();
+			e.printStackTrace();
+
+		}
 
 	}
 
-    }
+	/* --------------------------- SMART LIGHT PAGE -------------------------- */
 
-    /* --------------------------- SMART LIGHT PAGE -------------------------- */
+	public void lightStatus() {
 
-    public void lightStatus() {
+	}
 
-    }
+	public void lightBrightnessIncreaseUpdate() {
 
-    public void lightBrightnessIncreaseUpdate() {
-
-	try {
+		try {
 
 // Send message to increase the brightness to the server
 
-	    sendToServer("lightBrightnessIncrease");
+			sendToServer("lightBrightnessIncrease");
 
 // Display message on the console after sending message
 
-	    System.out.println("Sent brightness increase of request to server");
+			System.out.println("Sent brightness increase of request to server");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // Error handle message
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error sending brightness increase");
+			System.err.println("Error sending brightness increase");
+
+		}
 
 	}
 
-    }
+	public void lightBrightnessDecreaseUpdate() {
 
-    public void lightBrightnessDecreaseUpdate() {
-
-	try {
+		try {
 
 // Send message to Decrease the brightness to the server
 
-	    sendToServer("lightBrightnessDecrease");
+			sendToServer("lightBrightnessDecrease");
 
 // Display message on the console after sending message
 
-	    System.out.println("Sent brightness decrease of request to server");
+			System.out.println("Sent brightness decrease of request to server");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // Error handle message
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error sending brightness decrease");
+			System.err.println("Error sending brightness decrease");
+
+		}
 
 	}
 
-    }
-
 //
 
-    public void lightColorUpdate(String color) {
+	public void lightColorUpdate(String color) {
 
-	try {
+		try {
 
 // Send message to increase the brightness to the server
 
-	    sendToServer(color);
+			sendToServer(color);
 
 // Display message on the console after sending message
 
-	    System.out.println("Sent color change request to server");
+			System.out.println("Sent color change request to server");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // Error handle message
 
-	    e.printStackTrace();
+			e.printStackTrace();
 
-	    System.err.println("Error sending color change");
+			System.err.println("Error sending color change");
+
+		}
 
 	}
-
-    }
 
 // Send message to Server to Turn OFF
 
-    public void smartLightOnToServer() {
+	public void smartLightOnToServer() {
 
-	try {
+		try {
 
-	    sendToServer("lightON");
+			sendToServer("lightON");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // TODO Auto-generated catch block
 
-	    e.printStackTrace();
+			e.printStackTrace();
+
+		}
 
 	}
-
-    }
 
 // Send message to Server to Turn ON
 
-    public void smartLightOffToServer() {
+	public void smartLightOffToServer() {
 
-	try {
+		try {
 
-	    sendToServer("lightOFF");
+			sendToServer("lightOFF");
 
-	} catch (IOException e) {
+		} catch (IOException e) {
 
 // TODO Auto-generated catch block
 
-	    e.printStackTrace();
+			e.printStackTrace();
+
+		}
 
 	}
 
-    }
+	/* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
 
-    /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
+	@Override
 
-    @Override
+	protected void handleMessageFromServer(Object msg) {
 
-    protected void handleMessageFromServer(Object msg) {
+		String message = (String) msg;
+		String[] parts = message.split(":");
 
-	String message = (String) msg;
-
-	String[] parts = message.split(":");
-
-	if (parts.length >= 2) {
-
-	    String device = (parts[0]);
-
-	    String data = parts[1];
+		if (parts.length >= 2) {
+			String device = (parts[0]);
+			String data = parts[1];
 
 // Receiving Data for Thermostat
 
-	    if (device.equals("Thermostat")) {
+			if (device.equals("Thermostat")) {
 
 // Light is OFF
 
-		if (data.equals("false")) {
+				if (data.equals("false")) {
 
-		    Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: OFF"));
+					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: OFF"));
 
 // Light is ON
 
-		}
+				}
 
-		else if (data.equals("true")) {
+				else if (data.equals("true")) {
 
-		    Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: ON"));
+					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: ON"));
 
 // Light is not in range of 15 to 26 degrees
 
-		}
+				}
 
-		else if (data.contains("Please")) {
+				else if (data.contains("Please")) {
 
-		    Platform.runLater(() -> controller.setAlertMessageThermostat(data));
+					Platform.runLater(() -> controller.setAlertMessageThermostat(data));
 
 // Temperature data is sent from server. Example: 25
 
-		}
+				}
 
-		else{
+				else {
 
-		    Platform.runLater(() -> controller.setTextTemperature(data));
+					Platform.runLater(() -> controller.setTextTemperature(data));
 
-		    Platform.runLater(() -> controller.setAlertMessageThermostat(""));
+					Platform.runLater(() -> controller.setAlertMessageThermostat(""));
 
-		}
+				}
 
-	    }
+			}
 
 // Receiving Data for Smart Light
 
-	    if (device.equals("Light")) {
+			if (device.equals("Light")) {
 
-		if (data.contains("0x")) {
+				if (data.contains("0x")) {
 
-		    Platform.runLater(() -> controller.displayColor(data));
+					Platform.runLater(() -> controller.displayColor(data));
 
-		}
+				}
 
-		else if (data.contains("false"))
+				else if (data.contains("false"))
 
-		{
-
-//
-
-		}
-
-		else if (data.contains("true"))
-
-		{
+				{
 
 //
 
-		}
+				}
 
-		else {
+				else if (data.contains("true"))
 
-		    Platform.runLater(() -> controller.setTextLightBrightness(data));
+				{
 
-		}
+//
 
-	    }
+				}
 
-	}// new
+				else {
+
+					Platform.runLater(() -> controller.setTextLightBrightness(data));
+
+				}
+
+			}
+
+		} // new
 
 // if (msg instanceof Integer) {
 
@@ -431,5 +428,5 @@ public class SmartHomeClient extends AbstractClient {
 
 // }
 
-    }
+	}
 }
