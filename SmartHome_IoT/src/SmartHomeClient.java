@@ -62,25 +62,16 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	public void connectToServer() {
-
 		try {
-
-// OCSF method inherited from AbstractClient Class to open connection to a
-
-// server
-
+			// OCSF method inherited from AbstractClient Class to open connection to a
+			// server
 			openConnection();
-
 			System.out.println("Connected to server!");
 
 		} catch (IOException e) {
-
 			e.printStackTrace();
-
 			System.err.println("Error - Cannot connect to server!");
-
 		}
-
 	}
 
 	/* --------------------- SMART THERMOSTAT PAGE --------------------- */
