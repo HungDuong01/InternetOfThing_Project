@@ -51,25 +51,25 @@ public class IoTServer extends AbstractServer {
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
 	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)
-		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true)) {
+		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true
+			&& (serverController.getUpdateTemp() >= 10 || serverController.getUpdateTemp() <= 35))) {
 	    // ACTIONS TO INCREASE TEMPERATURE
-	    if (serverController.getUpdateTemp() >= 10 || serverController.getUpdateTemp() <= 35) {
-		serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
-		updateTempStr = serverController.getUpdateTemp().toString();
 
-		try {
-		    // If the temperature below 15 or above 26 => send back alert message
-		    if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
-			// SEND BACK THE UPDATED TEMPERATURE
-			sendToAllClients("Thermostat:" + updateTempStr);
-			sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
-		    } else
-			sendToAllClients("Thermostat:" + updateTempStr);
-		    System.out.println("Thermo updated temperature: " + updateTempStr);
-		} catch (Exception e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
+	    serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
+	    updateTempStr = serverController.getUpdateTemp().toString();
+
+	    try {
+		// If the temperature below 15 or above 26 => send back alert message
+		if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
+		    // SEND BACK THE UPDATED TEMPERATURE
+		    sendToAllClients("Thermostat:" + updateTempStr);
+		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
+		} else
+		    sendToAllClients("Thermostat:" + updateTempStr);
+		System.out.println("Thermo updated temperature: " + updateTempStr);
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	    }
 
 	}
@@ -119,21 +119,22 @@ public class IoTServer extends AbstractServer {
 // --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
 	if (("lightBrightnessIncrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)
-		|| ("lightBrightnessDecrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)) {
+		|| ("lightBrightnessDecrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true)
+			&& (serverController.getUpdateBrightness() >= 0
+				|| serverController.getUpdateBrightness() <= 100)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
-	    if (serverController.getUpdateBrightness() >= 0 || serverController.getUpdateBrightness() <= 100) {
-		serverController.updateBrightness(receivedStr, 10);
-		try {
-		    // SEND BACK THE UPDATED BRIGHTNESS
 
-		    updateBrightnessStr = serverController.getUpdateBrightness().toString();
-		    sendToAllClients("Light:" + updateBrightnessStr);
-		    System.out.println("Light updated brightness: " + serverController.getUpdateBrightness());
+	    serverController.updateBrightness(receivedStr, 10);
+	    try {
+		// SEND BACK THE UPDATED BRIGHTNESS
 
-		} catch (Exception e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
+		updateBrightnessStr = serverController.getUpdateBrightness().toString();
+		sendToAllClients("Light:" + updateBrightnessStr);
+		System.out.println("Light updated brightness: " + serverController.getUpdateBrightness());
+
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	    }
 
 	}
