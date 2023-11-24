@@ -587,7 +587,7 @@ public class GUIController {
 
     @FXML
     void thermCursorEntered(MouseEvent event) {
-	ThermoButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+	ThermoButton.setStyle("-fx-background-color: radial-gradient(center 40% 60%, radius 100%, , purple); " +
             "-fx-text-fill: white; -fx-border-color: black;");
 
     }
