@@ -686,7 +686,12 @@ public class GUIController {
 
 	// Set Text of Alert Msg sent from Server
 	public void setAlertMessageThermostat(String msg) {
-		historyMessageBox.setText(msg);
+		try {
+			historyMessageBox.setText(msg);
+		} catch (Exception e) {
+			System.out.println("Something happened");
+
+		}
 	}
 
 	/* ---------------------- SMART LIGHT PAGE -------------------------------- */
