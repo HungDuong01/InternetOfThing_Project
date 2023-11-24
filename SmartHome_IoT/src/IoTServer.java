@@ -62,7 +62,7 @@ public class IoTServer extends AbstractServer {
 		    sendToAllClients("Thermostat:" + updateTempStr);
 		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
 		} else
-		    sendToAllClients("Thermostat:" + serverController.getUpdateTemp());
+		    sendToAllClients("Thermostat:" + updateTempStr);
 		System.out.println("Thermo updated temperature: " + updateTempStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -173,9 +173,9 @@ public class IoTServer extends AbstractServer {
 		updateBrightnessStr = serverController.getUpdateBrightness().toString();
 		updateLightStatusStr = serverController.getDeviceStatus(1).toString();
 		updateLightColorStr = serverController.getLightColor().toString();
-		sendToAllClients("Light:" + updateBrightnessStr);
 		sendToAllClients("Light:" + updateLightStatusStr);
 		sendToAllClients("Light:" + updateLightColorStr);
+		sendToAllClients("Light:" + updateBrightnessStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -215,7 +215,7 @@ public class IoTServer extends AbstractServer {
     }
 
     public static void main(String[] args) {
-	int port = 2010;
+	int port = 2090;
 	IoTServer server = new IoTServer(port);
 	try {
 	    server.listen();
