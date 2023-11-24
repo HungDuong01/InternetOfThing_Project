@@ -95,28 +95,25 @@ public class SmartHomeClient extends AbstractClient {
 	    e.printStackTrace();
 	    System.err.println("Error sending temperature decrease");
 
-		}
+	}
     }
-    
-    public void thermostatOnToServer()
-    {
-    	try {
-    	    sendToServer("thermoON");
-    	} catch (IOException e) {
-    	    // TODO Auto-generated catch block
-    	    e.printStackTrace();
-    	}
+
+    public void thermostatOnToServer() {
+	try {
+	    sendToServer("thermoON");
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
     }
-    
-    
-    public void thermostatOffToServer()
-    {
-    	try {
-    	    sendToServer("thermoOFF");
-    	} catch (IOException e) {
-    	    // TODO Auto-generated catch block
-    	    e.printStackTrace();
-    	}
+
+    public void thermostatOffToServer() {
+	try {
+	    sendToServer("thermoOFF");
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
     }
 
     /* --------------------------- SMART LIGHT PAGE -------------------------- */
@@ -155,10 +152,8 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
-  }
+    }
 
-    
-    
     public void lightColorUpdate(String color) {
 
 	try {
@@ -174,129 +169,94 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
-  }
-    
+    }
+
     // Send message to Server to Turn OFF
-    public void smartLightOnToServer()
-    {
-    	try {
-    	    sendToServer("lightON");
-    	} catch (IOException e) {
-    	    // TODO Auto-generated catch block
-    	    e.printStackTrace();
-    	}
-    	
+    public void smartLightOnToServer() {
+	try {
+	    sendToServer("lightON");
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+
     }
-    
+
     // Send message to Server to Turn ON
-    public void smartLightOffToServer()
-    {
-    	try {
-    	    sendToServer("lightOFF");
-    	} catch (IOException e) {
-    	    // TODO Auto-generated catch block
-    	    e.printStackTrace();
-    	}
-    	
+    public void smartLightOffToServer() {
+	try {
+	    sendToServer("lightOFF");
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+
     }
-    
-    
-    
 
     /* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
-    
+
     @Override
     protected void handleMessageFromServer(Object msg) {
-    	
-    	String message = (String) msg;
 
+	String message = (String) msg;
 
-    	String[] parts = message.split(":");
+	String[] parts = message.split(":");
 
-        if (parts.length >= 2) {
-            String device = (parts[0]);
-           
-            String data = parts[1];
-            
-            System.out.println("Received message from: " + device + ", with data: " + data);
+	if (parts.length >= 2) {
+	    String device = (parts[0]);
 
-            
-            // Receiving Data for Thermostat
-            if(device.equals("Thermostat"))
-            {
-            	if(data.equals("ThermoON"))
-            	{
-            		
-            	}
-            	else if(data.equals("ThermoOFF"))
-            	{
-            		
-            	}
-            	else if(data.contains("Please"))
-            	{
-            		Platform.runLater(() -> controller.setAlertMessageThermostat(data));
-            		
-            	}
-            	else {
-            		Platform.runLater(() -> controller.setTextTemperature(data));
-            		
-            	}
-            	
-            }
-            
-            
-            // Receiving Data for Smart Light
-            else if(device.equals("Light"))
-            {
-            	if(data.contains("0x"))
-            	{
-            		Platform.runLater(() -> controller.displayColor(data));
-            		
-            	}
-            	else if(data.contains(""))
-            	{
-            		
-            	}
-            	else
-            	{
-            		Platform.runLater(() -> controller.setTextLightBrightness(data));
-            	}
-            	
-            	
-            	
-            	
-            }
-            // Receiving Data for Smart Water System
-            else if(device.equals("Lock"))
-            {
-            	
-            	
-            	
-            	
-            }
-            
-            // Receiving Data for Smart Lock
-            else if(device.equals("Water"))
-            {
-            	
-            	
-            	
-            	
-            }
-            
-            // Receiving Data for Smart Security Camera
-            else if(device.equals("Camera"))
-            {
-            	
-            	
-            	
-            }
-            
-            
-            
-        }
-    	
-    	
+	    String data = parts[1];
+
+	    System.out.println("Received message from: " + device + ", with data: " + data);
+
+	    // Receiving Data for Thermostat
+	    if (device.equals("Thermostat")) {
+		// Light is OFF
+		if (data.equals("false")) {
+		    Platform.runLater(() -> controller.setAlertMessagesetTextLightBrightness("Light: OFF"));
+		    // Light is ON
+		} else if (data.equals("true")) {
+		    Platform.runLater(() -> controller.setAlertMessagesetTextLightBrightness("Light: ON"));
+		    // Light is not in range of 15 to 26 degrees
+		} else if (data.contains("Please")) {
+		    Platform.runLater(() -> controller.setAlertMessageThermostat(data));
+		    // Temperature data is sent from server. Example: 25
+		} else {
+		    Platform.runLater(() -> controller.setTextTemperature(data));
+		    Platform.runLater(() -> controller.setAlertMessagesetTextLightBrightness(""));
+
+		}
+
+	    }
+
+	    // Receiving Data for Smart Light
+	    else if (device.equals("Light")) {
+		if (data.contains("0x")) {
+		    Platform.runLater(() -> controller.displayColor(data));
+
+		} else if (data.contains("")) {
+
+		} else {
+		    Platform.runLater(() -> controller.setTextLightBrightness(data));
+		}
+
+	    }
+	    // Receiving Data for Smart Water System
+	    else if (device.equals("Lock")) {
+
+	    }
+
+	    // Receiving Data for Smart Lock
+	    else if (device.equals("Water")) {
+
+	    }
+
+	    // Receiving Data for Smart Security Camera
+	    else if (device.equals("Camera")) {
+
+	    }
+
+	}
 
 //	if (msg instanceof Integer) {
 //	    // handle temperature from server and set it.

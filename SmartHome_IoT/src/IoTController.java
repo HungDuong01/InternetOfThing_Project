@@ -21,7 +21,7 @@ import java.util.List;
 
 public class IoTController {
     // List to hold accounts
-    private List<Account> accounts;
+//    private List<Account> accounts;
 
     // List to hold smart devices
     private List<SmartDevice> devices;
@@ -31,8 +31,8 @@ public class IoTController {
     private SmartDevice water;
     private SmartDevice camera;
 
-    private Account admin;
-    private Account user;
+//    private Account admin;
+//    private Account user;
 
     private LocalTime scheduleTime;
 
