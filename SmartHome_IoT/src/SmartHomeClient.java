@@ -122,7 +122,6 @@ public class SmartHomeClient extends AbstractClient {
 			e.printStackTrace();
 
 			System.err.println("Error sending temperature decrease");
-
 		}
 
 	}
