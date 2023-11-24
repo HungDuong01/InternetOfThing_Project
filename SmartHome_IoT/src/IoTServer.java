@@ -63,7 +63,7 @@ public class IoTServer extends AbstractServer {
 		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
 		} else
 		    sendToAllClients("Thermostat:" + serverController.getUpdateTemp());
-		System.out.println("Thermo updated temperature: " + serverController.getUpdateTemp());
+		System.out.println("Thermo updated temperature: " + updateTempStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -126,7 +126,7 @@ public class IoTServer extends AbstractServer {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
-	    
+
 	}
 
 	if (receivedStr.contains("0x")) {
