@@ -68,6 +68,7 @@ public class IoTServer extends AbstractServer {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
+
 	}
 
 	if ("thermoON".equals(receivedStr)) {
@@ -79,6 +80,7 @@ public class IoTServer extends AbstractServer {
 		sendToAllClients("Thermostat:" + updateThermoStatusStr);
 		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
+
 		e.printStackTrace();
 	    }
 	}
