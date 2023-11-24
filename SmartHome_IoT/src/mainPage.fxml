@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainMenupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="909.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuButton layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#mainMenuDropDown" prefHeight="37.0" prefWidth="118.0" style="-fx-background-color: white;" text="Menu">
          <items>
@@ -174,17 +174,17 @@
       </Button>
       <ImageView fitHeight="161.0" fitWidth="233.0" layoutX="60.0" layoutY="141.0">
          <image>
-            <Image url="@../../../../Downloads/images-2-removebg-preview.png" />
+            <Image url="@images-2-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="170.0" fitWidth="245.0" layoutX="346.0" layoutY="140.0">
          <image>
-            <Image url="@../../../../Downloads/pngtree-smart-home-isometric-internet-of-things-concept-png-image_2140512-removebg-preview.png" />
+            <Image url="@pngtree-smart-home-isometric-internet-of-things-concept-png-image_2140512-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="170.0" fitWidth="245.0" layoutX="627.0" layoutY="140.0">
          <image>
-            <Image url="@../../../../Downloads/3rdpic.png" />
+            <Image url="@3rdpic.png" />
          </image>
       </ImageView>
    </children>
