@@ -587,7 +587,8 @@ public class GUIController {
 
     @FXML
     void thermCursorEntered(MouseEvent event) {
-	ThermoButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	ThermoButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+            "-fx-text-fill: white; -fx-border-color: black;");
 
     }
 
@@ -599,7 +600,8 @@ public class GUIController {
 
     @FXML
     void waterCursorEntered(MouseEvent event) {
-	waterButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	waterButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+            "-fx-text-fill: white; -fx-border-color: black;");
 
     }
 
@@ -611,7 +613,8 @@ public class GUIController {
 
     @FXML
     void cameraCursorEntered(MouseEvent event) {
-	cameraButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	cameraButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+            "-fx-text-fill: white; -fx-border-color: black;");
 
     }
 
@@ -623,7 +626,8 @@ public class GUIController {
 
     @FXML
     void lightCursorEntered(MouseEvent event) {
-	lightButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	lightButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+            "-fx-text-fill: white; -fx-border-color: black;");
 
     }
 
@@ -635,7 +639,8 @@ public class GUIController {
 
     @FXML
     void lockCursorEntered(MouseEvent event) {
-	lockButton.setStyle("-fx-text-fill: white; -fx-background-color: black; -fx-border-color: black;");
+	lockButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); " +
+            "-fx-text-fill: white; -fx-border-color: black;");
 
     }
 
