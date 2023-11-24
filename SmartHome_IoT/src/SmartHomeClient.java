@@ -387,7 +387,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	    }
 
-	}
+	}// new
 
 // if (msg instanceof Integer) {
 
