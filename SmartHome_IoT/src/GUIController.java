@@ -22,8 +22,7 @@
  * * Associated file:
  * ------------------
  *
- * Contributor Fortune:
- * --------------------
+ * Contributor: Fortune
 
  * ------------------------------------------------------------------------------
  */
@@ -55,12 +54,11 @@ import javafx.util.Duration;
 
 public class GUIController {
 
-	// one to one association
+	// Client and GUI Controller Association
 	private SmartHomeClient client;
 
+	// Setter for client
 	public void setClient(SmartHomeClient client) {
-// method used to set and connect client class with this GUI
-
 		this.client = client;
 
 	}
@@ -70,17 +68,13 @@ public class GUIController {
 	@FXML
 	private Pane welcomePane;
 
+	// Welcome Page Button to Switch to Next Page.
 	@FXML
 	void conitinueButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene welcomePageScene = new Scene(root);
 			Stage stage = (Stage) welcomePane.getScene().getWindow();
 			stage.setScene(welcomePageScene);
@@ -95,49 +89,37 @@ public class GUIController {
 	@FXML
 	private GridPane userAdminPane;
 
+	// Admin Button to switch to Admin Login
 	@FXML
 	void adminButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) userAdminPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// User Button to switch to User Login
 	@FXML
 	void userButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) userAdminPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	/*
-	 * ------------------------ USER LOGIN PAGE --------------------
-	 */
+	/*--------------------- USER LOGIN PAGE --------------------*/
 
 	@FXML
 	private TextField emailTextField;
@@ -148,58 +130,43 @@ public class GUIController {
 	@FXML
 	private PasswordField passwordTextField;
 
+	// Login Button to Switch to Main Menu
 	@FXML
 	void loginButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Sign Up Button to Switch to Sign Up Page
 	@FXML
 	void signupButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UserSignUp.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Back Button to back to User/Admin Page on the User Login Page
 	@FXML
 	void backButtonPressed(ActionEvent event) {
-
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene mainMenuScene = new Scene(root);
 			Stage stage = (Stage) loginPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
@@ -208,9 +175,7 @@ public class GUIController {
 		}
 	}
 
-	/*
-	 * ------------------------ USER SIGNUP PAGE --------------------
-	 */
+	/*--------------------- USER SIGNUP PAGE --------------------*/
 
 	@FXML
 	private TextField EmailTextField;
@@ -230,49 +195,37 @@ public class GUIController {
 	@FXML
 	private GridPane Signuppane;
 
+	// Sign up Button pressed to Switch Scene
 	@FXML
 	void Signupbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene SignupScene = new Scene(root);
 			Stage stage = (Stage) Signuppane.getScene().getWindow();
 			stage.setScene(SignupScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Login Button pressed to Switch Scene
 	@FXML
 	void loginbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene SignupScene = new Scene(root);
 			Stage stage = (Stage) Signuppane.getScene().getWindow();
 			stage.setScene(SignupScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	/*
-	 * ------------------------ ADMIN lOGIN PAGE --------------------
-	 */
+	/*------------------- ADMIN lOGIN PAGE ------------------*/
 
 	@FXML
 	private TextField AdminEmailTextField;
@@ -283,69 +236,50 @@ public class GUIController {
 	@FXML
 	private PasswordField AdminpasswordTextField;
 
+	// Login Button to go to Admin Room
 	@FXML
 	void Loginbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void Registerbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminRegister.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void backbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminPage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	/*
-	 * ------------------------ ADMIN REGISTER PAGE --------------------
-	 */
+	/*------------------- ADMIN REGISTER PAGE -------------------*/
 	@FXML
 	private TextField AdminFirstnameTextField;
 
@@ -368,40 +302,29 @@ public class GUIController {
 	void AdminRegisterbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
 			// Perform any necessary operations or setup on the controller
-
 			Scene AdminregisterScene = new Scene(root);
 			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void Adminloginbuttonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminregisterScene = new Scene(root);
 			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/*---------------- MAIN MENU ---------------------*/
@@ -431,20 +354,14 @@ public class GUIController {
 	void AdminroombuttonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene AdminloginScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(AdminloginScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
@@ -452,20 +369,14 @@ public class GUIController {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminpage.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene FirstpageScene = new Scene(root);
 			Stage stage = (Stage) waterButton.getScene().getWindow();
 			stage.setScene(FirstpageScene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
@@ -473,22 +384,19 @@ public class GUIController {
 
 	}
 
+	// Smart Camera Button to go to Camera Page
 	@FXML
 	void smartCameraButtonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene cameraScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(cameraScene);
+
+			// SEND MSG TO SERVER TO RETRIEVE CAMERA DATA
 			client.sendToServer("Camera");
-			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -496,95 +404,80 @@ public class GUIController {
 
 	}
 
+	// Smart Light Button to go Light Page
 	@FXML
 	void smartLightButtonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SDSmartLight.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene lightScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(lightScene);
 			client.sendToServer("lightData");
+
 			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Smart Lock Button to go Lock Page
 	@FXML
 	void smartLockButtonpressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartLock.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene lockScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(lockScene);
 			client.sendToServer("Lock");
+
 			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-
 	}
 
+	// Smart Thermostat Button to go Thermostat Page
 	@FXML
 	void smartThermostatButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SDThermostat.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene thermostatScene = new Scene(root);
 			Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
 			stage.setScene(thermostatScene);
+
+			// SEND MSG TO SERVER TO RETRIEVE THERMOSTAT DATA
 			client.sendToServer("thermoData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Smart Water System Button to go Water Page
 	@FXML
 	void waterSystemButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("IrrigationSystem.fxml"));
-
 			loader.setController(this);
-
 			Parent root = loader.load();
-
-			// Perform any necessary operations or setup on the controller
-
 			Scene waterScene = new Scene(root);
 			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(waterScene);
+
+			// SEND MSG TO SERVER TO RETRIEVE WATER DATA
 			client.sendToServer("Water");
-			// SEND MSG TO SERVER TO RETRIEVE LIGHT DATA
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-//
+	// Buttons Changing Color when mouse is dragged over it.
+
 	@FXML
 	void thermCursorEntered(MouseEvent event) {
 		ThermoButton.setStyle("-fx-background-color: radial-gradient(center 50% 50%, radius 100%, black, purple); "
