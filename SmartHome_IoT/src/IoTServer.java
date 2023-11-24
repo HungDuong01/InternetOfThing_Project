@@ -79,6 +79,7 @@ public class IoTServer extends AbstractServer {
 		sendToAllClients("Thermostat:" + updateThermoStatusStr);
 		System.out.println("Thermo status: " + serverController.getDeviceStatus(0));
 	    } catch (Exception e) {
+
 		e.printStackTrace();
 	    }
 	}
