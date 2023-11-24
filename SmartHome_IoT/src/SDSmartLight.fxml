@@ -54,7 +54,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <children>
-            <Label fx:id="brightnessLabel" layoutY="-17.0" prefHeight="103.0" prefWidth="72.0" text="50">
+            <Label fx:id="brightnessLabel" layoutY="-17.0" prefHeight="103.0" prefWidth="105.0" text="100">
                <font>
                   <Font name="Heiti TC Medium" size="57.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Font name="Heiti TC Light" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="66.0" layoutY="-15.0" prefHeight="96.0" prefWidth="53.0" text="\%">
+            <Label layoutX="102.0" layoutY="-15.0" prefHeight="96.0" prefWidth="49.0" text="\%">
                <font>
                   <Font name="Heiti TC Medium" size="57.0" />
                </font>
