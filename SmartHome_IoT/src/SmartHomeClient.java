@@ -294,7 +294,6 @@ public class SmartHomeClient extends AbstractClient {
 			e.printStackTrace();
 
 		}
-
 	}
 
 	/* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
