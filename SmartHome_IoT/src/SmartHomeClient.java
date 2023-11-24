@@ -314,15 +314,12 @@ public class SmartHomeClient extends AbstractClient {
 			if (device.equals("Thermostat")) {
 
 				// Light is OFF
-
 				if (data.equals("false")) {
 
 					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: OFF"));
 
-					// Light is ON
-
 				}
-
+				// Light is ON
 				else if (data.equals("true")) {
 					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: ON"));
 
