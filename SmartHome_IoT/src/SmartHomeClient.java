@@ -310,80 +310,58 @@ public class SmartHomeClient extends AbstractClient {
 			String device = (parts[0]);
 			String data = parts[1];
 
-// Receiving Data for Thermostat
+			// Receiving Data for Thermostat
 
 			if (device.equals("Thermostat")) {
 
-// Light is OFF
+				// Light is OFF
 
 				if (data.equals("false")) {
 
 					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: OFF"));
 
-// Light is ON
+					// Light is ON
 
 				}
 
 				else if (data.equals("true")) {
-
 					Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: ON"));
 
-// Light is not in range of 15 to 26 degrees
-
 				}
-
+				// Light is not in range of 15 to 26 degrees
 				else if (data.contains("Please")) {
 
 					Platform.runLater(() -> controller.setAlertMessageThermostat(data));
 
-// Temperature data is sent from server. Example: 25
-
 				}
-
+				// Temperature data is sent from server. Example: 25
 				else {
 
 					Platform.runLater(() -> controller.setTextTemperature(data));
-
 					Platform.runLater(() -> controller.setAlertMessageThermostat(""));
-
 				}
-
 			}
-
-// Receiving Data for Smart Light
-
+			// Receiving Data for Smart Light
 			if (device.equals("Light")) {
-
 				if (data.contains("0x")) {
 
 					Platform.runLater(() -> controller.displayColor(data));
 
 				}
 
-				else if (data.contains("false"))
-
-				{
-
-//
-
+				else if (data.contains("false")) {
+					//
 				}
 
-				else if (data.contains("true"))
-
-				{
-
-//
-
+				else if (data.contains("true")) {
+					//
 				}
 
 				else {
 
 					Platform.runLater(() -> controller.setTextLightBrightness(data));
-
 				}
-
 			}
-
 		} // new
 
 // if (msg instanceof Integer) {
