@@ -67,7 +67,6 @@ public class SmartHomeClient extends AbstractClient {
 			// server
 			openConnection();
 			System.out.println("Connected to server!");
-
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Error - Cannot connect to server!");
@@ -77,39 +76,27 @@ public class SmartHomeClient extends AbstractClient {
 	/* --------------------- SMART THERMOSTAT PAGE --------------------- */
 
 	public void temperatureIncrementToServer() {
-
-// if client is connected to server do the following actions
-
+		// if client is connected to server do the following actions
 		try {
-
-// Send message to decrease to the server
-
+			// Send message to decrease to the server
 			sendToServer("thermoIncrease");
-
-// Display message on the console after decrementing the temperature
-
+			// Display message on the console after decrementing the temperature
 			System.out.println("Sent temperature increase of " + getTempData() + " request to server");
-
 		} catch (IOException e) {
-
-// Error handle message
-
+			// Error handle message
 			e.printStackTrace();
-
 			System.err.println("Error sending temperature decrease");
-
 		}
-
 	}
 
 	public void temperatureDecrementToServer() throws IOException {
 		try {
-// Send message to decrease to the server
+			// Send message to decrease to the server
 			sendToServer("thermoDecrease");
-// Display message on the console after decrementing the temperature
+			// Display message on the console after decrementing the temperature
 			System.out.println("Sent temperature decrease of " + getTempData() + " request to server");
 		} catch (IOException e) {
-// Error handle message
+			// Error handle message
 			e.printStackTrace();
 
 			System.err.println("Error sending temperature decrease");
@@ -118,31 +105,19 @@ public class SmartHomeClient extends AbstractClient {
 	}
 
 	public void thermostatOnToServer() {
-
 		try {
-
 			sendToServer("thermoON");
-
 		} catch (IOException e) {
-
 // TODO Auto-generated catch block
-
 			e.printStackTrace();
-
 		}
-
 	}
 
 	public void thermostatOffToServer() {
-
 		try {
-
 			sendToServer("thermoOFF");
-
 		} catch (IOException e) {
-
 // TODO Auto-generated catch block
-
 			e.printStackTrace();
 
 		}
