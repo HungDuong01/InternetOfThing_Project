@@ -60,7 +60,6 @@ public class GUIController {
 	// Setter for client
 	public void setClient(SmartHomeClient client) {
 		this.client = client;
-
 	}
 
 	/* --------------------------- WELCOME PAGE----------------------- */
