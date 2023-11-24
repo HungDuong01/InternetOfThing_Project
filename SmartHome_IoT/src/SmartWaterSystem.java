@@ -16,20 +16,19 @@ import java.time.LocalTime;
  */
 public class SmartWaterSystem extends SmartDevice {
 
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private LocalTime duration;
 
     public SmartWaterSystem(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
     }
 
-    public void setStartTime(LocalTime startTime) {
-	this.startTime = startTime;
+    public void setDuration(LocalTime duration) {
+	this.duration = duration;
     }
 
-    public void setEndTime(LocalTime endTime) {
-	this.endTime = endTime;
+    public void getDuration(LocalTime duration) {
+	this.duration = duration;
     }
 
     @Override
