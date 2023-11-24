@@ -87,7 +87,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <TextArea fx:id="notilightTextArea" layoutX="-83.0" layoutY="52.0" prefHeight="117.0" prefWidth="270.0" style="-fx-border-color: white;" />
+            <TextArea fx:id="notiLightTextArea" layoutX="-83.0" layoutY="52.0" prefHeight="117.0" prefWidth="270.0" style="-fx-border-color: white;" />
             <Label layoutX="-84.0" layoutY="15.0" prefHeight="37.0" prefWidth="141.0" text="Notification">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
