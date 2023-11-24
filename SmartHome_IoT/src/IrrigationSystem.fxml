@@ -56,12 +56,12 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Label layoutX="29.0" layoutY="89.0" prefHeight="59.0" prefWidth="69.0" text="Set time">
+            <Label layoutX="29.0" layoutY="89.0" prefHeight="59.0" prefWidth="99.0" text="Set Duration">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="128.0" layoutY="103.0" prefHeight="26.0" prefWidth="37.0" text="From">
+            <Label layoutX="199.0" layoutY="103.0" prefHeight="33.0" prefWidth="28.0" text=":">
                <font>
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
@@ -95,7 +95,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
-            <Pane layoutX="-31.0" layoutY="-21.0" prefHeight="151.0" prefWidth="186.0">
+            <Pane layoutX="-31.0" layoutY="-16.0" prefHeight="102.0" prefWidth="176.0">
                <children>
                   <Label layoutX="60.0" layoutY="65.0" prefHeight="48.0" prefWidth="85.0" text="Water Limit">
                      <font>
@@ -108,23 +108,22 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Button layoutX="7.0" layoutY="83.0" mnemonicParsing="false" onAction="#saveTimeWaterSystemButton" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
+            <Button layoutX="-15.0" layoutY="83.0" mnemonicParsing="false" onAction="#saveTimeWaterSystemButton" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
                <font>
                   <Font name="Heiti TC Light" size="13.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <TextField layoutX="-55.0" layoutY="-1.0" prefHeight="26.0" prefWidth="69.0" />
-            <Button layoutX="11.0" layoutY="34.0" mnemonicParsing="false" onAction="#saveWaterLimitButton" prefHeight="22.0" prefWidth="77.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
+            <TextField layoutY="-1.0" prefHeight="26.0" prefWidth="67.0" />
+            <Button layoutX="-11.0" layoutY="34.0" mnemonicParsing="false" onAction="#saveWaterLimitButton" prefHeight="23.0" prefWidth="99.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
                <font>
                   <Font name="Heiti TC Light" size="13.0" />
                </font>
             </Button>
-            <Label layoutX="17.0" layoutY="-1.0" prefHeight="26.0" prefWidth="22.0" text="ml">
+            <Label layoutX="70.0" layoutY="-1.0" prefHeight="26.0" prefWidth="28.0" text="ml">
                <font>
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
@@ -133,13 +132,8 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Label layoutX="78.0" layoutY="102.0" prefHeight="22.0" prefWidth="22.0" text="To">
-               <font>
-                  <Font name="Heiti TC Light" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="Fromtextfield" layoutY="101.0" prefHeight="26.0" prefWidth="59.0" promptText="HH:MM" />
-            <TextField fx:id="toTetxtField" layoutX="100.0" layoutY="100.0" prefHeight="26.0" prefWidth="59.0" promptText="HH:MM" />
+            <TextField fx:id="Fromtextfield" layoutY="101.0" prefHeight="33.0" prefWidth="28.0" promptText="H" />
+            <TextField fx:id="toTetxtField" layoutX="38.0" layoutY="100.0" prefHeight="33.0" prefWidth="28.0" promptText="M" />
          </children>
       </Pane>
    </children>
