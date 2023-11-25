@@ -27,19 +27,11 @@ public class GUI extends Application {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomePage.fxml"));
 		Parent root = loader.load();
 
-<<<<<<< HEAD
-	GUIController controller = loader.getController();
-	loader.setController(controller);
-	SmartHomeClient client = new SmartHomeClient("10.100.24.209", 2090, controller);
-	client.connectToServer();
-	controller.setClient(client);
-=======
 		GUIController controller = loader.getController();
 		loader.setController(controller);
 		SmartHomeClient client = new SmartHomeClient("10.100.24.170", 2090, controller);
 		client.connectToServer();
 		controller.setClient(client);
->>>>>>> branch 'master' of https://github.com/HungDuong01/InternetOfThing_Project.git
 
 		// attach scene graph to scene
 		Scene scene = new Scene(root);

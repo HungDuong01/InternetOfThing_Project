@@ -933,7 +933,7 @@ public class GUIController {
 
 	}
 
-	/* ---------------------- SMART LOCK PAGE -------------------------------- */
+	/* ---------------------- SMART LOCK PAGE ------------------------ */
 
 	@FXML
 	private TextArea smartLockHistoryArea;
@@ -944,6 +944,17 @@ public class GUIController {
 	// Send Msg to Server to Switch to Set Password Scene
 	@FXML
 	void setNewPasswordButton(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("setPassword.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) enterPasswordTextField.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -978,6 +989,31 @@ public class GUIController {
 	public void setLockHistoryArea(String msg) {
 
 		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	}
+
+	/* ---------------------- SET LOCK PAGE ------------------------ */
+
+	@FXML
+	private TextField setPasswordTextField;
+
+	@FXML
+	void backSetPasswordButton(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("smartLock.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) setPasswordTextField.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void enterSetPasswordButton(ActionEvent event) {
+
 	}
 
 }
