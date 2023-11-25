@@ -1015,7 +1015,18 @@ public class GUIController {
 	@FXML
 	void enterSetPasswordButton(ActionEvent event) {
 		String password = setPasswordTextField.getText();
-		client.sendSetPasswordMsgToServer(password);
+		client.sendSetPasswordMsgToServer("lock:" + password);
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("smartLock.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) setPasswordTextField.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
