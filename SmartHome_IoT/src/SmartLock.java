@@ -16,9 +16,15 @@
  */
 public class SmartLock extends SmartDevice {
 
+    private String password;
+
     public SmartLock(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
+    }
+
+    public void setPassword() {
+
     }
 
     @Override

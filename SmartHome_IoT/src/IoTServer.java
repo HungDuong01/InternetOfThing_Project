@@ -53,7 +53,7 @@ public class IoTServer extends AbstractServer {
 	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true
 		&& serverController.getUpdateTemp() < 35)
 		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true
-			&& (serverController.getUpdateTemp() > 10))) {
+			&& (serverController.getUpdateTemp() > 15))) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 
 	    serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
@@ -61,7 +61,7 @@ public class IoTServer extends AbstractServer {
 
 	    try {
 		// If the temperature below 15 or above 26 => send back alert message
-		if (serverController.getUpdateTemp() < 15 || serverController.getUpdateTemp() > 26) {
+		if (serverController.getUpdateTemp() <= 17 || serverController.getUpdateTemp() >= 30) {
 		    // SEND BACK THE UPDATED TEMPERATURE
 		    sendToAllClients("Thermostat:" + updateTempStr);
 		    sendToAllClients("Thermostat:" + serverController.getDeviceAlertMessage(0));
