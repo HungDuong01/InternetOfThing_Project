@@ -11,11 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
-
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="504.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
@@ -57,24 +53,6 @@
                   <Image url="@Smart_lock_with_touch_and_WiFi_security___black_style_with_touchscreen_keypad_lock_2023-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button layoutX="-136.0" layoutY="121.0" mnemonicParsing="false" onAction="#setPasswordButton" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: black;" text="Enter">
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Button>
             <Button layoutX="183.0" layoutY="-212.0" mnemonicParsing="false" onAction="#setNewPasswordButton" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: black;" text="Set New Password" textFill="WHITE" />
          </children>
       </Pane>
@@ -85,7 +63,7 @@
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
             </Label>
-            <TextArea fx:id="smartLockHistoryArea" layoutX="40.0" layoutY="26.0" prefHeight="80.0" prefWidth="416.0" style="-fx-background-color: white;" />
+            <TextArea fx:id="smartLockHistoryArea" editable="false" layoutX="40.0" layoutY="26.0" prefHeight="80.0" prefWidth="416.0" style="-fx-background-color: white;" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -103,7 +81,7 @@
             </Label>
          </children>
       </Pane>
-      <TextField fx:id="setPasswordTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" GridPane.rowIndex="5">
+      <TextField fx:id="enterPasswordTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" GridPane.rowIndex="5">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

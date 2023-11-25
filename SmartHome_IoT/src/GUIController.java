@@ -938,6 +938,15 @@ public class GUIController {
 	@FXML
 	private TextArea smartLockHistoryArea;
 
+	@FXML
+	private TextField enterPasswordTextField;
+
+	// Send Msg to Server to Switch to Set Password Scene
+	@FXML
+	void setNewPasswordButton(ActionEvent event) {
+
+	}
+
 	// Send Msg to Server to Lock Door on Smart Lock Page
 	@FXML
 	void lockDoorButton(ActionEvent event) {
