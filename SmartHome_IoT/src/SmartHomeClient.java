@@ -288,6 +288,7 @@ public class SmartHomeClient extends AbstractClient {
 					Platform.runLater(() -> controller.setAlertMessageThermostat(""));
 					System.out.println("Temperature Received From Server: " + data);
 				}
+
 			}
 
 			// Handling Received Data for Smart Light From Server
