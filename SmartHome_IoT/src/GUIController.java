@@ -991,7 +991,7 @@ public class GUIController {
 		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
 	}
 
-	/* ---------------------- SET LOCK PAGE ------------------------ */
+	/* -------------------- SET LOCK PAGE --------------------- */
 
 	@FXML
 	private TextField setPasswordTextField;
@@ -1011,9 +1011,11 @@ public class GUIController {
 		}
 	}
 
+	// Get set password and send the String to Server
 	@FXML
 	void enterSetPasswordButton(ActionEvent event) {
-
+		String password = setPasswordTextField.getText();
+		client.sendSetPasswordMsgToServer(password);
 	}
 
 }

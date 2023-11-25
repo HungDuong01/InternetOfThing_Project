@@ -228,7 +228,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
-	/* --------------------------- SMART LIGHT PAGE -------------------------- */
+	/* --------------------------- SMART LOCK PAGE -------------------------- */
 
 	public void lockDoorMsgToServer() {
 		try {
@@ -246,6 +246,13 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	public void sendSetPasswordMsgToServer(String pass) {
+		try {
+			sendToServer(pass);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
 
 	@Override
