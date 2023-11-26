@@ -967,7 +967,11 @@ public class GUIController {
     // Send Msg to Server to Unlock Door on Smart Lock Page
     @FXML
     void unlockDoorButton(ActionEvent event) {
-	client.unlockDoorMsgToServer(setPasswordTextField.getText());
+	try {
+	    client.unlockDoorMsgToServer(enterPasswordTextField.getText());
+	} catch (Exception e) {
+
+	}
     }
 
     @FXML
