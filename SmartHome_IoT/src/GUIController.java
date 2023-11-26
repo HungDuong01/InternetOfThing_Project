@@ -991,6 +991,10 @@ public class GUIController {
 		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
 	}
 
+	public void enterPassTextField(String error) {
+		enterPasswordTextField.setText(error);
+	}
+
 	/* -------------------- SET LOCK PAGE --------------------- */
 
 	@FXML

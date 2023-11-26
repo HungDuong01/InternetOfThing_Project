@@ -38,6 +38,7 @@ public class SmartHomeClient extends AbstractClient {
 	// create instance of GUIController class
 	private GUIController controller;
 	private int temp;
+	private String pass;
 
 	// setter and getter method to handle the temperature from server
 	public void setTempData(int temp) {
@@ -47,6 +48,14 @@ public class SmartHomeClient extends AbstractClient {
 	public int getTempData() {
 
 		return this.temp;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getPass() {
+		return this.pass;
 	}
 
 	// Constructor with the parameters including the controller class
@@ -232,7 +241,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	public void lockDoorMsgToServer() {
 		try {
-			sendToServer("lockON");
+			sendToServer("lockON:");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -240,15 +249,17 @@ public class SmartHomeClient extends AbstractClient {
 
 	public void unlockDoorMsgToServer() {
 		try {
-			sendToServer("lockOFF");
+			sendToServer("lockOFF:" + getPass());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void sendSetPasswordMsgToServer(String pass) {
+		setPass(pass);
 		try {
-			sendToServer(pass);
+			sendToServer("lockpass:" + pass);
+			System.out.println("User Password: " + pass + " sent to Server");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -313,7 +324,7 @@ public class SmartHomeClient extends AbstractClient {
 				}
 			}
 
-			// Handling Received Data for Smart Water System From Server
+			// Handling Received Data for Smart Lock From Server
 			if (device.equals("Lock")) {
 
 				if (data.equals("true")) {
@@ -324,9 +335,17 @@ public class SmartHomeClient extends AbstractClient {
 					Platform.runLater(() -> controller.setLockHistoryArea("Door has been UNLOCKED by User"));
 				}
 
+				else if (data.contains("New password")) {
+					Platform.runLater(() -> controller.setLockHistoryArea("Password has been set to: " + getPass()));
+				}
+
+				else if (data.contains("Error")) {
+					Platform.runLater(() -> controller.enterPassTextField("Enter/Set Password"));
+				}
+
 			}
 
-			// Handling Received Data for Smart Lock From Server
+			// Handling Received Data for Smart Water System From Server
 			if (device.equals("Water")) {
 				// data for lock if statements here.
 
