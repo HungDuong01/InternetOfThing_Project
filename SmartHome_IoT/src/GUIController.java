@@ -900,6 +900,10 @@ public class GUIController {
 
     @FXML
     private TextArea waterUsageHistoryArea;
+    @FXML
+    private TextField hourTextField;
+    @FXML
+    private TextField minuteTextField;
 
     // Return to Main Menu Page from Water System Page
     @FXML
