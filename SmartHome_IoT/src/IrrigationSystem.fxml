@@ -61,7 +61,7 @@
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="199.0" layoutY="103.0" prefHeight="33.0" prefWidth="28.0" text=":">
+            <Label layoutX="207.0" layoutY="103.0" prefHeight="33.0" prefWidth="20.0" text=":">
                <font>
                   <Font name="Heiti TC Light" size="15.0" />
                </font>
@@ -132,8 +132,8 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="Fromtextfield" layoutY="101.0" prefHeight="33.0" prefWidth="28.0" promptText="H" />
-            <TextField fx:id="toTetxtField" layoutX="38.0" layoutY="100.0" prefHeight="33.0" prefWidth="28.0" promptText="M" />
+            <TextField fx:id="Fromtextfield" layoutX="-15.0" layoutY="101.0" prefHeight="33.0" prefWidth="43.0" promptText="HH" />
+            <TextField fx:id="toTetxtField" layoutX="54.0" layoutY="100.0" prefHeight="33.0" prefWidth="43.0" promptText="MM" />
          </children>
       </Pane>
    </children>
