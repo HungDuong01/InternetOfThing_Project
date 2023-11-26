@@ -68,7 +68,6 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <Button layoutX="25.0" layoutY="87.0" mnemonicParsing="false" onAction="#unlockDoorButton" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: black;" text="Unlock Door" textFill="#1aeb2f" />
             <Label layoutX="27.0" layoutY="17.0" prefHeight="26.0" prefWidth="137.0" text="Enter Password">
                <font>
                   <Font name="Heiti TC Light" size="15.0" />
@@ -79,6 +78,7 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
+            <Button layoutX="25.0" layoutY="87.0" mnemonicParsing="false" onAction="#unlockDoorButton" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: black;" text="Unlock Door" textFill="#1aeb2f" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
