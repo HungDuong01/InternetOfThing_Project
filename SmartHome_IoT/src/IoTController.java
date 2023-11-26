@@ -158,8 +158,7 @@ public class IoTController {
     }
 
     public String getLockPassword() {
-	String returnPassword = ((SmartLock) devices.get(2)).getLockPassword();
-	return returnPassword;
+	return ((SmartLock) devices.get(2)).getLockPassword();
     }
 
 // --- END ---

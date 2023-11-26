@@ -339,8 +339,9 @@ public class SmartHomeClient extends AbstractClient {
 		    Platform.runLater(() -> controller.setLockHistoryArea("Password has been set to: " + getPass()));
 		}
 
-		else if (data.contains("Error")) {
-		    Platform.runLater(() -> controller.setLockHistoryArea("Enter/Set Password"));
+		else if (data.contains("Intruder alert")) {
+		    Platform.runLater(() -> controller.setLockHistoryArea(data));
+
 		}
 
 	    }

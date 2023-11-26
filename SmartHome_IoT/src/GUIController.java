@@ -933,6 +933,8 @@ public class GUIController {
 
     }
 
+    private int count;
+
     /* ---------------------- SMART LOCK PAGE ------------------------ */
 
     @FXML
@@ -991,8 +993,20 @@ public class GUIController {
 
     // Display Notification of Lock in Text Area
     public void setLockHistoryArea(String msg) {
+	if (msg.contains("Intruder alert")) {
 
-	Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	    enterPasswordTextField.clear();
+	    enterPasswordTextField.setText("Wrong password");
+	    enterPasswordTextField.requestFocus();
+	    count++;
+	    if (count > 3) {
+		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	    }
+
+	} else {
+	    Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	    count = 0;
+	}
     }
 
     public void enterPassTextField(String error) {

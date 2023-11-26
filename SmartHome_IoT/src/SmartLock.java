@@ -21,7 +21,7 @@ public class SmartLock extends SmartDevice {
     public SmartLock(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
-
+	lockPassword = "";
     }
 
     public void setLockPassword(String lockPassword) {
@@ -35,7 +35,7 @@ public class SmartLock extends SmartDevice {
     @Override
     public String alertMessage() {
 	// TODO Auto-generated method stub
-	return "Intruder alert: There's someone breaking into the house right now!";
+	return "Intruder alert !!!";
     }
 
 }

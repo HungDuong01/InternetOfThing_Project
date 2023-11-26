@@ -204,7 +204,6 @@ public class IoTServer extends AbstractServer {
 
 	if (receivedMsg.startsWith("lock")) {
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-	    System.out.println(updateLockStatusStr);
 	    sendToAllClients(updateLockStatusStr);
 
 	}
@@ -229,7 +228,7 @@ public class IoTServer extends AbstractServer {
 		// SEND BACK THE LOCK STATUS
 		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 		sendToAllClients("Lock:" + updateLockStatusStr);
-		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+		System.out.println("Lock updated status: Locked");
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -240,67 +239,22 @@ public class IoTServer extends AbstractServer {
 	    String device = (part[0]);
 	    String data = part[1];
 
-	    if (data.equals("") || data.equals(serverController.getLockPassword())) {
+	    if (data.equals(serverController.getLockPassword())) {
 		serverController.setDeviceStatus("lock", false);
 		try {
 		    // SEND BACK THE LOCK STATUS
 
 		    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 		    sendToAllClients("Lock:" + updateLockStatusStr);
-		    System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+		    System.out.println("Lock updated status: Unlocked");
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}
 	    } else {
-		sendToAllClients("Lock:Access Denied");
+
+		sendToAllClients("Lock:" + serverController.getDeviceAlertMessage(2));
 	    }
 	}
-
-//	    String[] parts = receivedMsg.split(":");
-//
-//	    String device = (parts[0]);
-//	    String data = parts[1];
-//
-//	    if (device.equals("lock")) {
-//		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-//		System.out.println(updateLockStatusStr);
-//		sendToAllClients(updateLockStatusStr);
-//	    }
-//
-//	    if (device.equals("lockpass")) {
-//		serverController.setLockPassword(data);
-//		System.out.println("Password:" + serverController.getLockPassword());
-//		sendToAllClients("Lock:New password");
-//	    }
-//	    // ON == LOCK
-//	    if (device.equals("lockON")) {
-//		serverController.setDeviceStatus("lock", true);
-//		try {
-//		    // SEND BACK THE LOCK STATUS
-//
-//		    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-//		    sendToAllClients("Lock:" + updateLockStatusStr);
-//		    System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
-//		} catch (Exception e) {
-//		    e.printStackTrace();
-//		}
-//	    }
-//	    // OFF == UNLOCK
-//	    if (device.equals("lockOFF") && data.equals(null)
-//		    || device.equals("lockOFF") && data.equals(serverController.getLockPassword())) {
-//		serverController.setDeviceStatus("lock", false);
-//		try {
-//		    // SEND BACK THE LOCK STATUS
-//
-//		    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-//		    sendToAllClients("Lock:" + updateLockStatusStr);
-//		    System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
-//		} catch (Exception e) {
-//		    e.printStackTrace();
-//		}
-//	    }
-
-//	}
 
 // --- END ---
 
