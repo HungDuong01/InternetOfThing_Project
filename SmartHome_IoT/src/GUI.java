@@ -46,6 +46,7 @@ public class GUI extends Application {
 		stage.show();
 
 	}
+	
 
 	public static void main(String[] args) {
 		// launch contact app object and start method
