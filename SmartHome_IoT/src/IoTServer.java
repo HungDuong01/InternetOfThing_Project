@@ -240,7 +240,7 @@ public class IoTServer extends AbstractServer {
 	    String device = (part[0]);
 	    String data = part[1];
 
-	    if (data.equals(null) || data.equals(serverController.getLockPassword())) {
+	    if (data.equals("") || data.equals(serverController.getLockPassword())) {
 		serverController.setDeviceStatus("lock", false);
 		try {
 		    // SEND BACK THE LOCK STATUS
