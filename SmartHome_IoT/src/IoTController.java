@@ -15,6 +15,7 @@
  *                  SmartDevice.java (many to one) 
  * ------------------------------------------------------------------------------------
  */
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ import java.util.List;
 public class IoTController {
     // List to hold accounts
 //    private List<Account> accounts;
+
+    private LocalTime currentTime = LocalTime.now();
+    private LocalTime scheduleTime;
 
     // List to hold smart devices
     private List<SmartDevice> devices;
@@ -34,8 +38,6 @@ public class IoTController {
 
 //    private Account admin;
 //    private Account user;
-
-    private LocalTime scheduleTime;
 
     public IoTController() {
 	// --- INITIALIZE SMART DEVICES ---
@@ -59,7 +61,7 @@ public class IoTController {
 
     }
 
-// --- FUNCTIONS TO UPDATE AND RETURN THE STATUS OF DEVICES ---
+    // --- FUNCTIONS TO UPDATE AND RETURN THE STATUS OF DEVICES ---
 
     public void setDeviceStatus(String device, boolean status) {
 	switch (device) {
@@ -93,9 +95,9 @@ public class IoTController {
 	return tempStatus;
     }
 
-// --- END ---
+    // --- END ---
 
-// --- FUNCTION TO RETURN SMARTDEVICE ALERT MESSAGE ---
+    // --- FUNCTION TO RETURN SMARTDEVICE ALERT MESSAGE ---
 
     public String getDeviceAlertMessage(int device) {
 	String tempStr = null;
@@ -107,9 +109,9 @@ public class IoTController {
 	return tempStr;
     }
 
-// --- END ---
+    // --- END ---
 
-// --- CALL FUNCTIONS FROM THE SMART THERMOSTAT CLASS ---
+    // --- CALL FUNCTIONS FROM THE SMART THERMOSTAT CLASS ---
 
     public void updateTemperature(String msg, Integer temperature) {
 	if ("thermoIncrease".equals(msg)) {
@@ -124,9 +126,9 @@ public class IoTController {
 	return ((SmartThermostat) devices.get(0)).getTemperature();
     }
 
-// --- END ---
+    // --- END ---
 
-// --- CALL FUNCTIONS FROM THE SMART LIGHT CLASS ---
+    // --- CALL FUNCTIONS FROM THE SMART LIGHT CLASS ---
 
     public void setLightColor(String color) {
 	((SmartLight) devices.get(1)).setColor(color);
@@ -149,9 +151,9 @@ public class IoTController {
 	return ((SmartLight) devices.get(1)).getBrightness();
     }
 
-// --- END ---
+    // --- END ---
 
-// --- CALL FUNCTIONS FROM THE SMART LOCK CLASS
+    // --- CALL FUNCTIONS FROM THE SMART LOCK CLASS
 
     public void setLockPassword(String newPassword) {
 	((SmartLock) devices.get(2)).setLockPassword(newPassword);
@@ -161,37 +163,38 @@ public class IoTController {
 	return ((SmartLock) devices.get(2)).getLockPassword();
     }
 
-// --- END ---
+    // --- END ---
 
-// --- CALL FUNCTIONS FROM THE SMART WATER SYSTEM CLASS --- 
-
-    public Integer getWaterUsage() {
-	return 0;
-    }
+    // --- CALL FUNCTIONS FROM THE SMART WATER SYSTEM CLASS ---
 
     public void setWaterLimit(Integer waterLimit) {
 
     }
 
-    public void decodeTimeValue(String timeAsStr) {
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-	scheduleTime = LocalTime.parse(timeAsStr, formatter);
-	// ((SmartWaterSystem) devices.get(3)).setScheduleTime(scheduleTime);
+    public Integer getWaterUsage() {
+	return 0;
     }
 
-// --- END ---
+    public void decodeTimeValue(String timeAsStr) {
+	// CHANGE THE FORMAT OF THE TIME FROM STRING TO LOCALTIME
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+	scheduleTime = LocalTime.parse(timeAsStr, formatter);
+	// COMPUTE THE DURATION BETWEEN SHEDULE TIME AND CURRENT TIME
+	Duration elapsedTime = Duration.between(scheduleTime, currentTime);
+	((SmartWaterSystem) devices.get(3)).setDuration(elapsedTime);
+    }
 
-// --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
+    // --- END ---
+
+    // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
     public void setUserInformation(String userName, String password) {
 
     }
 
-// --- END ---
+    // --- END ---
 
-// --- CALL FUNCTION FROM THE ADMIN CLASS ---
+    // --- CALL FUNCTION FROM THE ADMIN CLASS ---
 
-// --- END ---
+    // --- END ---
 
 }
-
-// Comment by said.

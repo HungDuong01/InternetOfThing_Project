@@ -49,6 +49,7 @@ public class IoTServer extends AbstractServer {
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
 	// --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---
+
 	// 1. ONLY ALLOW CLIENT TO INCREASE TEMPERATURE IF THE CURRENT BRIGHTNESS IS
 	// LESS THAN 35
 	// 2. ONLY ALLOW CLIENT TO DECREASE TEMPERATURE IF THE CURRENT BRIGHTNESS IS

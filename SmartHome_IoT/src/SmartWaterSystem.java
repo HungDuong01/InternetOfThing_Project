@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalTime;
 
 /* ------------------------------------------------------------------------------------
@@ -15,20 +16,19 @@ import java.time.LocalTime;
  * ------------------------------------------------------------------------------------
  */
 public class SmartWaterSystem extends SmartDevice {
-
-    private LocalTime duration;
+    private Duration duration;
 
     public SmartWaterSystem(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
     }
 
-    public void setDuration(LocalTime duration) {
+    public void setDuration(Duration duration) {
 	this.duration = duration;
     }
 
-    public void getDuration(LocalTime duration) {
-	this.duration = duration;
+    public Duration getDuration(LocalTime duration) {
+	return this.duration;
     }
 
     @Override
