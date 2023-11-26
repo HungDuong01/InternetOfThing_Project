@@ -1,6 +1,3 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 /* ------------------------------------------------------------------------------------
  * IoTController.java
@@ -18,6 +15,9 @@ import java.sql.SQLException;
  *                  SmartDevice.java (many to one) 
  * ------------------------------------------------------------------------------------
  */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Database {
 

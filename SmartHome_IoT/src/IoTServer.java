@@ -42,21 +42,21 @@ public class IoTServer extends AbstractServer {
     @Override
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 	// TODO Auto-generated method stub
-	String receivedStr = (String) msg;
+	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr;
+		updateLockStatusStr, updateLockPassword;
 
-	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedStr);
+	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
 // --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
 
-	if (("thermoIncrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true
+	if (("thermoIncrease".equals(receivedMsg) && serverController.getDeviceStatus(0) == true
 		&& serverController.getUpdateTemp() < 35)
-		|| ("thermoDecrease".equals(receivedStr) && serverController.getDeviceStatus(0) == true
+		|| ("thermoDecrease".equals(receivedMsg) && serverController.getDeviceStatus(0) == true
 			&& (serverController.getUpdateTemp() > 15))) {
 	    // ACTIONS TO INCREASE TEMPERATURE
 
-	    serverController.updateTemperature(receivedStr, 1); // Call function to update the temperature
+	    serverController.updateTemperature(receivedMsg, 1); // Call function to update the temperature
 	    updateTempStr = serverController.getUpdateTemp().toString();
 
 	    try {
@@ -75,7 +75,7 @@ public class IoTServer extends AbstractServer {
 
 	}
 
-	if ("thermoON".equals(receivedStr)) {
+	if ("thermoON".equals(receivedMsg)) {
 	    // ACTIONS TO TURN ON THERMOSTAT
 	    serverController.setDeviceStatus("thermo", true); // Call function to change the thermostat status
 	    try {
@@ -89,7 +89,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("thermoOFF".equals(receivedStr)) {
+	if ("thermoOFF".equals(receivedMsg)) {
 	    // ACTIONS TO TURNING OFF THERMOSTAT
 	    serverController.setDeviceStatus("thermo", false); // Call function to change the thermostat status
 	    try {
@@ -102,7 +102,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("thermoData".equals(receivedStr)) {
+	if ("thermoData".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
@@ -120,13 +120,13 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if (("lightBrightnessIncrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true
+	if (("lightBrightnessIncrease".equals(receivedMsg) && serverController.getDeviceStatus(1) == true
 		&& serverController.getUpdateBrightness() < 100)
-		|| ("lightBrightnessDecrease".equals(receivedStr) && serverController.getDeviceStatus(1) == true
+		|| ("lightBrightnessDecrease".equals(receivedMsg) && serverController.getDeviceStatus(1) == true
 			&& serverController.getUpdateBrightness() > 0)) {
 	    // ACTIONS TO SET THE LIGHT BRIGHTNESS
 
-	    serverController.updateBrightness(receivedStr, 10);
+	    serverController.updateBrightness(receivedMsg, 10);
 
 	    try {
 		// SEND BACK THE UPDATED BRIGHTNESS
@@ -142,11 +142,11 @@ public class IoTServer extends AbstractServer {
 
 	}
 
-	if (receivedStr.contains("0x"))
+	if (receivedMsg.contains("0x"))
 
 	{
 	    // ACTIONS TO CHANGE LIGHT COLOR
-	    serverController.setLightColor(receivedStr);
+	    serverController.setLightColor(receivedMsg);
 	    try {
 		updateLightColorStr = serverController.getLightColor().toString();
 		sendToAllClients("Light:" + updateLightColorStr);
@@ -156,7 +156,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("lightON".equals(receivedStr)) {
+	if ("lightON".equals(receivedMsg)) {
 	    // ACTIONS FOR TURNING ON LIGHT
 	    serverController.setDeviceStatus("light", true);
 	    try {
@@ -169,7 +169,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("lightOFF".equals(receivedStr)) {
+	if ("lightOFF".equals(receivedMsg)) {
 	    // ACTIONS FOR TURNING OFF LIGHT
 	    serverController.setDeviceStatus("light", false);
 	    try {
@@ -182,7 +182,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("lightData".equals(receivedStr)) {
+	if ("lightData".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateBrightnessStr = serverController.getUpdateBrightness().toString();
@@ -202,27 +202,49 @@ public class IoTServer extends AbstractServer {
 
 // --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if ("lockON".equals(receivedStr)) {
-	    serverController.setDeviceStatus("lock", true);
-	    try {
-		// SEND BACK THE LOCK STATUS
-		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-		sendToAllClients("Lock:" + updateLockStatusStr);
-		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
-	}
+	if (receivedMsg.contains("lock")) {
+	    String[] parts = receivedMsg.split(":");
+	    if (parts.length >= 2) {
+		String device = parts[0];
+		String data = parts[1];
 
-	if ("lockOFF".equals(receivedStr)) {
-	    serverController.setDeviceStatus("lock", false);
-	    try {
-		// SEND BACK THE LOCK STATUS
-		updateLockStatusStr = serverController.getDeviceStatus(2).toString();
-		sendToAllClients("Lock:" + updateLockStatusStr);
-		System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
-	    } catch (Exception e) {
-		e.printStackTrace();
+		if ("lockpass".equals(device)) {
+		    serverController.setLockPassword(data);
+		    sendToAllClients("Lock:New password");
+		}
+
+		if ("lockON".equals(device)) {
+		    serverController.setDeviceStatus("lock", true);
+		    try {
+			// SEND BACK THE LOCK STATUS
+			updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+			sendToAllClients("Lock:" + updateLockStatusStr);
+			System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+		    } catch (Exception e) {
+			e.printStackTrace();
+		    }
+		}
+
+		if ("lockOFF".equals(device) && data.equals(null)) {
+		    serverController.setDeviceStatus("lock", false);
+		    try {
+			// SEND BACK THE LOCK STATUS
+			updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+			sendToAllClients("Lock:" + updateLockStatusStr);
+			System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+		    } catch (Exception e) {
+			e.printStackTrace();
+		    }
+		}
+
+		if ("lockOFF".equals(device) && data.equals(serverController.getLockPassword())) {
+		    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+		    sendToAllClients("Lock:" + updateLockStatusStr);
+		    System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
+		} else {
+		    sendToAllClients("Lock:Error");
+		}
+
 	    }
 	}
 

@@ -153,6 +153,17 @@ public class IoTController {
 
 // --- CALL FUNCTIONS FROM THE SMART LOCK CLASS
 
+    public void setLockPassword(String newPassword) {
+	((SmartLock) devices.get(2)).setLockPassword(newPassword);
+    }
+
+    public String getLockPassword() {
+	String returnPassword = ((SmartLock) devices.get(2)).getLockPassword();
+	return returnPassword;
+    }
+
+// --- END ---
+
 // --- CALL FUNCTIONS FROM THE SMART WATER SYSTEM CLASS --- 
 
     public Integer getWaterUsage() {
