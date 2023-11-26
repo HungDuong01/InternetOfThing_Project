@@ -1019,7 +1019,7 @@ public class GUIController {
 	@FXML
 	void enterSetPasswordButton(ActionEvent event) {
 		String password = setPasswordTextField.getText();
-		client.sendSetPasswordMsgToServer("lock:" + password);
+		client.sendSetPasswordMsgToServer(password);
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("smartLock.fxml"));
 			loader.setController(this);
