@@ -110,7 +110,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Smart Lock Button Pressed
 	public void lockMainMenuToServer() {
 		try {
-			sendToServer("Lock");
+			sendToServer("lock");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -340,7 +340,7 @@ public class SmartHomeClient extends AbstractClient {
 				}
 
 				else if (data.contains("Error")) {
-					Platform.runLater(() -> controller.enterPassTextField("Enter/Set Password"));
+					Platform.runLater(() -> controller.setLockHistoryArea("Enter/Set Password"));
 				}
 
 			}
