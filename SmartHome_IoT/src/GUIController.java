@@ -904,6 +904,14 @@ public class GUIController {
     private TextField hourTextField;
     @FXML
     private TextField minuteTextField;
+    private final int max = 2;
+
+    public void setTextLimit() {
+	if (hourTextField.getText().length() > max || minuteTextField.getText().length() > max) {
+	    hourTextField.setEditable(false);
+	    minuteTextField.setEditable(false);
+	}
+    }
 
     // Return to Main Menu Page from Water System Page
     @FXML
