@@ -1,4 +1,3 @@
-import java.time.Duration;
 import java.time.LocalTime;
 
 /* ------------------------------------------------------------------------------------
@@ -16,19 +15,28 @@ import java.time.LocalTime;
  * ------------------------------------------------------------------------------------
  */
 public class SmartWaterSystem extends SmartDevice {
-    private Duration duration;
+    private Integer limit;
+    private LocalTime scheduleTime;
 
     public SmartWaterSystem(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
     }
 
-    public void setDuration(Duration duration) {
-	this.duration = duration;
+    public void setScheduleTime(LocalTime scheduleTime) {
+	this.scheduleTime = scheduleTime;
     }
 
-    public Duration getDuration(LocalTime duration) {
-	return this.duration;
+    public LocalTime getScheduleTime() {
+	return this.scheduleTime;
+    }
+
+    public void setWaterLimit(Integer limit) {
+	this.limit = limit;
+    }
+
+    public Integer getWaterLimit() {
+	return this.limit;
     }
 
     @Override

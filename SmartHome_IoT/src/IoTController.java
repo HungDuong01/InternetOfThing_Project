@@ -15,18 +15,12 @@
  *                  SmartDevice.java (many to one) 
  * ------------------------------------------------------------------------------------
  */
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class IoTController {
     // List to hold accounts
 //    private List<Account> accounts;
-
-    private LocalTime currentTime = LocalTime.now();
-    private LocalTime scheduleTime;
 
     // List to hold smart devices
     private List<SmartDevice> devices;
@@ -168,20 +162,11 @@ public class IoTController {
     // --- CALL FUNCTIONS FROM THE SMART WATER SYSTEM CLASS ---
 
     public void setWaterLimit(Integer waterLimit) {
-
+	((SmartWaterSystem) devices.get(3)).setWaterLimit(waterLimit);
     }
 
     public Integer getWaterUsage() {
-	return 0;
-    }
-
-    public void decodeTimeValue(String timeAsStr) {
-	// CHANGE THE FORMAT OF THE TIME FROM STRING TO LOCALTIME
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-	scheduleTime = LocalTime.parse(timeAsStr, formatter);
-	// COMPUTE THE DURATION BETWEEN SHEDULE TIME AND CURRENT TIME
-	Duration elapsedTime = Duration.between(scheduleTime, currentTime);
-	((SmartWaterSystem) devices.get(3)).setDuration(elapsedTime);
+	return ((SmartWaterSystem) devices.get(3)).getWaterLimit();
     }
 
     // --- END ---
