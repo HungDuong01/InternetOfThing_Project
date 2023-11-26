@@ -999,18 +999,17 @@ public class GUIController {
 	    enterPasswordTextField.setText("Wrong password");
 	    enterPasswordTextField.requestFocus();
 	    count++;
+	    // USER ENTER WRONG PASSWORD MORE THAN 3 TIMES
+	    // DISPLAY THE ALERT MESSAGE THAT IS SENT FROM SERVER
 	    if (count > 3) {
 		Platform.runLater(() -> smartLockHistoryArea.setText(msg));
 	    }
 
 	} else {
 	    Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	    enterPasswordTextField.clear();
 	    count = 0;
 	}
-    }
-
-    public void enterPassTextField(String error) {
-	enterPasswordTextField.setText(error);
     }
 
     /* -------------------- SET LOCK PAGE --------------------- */

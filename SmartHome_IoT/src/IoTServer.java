@@ -48,8 +48,11 @@ public class IoTServer extends AbstractServer {
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
-// --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---	
-
+	// --- PERFORM THERMOSTAT USE CASES BASED ON THE RECEIVED MESSAGE ---
+	// 1. ONLY ALLOW CLIENT TO INCREASE TEMPERATURE IF THE CURRENT BRIGHTNESS IS
+	// LESS THAN 35
+	// 2. ONLY ALLOW CLIENT TO DECREASE TEMPERATURE IF THE CURRENT BRIGHTNESS IS
+	// GREATER THAN 15
 	if (("thermoIncrease".equals(receivedMsg) && serverController.getDeviceStatus(0) == true
 		&& serverController.getUpdateTemp() < 35)
 		|| ("thermoDecrease".equals(receivedMsg) && serverController.getDeviceStatus(0) == true
@@ -116,10 +119,14 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-// --- END ---	
+	// --- END ---
 
-// --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
+	// --- PERFORM LIGHT USE CASES BASED ON THE RECEIVED MESSAGE ---
 
+	// 1. ONLY ALLOW CLIENT TO INCREASE BRIGHTNESS IF THE CURRENT BRIGHTNESS IS LESS
+	// THAN 100
+	// 2. ONLY ALLOW CLIENT TO DECREASE BRIGHTNESS IF THE CURRENT BRIGHTNESS IS
+	// GREATER THAN 0
 	if (("lightBrightnessIncrease".equals(receivedMsg) && serverController.getDeviceStatus(1) == true
 		&& serverController.getUpdateBrightness() < 100)
 		|| ("lightBrightnessDecrease".equals(receivedMsg) && serverController.getDeviceStatus(1) == true
@@ -142,6 +149,7 @@ public class IoTServer extends AbstractServer {
 
 	}
 
+	// IF THE MESSAGE IS THE VALUE OF COLOR
 	if (receivedMsg.contains("0x"))
 
 	{
@@ -198,24 +206,25 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-// --- END ---
+	// --- END ---
 
-// --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
+	// --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
 	if (receivedMsg.startsWith("lock")) {
+	    // RETURN DATA OF THE LOCK TO CLIENTS
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 	    sendToAllClients(updateLockStatusStr);
-
 	}
 
+	// IF THE MESSAGE CONTAINS A COMMAND WITH A DATA
 	if (receivedMsg.startsWith("lockpass")) {
 	    String[] part = receivedMsg.split(":");
-	    String device = (part[0]);
+	    String command = (part[0]);
 	    String data = part[1];
 	    try {
 		// SEND BACK THE LOCK STATUS
 		serverController.setLockPassword(data);
-		System.out.println("Password:" + serverController.getLockPassword());
+		System.out.println("Password has been set to: " + serverController.getLockPassword());
 		sendToAllClients("Lock:New password");
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -233,17 +242,16 @@ public class IoTServer extends AbstractServer {
 		e.printStackTrace();
 	    }
 	}
-
+	// IF THE MESSAGE CONTAINS A COMMAND WITH A DATA
 	if (receivedMsg.startsWith("lockOFF")) {
 	    String[] part = receivedMsg.split(":");
-	    String device = (part[0]);
+	    String command = (part[0]);
 	    String data = part[1];
 
 	    if (data.equals(serverController.getLockPassword())) {
 		serverController.setDeviceStatus("lock", false);
 		try {
 		    // SEND BACK THE LOCK STATUS
-
 		    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 		    sendToAllClients("Lock:" + updateLockStatusStr);
 		    System.out.println("Lock updated status: Unlocked");
@@ -251,12 +259,15 @@ public class IoTServer extends AbstractServer {
 		    e.printStackTrace();
 		}
 	    } else {
-
 		sendToAllClients("Lock:" + serverController.getDeviceAlertMessage(2));
 	    }
 	}
 
-// --- END ---
+	// --- END ---
+
+	// --- PERFORM WATER SYSTEM USE CASES BASED ON THE RECEIVED MESSAGE ---
+
+	// --- END ---
 
     }
 
