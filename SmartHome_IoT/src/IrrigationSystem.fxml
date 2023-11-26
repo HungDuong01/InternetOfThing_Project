@@ -117,7 +117,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <TextField layoutY="-1.0" prefHeight="26.0" prefWidth="67.0" />
+            <TextField fx:id="waterLimitTextField" layoutY="-1.0" prefHeight="26.0" prefWidth="67.0" />
             <Button layoutX="-11.0" layoutY="34.0" mnemonicParsing="false" onAction="#saveWaterLimitButton" prefHeight="23.0" prefWidth="99.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
                <font>
                   <Font name="Heiti TC Light" size="13.0" />
