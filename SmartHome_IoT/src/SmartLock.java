@@ -21,7 +21,7 @@ public class SmartLock extends SmartDevice {
     public SmartLock(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
-	this.lockPassword = "";
+
     }
 
     public void setLockPassword(String lockPassword) {

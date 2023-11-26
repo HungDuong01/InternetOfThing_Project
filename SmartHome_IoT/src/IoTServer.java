@@ -210,6 +210,7 @@ public class IoTServer extends AbstractServer {
 
 		if ("lockpass".equals(device)) {
 		    serverController.setLockPassword(data);
+		    System.out.println("Password:" + serverController.getLockPassword());
 		    sendToAllClients("Lock:New password");
 		}
 
