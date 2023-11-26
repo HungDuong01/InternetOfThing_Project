@@ -230,6 +230,7 @@ public class IoTServer extends AbstractServer {
 		    serverController.setDeviceStatus("lock", false);
 		    try {
 			// SEND BACK THE LOCK STATUS
+
 			updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 			sendToAllClients("Lock:" + updateLockStatusStr);
 			System.out.println("Lock updated status: " + serverController.getDeviceStatus(2));
