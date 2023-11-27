@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="516.0" fitWidth="287.0" layoutX="313.0" layoutY="-103.0">
          <image>
@@ -29,7 +29,7 @@
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterPasswordTextField" alignment="TOP_LEFT" layoutX="33.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="109.0">
+      <TextField fx:id="enterPasswordTextField" alignment="TOP_LEFT" layoutX="33.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="120.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

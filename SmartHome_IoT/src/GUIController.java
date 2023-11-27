@@ -1013,8 +1013,9 @@ public class GUIController {
 	if (msg.contains("Intruder alert")) {
 
 	    enterPasswordTextField.clear();
-	    enterPasswordTextField.setText("Wrong password");
-	    enterPasswordTextField.requestFocus();
+	    enterPasswordTextField.setStyle("-fx-border-color: red;");
+	    enterPasswordTextField.setPromptText("Wrong Password");
+	    enterPasswordTextField.clear();
 	    count++;
 	    // USER ENTER WRONG PASSWORD MORE THAN 3 TIMES
 	    // DISPLAY THE ALERT MESSAGE THAT IS SENT FROM SERVER
@@ -1024,6 +1025,8 @@ public class GUIController {
 
 	} else {
 	    Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+	    enterPasswordTextField.setStyle("-fx-border-color: green;");
+	    enterPasswordTextField.setPromptText("Correct Password");
 	    enterPasswordTextField.clear();
 	    count = 0;
 	}
