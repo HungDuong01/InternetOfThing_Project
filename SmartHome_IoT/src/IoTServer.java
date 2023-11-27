@@ -44,7 +44,7 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr, updateLockPassword;
+		updateLockStatusStr;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 

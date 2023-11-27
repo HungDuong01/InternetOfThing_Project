@@ -24,11 +24,11 @@ public class IoTController {
 
     // List to hold smart devices
     private List<SmartDevice> devices;
-    private SmartDevice thermo;
-    private SmartDevice light;
-    private SmartDevice lock;
-    private SmartDevice water;
-    private SmartDevice camera;
+    private SmartDevice thermo; // device ID: 0
+    private SmartDevice light; // device ID: 1
+    private SmartDevice lock; // device ID: 2
+    private SmartDevice water; // device ID: 3
+    private SmartDevice camera; // device ID: 4
 
 //    private Account admin;
 //    private Account user;
