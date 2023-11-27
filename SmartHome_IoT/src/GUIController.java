@@ -396,7 +396,7 @@ public class GUIController {
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SecurityCamera.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("STcamera.fxml"));
 	    loader.setController(this);
 	    Parent root = loader.load();
 	    Scene cameraScene = new Scene(root);
