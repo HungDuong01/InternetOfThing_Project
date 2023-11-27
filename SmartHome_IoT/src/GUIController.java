@@ -878,6 +878,13 @@ public class GUIController {
 
     @FXML
     private GridPane securityCameraPane;
+    
+    
+    @FXML
+    void saveButtonPressed(ActionEvent event) {
+
+    }
+
 
     // Return to Main Menu from Camera Page
     @FXML
