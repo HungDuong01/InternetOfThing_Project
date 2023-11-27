@@ -647,16 +647,20 @@ public class GUIController {
     @FXML
     void offButtonPressed(ActionEvent event) {
 	// Set Text OFF
-	temperatureLabel.setVisible(false);
+//	temperatureLabel.setVisible(false);
 	client.thermostatOffToServer();
     }
 
     // Turn ON button pressed then call method in client
     @FXML
     void onButtonPressed(ActionEvent event) {
-	temperatureLabel.setVisible(true);
+//	temperatureLabel.setVisible(true);
 	client.thermostatOnToServer();
 
+    }
+
+    public void setThermoVisible(Boolean status) {
+	temperatureLabel.setVisible(status);
     }
 
     // Return Back to Main Menu by Scene Switching.
@@ -771,15 +775,16 @@ public class GUIController {
     @FXML
     void offSmartLightButton(ActionEvent event) {
 
-	brightnessLabel.setVisible(false);
 	client.smartLightOffToServer();
+    }
+
+    public void setLightVisible(Boolean status) {
+	brightnessLabel.setVisible(status);
     }
 
     // ON Button on Smart Light page sends Msg to Server
     @FXML
     void onSmartLightButton(ActionEvent event) {
-
-	brightnessLabel.setVisible(true);
 	client.smartLightOnToServer();
     }
 

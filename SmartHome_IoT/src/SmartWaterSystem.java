@@ -1,4 +1,3 @@
-import java.time.LocalTime;
 
 /* ------------------------------------------------------------------------------------
  * SmartWaterSystem.java
@@ -14,6 +13,8 @@ import java.time.LocalTime;
  * Associated file
  * ------------------------------------------------------------------------------------
  */
+import java.time.LocalTime;
+
 public class SmartWaterSystem extends SmartDevice {
     private Integer limit;
     private LocalTime scheduleTime;

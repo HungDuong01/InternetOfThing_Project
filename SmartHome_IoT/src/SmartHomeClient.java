@@ -283,10 +283,12 @@ public class SmartHomeClient extends AbstractClient {
 		// Light is OFF
 		if (data.equals("false")) {
 		    Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: OFF"));
+		    Platform.runLater(() -> controller.setThermoVisible(false));
 		}
 		// Light is ON
 		else if (data.equals("true")) {
 		    Platform.runLater(() -> controller.setAlertMessageThermostat("Thermostat: ON"));
+		    Platform.runLater(() -> controller.setThermoVisible(true));
 		}
 		// Light is not in range of 15 to 26 degrees
 		else if (data.contains("Please")) {
@@ -311,10 +313,12 @@ public class SmartHomeClient extends AbstractClient {
 
 		else if (data.contains("false")) {
 		    Platform.runLater(() -> controller.setNotificationLight("Light: OFF"));
+		    Platform.runLater(() -> controller.setLightVisible(false));
 		}
 
 		else if (data.contains("true")) {
 		    Platform.runLater(() -> controller.setNotificationLight("Light: ON"));
+		    Platform.runLater(() -> controller.setLightVisible(true));
 		}
 
 		else {
