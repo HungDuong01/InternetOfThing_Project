@@ -44,7 +44,7 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr;
+		updateLockStatusStr, updateLockPass;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
@@ -214,7 +214,10 @@ public class IoTServer extends AbstractServer {
 	if (receivedMsg.startsWith("lock")) {
 	    // RETURN DATA OF THE LOCK TO CLIENTS
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
+	    updateLockPass = serverController.getLockPassword();
 	    sendToAllClients(updateLockStatusStr);
+	    sendToAllClients(updateLockPass);
+
 	}
 
 	// IF THE MESSAGE CONTAINS A COMMAND WITH A DATA
