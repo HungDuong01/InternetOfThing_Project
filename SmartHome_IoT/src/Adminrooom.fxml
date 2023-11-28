@@ -45,7 +45,7 @@
                   <Image url="@856de846e59271089eca26c4260c9bdb_w200.gif" />
                </image>
             </ImageView>
-            <Button layoutX="-259.0" layoutY="324.0" mnemonicParsing="false" onAction="#AddnewDevicebuttonpressed" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Add New Device ">
+            <Button layoutX="-259.0" layoutY="45.0" mnemonicParsing="false" onAction="#AddnewDevicebuttonpressed" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Add New Device ">
                <effect>
                   <DropShadow height="18.05" radius="4.0125" width="0.0" />
                </effect>
@@ -53,13 +53,13 @@
                   <Font name="Heiti TC Light" size="16.0" />
                </font>
             </Button>
-            <Label layoutX="-264.0" layoutY="247.0" prefHeight="22.0" prefWidth="115.0" text="Device Name">
+            <Label layoutX="-264.0" layoutY="-5.0" prefHeight="34.0" prefWidth="115.0" text="Device Name">
                <font>
                   <Font name="Heiti TC Medium" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="DevicenameTextField" layoutX="-149.0" layoutY="246.0" prefHeight="26.0" prefWidth="172.0" />
-            <Button layoutX="-77.0" layoutY="323.0" mnemonicParsing="false" onAction="#SaveDevicebuttonpressed" prefHeight="19.0" prefWidth="97.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
+            <TextField fx:id="DevicenameTextField" layoutX="-152.0" layoutY="-2.0" prefHeight="34.0" prefWidth="172.0" />
+            <Button layoutX="-77.0" layoutY="45.0" mnemonicParsing="false" onAction="#DeleteDevicebuttonpressed" prefHeight="21.0" prefWidth="97.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Delete">
                <effect>
                   <DropShadow height="18.05" radius="4.0125" width="0.0" />
                </effect>
@@ -144,7 +144,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="searchTextField" layoutX="5.0" layoutY="43.0" onAction="#SearchTextField" prefHeight="32.0" prefWidth="183.0" />
+            <TextField fx:id="searchTextField" layoutX="5.0" layoutY="43.0" prefHeight="32.0" prefWidth="183.0" />
             <Button layoutX="187.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchbuttonpressed" prefHeight="32.0" prefWidth="105.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Search" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Light" size="17.0" />

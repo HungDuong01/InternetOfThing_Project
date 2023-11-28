@@ -568,12 +568,6 @@ public class GUIController {
     private GridPane Adminmainroompane;
 
     @FXML
-    private TextField DeviceIdTextField;
-
-    @FXML
-    private TextArea Deviceinfotextarea;
-
-    @FXML
     private ListView<String> Devicelistview;
 
     @FXML
@@ -602,23 +596,70 @@ public class GUIController {
 
     @FXML
     void AddnewDevicebuttonpressed(ActionEvent event) {
+    	if (DevicenameTextField != null && Devicelistview != null) {
+    		
+    		String newDeviceName = DevicenameTextField.getText().trim();
+    		
+    		if (!newDeviceName.isEmpty()) {
+    			
+    			// add the new device name to teh list 
+    			
+    			Devicelistview.getItems().add(newDeviceName);
+    			
+    			//clear the text field for the next input
+    			DevicenameTextField.clear();
+    			
+    			// increment device count (if needed)
+    			
+    			newDeviceCount++;
+    			
+    			// optionally, you can do something with the count, like displaying it 
+    			System.out.println("Total Devies: " + newDeviceCount);
+    			
+    			
+    		}
+    	}
 
     }
 
     @FXML
     void Logoutbuttonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("userAdminpage.fxml"));
+    	    loader.setController(this);
+    	    Parent root = loader.load();
+    	    Scene AdminmainroomScene = new Scene(root);
+    	    Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
+    	    stage.setScene(AdminmainroomScene);
+
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
 
     }
 
     @FXML
-    void SaveDevicebuttonpressed(ActionEvent event) {
+    void DeleteDevicebuttonpressed(ActionEvent event) {
+    	if (Devicelistview  != null) {
+    		
+    		// get the selected  item(s) in the list
+    		ObservableList<String> selectedDevices;
+            selectedDevices = Devicelistview.getSelectionModel().getSelectedItems();
+            
+            
+         // Remove the selected item(s) from the list
+            if (selectedDevices != null && !selectedDevices.isEmpty()) {
+                Devicelistview.getItems().removeAll(selectedDevices);
+                
+                // Optionally, you can perform additional actions after deletion
+                // For example, update counts or perform other operations
+                System.out.println("Deleted " + selectedDevices.size() + " device(s).");
+            }
+    	}
 
     }
 
-    @FXML
-    void SearchTextField(ActionEvent event) {
-
-    }
+  
 
     @FXML
     void returnhomegifclicked(MouseEvent event) {
@@ -637,7 +678,36 @@ public class GUIController {
 
     @FXML
     void searchbuttonpressed(ActionEvent event) {
-	//
+    	if (Devicelistview != null && searchTextField != null) {
+    	    String searchQuery = searchTextField.getText().trim();
+
+    	    ObservableList<String> originalDeviceList = Devicelistview.getItems();
+    	    boolean deviceFound = false;
+
+    	    // Check if the device (regardless of case) is in the list
+    	    for (String device : originalDeviceList) {
+    	        if (device.equalsIgnoreCase(searchQuery)) {
+    	            deviceFound = true;
+    	            // Highlight the found device in the list view
+    	            Devicelistview.getSelectionModel().select(device);
+    	            break;
+    	        }
+    	    }
+
+    	    // Change border color and set text based on search result
+    	    if (deviceFound) {
+    	        // Set border color to green and set text to "Device found."
+    	        searchTextField.setStyle("-fx-border-color: green;");
+    	        searchTextField.clear();
+    	        searchTextField.setPromptText("Device found.");
+    	    } else {
+    	        // Set border color to red and set text to "Device not found."
+    	        searchTextField.setStyle("-fx-border-color: red;");
+    	        searchTextField.clear();
+    	        searchTextField.setPromptText("Device not found.");
+    	    }
+    	}
+
     }
 
     /* ---------------- SMART THERMOSTAT PAGE------------------ */
