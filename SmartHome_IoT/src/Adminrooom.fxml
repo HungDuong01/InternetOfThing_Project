@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -46,7 +45,6 @@
                   <Image url="@856de846e59271089eca26c4260c9bdb_w200.gif" />
                </image>
             </ImageView>
-            <TextArea fx:id="Deviceinfotextarea" editable="false" layoutX="-264.0" layoutY="23.0" prefHeight="204.0" prefWidth="285.0" />
             <Button layoutX="-259.0" layoutY="324.0" mnemonicParsing="false" onAction="#AddnewDevicebuttonpressed" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Add New Device ">
                <effect>
                   <DropShadow height="18.05" radius="4.0125" width="0.0" />
@@ -60,13 +58,7 @@
                   <Font name="Heiti TC Medium" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="-264.0" layoutY="281.0" prefHeight="22.0" prefWidth="115.0" text="Device ID">
-               <font>
-                  <Font name="Heiti TC Light" size="16.0" />
-               </font>
-            </Label>
             <TextField fx:id="DevicenameTextField" layoutX="-149.0" layoutY="246.0" prefHeight="26.0" prefWidth="172.0" />
-            <TextField fx:id="DeviceIdTextField" layoutX="-149.0" layoutY="279.0" prefHeight="26.0" prefWidth="172.0" />
             <Button layoutX="-77.0" layoutY="323.0" mnemonicParsing="false" onAction="#SaveDevicebuttonpressed" prefHeight="19.0" prefWidth="97.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save">
                <effect>
                   <DropShadow height="18.05" radius="4.0125" width="0.0" />
@@ -75,11 +67,6 @@
                   <Font name="Heiti TC Light" size="16.0" />
                </font>
             </Button>
-            <Label layoutX="-264.0" layoutY="-1.0" prefHeight="22.0" prefWidth="101.0" text="Device info">
-               <font>
-                  <Font name="Heiti TC Light" size="16.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0">
