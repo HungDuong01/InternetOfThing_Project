@@ -169,7 +169,7 @@
          <children>
             <ImageView fitHeight="31.0" fitWidth="79.0" layoutX="69.0" layoutY="57.0" onMouseClicked="#returnhomegifclicked">
                <image>
-                  <Image url="@../../../../Downloads/icons8-home.gif" />
+                  <Image url="@icons8-home.gif" />
                </image>
             </ImageView>
             <Label layoutX="35.0" layoutY="93.0" prefHeight="21.0" prefWidth="123.0" text="Return to main">

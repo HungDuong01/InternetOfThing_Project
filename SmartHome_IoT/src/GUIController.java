@@ -31,6 +31,8 @@ import java.io.IOException;
 
 import javafx.animation.FillTransition;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,6 +65,16 @@ public class GUIController {
 	public void setClient(SmartHomeClient client) {
 		this.client = client;
 	}
+	
+	public void initialize() {
+		try {
+			setupListviewDevicelistview();
+		} catch (Exception e ) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	/* --------------------------- WELCOME PAGE----------------------- */
 
@@ -564,7 +576,7 @@ public class GUIController {
 	private TextArea Deviceinfotextarea;
 
 	@FXML
-	private ListView<?> Devicelistview;
+	private ListView<String> Devicelistview;
 
 	@FXML
 	private TextField DevicenameTextField;
@@ -574,7 +586,27 @@ public class GUIController {
 
 	@FXML
 	private Label useridlabel;
+	
+	private static int newDeviceCount = 0;
+	
+	private void  setupListviewDevicelistview() {
+		if(Devicelistview != null)  {
+			ObservableList<String> Deviceinfo = FXCollections.observableArrayList(
+					// msg
+					"Smart Camera",
+					"Smart Thermostat",
+					"Smart Lock",
+					"Smart Light",
+					"Water System"
+					
+					
+					);
+			
+			Devicelistview.setItems(Deviceinfo);
+		}
+	}
 
+	
 	@FXML
 	void AddnewDevicebuttonpressed(ActionEvent event) {
 
