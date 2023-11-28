@@ -60,7 +60,7 @@
                   <Font name="Heiti TC Light" size="19.0" />
                </font>
             </Label>
-            <TextField layoutX="55.0" layoutY="61.0" prefHeight="26.0" prefWidth="53.0" promptText="HH" />
+            <TextField editable="false" layoutX="55.0" layoutY="61.0" prefHeight="26.0" prefWidth="53.0" promptText="HH" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
