@@ -64,7 +64,7 @@ public class IoTServer extends AbstractServer {
 	TimerTask task = new TimerTask() {
 	    @Override
 	    public void run() {
-		System.out.println("Timer task executed at " + LocalTime.now());
+		System.out.println("\nTimer task executed at " + LocalTime.now());
 		sendToAllClients("Water:" + serverController.getDeviceAlertMessage(3));
 	    }
 	};
