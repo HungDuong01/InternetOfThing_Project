@@ -408,7 +408,7 @@ public class GUIController {
     @FXML
     void smartCameraButtonpressed(ActionEvent event) {
 	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("STcamera.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("SDcamera.fxml"));
 	    loader.setController(this);
 	    Parent root = loader.load();
 	    Scene cameraScene = new Scene(root);
@@ -974,34 +974,36 @@ public class GUIController {
     /* ----------- SMART SECURITY CAMERA PAGE---------------- */
 
     @FXML
-    private GridPane securityCameraPane;
-
+    private Pane securityCameraPane;
+    
     @FXML
     void saveButtonPressed(ActionEvent event) {
 
     }
 
     // Return to Main Menu from Camera Page
+    
+    
+    
     @FXML
-    void returnSecurityCameraButton(ActionEvent event) {
+    void returnCameraButton(ActionEvent event) {
 
-	try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-	    loader.setController(this);
-	    Parent root = loader.load();
-	    Scene mainMenuScene = new Scene(root);
-	    Stage stage = (Stage) securityCameraPane.getScene().getWindow();
-	    stage.setScene(mainMenuScene);
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+    	    loader.setController(this);
+    	    Parent root = loader.load();
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) securityCameraPane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
 
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
     }
 
-    @FXML
-    void saveScheduleCameraButton(ActionEvent event) {
-	//
-    }
+
+    
 
     /* ---------------------- SMART WATER SYSTEM PAGE ------------------------- */
 
