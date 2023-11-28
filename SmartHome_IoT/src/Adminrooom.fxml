@@ -73,7 +73,7 @@
          <children>
             <MenuButton layoutX="58.0" layoutY="32.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: white;" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#AdminAboutButtonpressed" text="About" />
                   <MenuItem mnemonicParsing="false" onAction="#Logoutbuttonpressed" text="Logout" />
                </items>
             </MenuButton>

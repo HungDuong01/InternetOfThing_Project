@@ -28,21 +28,21 @@
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="187.0" prefHeight="26.0" prefWidth="49.0" text="Angle">
+      <Label layoutX="39.0" layoutY="214.0" prefHeight="26.0" prefWidth="49.0" text="Angle">
          <font>
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <TextArea layoutX="39.0" layoutY="286.0" prefHeight="80.0" prefWidth="293.0" />
+      <TextArea fx:id="notificationCameraArea" layoutX="39.0" layoutY="286.0" prefHeight="80.0" prefWidth="293.0" />
       <Label layoutX="39.0" layoutY="260.0" prefHeight="26.0" prefWidth="89.0" text="Notification">
          <font>
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="105.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
-      <TextField layoutX="155.0" layoutY="139.0" prefHeight="26.0" prefWidth="37.0" />
-      <TextField layoutX="245.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
-      <TextField layoutX="295.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
+      <TextField fx:id="fromHourCamera" layoutX="105.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
+      <TextField fx:id="fromMinuteCamera" layoutX="155.0" layoutY="139.0" prefHeight="26.0" prefWidth="37.0" />
+      <TextField fx:id="toHourCamera" layoutX="245.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
+      <TextField fx:id="toMinuteCamera" layoutX="295.0" layoutY="140.0" prefHeight="26.0" prefWidth="37.0" />
       <Label layoutX="213.0" layoutY="139.0" prefHeight="26.0" prefWidth="18.0" text="to">
          <font>
             <Font name="Heiti TC Light" size="15.0" />
@@ -58,16 +58,17 @@
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <Slider layoutX="104.0" layoutY="192.0" prefHeight="15.0" prefWidth="225.0" value="50.0" />
-      <Label layoutX="101.0" layoutY="206.0" prefHeight="15.0" prefWidth="8.0" text="0">
+      <Slider fx:id="sliderAngleCamera" layoutX="110.0" layoutY="219.0" max="360.0" prefHeight="15.0" prefWidth="225.0" value="180.0" />
+      <Label layoutX="101.0" layoutY="227.0" prefHeight="15.0" prefWidth="8.0" text="0">
          <font>
             <Font name="Heiti TC Light" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="325.0" layoutY="206.0" prefHeight="15.0" prefWidth="27.0" text="100">
+      <Label layoutX="335.0" layoutY="227.0" prefHeight="15.0" prefWidth="27.0" text="360">
          <font>
             <Font name="Heiti TC Light" size="12.0" />
          </font>
       </Label>
+      <Button layoutX="174.0" layoutY="182.0" mnemonicParsing="false" onAction="#showFootageButtonPressed" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Show" />
    </children>
 </Pane>

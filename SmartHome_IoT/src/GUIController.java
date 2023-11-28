@@ -459,6 +459,25 @@ public class GUIController {
 	    e.printStackTrace();
 	}
     }
+    
+    //about us
+    @FXML
+    void userAboutButtonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("AboutUs.fxml"));
+    	    loader.setController(this);
+    	    Parent root = loader.load();
+    	    Scene lockScene = new Scene(root);
+    	    Stage stage = (Stage) mainMenupane.getScene().getWindow();
+    	    stage.setScene(lockScene);
+
+    	    // SEND MSG TO SERVER TO RETRIEVE LOCK DATA
+    	    client.lockMainMenuToServer();
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
 
     // Smart Thermostat Button to go Thermostat Page
     @FXML
@@ -707,6 +726,26 @@ public class GUIController {
     	        searchTextField.setPromptText("Device not found.");
     	    }
     	}
+    	
+
+    }
+    
+    
+    @FXML
+    void AdminAboutButtonpressed(ActionEvent event) {
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("AboutUs.fxml"));
+    	    loader.setController(this);
+    	    Parent root = loader.load();
+    	    Scene AdminmainroomScene = new Scene(root);
+    	    Stage stage = (Stage) Adminmainroompane.getScene().getWindow();
+    	    stage.setScene(AdminmainroomScene);
+
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    	
 
     }
 
@@ -988,7 +1027,7 @@ public class GUIController {
     @FXML
     void returnCameraButton(ActionEvent event) {
 
-    	try {
+    	try { 
     	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
     	    loader.setController(this);
     	    Parent root = loader.load();
@@ -1228,5 +1267,26 @@ public class GUIController {
 	    e.printStackTrace();
 	}
     }
+    /* -------------------- ABOUT IS  PAGE --------------------- */
+    
+    @FXML
+    private Pane Aboutuspane;
 
+    @FXML
+    void Aboutbackbuttonpressed(ActionEvent event){
+    	try {
+    	    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+    	    loader.setController(this);
+    	    Parent root = loader.load();
+    	    Scene mainMenuScene = new Scene(root);
+    	    Stage stage = (Stage) Aboutuspane.getScene().getWindow();
+    	    stage.setScene(mainMenuScene);
+
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+
+    }
+    
+    
 }
