@@ -182,6 +182,18 @@ public class IoTController {
     }
     // --- END ---
 
+    // --- CALL FUNCTIONS FROM THE SMART SECURITY CAMERA CLASS ---
+
+    public void setCameraAngle(Integer angle) {
+	((SmartSecurityCamera) devices.get(4)).setAngle(angle);
+    }
+
+    public Integer getCameraAngle() {
+	return ((SmartSecurityCamera) devices.get(4)).getAngle();
+    }
+
+    // --- END ---
+
     // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
     public void setUserInformation(String userName, String password) {
 

@@ -15,7 +15,6 @@
 public class SmartSecurityCamera extends SmartDevice {
     private Integer angle;
 
-    // private scheduledTime
     public SmartSecurityCamera(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub

@@ -77,7 +77,7 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr, updateLockPass, updateWaterLimit;
+		updateLockStatusStr, updateLockPass, updateWaterLimit, updateWaterTimer, updateCameraAngle;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
@@ -272,7 +272,7 @@ public class IoTServer extends AbstractServer {
 	    try {
 		// SEND BACK THE LOCK STATUS
 		serverController.setLockPassword(data);
-		System.out.println("Password has been set to: " + serverController.getLockPassword());
+		System.out.println("Lock updated password: " + serverController.getLockPassword());
 		sendToAllClients("Lock:New password");
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -332,7 +332,7 @@ public class IoTServer extends AbstractServer {
 
 	    try {
 		sendToAllClients("Water:New water limit has been set " + updateWaterLimit);
-		System.out.println(updateWaterLimit); // Testing
+		System.out.println("Water updated limit: " + updateWaterLimit); // Testing
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -340,6 +340,35 @@ public class IoTServer extends AbstractServer {
 	}
 
 	// --- END ---
+
+	// --- PERFORM CAMERA USE CASES BASED ON THE RECEIVED MESSAGE ---
+	/*
+	 * 1. Change camera angle 2. Return camera video back to client, INPUT from user
+	 * will be an integer
+	 */
+
+	if (receivedMsg.startsWith("Camera")) {
+	    String[] part = receivedMsg.split(",");
+	    String data = part[1];
+	    Integer angle = Integer.parseInt(data);
+	    serverController.setCameraAngle(angle);
+	    updateCameraAngle = serverController.getCameraAngle().toString();
+	    try {
+		sendToAllClients("Camera:New camera angle has been set " + updateCameraAngle);
+		System.out.println("Camera updated angle: " + updateCameraAngle); // Testing
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
+
+	// --- END ---
+
+    }
+
+    @Override
+    protected void clientConnected(ConnectionToClient client) {
+	// DISPLAY THE CONNECTED CLIENT
+	System.out.println("Client connected: " + client);
 
     }
 
