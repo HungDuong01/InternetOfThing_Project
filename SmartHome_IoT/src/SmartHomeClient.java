@@ -192,7 +192,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
-	/* --------------------------- SMART LIGHT PAGE -------------------------- */
+	/* ----------------------- SMART LIGHT PAGE ----------------------- */
 
 	public void lightStatus() {
 		// Status of light
@@ -255,7 +255,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
-	/* --------------------------- SMART LOCK PAGE -------------------------- */
+	/* --------------------------- SMART LOCK PAGE ----------------------- */
 
 	public void lockDoorMsgToServer() {
 		try {
@@ -283,7 +283,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
-	/* --------------------------- SMART WATER PAGE -------------------------- */
+	/* --------------------------- SMART WATER PAGE ------------------------ */
 
 	public void waterTimeMsgToServer(String water) {
 		setWaterTime(water);
@@ -384,20 +384,25 @@ public class SmartHomeClient extends AbstractClient {
 
 				else if (data.contains("New password")) {
 					Platform.runLater(() -> controller.setLockHistoryArea("Password has been set"));
-
 				}
 
 				else if (data.contains("Intruder alert")) {
 					Platform.runLater(() -> controller.setLockHistoryArea(data));
-
 				}
-
 			}
 
 			// *** Handling Received Data for Smart Water System From Server *** //
 
 			if (device.equals("Water")) {
-				// data for lock if statements here.
+				if (data.contains("Complete")) {
+					Platform.runLater(() -> controller.displayWaterHistory(""));
+					Platform.runLater(() -> controller.displayWaterHistory(data));
+				}
+
+				else if (data.contains("New water")) {
+					Platform.runLater(() -> controller.displayWaterHistory(""));
+					Platform.runLater(() -> controller.displayWaterHistory(data));
+				}
 
 			}
 

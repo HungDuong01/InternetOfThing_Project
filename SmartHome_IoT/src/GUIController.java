@@ -44,6 +44,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -918,12 +919,49 @@ public class GUIController {
 	@FXML
 	private TextField waterLimitTextField;
 
-	private final int max = 2;
+	// Setting Characters typed to a limit of Two for Hours
+	@FXML
+	void hourKeyTyped(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
 
-	public void setTextLimit() {
-		if (hourTextField.getText().length() > max || minuteTextField.getText().length() > max) {
-			hourTextField.setEditable(false);
-			minuteTextField.setEditable(false);
+		if (hourTextField.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				hourTextField.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				hourTextField.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			hourTextField.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
+	@FXML
+	void minuteKeyTyped(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
+
+		if (minuteTextField.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				minuteTextField.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				minuteTextField.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			minuteTextField.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
+	@FXML
+	void waterLimitKeyTyped(KeyEvent event) {
+		int maxLength = 5; // Set the character limit
+
+		if (waterLimitTextField.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				waterLimitTextField.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				waterLimitTextField.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			waterLimitTextField.setEditable(true); // Allow input if characters can be added
 		}
 	}
 
@@ -951,7 +989,8 @@ public class GUIController {
 		String minute = minuteTextField.getText();
 
 		String time = "Water," + hour + ":" + minute;
-
+		System.out.println("Sent Water Duration time till -  " + hour + ':' + minute);
+		waterUsageHistoryArea.setText("Water has been set till: " + hour + ":" + minute);
 		client.waterTimeMsgToServer(time);
 
 	}
@@ -960,7 +999,8 @@ public class GUIController {
 	@FXML
 	void saveWaterLimitButton(ActionEvent event) {
 		String waterLimit = waterLimitTextField.getText();
-		client.waterLimitMsgToServer(waterLimit);
+		System.out.println("Sent Water Limit of: " + waterLimit + "To Server");
+		client.waterLimitMsgToServer("waterLimit," + waterLimit);
 
 	}
 
