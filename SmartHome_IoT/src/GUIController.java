@@ -592,7 +592,7 @@ public class GUIController {
 	private void  setupListviewDevicelistview() {
 		if(Devicelistview != null)  {
 			ObservableList<String> Deviceinfo = FXCollections.observableArrayList(
-					// msg
+					// USER PRESSES ON THE LOGIN BUTTON => SEND A MSG TO SERVER TO REQUEST SMART DEVICES NAME
 					"Smart Camera",
 					"Smart Thermostat",
 					"Smart Lock",
