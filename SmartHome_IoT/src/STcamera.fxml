@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="securityCameraPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="504.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="securityCameraPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="504.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,7 +60,10 @@
                   <Font name="Heiti TC Light" size="19.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <TextField editable="false" layoutX="55.0" layoutY="61.0" prefHeight="26.0" prefWidth="53.0" promptText="HH" />
+=======
+>>>>>>> branch 'master' of https://github.com/HungDuong01/InternetOfThing_Project.git
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -72,6 +75,7 @@
             </Label>
             <TextField layoutX="-43.0" layoutY="60.0" prefHeight="26.0" prefWidth="53.0" promptText="MM" />
             <Button layoutX="-112.0" layoutY="91.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Save" />
+            <TextField layoutX="-110.0" layoutY="59.0" prefHeight="26.0" prefWidth="53.0" promptText="HH" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
