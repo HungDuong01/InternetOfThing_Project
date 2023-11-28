@@ -260,7 +260,7 @@ public class IoTServer extends AbstractServer {
 
 	// IF THE MESSAGE CONTAINS A COMMAND WITH A DATA
 	if (receivedMsg.startsWith("lockpass")) {
-	    String[] part = receivedMsg.split(":");
+	    String[] part = receivedMsg.split(",");
 	    String command = (part[0]);
 	    String data = part[1];
 	    try {
@@ -286,7 +286,7 @@ public class IoTServer extends AbstractServer {
 	}
 	// IF THE MESSAGE CONTAINS A COMMAND WITH A DATA
 	if (receivedMsg.startsWith("lockOFF")) {
-	    String[] part = receivedMsg.split(":");
+	    String[] part = receivedMsg.split(",");
 	    String command = (part[0]);
 	    String data = part[1];
 
