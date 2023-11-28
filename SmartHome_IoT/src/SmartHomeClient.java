@@ -408,7 +408,7 @@ public class SmartHomeClient extends AbstractClient {
 
 			// Handling Received Data for Smart Security Camera From Server
 			if (device.equals("Camera")) {
-				// data for camera if statements here.
+				// data for camera if statements here. //
 
 			}
 		}

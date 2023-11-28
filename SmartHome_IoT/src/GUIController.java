@@ -1114,7 +1114,7 @@ public class GUIController {
 		}
 	}
 
-	// Get set password and send the String to Server
+	// Get set password and send the String to Server //
 	@FXML
 	void enterSetPasswordButton(ActionEvent event) {
 		String password = setPasswordTextField.getText();
