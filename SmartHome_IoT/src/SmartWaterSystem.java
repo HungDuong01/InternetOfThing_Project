@@ -17,19 +17,19 @@ import java.time.LocalTime;
 
 public class SmartWaterSystem extends SmartDevice {
     private Integer limit;
-    private LocalTime scheduleTime;
+    private LocalTime timer;
 
     public SmartWaterSystem(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
     }
 
-    public void setScheduleTime(LocalTime scheduleTime) {
-	this.scheduleTime = scheduleTime;
+    public void setTimer(LocalTime timer) {
+	this.timer = timer;
     }
 
-    public LocalTime getScheduleTime() {
-	return this.scheduleTime;
+    public LocalTime getTimer() {
+	return this.timer;
     }
 
     public void setWaterLimit(Integer limit) {
@@ -43,7 +43,7 @@ public class SmartWaterSystem extends SmartDevice {
     @Override
     public String alertMessage() {
 	// TODO Auto-generated method stub
-	return "";
+	return "Completed task";
     }
 
 }
