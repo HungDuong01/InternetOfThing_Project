@@ -6,15 +6,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="21.0" layoutY="18.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Back" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="347.0" layoutX="10.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" width="779.0" />
-      <ImageView fitHeight="326.0" fitWidth="760.0" layoutX="10.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="137.0" fitWidth="128.0" layoutX="706.0" layoutY="329.0">
          <image>
             <Image url="@smart%20camera.png" />
@@ -32,5 +31,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <MediaView fitHeight="300.0" fitWidth="600.0" layoutX="44.0" layoutY="100.0" />
    </children>
 </Pane>
