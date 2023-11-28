@@ -139,14 +139,15 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("thermoData".equals(receivedMsg)) {
+	if ("Thermo".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
 		updateTempStr = serverController.getUpdateTemp().toString();
 		sendToAllClients("Thermostat:" + updateTempStr);
 		sendToAllClients("Thermostat:" + updateThermoStatusStr);
-		System.out.println("Thermostat status: " + updateThermoStatusStr);
+		System.out.println("Thermostat current temperature: " + updateTempStr);
+		System.out.println("Thermostat current status: " + updateThermoStatusStr);
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -224,7 +225,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("lightData".equals(receivedMsg)) {
+	if ("Light".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateBrightnessStr = serverController.getUpdateBrightness().toString();
@@ -233,7 +234,10 @@ public class IoTServer extends AbstractServer {
 		sendToAllClients("Light:" + updateLightStatusStr);
 		sendToAllClients("Light:" + updateLightColorStr);
 		sendToAllClients("Light:" + updateBrightnessStr);
-		System.out.println("Light status: " + updateLightStatusStr);
+		System.out.println("Light current status: " + updateLightStatusStr);
+		System.out.println("Light current color: " + updateLightColorStr);
+		System.out.println("Light current brightness: " + updateBrightnessStr);
+
 	    } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -244,7 +248,7 @@ public class IoTServer extends AbstractServer {
 
 	// --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if (receivedMsg.startsWith("lock")) {
+	if (receivedMsg.startsWith("Lock")) {
 	    // RETURN DATA OF THE LOCK TO CLIENTS
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 	    updateLockPass = serverController.getLockPassword();
@@ -252,6 +256,8 @@ public class IoTServer extends AbstractServer {
 	    try {
 		sendToAllClients(updateLockStatusStr);
 		sendToAllClients(updateLockPass);
+		System.out.println("Lock current status: " + updateLockStatusStr);
+		System.out.println("Lock current password: " + updateLockPass);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -313,10 +319,6 @@ public class IoTServer extends AbstractServer {
 	    String[] part = receivedMsg.split(",");
 	    String data = part[1];
 	    serverController.setWaterTimer(data);
-
-	    // Testing
-	    System.out.println(data);
-	    // Testing
 	    startTimer(serverController.getWaterTimer());
 
 	}

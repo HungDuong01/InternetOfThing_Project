@@ -100,7 +100,7 @@ public class SmartHomeClient extends AbstractClient {
     // Send Msg to Server When Main Menu Thermostat Button Pressed
     public void thermostatMainMenuToServer() {
 	try {
-	    sendToServer("thermoData");
+	    sendToServer("Thermo");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -109,7 +109,7 @@ public class SmartHomeClient extends AbstractClient {
     // Send Msg to Server When Main Menu Smart Light Button Pressed
     public void lightMainMenuToServer() {
 	try {
-	    sendToServer("lightData");
+	    sendToServer("Light");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
@@ -128,7 +128,7 @@ public class SmartHomeClient extends AbstractClient {
     // Send Msg to Server When Main Menu Smart Lock Button Pressed
     public void lockMainMenuToServer() {
 	try {
-	    sendToServer("lock:");
+	    sendToServer("Lock");
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
