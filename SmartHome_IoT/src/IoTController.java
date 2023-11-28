@@ -15,6 +15,8 @@
  *                  SmartDevice.java (many to one) 
  * ------------------------------------------------------------------------------------
  */
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,10 +167,19 @@ public class IoTController {
 	((SmartWaterSystem) devices.get(3)).setWaterLimit(waterLimit);
     }
 
-    public Integer getWaterUsage() {
+    public Integer getWaterLimit() {
 	return ((SmartWaterSystem) devices.get(3)).getWaterLimit();
     }
 
+    public void setWaterTimer(String timeStr) {
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
+	LocalTime tempTimer = LocalTime.parse(timeStr, format);
+	((SmartWaterSystem) devices.get(3)).setTimer(tempTimer);
+    }
+
+    public LocalTime getWaterTimer() {
+	return ((SmartWaterSystem) devices.get(3)).getTimer();
+    }
     // --- END ---
 
     // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---

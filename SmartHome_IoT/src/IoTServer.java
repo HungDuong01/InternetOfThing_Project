@@ -19,8 +19,13 @@
  * 3. lockData, lockON, lockOFF, lock
 */
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.lloseng.ocsf.server.AbstractServer;
 import com.lloseng.ocsf.server.ConnectionToClient;
@@ -39,12 +44,40 @@ public class IoTServer extends AbstractServer {
 
     }
 
+    public long calculateDelay(LocalTime targetTime) {
+	LocalDateTime now = LocalDateTime.now();
+	LocalDateTime targetDateTime = now.with(targetTime);
+
+	// If targetDateTime has already passed, add a day's duration
+	if (targetDateTime.isBefore(now)) {
+	    targetDateTime = targetDateTime.plusDays(1);
+	}
+
+	Duration duration = Duration.between(now, targetDateTime);
+	return duration.toMillis();
+    }
+
+    public void startTimer(LocalTime targetTime) {
+	long delay = calculateDelay(targetTime);
+
+	Timer timer = new Timer();
+	TimerTask task = new TimerTask() {
+	    @Override
+	    public void run() {
+		System.out.println("Timer task executed at " + LocalTime.now());
+		sendToAllClients("Water:" + serverController.getDeviceAlertMessage(3));
+	    }
+	};
+
+	timer.schedule(task, delay);
+    }
+
     @Override
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 	// TODO Auto-generated method stub
 	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr, updateLockPass;
+		updateLockStatusStr, updateLockPass, updateWaterLimit;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
@@ -215,8 +248,13 @@ public class IoTServer extends AbstractServer {
 	    // RETURN DATA OF THE LOCK TO CLIENTS
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 	    updateLockPass = serverController.getLockPassword();
-	    sendToAllClients(updateLockStatusStr);
-	    sendToAllClients(updateLockPass);
+
+	    try {
+		sendToAllClients(updateLockStatusStr);
+		sendToAllClients(updateLockPass);
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 
 	}
 
@@ -270,6 +308,34 @@ public class IoTServer extends AbstractServer {
 	// --- END ---
 
 	// --- PERFORM WATER SYSTEM USE CASES BASED ON THE RECEIVED MESSAGE ---
+
+	if (receivedMsg.startsWith("Water")) {
+	    String[] part = receivedMsg.split(",");
+	    String data = part[1];
+	    serverController.setWaterTimer(data);
+
+	    // Testing
+	    System.out.println(data);
+	    // Testing
+	    startTimer(serverController.getWaterTimer());
+
+	}
+
+	if (receivedMsg.startsWith("waterLimit")) {
+	    String[] part = receivedMsg.split(",");
+	    String data = part[1];
+	    Integer limit = Integer.parseInt(data);
+	    serverController.setWaterLimit(limit);
+	    updateWaterLimit = serverController.getWaterLimit().toString();
+
+	    try {
+		sendToAllClients("Water:New water limit has been set " + updateWaterLimit);
+		System.out.println(updateWaterLimit); // Testing
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+
+	}
 
 	// --- END ---
 
