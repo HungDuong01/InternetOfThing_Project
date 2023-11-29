@@ -43,6 +43,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -1020,29 +1021,33 @@ public class GUIController {
 	/* ----------- SMART SECURITY CAMERA PAGE---------------- */
 
 	@FXML
+	private TextField fromHourCamera;
+
+	@FXML
+	private TextField fromMinuteCamera;
+
+	@FXML
+	private TextArea notificationCameraArea;
+
+	@FXML
 	private Pane securityCameraPane;
 
 	@FXML
-	void saveButtonPressed(ActionEvent event) {
+	private Slider sliderAngleCamera;
 
-	}
+	@FXML
+	private TextField toHourCamera;
 
-	// Return to Main Menu from Camera Page
+	@FXML
+	private TextField toMinuteCamera;
 
 	@FXML
 	void returnCameraButton(ActionEvent event) {
 
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
-			stage.setScene(mainMenuScene);
+	}
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	@FXML
+	void showFootageButtonPressed(ActionEvent event) {
 
 	}
 
