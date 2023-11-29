@@ -816,7 +816,7 @@ public class GUIController {
 		try {
 			temperatureLabel.setText(msg);
 		} catch (Exception e) {
-			System.out.println("Server sent updated data to all client");
+			System.out.println("Something wong temperature Label");
 		}
 	}
 
@@ -825,8 +825,7 @@ public class GUIController {
 		try {
 			historyMessageBox.setText(msg);
 		} catch (Exception e) {
-			e.printStackTrace();
-
+			System.out.println("Something wong history box");
 		}
 	}
 
