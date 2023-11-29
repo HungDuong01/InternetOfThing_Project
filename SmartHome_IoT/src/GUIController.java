@@ -66,9 +66,21 @@ public class GUIController {
 		this.client = client;
 	}
 
+	public boolean shouldUpdateSlider(boolean b) {
+		return b;
+	}
+
 	public void initialize() {
 		try {
 			setupListviewDevicelistview();
+			// Get the root node of the current scene
+			if (sliderAngleCamera != null) {
+				sliderAngleCamera.valueProperty().addListener((observable, oldValue, newValue) -> {
+					if (shouldUpdateSlider(true)) {
+						client.cameraAngleMsgToServer(newValue.intValue());
+					}
+				});
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1043,12 +1055,27 @@ public class GUIController {
 
 	@FXML
 	void returnCameraButton(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@FXML
 	void showFootageButtonPressed(ActionEvent event) {
-		//
+
+	}
+
+	public void setCameraAngle(int angle) {
+		sliderAngleCamera.setValue(angle);
 
 	}
 

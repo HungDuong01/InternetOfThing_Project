@@ -44,7 +44,6 @@ public class IoTServer extends AbstractServer {
 
     }
 
-    // --- CHECKING THE TIME DELAY FUNCTION ---
     public long calculateDelay(LocalTime targetTime) {
 	LocalDateTime now = LocalDateTime.now();
 	LocalDateTime targetDateTime = now.with(targetTime);
@@ -58,11 +57,7 @@ public class IoTServer extends AbstractServer {
 	return duration.toMillis();
     }
 
-    // --- CHECKING TIME DELAY FUNCTION ENDS HERE ---
-
-    // --- TIMER FUNCTION ---
     public void startTimer(LocalTime targetTime) {
-	// Calculate the time to check if time has passed the current time
 	long delay = calculateDelay(targetTime);
 
 	Timer timer = new Timer();
@@ -76,10 +71,6 @@ public class IoTServer extends AbstractServer {
 
 	timer.schedule(task, delay);
     }
-
-    // --- TIMER FUNCTION ENDS HERE ---
-
-    // --- HANDLE CLIENT'S MESSAGES ---
 
     @Override
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
@@ -373,8 +364,6 @@ public class IoTServer extends AbstractServer {
 	// --- END ---
 
     }
-
-    // --- HANDLE MESSAGE FROM CLIENT ENDS HERE ---
 
     @Override
     protected void clientConnected(ConnectionToClient client) {
