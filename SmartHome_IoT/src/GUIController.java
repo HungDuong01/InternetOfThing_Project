@@ -30,7 +30,6 @@
 import java.io.IOException;
 
 import javafx.animation.FillTransition;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -790,7 +789,7 @@ public class GUIController {
 			temperatureLabel.setVisible(status);
 
 		} catch (Exception e) {
-			System.out.println("fortune read here temperature label");
+
 		}
 
 	}
@@ -816,7 +815,7 @@ public class GUIController {
 		try {
 			temperatureLabel.setText(msg);
 		} catch (Exception e) {
-			System.out.println("Something wong temperature Label");
+			System.out.println("Server sent updated data to all client");
 		}
 	}
 
@@ -910,7 +909,11 @@ public class GUIController {
 	}
 
 	public void setLightVisible(Boolean status) {
-		brightnessLabel.setVisible(status);
+		try {
+			brightnessLabel.setVisible(status);
+		} catch (Exception e) {
+
+		}
 	}
 
 	// ON Button on Smart Light page sends Msg to Server
@@ -939,7 +942,6 @@ public class GUIController {
 		try {
 			notiLightTextArea.setText(msg);
 		} catch (Exception e) {
-			e.printStackTrace();
 
 		}
 	}
@@ -1002,7 +1004,7 @@ public class GUIController {
 		try {
 			brightnessLabel.setText(msg);
 		} catch (Exception e) {
-			System.out.println("Server sent updated data to all client");
+
 		}
 	}
 
@@ -1010,7 +1012,7 @@ public class GUIController {
 		try {
 			colorNotification.setText(msg);
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
 
 	}
@@ -1144,7 +1146,6 @@ public class GUIController {
 		try {
 			waterUsageHistoryArea.setText(msg);
 		} catch (Exception e) {
-			e.printStackTrace();
 
 		}
 
@@ -1218,15 +1219,23 @@ public class GUIController {
 			// USER ENTER WRONG PASSWORD MORE THAN 3 TIMES
 			// DISPLAY THE ALERT MESSAGE THAT IS SENT FROM SERVER
 			if (count > 3) {
-				Platform.runLater(() -> smartLockHistoryArea.setText(msg));
+				try {
+					smartLockHistoryArea.setText(msg);
+				} catch (Exception e) {
+
+				}
 			}
 
 		} else if (!msg.equals("Password has been set")) {
-			Platform.runLater(() -> smartLockHistoryArea.setText(msg));
-			enterPasswordTextField.setStyle("-fx-border-color: green;");
-			enterPasswordTextField.setPromptText("Correct Password");
-			enterPasswordTextField.clear();
-			count = 0;
+			try {
+				smartLockHistoryArea.setText(msg);
+				enterPasswordTextField.setStyle("-fx-border-color: green;");
+				enterPasswordTextField.setPromptText("Correct Password");
+				enterPasswordTextField.clear();
+				count = 0;
+			} catch (Exception e) {
+
+			}
 		}
 	}
 
