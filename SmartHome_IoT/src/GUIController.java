@@ -790,7 +790,7 @@ public class GUIController {
 			temperatureLabel.setVisible(status);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("fortune read here temperature label");
 		}
 
 	}
