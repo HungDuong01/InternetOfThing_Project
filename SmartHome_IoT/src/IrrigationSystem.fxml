@@ -79,11 +79,6 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-         <children>
-            <TextArea fx:id="waterUsageHistoryArea" layoutX="-136.0" layoutY="-10.0" prefHeight="116.0" prefWidth="320.0" style="-fx-background-color: white;" />
-         </children>
-      </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
             <Pane layoutX="-31.0" layoutY="-16.0" prefHeight="102.0" prefWidth="176.0">
@@ -125,6 +120,20 @@
          <children>
             <TextField fx:id="hourTextField" layoutX="-15.0" layoutY="101.0" onKeyTyped="#hourKeyTyped" prefHeight="33.0" prefWidth="43.0" promptText="HH" />
             <TextField fx:id="minuteTextField" layoutX="54.0" layoutY="100.0" onKeyTyped="#minuteKeyTyped" prefHeight="33.0" prefWidth="43.0" promptText="MM" />
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <children>
+            <ImageView fitHeight="107.0" fitWidth="504.0" layoutX="-337.0" layoutY="-47.0">
+               <image>
+                  <Image url="@water.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <children>
+            <TextArea fx:id="waterUsageHistoryArea" layoutX="-136.0" layoutY="-10.0" prefHeight="116.0" prefWidth="320.0" style="-fx-background-color: white;" />
          </children>
       </Pane>
    </children>
