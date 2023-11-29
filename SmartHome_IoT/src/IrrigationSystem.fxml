@@ -133,7 +133,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
-            <TextArea fx:id="waterUsageHistoryArea" layoutX="-136.0" layoutY="-10.0" prefHeight="116.0" prefWidth="320.0" style="-fx-background-color: white;" />
+            <TextArea fx:id="waterUsageHistoryArea" editable="false" layoutX="-136.0" layoutY="-10.0" prefHeight="116.0" prefWidth="320.0" style="-fx-background-color: white;" />
          </children>
       </Pane>
    </children>
