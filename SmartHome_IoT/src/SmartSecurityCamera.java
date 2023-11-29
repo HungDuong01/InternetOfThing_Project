@@ -1,3 +1,5 @@
+import java.util.List;
+
 /* ------------------------------------------------------------------------------------
  * SmartSecurityCamera.java
  * 
@@ -14,13 +16,15 @@
  */
 public class SmartSecurityCamera extends SmartDevice {
     private Integer angle;
+    private List<String> videoResource;
 
     public SmartSecurityCamera(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
     }
 
-// --- SETTER AND GETTER FUNCTIONS FOR CHANGING THE CAMERA'S ANGLE --- 
+    // --- SETTER AND GETTER FUNCTIONS TO CHANGE THE CAMERA'S ANGLE ---
+
     public Integer getAngle() {
 	return angle;
     }
@@ -28,7 +32,16 @@ public class SmartSecurityCamera extends SmartDevice {
     public void setAngle(Integer angle) {
 	this.angle = angle;
     }
-// --- END ---
+
+    // --- END ---
+
+    // --- GETTER FUNCTIONS TO GET VIDEO FOOTAGE ---
+
+    public String getVideoResource(Integer index) {
+	return videoResource.get(index);
+    }
+
+    // --- END ---
 
     @Override
     public String alertMessage() {

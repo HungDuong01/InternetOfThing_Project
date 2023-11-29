@@ -192,6 +192,11 @@ public class IoTController {
 	return ((SmartSecurityCamera) devices.get(4)).getAngle();
     }
 
+    public String getVideoResource(Integer index) {
+	String cameraResource = ((SmartSecurityCamera) devices.get(4)).getVideoResource(index);
+	return cameraResource;
+    }
+
     // --- END ---
 
     // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
