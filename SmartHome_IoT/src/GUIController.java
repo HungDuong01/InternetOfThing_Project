@@ -1048,6 +1048,7 @@ public class GUIController {
 
 	@FXML
 	void showFootageButtonPressed(ActionEvent event) {
+		//
 
 	}
 
