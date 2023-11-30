@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
+import javafx.animation.*;
 import javafx.animation.FillTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -907,7 +907,7 @@ public class GUIController {
 				fortuneArt7, fortuneArt8, fortuneArt9, fortuneArt10 };
 
 		// Duration for the transition
-		Duration duration = Duration.seconds(1.0);
+		Duration duration = Duration.seconds(1.5);
 
 		// Calculate the duration for each polygon
 		double durationPerPolygon = duration.toMillis() / polygons.length;
@@ -1199,11 +1199,59 @@ public class GUIController {
 
 	}
 
-	// Set visibility of Water Gif in the Smart Water System Scene
-	public void setWaterVisible(boolean b) {
-		waterMovement.setVisible(b);
-	}
+	// EDITED FROM HERE 
+	 private ImageView waterMovement1;
 
+	    public void WaterAnimator(ImageView waterMovement) {
+	        this.waterMovement = waterMovement;
+	    }
+
+	    public void setWaterVisible(boolean b) {
+	        if (b) {
+	            fadeInFromLeft();
+	        } else {
+	            fadeOutToRight();
+	        }
+	    }
+
+	    private void fadeInFromLeft() {
+	        waterMovement.setOpacity(0); // Start with zero opacity
+
+	        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
+	        transition.setFromX(-waterMovement.getBoundsInParent().getWidth()); // Start off-screen left
+	        transition.setToX(0); // Move to the visible area
+	        transition.setInterpolator(Interpolator.EASE_BOTH);
+
+	        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
+	        fadeTransition.setFromValue(0); // Start with zero opacity
+	        fadeTransition.setToValue(1); // Fully visible
+	        fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
+
+	        ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
+	        parallelTransition.play();
+	    }
+
+	    private void fadeOutToRight() {
+	        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
+	        transition.setFromX(0); // Start from visible area
+	        transition.setToX(waterMovement.getBoundsInParent().getWidth()); // Move off-screen right
+	        transition.setInterpolator(Interpolator.EASE_BOTH);
+
+	        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
+	        fadeTransition.setFromValue(1); // Fully visible
+	        fadeTransition.setToValue(0); // Fade out to zero opacity
+	        fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
+
+	        ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
+	        parallelTransition.play();
+	    }
+	
+	
+
+	
+	//  TO HERE
+	    
+	    
 	/* ---------------------- SMART LOCK PAGE ------------------------ */
 
 	@FXML
