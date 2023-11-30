@@ -379,7 +379,18 @@ public class GUIController {
 
 	@FXML
 	private Button cameraButton;
+	
+	//
+    @FXML
+    private ImageView image1;
 
+    @FXML
+    private ImageView image2;
+
+    @FXML
+    private ImageView image3;
+
+    //
 	@FXML
 	private Button lightButton;
 
@@ -394,6 +405,14 @@ public class GUIController {
 
 	@FXML
 	private Pane mainMenupane;
+	
+	 private double originalOpacity1 = 1.0;
+	    private double originalSize1 = 1.0;
+	    private double originalOpacity2 = 1.0;
+	    private double originalSize2 = 1.0;
+	    private double originalOpacity3 = 1.0;
+	    private double originalSize3 = 1.0;
+
 
 	@FXML
 	void AdminroombuttonPressed(ActionEvent event) {
@@ -447,7 +466,59 @@ public class GUIController {
 		}
 
 	}
+	
+	//
 
+	 @FXML
+	    void image1entered(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        originalOpacity1 = imageView.getOpacity();
+	        originalSize1 = imageView.getScaleX();
+	        adjustImageProperties(imageView, 1.0, originalSize1 + 0.05);
+	    }
+
+	    @FXML
+	    void image1exited(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        adjustImageProperties(imageView, 0.6, originalSize1);
+	    }
+
+	    @FXML
+	    void image2entered(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        originalOpacity2 = imageView.getOpacity();
+	        originalSize2 = imageView.getScaleX();
+	        adjustImageProperties(imageView, 1.0, originalSize2 + 0.05);
+	    }
+
+	    @FXML
+	    void image2exited(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        adjustImageProperties(imageView, 0.6, originalSize2);
+	    }
+
+	    @FXML
+	    void image3entered(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        originalOpacity3 = imageView.getOpacity();
+	        originalSize3 = imageView.getScaleX();
+	        adjustImageProperties(imageView, 1.0, originalSize3 + 0.05);
+	    }
+
+	    @FXML
+	    void image3exited(MouseEvent event) {
+	        ImageView imageView = (ImageView) event.getSource();
+	        adjustImageProperties(imageView, 0.6, originalSize3);
+	    }
+
+	    private void adjustImageProperties(ImageView imageView, double opacity, double size) {
+	        imageView.setOpacity(opacity);
+	        imageView.setScaleX(size);
+	        imageView.setScaleY(size);
+	    }
+	    
+	  
+	    ///
 	// Smart Light Button to go Light Page
 	@FXML
 	void smartLightButtonpressed(ActionEvent event) {
@@ -602,6 +673,9 @@ public class GUIController {
 		lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
 	}
+	
+	
+    ///
 
 	/*---------------- ADMIN ROOM MENU ---------------------*/
 

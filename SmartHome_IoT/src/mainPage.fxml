@@ -172,17 +172,17 @@
             <DropShadow />
          </effect>
       </Button>
-      <ImageView fitHeight="161.0" fitWidth="233.0" layoutX="60.0" layoutY="141.0">
+      <ImageView fx:id="image1" fitHeight="161.0" fitWidth="233.0" layoutX="60.0" layoutY="141.0" onMouseEntered="#image1entered" onMouseExited="#image1exited" opacity="0.6">
          <image>
             <Image url="@images-2-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="245.0" layoutX="346.0" layoutY="140.0">
+      <ImageView fx:id="image2" fitHeight="170.0" fitWidth="245.0" layoutX="346.0" layoutY="140.0" onMouseEntered="#image2entered" onMouseExited="#image2exited" opacity="0.51">
          <image>
             <Image url="@pngtree-smart-home-isometric-internet-of-things-concept-png-image_2140512-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="245.0" layoutX="627.0" layoutY="140.0">
+      <ImageView fx:id="image3" fitHeight="170.0" fitWidth="245.0" layoutX="627.0" layoutY="140.0" onMouseEntered="#image3entered" onMouseExited="#image3exited" opacity="0.63">
          <image>
             <Image url="@3rdpic.png" />
          </image>
