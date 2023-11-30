@@ -596,7 +596,7 @@ public class GUIController {
 	@FXML
 	private Label useridlabel;
 
-	private static int newDeviceCount = 0;
+	private static int newDeviceCount = 5;
 
 	private void setupListviewDevicelistview() {
 		if (Devicelistview != null) {
