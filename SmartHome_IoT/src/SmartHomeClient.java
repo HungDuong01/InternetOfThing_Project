@@ -410,11 +410,14 @@ public class SmartHomeClient extends AbstractClient {
 				if (data.contains("Completed")) {
 					Platform.runLater(() -> controller.displayWaterHistory(""));
 					Platform.runLater(() -> controller.displayWaterHistory(data));
+					Platform.runLater(() -> controller.setWaterVisible(false));
+
 				}
 
 				else if (data.contains("New water")) {
 					Platform.runLater(() -> controller.displayWaterHistory(""));
 					Platform.runLater(() -> controller.displayWaterHistory(data));
+
 				}
 
 			}
