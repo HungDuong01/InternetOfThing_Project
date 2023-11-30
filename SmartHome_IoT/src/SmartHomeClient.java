@@ -19,6 +19,9 @@
 */
 
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
@@ -100,7 +103,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Thermostat Button Pressed
 	public void thermostatMainMenuToServer() {
 		try {
-			sendToServer("Thermo");
+			sendToServer("thermoData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -109,7 +112,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Smart Light Button Pressed
 	public void lightMainMenuToServer() {
 		try {
-			sendToServer("Light");
+			sendToServer("lightData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -118,7 +121,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Water System Button Pressed
 	public void waterMainMenuToServer() {
 		try {
-			sendToServer("Water");
+			sendToServer("waterData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -128,7 +131,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Smart Lock Button Pressed
 	public void lockMainMenuToServer() {
 		try {
-			sendToServer("Lock");
+			sendToServer("lockData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -137,7 +140,7 @@ public class SmartHomeClient extends AbstractClient {
 	// Send Msg to Server When Main Menu Security Camera Button Pressed
 	public void cameraMainMenuToServer() {
 		try {
-			sendToServer("Camera");
+			sendToServer("cameraData");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -389,10 +392,12 @@ public class SmartHomeClient extends AbstractClient {
 
 				if (data.equals("true")) {
 					Platform.runLater(() -> controller.setLockHistoryArea("Door has been LOCKED by User"));
+
 				}
 
 				else if (data.equals("false")) {
 					Platform.runLater(() -> controller.setLockHistoryArea("Door has been UNLOCKED by User"));
+
 				}
 
 				else if (data.contains("New password")) {
@@ -423,12 +428,18 @@ public class SmartHomeClient extends AbstractClient {
 			}
 
 			// Handling Received Data for Smart Security Camera From Server
+			ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+
 			if (device.equals("Camera")) {
-//				int newValueAngle = Integer.parseInt(data);
-//				System.out.println("Angle: " + newValueAngle);
-//				Platform.runLater(() -> controller.shouldUpdateSlider(true));
-//				Platform.runLater(() -> controller.setCameraAngle(newValueAngle));
-//				Platform.runLater(() -> controller.shouldUpdateSlider(false));
+				int newValueAngle = Integer.parseInt(data);
+				System.out.println("Angle: " + newValueAngle);
+
+				// Introduce a 1-second delay before executing the code block
+				executorService.schedule(() -> {
+					Platform.runLater(() -> controller.shouldUpdateSlider(true));
+					Platform.runLater(() -> controller.setCameraAngle(newValueAngle));
+					Platform.runLater(() -> controller.shouldUpdateSlider(false));
+				}, 1, TimeUnit.SECONDS);
 			}
 		}
 	}
