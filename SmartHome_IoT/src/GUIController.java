@@ -95,7 +95,7 @@ public class GUIController {
 							// Delay sending the value by 1 second
 							client.cameraAngleMsgToServer(currentValue);
 						}
-					}
+					} //
 				});
 			}
 		} catch (Exception e) {

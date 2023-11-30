@@ -48,7 +48,7 @@ public class SmartHomeClient extends AbstractClient {
 	// setter and getter method to handle the temperature from server
 	public void setTempData(int temp) {
 		this.temp = temp;
-	}
+	}//
 
 	public int getTempData() {
 
