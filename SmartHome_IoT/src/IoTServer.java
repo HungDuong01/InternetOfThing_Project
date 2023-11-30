@@ -43,6 +43,7 @@ public class IoTServer extends AbstractServer {
 	this.serverController = new IoTController();
 
     }
+    // --- FUNCTION TO DETERMINE THE DELAY OF TIME ENTERED BY USER ---
 
     public long calculateDelay(LocalTime targetTime) {
 	LocalDateTime now = LocalDateTime.now();
@@ -56,6 +57,10 @@ public class IoTServer extends AbstractServer {
 	Duration duration = Duration.between(now, targetDateTime);
 	return duration.toMillis();
     }
+
+    // --- CALCULATE DELAY FUNCTION ENDS HERE ---
+
+    // --- TIMER FUNCTION TO PERFORM A GIVEN TASK ---
 
     public void startTimer(LocalTime targetTime) {
 	long delay = calculateDelay(targetTime);
@@ -71,6 +76,10 @@ public class IoTServer extends AbstractServer {
 
 	timer.schedule(task, delay);
     }
+
+    // --- TIMER FUNCTION ENDS HERE ---
+
+    // --- HANDLE MESSAGE FROM CLIENT STARTS HERE ---
 
     @Override
     protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
@@ -354,7 +363,7 @@ public class IoTServer extends AbstractServer {
 	    serverController.setCameraAngle(angle);
 	    updateCameraAngle = serverController.getCameraAngle().toString();
 	    try {
-		sendToAllClients("Camera:New camera angle has been set " + updateCameraAngle);
+		sendToAllClients("Camera:" + updateCameraAngle);
 		System.out.println("Camera updated angle: " + updateCameraAngle); // Testing
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -365,10 +374,12 @@ public class IoTServer extends AbstractServer {
 
     }
 
+    // --- HANDLE MESSAGE FROM CLIENT FUNCTION ENDS HERE ---
+
     @Override
     protected void clientConnected(ConnectionToClient client) {
 	// DISPLAY THE CONNECTED CLIENT
-	System.out.println("Client connected: " + client);
+	System.out.println("\nClient connected: " + client.getInetAddress());
 
     }
 

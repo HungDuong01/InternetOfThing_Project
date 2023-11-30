@@ -305,6 +305,19 @@ public class SmartHomeClient extends AbstractClient {
 
 	}
 
+	/* -------------------- SMART SECURITY CAMERA PAGE ----------- */
+
+	public void cameraAngleMsgToServer(int angle) {
+		try {
+			sendToServer("Camera," + angle);
+			System.out.println("Sent the camera angle: " + angle + " to server.");
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
 	/* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
 
 	@Override
@@ -397,19 +410,25 @@ public class SmartHomeClient extends AbstractClient {
 				if (data.contains("Completed")) {
 					Platform.runLater(() -> controller.displayWaterHistory(""));
 					Platform.runLater(() -> controller.displayWaterHistory(data));
+					Platform.runLater(() -> controller.setWaterVisible(false));
+
 				}
 
 				else if (data.contains("New water")) {
 					Platform.runLater(() -> controller.displayWaterHistory(""));
 					Platform.runLater(() -> controller.displayWaterHistory(data));
+
 				}
 
 			}
 
 			// Handling Received Data for Smart Security Camera From Server
 			if (device.equals("Camera")) {
-				// data for camera if statements here. //
-
+//				int newValueAngle = Integer.parseInt(data);
+//				System.out.println("Angle: " + newValueAngle);
+//				Platform.runLater(() -> controller.shouldUpdateSlider(true));
+//				Platform.runLater(() -> controller.setCameraAngle(newValueAngle));
+//				Platform.runLater(() -> controller.shouldUpdateSlider(false));
 			}
 		}
 	}

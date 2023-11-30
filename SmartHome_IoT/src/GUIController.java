@@ -28,6 +28,9 @@
  */
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.animation.FillTransition;
 import javafx.collections.FXCollections;
@@ -46,6 +49,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -66,9 +70,29 @@ public class GUIController {
 		this.client = client;
 	}
 
+	public boolean shouldUpdateSlider(boolean b) {
+		return b;
+	}
+
 	public void initialize() {
 		try {
+			// Initialize objects for Admin Room
 			setupListviewDevicelistview();
+
+			// Slider function used in SDCamera.fxml
+			Set<Integer> allowedAngles = new HashSet<>(Arrays.asList(0, 45, 90, 135, 180, 225, 270, 315, 360));
+
+			if (sliderAngleCamera != null) {
+				sliderAngleCamera.valueProperty().addListener((observable, oldValue, newValue) -> {
+					if (shouldUpdateSlider(true)) {
+						int currentValue = newValue.intValue();
+
+						if (allowedAngles.contains(currentValue)) {
+							client.cameraAngleMsgToServer(currentValue);
+						}
+					}
+				});
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -829,7 +853,7 @@ public class GUIController {
 		}
 	}
 
-	/* ---------------------- SMART LIGHT PAGE -------------------------------- */
+	/* ---------------------- SMART LIGHT PAGE ------------------------- */
 
 	@FXML
 	private Label brightnessLabel;
@@ -1043,12 +1067,27 @@ public class GUIController {
 
 	@FXML
 	void returnCameraButton(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@FXML
 	void showFootageButtonPressed(ActionEvent event) {
-		//
+
+	}
+
+	public void setCameraAngle(int angle) {
+		sliderAngleCamera.setValue(angle);
 
 	}
 
@@ -1062,6 +1101,8 @@ public class GUIController {
 	private TextField minuteTextField;
 	@FXML
 	private TextField waterLimitTextField;
+	@FXML
+	private ImageView waterMovement;
 
 	// Setting Characters typed to a limit of Two for Hours
 	@FXML
@@ -1135,6 +1176,7 @@ public class GUIController {
 		String time = "Water," + hour + ":" + minute;
 		System.out.println("Sent Water Duration time till -  " + hour + ':' + minute);
 		waterUsageHistoryArea.setText("Water has been set till: " + hour + ":" + minute);
+		setWaterVisible(true);
 		client.waterTimeMsgToServer(time);
 
 	}
@@ -1143,7 +1185,7 @@ public class GUIController {
 	@FXML
 	void saveWaterLimitButton(ActionEvent event) {
 		String waterLimit = waterLimitTextField.getText();
-		System.out.println("Sent Water Limit of: " + waterLimit + "To Server");
+		System.out.println("Sent Water Limit of: " + waterLimit + " To Server");
 		client.waterLimitMsgToServer("waterLimit," + waterLimit);
 
 	}
@@ -1155,6 +1197,11 @@ public class GUIController {
 
 		}
 
+	}
+
+	// Set visibility of Water Gif in the Smart Water System Scene
+	public void setWaterVisible(boolean b) {
+		waterMovement.setVisible(b);
 	}
 
 	/* ---------------------- SMART LOCK PAGE ------------------------ */
