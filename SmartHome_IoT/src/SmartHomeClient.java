@@ -483,10 +483,9 @@ public class SmartHomeClient extends AbstractClient {
 
 			}
 
-			if (device.equals("Camera")) {
-				if (data.equals("Footage")) {
-					Platform.runLater(() -> controller.showFootage());
-				}
+			if (device.equals("cameraFootage")) {
+				Platform.runLater(() -> controller.showFootage());
+
 			}
 
 		}

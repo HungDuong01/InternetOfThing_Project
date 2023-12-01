@@ -1316,12 +1316,16 @@ public class GUIController {
 			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 
+			// Display start time and end time from Camera.
+			startCameraViewField.setText(startTime);
+			endCameraViewField.setText(endTime);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		// Path to the fortunesVideo.mp4 file.
-		String videoFilePath = "fortunesVideo.mp4"; // Replace with your video file path
+		String videoFilePath = "/Users/ban/git/InternetOfThing_Project/SmartHome_IoT/src/fortunesVideo.mp4";
 
 		File videoFile = new File(videoFilePath);
 		if (!videoFile.exists()) {
