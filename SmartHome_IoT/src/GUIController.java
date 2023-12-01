@@ -176,12 +176,23 @@ public class GUIController {
 	@FXML
 	void loginButtonPressed(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) loginPane.getScene().getWindow();
-			stage.setScene(mainMenuScene);
+
+			String email = emailTextField.getText();
+			String password = passwordTextField.getText();
+			Database db = new Database();
+
+			boolean success = db.authenticateUser(email, password);
+
+			if (success) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+				loader.setController(this);
+				Parent root = loader.load();
+				Scene mainMenuScene = new Scene(root);
+				Stage stage = (Stage) loginPane.getScene().getWindow();
+				stage.setScene(mainMenuScene);
+			} else {
+				System.out.println("User has not signed up.");
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -243,6 +254,8 @@ public class GUIController {
 	// Sign up Button pressed to Switch Scene
 	@FXML
 	void signUpButtonPressed(ActionEvent event) {
+
+		// Enter User Sign Up text fields and save it into the DataBase.
 		try {
 
 			String firstName = firstNameTextField.getText();
@@ -252,6 +265,16 @@ public class GUIController {
 
 			Database db = new Database();
 
+			boolean success = db.signUpUser(firstName, lastName, email, password);
+
+			if (success) {
+				System.out.println("User Sign Up Successful");
+
+			} else {
+
+				System.out.println("Sign Up failed. User might exist");
+			}
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
@@ -259,7 +282,7 @@ public class GUIController {
 			Stage stage = (Stage) signUpPane.getScene().getWindow();
 			stage.setScene(SignupScene);
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -339,31 +362,49 @@ public class GUIController {
 
 	/*------------------- ADMIN REGISTER PAGE -------------------*/
 	@FXML
-	private TextField AdminFirstnameTextField;
+	private TextField adminFirstNameTextField;
 
 	@FXML
-	private TextField AdminLastnameTextField;
+	private TextField adminLastNameTextField;
 
 	@FXML
-	private TextField AdminRegEmailTextField;
+	private TextField adminEmailTextField;
 
 	@FXML
-	private TextField AdminRegpasswordTextField;
+	private TextField adminPasswordTextField;
 
 	@FXML
-	private GridPane Adminregisterpane;
+	private GridPane adminRegisterPane;
 
 	@FXML
-	private TextField AdminrepasswordTextField;
+	private TextField adminRePasswordTextField;
 
 	@FXML
-	void AdminRegisterbuttonpressed(ActionEvent event) {
+	void adminRegisterButtonBressed(ActionEvent event) {
+
+		// Enter Admin Sign Up text fields and save it into the DataBase.
 		try {
+			String firstName = adminFirstNameTextField.getText();
+			String lastName = adminLastNameTextField.getText();
+			String email = adminEmailTextField.getText();
+			String password = adminPasswordTextField.getText();
+
+			Database db = new Database();
+
+			boolean success = db.signUpUser(firstName, lastName, email, password);
+
+			if (success) {
+				System.out.println("Admin Sign up Successful");
+
+			} else {
+
+				System.out.println("Sign Up failed. User might exist");
+			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene AdminregisterScene = new Scene(root);
-			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+			Stage stage = (Stage) adminRegisterPane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -371,13 +412,13 @@ public class GUIController {
 	}
 
 	@FXML
-	void Adminloginbuttonpressed(ActionEvent event) {
+	void adminLoginButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene AdminregisterScene = new Scene(root);
-			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+			Stage stage = (Stage) adminRegisterPane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 
 		} catch (IOException e) {
@@ -393,7 +434,6 @@ public class GUIController {
 	@FXML
 	private Button cameraButton;
 
-	//
 	@FXML
 	private ImageView image1;
 
@@ -403,7 +443,6 @@ public class GUIController {
 	@FXML
 	private ImageView image3;
 
-	//
 	@FXML
 	private Button lightButton;
 
