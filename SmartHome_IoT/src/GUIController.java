@@ -179,6 +179,7 @@ public class GUIController {
 
 			String email = emailTextField.getText();
 			String password = passwordTextField.getText();
+
 			Database db = new Database();
 
 			boolean success = db.authenticateUser(email, password);
@@ -190,8 +191,15 @@ public class GUIController {
 				Scene mainMenuScene = new Scene(root);
 				Stage stage = (Stage) loginPane.getScene().getWindow();
 				stage.setScene(mainMenuScene);
+
 			} else {
 				System.out.println("User has not signed up.");
+
+				// Display border red if incorrect.
+				passwordTextField.setStyle("-fx-border-color: red;");
+
+				// prompt text
+				passwordTextField.setPromptText("Incorrect Password");
 			}
 
 		} catch (IOException e) {
@@ -269,6 +277,10 @@ public class GUIController {
 
 			if (success) {
 				System.out.println("User Sign Up Successful");
+
+				// Send values to server
+				client.userSignUpToServer("User," + email);
+				client.userSignUpToServer("User," + password);
 
 			} else {
 

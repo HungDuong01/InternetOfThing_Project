@@ -98,6 +98,18 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	/* -------------------- USER SIGN PAGE ------------------------- */
+
+	// Send Email and Password after User has Signed Up to Server
+	public void userSignUpToServer(String s) {
+		try {
+			sendToServer(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	/* -------------------- MAIN MENU PAGE ------------------------- */
 
 	// Send Msg to Server When Main Menu Thermostat Button Pressed
