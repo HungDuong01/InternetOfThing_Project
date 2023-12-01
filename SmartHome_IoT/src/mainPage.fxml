@@ -46,19 +46,9 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label id="welcome message " layoutX="48.0" layoutY="78.0" text="Hi">
+      <Label layoutX="51.0" layoutY="89.0" prefHeight="47.0" prefWidth="433.0" text="Welcome to your smart home ">
          <font>
-            <Font name="Verdana Bold" size="25.0" />
-         </font>
-      </Label>
-      <Label id="welcome message " fx:id="userNameMainMenu" layoutX="85.0" layoutY="78.0" prefHeight="32.0" prefWidth="233.0">
-         <font>
-            <Font name="Verdana Bold" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="51.0" layoutY="110.0" prefHeight="26.0" prefWidth="263.0" text="Welcome to your smart home ">
-         <font>
-            <Font name="Heiti TC Light" size="18.0" />
+            <Font name="Heiti TC Medium" size="28.0" />
          </font>
       </Label>
       <Label layoutX="54.0" layoutY="312.0" prefHeight="22.0" prefWidth="63.0" text="Devices">
