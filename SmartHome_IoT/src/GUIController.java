@@ -1324,7 +1324,7 @@ public class GUIController {
 			e.printStackTrace();
 		}
 
-		// Path to the fortunesVideo.mp4 file.
+		// Path to the fortunesVideo.mp4 file
 		String videoFilePath = "/Users/ban/git/InternetOfThing_Project/SmartHome_IoT/src/fortunesVideo.mp4";
 
 		File videoFile = new File(videoFilePath);
