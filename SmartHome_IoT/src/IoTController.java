@@ -213,8 +213,4 @@ public class IoTController {
 
     // --- END ---
 
-    // --- CALL FUNCTION FROM THE ADMIN CLASS ---
-
-    // --- END ---
-
 }

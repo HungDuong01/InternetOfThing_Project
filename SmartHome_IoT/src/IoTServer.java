@@ -389,6 +389,7 @@ public class IoTServer extends AbstractServer {
 	    String password = part[4];
 	    serverController.setUserInformation(fName, lName, email, password);
 	    System.out.println("User Infomation: " + serverController.getUserInfomation());
+
 	}
 
 	// --- END ---
