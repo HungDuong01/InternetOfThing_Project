@@ -42,7 +42,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="FirstnameTextField" layoutY="19.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextField fx:id="firstNameTextField" layoutY="19.0" prefHeight="26.0" prefWidth="200.0" />
             <Label layoutX="-4.0" layoutY="2.0" prefHeight="16.0" prefWidth="92.0" text="First Name">
                <font>
                   <Font name="Heiti TC Light" size="16.0" />
@@ -57,7 +57,7 @@
                   <Font name="Heiti TC Light" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="LastnameTextField" layoutY="32.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextField fx:id="lastNameTextField" layoutY="32.0" prefHeight="26.0" prefWidth="200.0" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -81,12 +81,12 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <TextField fx:id="EmailTextField" layoutX="-2.0" layoutY="9.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextField fx:id="userEmailTextField" layoutX="-2.0" layoutY="9.0" prefHeight="26.0" prefWidth="200.0" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
-            <TextField fx:id="PassordTextField" layoutX="-2.0" layoutY="27.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextField fx:id="userPasswordTextField" layoutX="-2.0" layoutY="27.0" prefHeight="26.0" prefWidth="200.0" />
             <Label layoutX="1.0" layoutY="10.0" prefHeight="16.0" prefWidth="92.0" text="Password">
                <font>
                   <Font name="Heiti TC Light" size="16.0" />
@@ -96,19 +96,19 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <children>
-            <TextField fx:id="ReenterpasswordTetxtField" layoutY="10.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextField fx:id="reEnterPasswordTetxtField" layoutY="10.0" prefHeight="26.0" prefWidth="200.0" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <children>
-            <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#Signupbuttonpressed" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: black;" text="SignUp" textFill="WHITE" />
+            <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: black;" text="SignUp" textFill="WHITE" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" />
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
          <children>
             <Label layoutX="5.0" layoutY="9.0" prefHeight="17.0" prefWidth="142.0" text="Already have an account " />
-            <Button layoutX="146.0" layoutY="2.0" mnemonicParsing="false" onAction="#loginbuttonpressed" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: white; -fx-text-fill: black;" text="login" textFill="#1bb4fc" />
+            <Button layoutX="146.0" layoutY="2.0" mnemonicParsing="false" onAction="#userLoginButtonPressed" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: white; -fx-text-fill: black;" text="login" textFill="#1bb4fc" />
          </children>
       </Pane>
    </children>

@@ -223,32 +223,40 @@ public class GUIController {
 	/*--------------------- USER SIGNUP PAGE --------------------*/
 
 	@FXML
-	private TextField EmailTextField;
+	private TextField userEmailTextField;
 
 	@FXML
-	private TextField FirstnameTextField;
+	private TextField firstNameTextField;
 
 	@FXML
-	private TextField LastnameTextField;
+	private TextField lastNameTextField;
 
 	@FXML
-	private TextField PassordTextField;
+	private TextField userPasswordTextField;
 
 	@FXML
-	private TextField ReenterpasswordTetxtField;
+	private TextField reEnterPasswordTetxtField;
 
 	@FXML
-	private GridPane Signuppane;
+	private GridPane signUpPane;
 
 	// Sign up Button pressed to Switch Scene
 	@FXML
-	void Signupbuttonpressed(ActionEvent event) {
+	void signUpButtonPressed(ActionEvent event) {
 		try {
+
+			String firstName = firstNameTextField.getText();
+			String lastName = lastNameTextField.getText();
+			String email = userEmailTextField.getText();
+			String password = userPasswordTextField.getText();
+
+			Database db = new Database();
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene SignupScene = new Scene(root);
-			Stage stage = (Stage) Signuppane.getScene().getWindow();
+			Stage stage = (Stage) signUpPane.getScene().getWindow();
 			stage.setScene(SignupScene);
 
 		} catch (IOException e) {
@@ -258,13 +266,13 @@ public class GUIController {
 
 	// Login Button pressed to Switch Scene
 	@FXML
-	void loginbuttonpressed(ActionEvent event) {
+	void userLoginButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene SignupScene = new Scene(root);
-			Stage stage = (Stage) Signuppane.getScene().getWindow();
+			Stage stage = (Stage) signUpPane.getScene().getWindow();
 			stage.setScene(SignupScene);
 
 		} catch (IOException e) {
@@ -677,7 +685,26 @@ public class GUIController {
 
 	}
 
-	///
+	/* -------------------- ABOUT US PAGE --------------------- */
+
+	@FXML
+	private Pane aboutUsPane;
+
+	@FXML
+	void Aboutbackbuttonpressed(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) aboutUsPane.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	/*---------------- ADMIN ROOM MENU ---------------------*/
 
@@ -1451,26 +1478,6 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	/* -------------------- ABOUT US PAGE --------------------- */
-
-	@FXML
-	private Pane aboutUsPane;
-
-	@FXML
-	void Aboutbackbuttonpressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) aboutUsPane.getScene().getWindow();
-			stage.setScene(mainMenuScene);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
