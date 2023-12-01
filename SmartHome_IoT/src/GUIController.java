@@ -122,7 +122,7 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}//
 
 	/*----------------------- USER/ADMIN PAGE--------------------------- */
 
@@ -1305,12 +1305,9 @@ public class GUIController {
 	// EDITED FROM HERE
 	private ImageView waterMovement1;
 
-
-	 
-	    public void WaterAnimator(ImageView waterMovement) {
-	        this.waterMovement = waterMovement;
-	    }
-
+	public void WaterAnimator(ImageView waterMovement) {
+		this.waterMovement = waterMovement;
+	}
 
 	public void setWaterVisible(boolean b) {
 		if (b) {
