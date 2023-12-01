@@ -10,11 +10,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="21.0" layoutY="18.0" mnemonicParsing="false" onAction="#backCameraViewButton" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Back" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="347.0" layoutX="11.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" width="779.0" />
-      <ImageView fitHeight="84.0" fitWidth="98.0" layoutX="718.0" layoutY="-8.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="347.0" layoutX="11.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
+      <ImageView fitHeight="84.0" fitWidth="98.0" layoutX="457.0" layoutY="-5.0">
          <image>
             <Image url="@smart%20camera.png" />
          </image>
@@ -31,6 +31,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="770.0" layoutX="14.0" layoutY="76.0" />
+      <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="500.0" layoutX="14.0" layoutY="76.0" />
    </children>
 </Pane>
