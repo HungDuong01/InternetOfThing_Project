@@ -31,8 +31,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import javafx.animation.*;
+
+import javafx.animation.FadeTransition;
 import javafx.animation.FillTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -88,9 +92,10 @@ public class GUIController {
 						int currentValue = newValue.intValue();
 
 						if (allowedAngles.contains(currentValue)) {
+							// Delay sending the value by 1 second
 							client.cameraAngleMsgToServer(currentValue);
 						}
-					}
+					} //
 				});
 			}
 		} catch (Exception e) {
@@ -379,18 +384,18 @@ public class GUIController {
 
 	@FXML
 	private Button cameraButton;
-	
+
 	//
-    @FXML
-    private ImageView image1;
+	@FXML
+	private ImageView image1;
 
-    @FXML
-    private ImageView image2;
+	@FXML
+	private ImageView image2;
 
-    @FXML
-    private ImageView image3;
+	@FXML
+	private ImageView image3;
 
-    //
+	//
 	@FXML
 	private Button lightButton;
 
@@ -405,14 +410,13 @@ public class GUIController {
 
 	@FXML
 	private Pane mainMenupane;
-	
-	 private double originalOpacity1 = 1.0;
-	    private double originalSize1 = 1.0;
-	    private double originalOpacity2 = 1.0;
-	    private double originalSize2 = 1.0;
-	    private double originalOpacity3 = 1.0;
-	    private double originalSize3 = 1.0;
 
+	private double originalOpacity1 = 1.0;
+	private double originalSize1 = 1.0;
+	private double originalOpacity2 = 1.0;
+	private double originalSize2 = 1.0;
+	private double originalOpacity3 = 1.0;
+	private double originalSize3 = 1.0;
 
 	@FXML
 	void AdminroombuttonPressed(ActionEvent event) {
@@ -466,59 +470,58 @@ public class GUIController {
 		}
 
 	}
-	
+
 	//
 
-	 @FXML
-	    void image1entered(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        originalOpacity1 = imageView.getOpacity();
-	        originalSize1 = imageView.getScaleX();
-	        adjustImageProperties(imageView, 1.0, originalSize1 + 0.05);
-	    }
+	@FXML
+	void image1entered(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		originalOpacity1 = imageView.getOpacity();
+		originalSize1 = imageView.getScaleX();
+		adjustImageProperties(imageView, 1.0, originalSize1 + 0.05);
+	}
 
-	    @FXML
-	    void image1exited(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        adjustImageProperties(imageView, 0.6, originalSize1);
-	    }
+	@FXML
+	void image1exited(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		adjustImageProperties(imageView, 0.6, originalSize1);
+	}
 
-	    @FXML
-	    void image2entered(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        originalOpacity2 = imageView.getOpacity();
-	        originalSize2 = imageView.getScaleX();
-	        adjustImageProperties(imageView, 1.0, originalSize2 + 0.05);
-	    }
+	@FXML
+	void image2entered(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		originalOpacity2 = imageView.getOpacity();
+		originalSize2 = imageView.getScaleX();
+		adjustImageProperties(imageView, 1.0, originalSize2 + 0.05);
+	}
 
-	    @FXML
-	    void image2exited(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        adjustImageProperties(imageView, 0.6, originalSize2);
-	    }
+	@FXML
+	void image2exited(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		adjustImageProperties(imageView, 0.6, originalSize2);
+	}
 
-	    @FXML
-	    void image3entered(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        originalOpacity3 = imageView.getOpacity();
-	        originalSize3 = imageView.getScaleX();
-	        adjustImageProperties(imageView, 1.0, originalSize3 + 0.05);
-	    }
+	@FXML
+	void image3entered(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		originalOpacity3 = imageView.getOpacity();
+		originalSize3 = imageView.getScaleX();
+		adjustImageProperties(imageView, 1.0, originalSize3 + 0.05);
+	}
 
-	    @FXML
-	    void image3exited(MouseEvent event) {
-	        ImageView imageView = (ImageView) event.getSource();
-	        adjustImageProperties(imageView, 0.6, originalSize3);
-	    }
+	@FXML
+	void image3exited(MouseEvent event) {
+		ImageView imageView = (ImageView) event.getSource();
+		adjustImageProperties(imageView, 0.6, originalSize3);
+	}
 
-	    private void adjustImageProperties(ImageView imageView, double opacity, double size) {
-	        imageView.setOpacity(opacity);
-	        imageView.setScaleX(size);
-	        imageView.setScaleY(size);
-	    }
-	    
-	  
-	    ///
+	private void adjustImageProperties(ImageView imageView, double opacity, double size) {
+		imageView.setOpacity(opacity);
+		imageView.setScaleX(size);
+		imageView.setScaleY(size);
+	}
+
+	///
 	// Smart Light Button to go Light Page
 	@FXML
 	void smartLightButtonpressed(ActionEvent event) {
@@ -673,9 +676,8 @@ public class GUIController {
 		lockButton.setStyle("-fx-text-fill: black; -fx-background-color: white; -fx-border-color: black;");
 
 	}
-	
-	
-    ///
+
+	///
 
 	/*---------------- ADMIN ROOM MENU ---------------------*/
 
@@ -1273,60 +1275,58 @@ public class GUIController {
 
 	}
 
-	// EDITED FROM HERE 
-	 private ImageView waterMovement1;
+	// EDITED FROM HERE
+	private ImageView waterMovement1;
+
 
 	 
 	    public void WaterAnimator(ImageView waterMovement) {
 	        this.waterMovement = waterMovement;
 	    }
 
-	    public void setWaterVisible(boolean b) {
-	        if (b) {
-	            fadeInFromLeft();
-	        } else {
-	            fadeOutToRight();
-	        }
-	    }
 
-	    private void fadeInFromLeft() {
-	        waterMovement.setOpacity(0); // Start with zero opacity
+	public void setWaterVisible(boolean b) {
+		if (b) {
+			fadeInFromLeft();
+		} else {
+			fadeOutToRight();
+		}
+	}
 
-	        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
-	        transition.setFromX(-waterMovement.getBoundsInParent().getWidth()); // Start off-screen left
-	        transition.setToX(0); // Move to the visible area
-	        transition.setInterpolator(Interpolator.EASE_BOTH);
+	private void fadeInFromLeft() {
+		waterMovement.setOpacity(0); // Start with zero opacity
 
-	        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
-	        fadeTransition.setFromValue(0); // Start with zero opacity
-	        fadeTransition.setToValue(1); // Fully visible
-	        fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
+		TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
+		transition.setFromX(-waterMovement.getBoundsInParent().getWidth()); // Start off-screen left
+		transition.setToX(0); // Move to the visible area
+		transition.setInterpolator(Interpolator.EASE_BOTH);
 
-	        ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
-	        parallelTransition.play();
-	    }
+		FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
+		fadeTransition.setFromValue(0); // Start with zero opacity
+		fadeTransition.setToValue(1); // Fully visible
+		fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
 
-	    private void fadeOutToRight() {
-	        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
-	        transition.setFromX(0); // Start from visible area
-	        transition.setToX(waterMovement.getBoundsInParent().getWidth()); // Move off-screen right
-	        transition.setInterpolator(Interpolator.EASE_BOTH);
+		ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
+		parallelTransition.play();
+	}
 
-	        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
-	        fadeTransition.setFromValue(1); // Fully visible
-	        fadeTransition.setToValue(0); // Fade out to zero opacity
-	        fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
+	private void fadeOutToRight() {
+		TranslateTransition transition = new TranslateTransition(Duration.seconds(1), waterMovement);
+		transition.setFromX(0); // Start from visible area
+		transition.setToX(waterMovement.getBoundsInParent().getWidth()); // Move off-screen right
+		transition.setInterpolator(Interpolator.EASE_BOTH);
 
-	        ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
-	        parallelTransition.play();
-	    }
-	
-	
+		FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), waterMovement);
+		fadeTransition.setFromValue(1); // Fully visible
+		fadeTransition.setToValue(0); // Fade out to zero opacity
+		fadeTransition.setInterpolator(Interpolator.EASE_BOTH);
 
-	
-	//  TO HERE
-	    
-	    
+		ParallelTransition parallelTransition = new ParallelTransition(transition, fadeTransition);
+		parallelTransition.play();
+	}
+
+	// TO HERE
+
 	/* ---------------------- SMART LOCK PAGE ------------------------ */
 
 	@FXML
@@ -1402,7 +1402,7 @@ public class GUIController {
 				}
 			}
 
-		} else if (!msg.equals("Password has been set")) {
+		} else if (msg.equals("Door has been UNLOCKED by User")) {
 			try {
 				smartLockHistoryArea.setText(msg);
 				enterPasswordTextField.setStyle("-fx-border-color: green;");
@@ -1412,6 +1412,9 @@ public class GUIController {
 			} catch (Exception e) {
 
 			}
+		} else if (msg.equals("Door has been LOCKED by User")) {
+			smartLockHistoryArea.setText(msg);
+
 		}
 	}
 
@@ -1452,10 +1455,10 @@ public class GUIController {
 			e.printStackTrace();
 		}
 	}
-	/* -------------------- ABOUT IS PAGE --------------------- */
+	/* -------------------- ABOUT US PAGE --------------------- */
 
 	@FXML
-	private Pane Aboutuspane;
+	private Pane aboutUsPane;
 
 	@FXML
 	void Aboutbackbuttonpressed(ActionEvent event) {
@@ -1464,7 +1467,7 @@ public class GUIController {
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) Aboutuspane.getScene().getWindow();
+			Stage stage = (Stage) aboutUsPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 
 		} catch (IOException e) {
