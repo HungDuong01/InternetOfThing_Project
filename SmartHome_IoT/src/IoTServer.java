@@ -433,6 +433,7 @@ public class IoTServer extends AbstractServer {
     @Override
     protected void clientConnected(ConnectionToClient client) {
 	// DISPLAY THE CONNECTED CLIENT
+
 	System.out.println("\nClient connected: " + client.getInetAddress());
 
     }
