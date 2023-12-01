@@ -207,6 +207,11 @@ public class IoTController {
 	return accounts.toString();
     }
 
+    public String setAdminInformation(String fName, String lName, String email, String password) {
+	admin = new Admin(fName, lName, email, password);
+	accounts.add(admin);
+	return accounts.toString();
+    }
     // --- END ---
 
 }
