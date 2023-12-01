@@ -39,7 +39,7 @@ public class Database {
     }
 
     public boolean signUpAdmin(String firstName, String lastName, String email, String password) {
-	String query = "INSERT INTO User (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
+	String query = "INSERT INTO Admin (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
 
 	try (Connection conn = Database.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -64,7 +64,7 @@ public class Database {
     }
 
     private boolean accountExist(String email) throws SQLException {
-	String query = "SELECT COUNT(*) FROM users WHERE username = ?";
+	String query = "SELECT COUNT(*) FROM User WHERE Email = ?";
 
 	try (Connection conn = Database.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -77,4 +77,43 @@ public class Database {
 	}
 	return false;
     }
+
+    public boolean authenticateUser(String email, String password) {
+	String query = "SELECT COUNT(*) FROM User WHERE Email = ? AND Password = ?";
+
+	try (Connection conn = Database.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	    pstmt.setString(1, email);
+	    pstmt.setString(2, password);
+
+	    try (ResultSet rs = pstmt.executeQuery()) {
+		if (rs.next()) {
+		    return rs.getInt(1) > 0;
+		}
+	    }
+	} catch (SQLException e) {
+	    System.out.println("SQLException: " + e.getMessage());
+	}
+	return false;
+    }
+
+    public boolean authenticateAdmin(String email, String password) {
+	String query = "SELECT COUNT(*) FROM Admin WHERE Email = ? AND Password = ?";
+
+	try (Connection conn = Database.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	    pstmt.setString(1, email);
+	    pstmt.setString(2, password);
+
+	    try (ResultSet rs = pstmt.executeQuery()) {
+		if (rs.next()) {
+		    return rs.getInt(1) > 0;
+		}
+	    }
+	} catch (SQLException e) {
+	    System.out.println("SQLException: " + e.getMessage());
+	}
+	return false;
+    }
+
 }
