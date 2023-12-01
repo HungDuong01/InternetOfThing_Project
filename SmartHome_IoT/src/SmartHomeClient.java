@@ -469,7 +469,8 @@ public class SmartHomeClient extends AbstractClient {
 			// Handling Received Data for Smart Security Camera From Server
 			ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
-			if (device.equals("Camera")) {
+			if (device.equals("cameraAngle")) {
+
 				int newValueAngle = Integer.parseInt(data);
 				System.out.println("Angle: " + newValueAngle);
 
@@ -479,7 +480,15 @@ public class SmartHomeClient extends AbstractClient {
 					Platform.runLater(() -> controller.setCameraAngle(newValueAngle));
 					Platform.runLater(() -> controller.shouldUpdateSlider(false));
 				}, 1, TimeUnit.SECONDS);
+
 			}
+
+			if (device.equals("Camera")) {
+				if (data.equals("Footage")) {
+					Platform.runLater(() -> controller.showFootage());
+				}
+			}
+
 		}
 	}
 }

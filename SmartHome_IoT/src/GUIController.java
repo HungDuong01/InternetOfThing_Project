@@ -27,6 +27,7 @@
  * ------------------------------------------------------------------------------
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -58,6 +59,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -1275,6 +1279,49 @@ public class GUIController {
 	}
 
 	/* ---------------------- CameraView PAGE ------------------------- */
+
+	@FXML
+	private TextField endCameraViewField;
+
+	@FXML
+	private MediaView mediaView;
+
+	@FXML
+	private TextField startCameraViewField;
+
+	@FXML
+	void backCameraViewButton(ActionEvent event) {
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SDcamera.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) mediaView.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showFootage() {
+		// Path to the fortunesVideo.mp4 file
+		String videoFilePath = "fortunesVideo.mp4"; // Replace with your video file path
+
+		File videoFile = new File(videoFilePath);
+		if (!videoFile.exists()) {
+			System.out.println("Video file does not exist: " + videoFilePath);
+			return;
+		}
+
+		Media media = new Media(videoFile.toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(media);
+		mediaView.setMediaPlayer(mediaPlayer);
+
+		mediaPlayer.setAutoPlay(true);
+	}
 
 	/* ---------------------- SMART WATER SYSTEM PAGE ------------------------- */
 
