@@ -378,6 +378,33 @@ public class IoTServer extends AbstractServer {
 
 	// --- END ---
 
+	// --- PERFORM FUNCTIONS FOR USERS/ADMIN ---
+
+	if (receivedMsg.startsWith("User")) {
+	    String[] part = receivedMsg.split(",");
+	    String account = (part[0]);
+	    String fname = part[1];
+	    String lname = part[2];
+	    String email = part[3];
+	    String password = part[4];
+	    serverController.createUser(fname, lname, email, password);
+	    System.out.println("\nNew user information: " + serverController.createUser(fname, lname, email, password));
+
+	}
+
+	if (receivedMsg.startsWith("Admin")) {
+	    String[] part = receivedMsg.split(",");
+	    String account = (part[0]);
+	    String fname = part[1];
+	    String lname = part[2];
+	    String email = part[3];
+	    String password = part[4];
+	    serverController.createUser(fname, lname, email, password);
+	    System.out
+		    .println("\nNew user information: " + serverController.createAdmin(fname, lname, email, password));
+	}
+	// --- END ---
+
     }
 
     // --- HANDLE MESSAGE FROM CLIENT FUNCTION ENDS HERE ---

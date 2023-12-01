@@ -22,7 +22,8 @@ import java.util.List;
 
 public class IoTController {
     // List to hold accounts
-//    private List<Account> accounts;
+    private List<Account> accounts;
+    private int countIndex = 0;
 
     // List to hold smart devices
     private List<SmartDevice> devices;
@@ -32,8 +33,8 @@ public class IoTController {
     private SmartDevice water; // device ID: 3
     private SmartDevice camera; // device ID: 4
 
-//    private Account admin;
-//    private Account user;
+    private Account admin;
+    private Account user;
 
     public IoTController() {
 	// --- INITIALIZE SMART DEVICES ---
@@ -52,7 +53,7 @@ public class IoTController {
 	// --- END ---
 
 	// --- INITIALIZE ACCOUNTS ---
-	// accounts = new ArrayList<Account>();
+	accounts = new ArrayList<Account>();
 	// --- END ---
 
     }
@@ -200,13 +201,20 @@ public class IoTController {
     // --- END ---
 
     // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
-    public void setUserInformation(String userName, String password) {
 
+    public String createUser(String fName, String lName, String email, String password) {
+	user = new User(fName, lName, email, password); // create an empty user
+	accounts.add(countIndex, user); // add newly created user to the account list
+	this.countIndex++;
+	return accounts.get(countIndex).toString();
     }
 
-    // --- END ---
-
-    // --- CALL FUNCTION FROM THE ADMIN CLASS ---
+    public String createAdmin(String fName, String lName, String email, String password) {
+	admin = new Admin(fName, lName, email, password); // create an empty admin
+	accounts.add(countIndex, admin); // add newly created user to the account list
+	this.countIndex++;
+	return accounts.get(countIndex).toString();
+    }
 
     // --- END ---
 
