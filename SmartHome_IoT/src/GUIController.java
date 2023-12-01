@@ -126,8 +126,9 @@ public class GUIController {
 
 	/*----------------------- USER/ADMIN PAGE--------------------------- */
 
-	@FXML
-	private GridPane userAdminPane;
+    @FXML
+    private GridPane userAdminPane;
+
 
 	// Admin Button to switch to Admin Login
 	@FXML
