@@ -27,6 +27,7 @@
  * ------------------------------------------------------------------------------
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -58,6 +59,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -68,14 +72,33 @@ public class GUIController {
 	// Client and GUI Controller Association
 	private SmartHomeClient client;
 	private int count;
+	private String startTime;
+	private String endTime;
 
-	// Setter for client
+	// Setter and Getters for client
 	public void setClient(SmartHomeClient client) {
 		this.client = client;
 	}
 
 	public boolean shouldUpdateSlider(boolean b) {
 		return b;
+	}
+
+	public void setStartTime(String stime) {
+		this.startTime = stime;
+
+	}
+
+	public void setEndTime(String etime) {
+		this.endTime = etime;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
 	}
 
 	public void initialize() {
@@ -1239,11 +1262,83 @@ public class GUIController {
 	@FXML
 	void showFootageButtonPressed(ActionEvent event) {
 
+		String fromHour = fromHourCamera.getText();
+		String fromMinute = fromMinuteCamera.getText();
+		String toHour = toHourCamera.getText();
+		String toMinute = toMinuteCamera.getText();
+
+		setStartTime(fromHour + ":" + fromMinute);
+		setEndTime(toHour + ":" + toMinute);
+
+		notificationCameraArea.setText("Showing footage from: " + getStartTime() + " to: " + getEndTime());
+
+		client.cameraFootageMsgToServer("Footage");
 	}
 
 	public void setCameraAngle(int angle) {
 		sliderAngleCamera.setValue(angle);
+	}
 
+	/* ---------------------- CameraView PAGE ------------------------- */
+
+	@FXML
+	private TextField endCameraViewField;
+
+	@FXML
+	private MediaView mediaView;
+
+	@FXML
+	private TextField startCameraViewField;
+
+	@FXML
+	void backCameraViewButton(ActionEvent event) {
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SDcamera.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) mediaView.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showFootage() {
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Cameraview.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+			// Display start time and end time from Camera.
+			startCameraViewField.setText(startTime);
+			endCameraViewField.setText(endTime);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// Path to the fortunesVideo.mp4 file
+		String videoFilePath = "/Users/ban/git/InternetOfThing_Project/SmartHome_IoT/src/fortunesVideo.mp4";
+
+		File videoFile = new File(videoFilePath);
+		if (!videoFile.exists()) {
+			System.out.println("Video file does not exist: " + videoFilePath);
+			return;
+		}
+
+		Media media = new Media(videoFile.toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(media);
+		mediaView.setMediaPlayer(mediaPlayer);
+
+		mediaPlayer.setAutoPlay(true);
 	}
 
 	/* ---------------------- SMART WATER SYSTEM PAGE ------------------------- */
