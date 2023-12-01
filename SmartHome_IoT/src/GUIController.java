@@ -496,23 +496,6 @@ public class GUIController {
 	private double originalOpacity3 = 1.0;
 	private double originalSize3 = 1.0;
 
-	private Database db = new Database(); // Instantiate your Database class
-
-    // Method triggered on login action (e.g., button click)
-    @FXML
-    private void onLoginButtonClicked() {
-        String userEmail = userEmailTextField.getText(); // Get the logged-in user's email
-
-        // Retrieve the first name associated with the logged-in user's email
-        String firstName = db.getFirstNameByEmail(userEmail);
-
-        if (firstName != null) {
-        	userNameMainMenu.setText("Welcome, " + firstName); // Set the retrieved first name to the label
-        } else {
-        	userNameMainMenu.setText("Welcome"); // Display a default message if first name not found
-        }
-    }
-
 
 	@FXML
 	void logoutMainMenuPressed(ActionEvent event) {
@@ -553,7 +536,7 @@ public class GUIController {
 
 	}
 
-	//
+	
 
 	@FXML
 	void image1entered(MouseEvent event) {
@@ -603,7 +586,7 @@ public class GUIController {
 		imageView.setScaleY(size);
 	}
 
-	///
+	
 	// Smart Light Button to go Light Page
 	@FXML
 	void smartLightButtonpressed(ActionEvent event) {
