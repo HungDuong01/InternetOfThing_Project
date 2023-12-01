@@ -358,7 +358,7 @@ public class IoTServer extends AbstractServer {
 	if (receivedMsg.equals("cameraData")) {
 	    updateCameraAngle = serverController.getCameraAngle().toString();
 	    try {
-		sendToAllClients("Camera:" + updateCameraAngle);
+		sendToAllClients("cameraAngle:" + updateCameraAngle);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -441,7 +441,7 @@ public class IoTServer extends AbstractServer {
     @Override
     synchronized protected void clientDisconnected(ConnectionToClient client) {
 	// DISPLAY THE DISCONNECTED CLIENT
-	System.out.println("\nClient disconnected: " + client.getInetAddress());
+	System.out.println("\nClient disconnected: " + client);
     }
 
     public static void main(String[] args) {
