@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database {
-    private static final String URL = "jdbc:mysql://localhost:3306/SH_Account";
+    private static final String URL = "jdbc:mysql://172.17.11.45:3306/SH_Account";
     private static final String USER = "root";
     private static final String PASSWORD = "Hungyeuem123";
 
