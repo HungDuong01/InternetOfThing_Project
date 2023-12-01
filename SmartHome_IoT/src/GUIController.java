@@ -269,7 +269,7 @@ public class GUIController {
 			Stage stage = (Stage) signUpPane.getScene().getWindow();
 			stage.setScene(SignupScene);
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
