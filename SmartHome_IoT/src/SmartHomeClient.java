@@ -45,7 +45,7 @@ public class SmartHomeClient extends AbstractClient {
 	private String waterTime;
 	private String waterLimit;
 
-	// setter and getter method to handle the temperature from server
+	// setter and getter method to handle messages from server
 	public void setTempData(int temp) {
 		this.temp = temp;
 	}//
@@ -101,9 +101,21 @@ public class SmartHomeClient extends AbstractClient {
 	/* -------------------- USER SIGN PAGE ------------------------- */
 
 	// Send Email and Password after User has Signed Up to Server
-	public void userSignUpToServer(String s) {
+	public void userSignUpToServer(String user) {
 		try {
-			sendToServer(s);
+			sendToServer(user);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/* -------------------- ADMIN SIGN PAGE ------------------------- */
+
+	// Send Email and Password after User has Signed Up to Server
+	public void adminSignUpToServer(String admin) {
+		try {
+			sendToServer(admin);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

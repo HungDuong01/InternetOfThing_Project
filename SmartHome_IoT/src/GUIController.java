@@ -278,7 +278,7 @@ public class GUIController {
 			if (success) {
 				System.out.println("User Sign Up Successful");
 
-				// Send values to server
+				// Send User Sign Up To Server
 				client.userSignUpToServer("User," + firstName + "," + lastName + "," + email + "," + password);
 
 			} else {
@@ -344,7 +344,7 @@ public class GUIController {
 				Scene AdminloginScene = new Scene(root);
 				Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 				stage.setScene(AdminloginScene);
-			}else {
+			} else {
 				System.out.println("Admin has not signed up.");
 
 				// Display border red if incorrect.
@@ -353,10 +353,9 @@ public class GUIController {
 				// prompt text
 				AdminpasswordTextField.setPromptText("Incorrect Password");
 			}
-			
 
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -426,6 +425,8 @@ public class GUIController {
 
 			if (success) {
 				System.out.println("Admin Sign up Successful");
+				// Send User Sign Up To Server
+				client.adminSignUpToServer("User," + firstName + "," + lastName + "," + email + "," + password);
 
 			} else {
 
@@ -480,7 +481,6 @@ public class GUIController {
 	@FXML
 	private Button lockButton;
 
-
 	@FXML
 	private Button waterButton;
 
@@ -493,7 +493,6 @@ public class GUIController {
 	private double originalSize2 = 1.0;
 	private double originalOpacity3 = 1.0;
 	private double originalSize3 = 1.0;
-
 
 	@FXML
 	void logoutMainMenuPressed(ActionEvent event) {
@@ -533,8 +532,6 @@ public class GUIController {
 		}
 
 	}
-
-	
 
 	@FXML
 	void image1entered(MouseEvent event) {
@@ -584,7 +581,6 @@ public class GUIController {
 		imageView.setScaleY(size);
 	}
 
-	
 	// Smart Light Button to go Light Page
 	@FXML
 	void smartLightButtonpressed(ActionEvent event) {
