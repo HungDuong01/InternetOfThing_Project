@@ -1276,6 +1276,21 @@ public class GUIController {
 	// EDITED FROM HERE 
 	 private ImageView waterMovement1;
 
+	 private boolean isSaveButtonPressed = false;
+
+	// Method to set the save button status
+	public void setSaveButtonPressed(boolean pressed) {
+	    isSaveButtonPressed = pressed;
+
+	    // Check if the save button is pressed and adjust visibility accordingly
+	    if (isSaveButtonPressed) {
+	        setWaterVisible(true); // Show the image
+	    } else {
+	        setWaterVisible(false); // Hide the image
+	    }
+	}
+
+	 
 	    public void WaterAnimator(ImageView waterMovement) {
 	        this.waterMovement = waterMovement;
 	    }
