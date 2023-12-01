@@ -201,14 +201,10 @@ public class IoTController {
 
     // --- CALL FUNCTION FROM THE ACCOUNT CLASS ---
 
-    public void setUserInformation(String fName, String lName, String email, String password) {
+    public String setUserInformation(String fName, String lName, String email, String password) {
 	user = new User(fName, lName, email, password);
 	accounts.add(user);
-    }
-
-    public String getUserInfomation() {
-	int lastIndex = accounts.lastIndexOf(accounts);
-	return accounts.get(lastIndex).toString();
+	return accounts.toString();
     }
 
     // --- END ---

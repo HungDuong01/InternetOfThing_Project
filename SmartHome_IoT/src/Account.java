@@ -62,7 +62,8 @@ public abstract class Account {
     // print function for account information
     @Override
     public String toString() {
-	return "  First Name: " + firstName + "\n" + "  Last Name: " + lastName + "\n" + "  Email: " + email + "\n";
+	return "\n{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
+		+ '}';
     }
 
 }
