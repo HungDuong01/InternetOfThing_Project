@@ -391,7 +391,7 @@ public class IoTServer extends AbstractServer {
 
 		String userInfo = serverController.setUserInformation(fName, lName, email, password);
 
-		System.out.println("User Information: \n" + userInfo);
+		System.out.println("User Information: " + userInfo);
 	    }
 
 	}
@@ -407,7 +407,7 @@ public class IoTServer extends AbstractServer {
 
 		String userInfo = serverController.setAdminInformation(fName, lName, email, password);
 
-		System.out.println("Admin Information: \n" + userInfo);
+		System.out.println("Admin Information: " + userInfo);
 	    }
 
 	}
