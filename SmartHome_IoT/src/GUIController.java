@@ -426,7 +426,7 @@ public class GUIController {
 			if (success) {
 				System.out.println("Admin Sign up Successful");
 				// Send User Sign Up To Server
-				client.adminSignUpToServer("User," + firstName + "," + lastName + "," + email + "," + password);
+				client.adminSignUpToServer("Admin," + firstName + "," + lastName + "," + email + "," + password);
 
 			} else {
 
