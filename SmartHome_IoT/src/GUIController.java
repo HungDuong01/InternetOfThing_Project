@@ -1242,6 +1242,66 @@ public class GUIController {
 	@FXML
 	private TextField toMinuteCamera;
 
+	// Setting the character limit for time.
+	@FXML
+	void fromHourCameraKey(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
+		if (fromHourCamera.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				fromHourCamera.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				fromHourCamera.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			fromHourCamera.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
+	// Setting the character limit for time.
+	@FXML
+	void fromMinuteCameraKey(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
+		if (fromMinuteCamera.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				fromMinuteCamera.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				fromMinuteCamera.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			fromMinuteCamera.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
+	// Setting the character limit for time.
+	@FXML
+	void toHourCameraKey(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
+		if (toHourCamera.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				toHourCamera.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				toHourCamera.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			toHourCamera.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
+	// Setting the character limit for time.
+	@FXML
+	void toMinuteCameraKey(KeyEvent event) {
+		int maxLength = 2; // Set the character limit
+		if (toMinuteCamera.getText().length() >= maxLength) {
+			if (event.getCharacter().isEmpty()) {
+				toMinuteCamera.setEditable(true); // Allow deletion if Backspace/Delete is pressed
+			} else {
+				toMinuteCamera.setEditable(false); // Disable further input if limit is reached
+			}
+		} else {
+			toMinuteCamera.setEditable(true); // Allow input if characters can be added
+		}
+	}
+
 	@FXML
 	void returnCameraButton(ActionEvent event) {
 		try {
