@@ -86,7 +86,8 @@ public class IoTServer extends AbstractServer {
 	// TODO Auto-generated method stub
 	String receivedMsg = (String) msg;
 	String updateTempStr, updateThermoStatusStr, updateBrightnessStr, updateLightStatusStr, updateLightColorStr,
-		updateLockStatusStr, updateLockPass, updateWaterLimit, updateWaterTimer, updateCameraAngle;
+		updateLockStatusStr, updateLockPass, updateWaterLimit, updateWaterTimer, updateCameraAngle,
+		cameraFootage;
 
 	System.out.println("\nRequest received from client: " + client + "\nMessage content: " + receivedMsg);
 
@@ -370,7 +371,17 @@ public class IoTServer extends AbstractServer {
 	    updateCameraAngle = serverController.getCameraAngle().toString();
 	    try {
 		sendToAllClients("Camera:" + updateCameraAngle);
-		System.out.println("Camera updated angle: " + updateCameraAngle); // Testing
+		System.out.println("Camera updated angle: " + updateCameraAngle);
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
+
+	if (receivedMsg.startsWith("Footage")) {
+	    try {
+		cameraFootage = serverController.getVideoResource();
+		sendToAllClients("Camera:" + cameraFootage);
+		System.out.println("Sent back the video footage");
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
