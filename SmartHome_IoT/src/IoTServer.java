@@ -327,6 +327,7 @@ public class IoTServer extends AbstractServer {
 	    String[] part = receivedMsg.split(",");
 	    String data = part[1];
 	    serverController.setWaterTimer(data);
+	    // SET THE TIMER USING THE DATA PASSED FROM CLIENTS
 	    startTimer(serverController.getWaterTimer());
 
 	}

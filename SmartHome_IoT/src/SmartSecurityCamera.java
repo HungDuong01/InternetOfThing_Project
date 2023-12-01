@@ -19,7 +19,7 @@ public class SmartSecurityCamera extends SmartDevice {
     public SmartSecurityCamera(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
-	// THE VIDEO LIST SHOULD BE INITIALIZED HERE
+
     }
 
     // --- SETTER AND GETTER FUNCTIONS TO CHANGE THE CAMERA'S ANGLE ---
