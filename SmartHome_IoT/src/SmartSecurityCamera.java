@@ -21,6 +21,7 @@ public class SmartSecurityCamera extends SmartDevice {
     public SmartSecurityCamera(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
+	// THE VIDEO LIST SHOULD BE INITIALIZED HERE
     }
 
     // --- SETTER AND GETTER FUNCTIONS TO CHANGE THE CAMERA'S ANGLE ---
@@ -41,12 +42,17 @@ public class SmartSecurityCamera extends SmartDevice {
 	return videoResource.get(index);
     }
 
+    // 2 TIME VALUES PASSED FROM THE CLIENT:
+    // ASSUME THAT EACH VIDEO IS 1 HOUR LONG
+    // START - END = timeDiff
+    //
+
     // --- END ---
 
     @Override
     public String alertMessage() {
 	// TODO Auto-generated method stub
-	return "Intruder alert: There's someone breaking into the house right now!";
+	return "";
     }
 
 }

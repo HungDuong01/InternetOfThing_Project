@@ -148,7 +148,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("Thermo".equals(receivedMsg)) {
+	if ("thermoData".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateThermoStatusStr = serverController.getDeviceStatus(0).toString();
@@ -194,9 +194,7 @@ public class IoTServer extends AbstractServer {
 	}
 
 	// IF THE MESSAGE IS THE VALUE OF COLOR
-	if (receivedMsg.contains("0x"))
-
-	{
+	if (receivedMsg.contains("0x")) {
 	    // ACTIONS TO CHANGE LIGHT COLOR
 	    serverController.setLightColor(receivedMsg);
 	    try {
@@ -234,7 +232,7 @@ public class IoTServer extends AbstractServer {
 	    }
 	}
 
-	if ("Light".equals(receivedMsg)) {
+	if ("lightData".equals(receivedMsg)) {
 	    try {
 		// RETURN DATA FROM THE SERVER TO CLIENTS
 		updateBrightnessStr = serverController.getUpdateBrightness().toString();
@@ -257,7 +255,7 @@ public class IoTServer extends AbstractServer {
 
 	// --- PERFORM LOCK USE CASES BASED ON THE RECEIVED MESSAGE ---
 
-	if (receivedMsg.startsWith("Lock")) {
+	if (receivedMsg.startsWith("lockData")) {
 	    // RETURN DATA OF THE LOCK TO CLIENTS
 	    updateLockStatusStr = serverController.getDeviceStatus(2).toString();
 	    updateLockPass = serverController.getLockPassword();
@@ -340,7 +338,7 @@ public class IoTServer extends AbstractServer {
 	    updateWaterLimit = serverController.getWaterLimit().toString();
 
 	    try {
-		sendToAllClients("Water:New water limit has been set " + updateWaterLimit);
+		sendToAllClients("Water:New water limit has been set " + updateWaterLimit + " ml");
 		System.out.println("Water updated limit: " + updateWaterLimit); // Testing
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -355,6 +353,14 @@ public class IoTServer extends AbstractServer {
 	 * 1. Change camera angle 2. Return camera video back to client, INPUT from user
 	 * will be an integer
 	 */
+	if (receivedMsg.equals("cameraData")) {
+	    updateCameraAngle = serverController.getCameraAngle().toString();
+	    try {
+		sendToAllClients("Camera:" + updateCameraAngle);
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	}
 
 	if (receivedMsg.startsWith("Camera")) {
 	    String[] part = receivedMsg.split(",");

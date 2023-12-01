@@ -16,20 +16,20 @@
  */
 public abstract class Account {
 
-    private String userName;
+    private String email;
     private String password;
 
-    public Account(String userName, String password) {
-	this.userName = userName;
+    public Account(String email, String password) {
+	this.email = email;
 	this.password = password;
     }
 
-    public void setUserName(String userName) {
-	this.userName = userName;
+    public void setUserName(String email) {
+	this.email = email;
     }
 
     public String getUserName() {
-	return this.userName;
+	return this.email;
     }
 
     public void setPassword(String password) {
