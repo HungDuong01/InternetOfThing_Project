@@ -122,7 +122,7 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}//
 
 	/*----------------------- USER/ADMIN PAGE--------------------------- */
 
@@ -176,16 +176,34 @@ public class GUIController {
 	@FXML
 	void loginButtonPressed(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) loginPane.getScene().getWindow();
-			stage.setScene(mainMenuScene);
+		    String email = emailTextField.getText();
+		    String password = passwordTextField.getText();
+		    Database db = new Database();
 
+		    boolean success = db.authenticateUser(email, password);
+
+		    if (success) {
+		        // Proceed with login
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+		        loader.setController(this);
+		        Parent root = loader.load();
+		        Scene mainMenuScene = new Scene(root);
+		        Stage stage = (Stage) loginPane.getScene().getWindow();
+		        stage.setScene(mainMenuScene);
+		    } else {
+		        // Incorrect password handling
+		        System.out.println("User has not signed up.");
+
+		        // Update password field border color and prompt text
+		        passwordTextField.setStyle("-fx-border-color: red;"); // Change border color to red
+
+		        // Display prompt text in the password field
+		        passwordTextField.setPromptText("Incorrect password");
+		    }
 		} catch (IOException e) {
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
+
 	}
 
 	// Sign Up Button to Switch to Sign Up Page
@@ -223,48 +241,78 @@ public class GUIController {
 	/*--------------------- USER SIGNUP PAGE --------------------*/
 
 	@FXML
-	private TextField EmailTextField;
+	private TextField userEmailTextField;
 
 	@FXML
-	private TextField FirstnameTextField;
+	private TextField firstNameTextField;
 
 	@FXML
-	private TextField LastnameTextField;
+	private TextField lastNameTextField;
 
 	@FXML
-	private TextField PassordTextField;
+	private TextField userPasswordTextField;
 
 	@FXML
-	private TextField ReenterpasswordTetxtField;
+	private TextField reEnterPasswordTetxtField;
 
 	@FXML
-	private GridPane Signuppane;
+	private GridPane signUpPane;
 
 	// Sign up Button pressed to Switch Scene
 	@FXML
-	void Signupbuttonpressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene SignupScene = new Scene(root);
-			Stage stage = (Stage) Signuppane.getScene().getWindow();
-			stage.setScene(SignupScene);
+	void signUpButtonPressed(ActionEvent event) {
 
-		} catch (IOException e) {
-			e.printStackTrace();
+		// Enter User Sign Up text fields and save it into the DataBase.
+		try {
+		    String firstName = firstNameTextField.getText();
+		    String lastName = lastNameTextField.getText();
+		    String email = userEmailTextField.getText();
+		    String password = userPasswordTextField.getText();
+		    String reEnteredPassword = reEnterPasswordTetxtField.getText();
+
+		    Database db = new Database();
+		    boolean passwordsMatch = password.equals(reEnteredPassword);
+
+		    if (!passwordsMatch) {
+		        // Passwords don't match handling
+		        System.out.println("Passwords do not match.");
+
+		        // Display prompt text in the re-enter password field
+		        reEnterPasswordTetxtField.setStyle("-fx-border-color: red;"); // Change border color to red
+		        reEnterPasswordTetxtField.setPromptText("Wrong password"); // Display prompt text
+		    } else {
+		        // Passwords match, proceed with sign up
+		        boolean success = db.signUpUser(firstName, lastName, email, password);
+
+		        if (success) {
+		            System.out.println("User Sign Up Successful");
+		        } else {
+		            System.out.println("Sign Up failed. User might exist");
+		        }
+
+		        // Redirect to userLoginPage.fxml
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+		        loader.setController(this);
+		        Parent root = loader.load();
+		        Scene signupScene = new Scene(root);
+		        Stage stage = (Stage) signUpPane.getScene().getWindow();
+		        stage.setScene(signupScene);
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
 		}
+
 	}
 
 	// Login Button pressed to Switch Scene
 	@FXML
-	void loginbuttonpressed(ActionEvent event) {
+	void userLoginButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene SignupScene = new Scene(root);
-			Stage stage = (Stage) Signuppane.getScene().getWindow();
+			Stage stage = (Stage) signUpPane.getScene().getWindow();
 			stage.setScene(SignupScene);
 
 		} catch (IOException e) {
@@ -331,31 +379,49 @@ public class GUIController {
 
 	/*------------------- ADMIN REGISTER PAGE -------------------*/
 	@FXML
-	private TextField AdminFirstnameTextField;
+	private TextField adminFirstNameTextField;
 
 	@FXML
-	private TextField AdminLastnameTextField;
+	private TextField adminLastNameTextField;
 
 	@FXML
-	private TextField AdminRegEmailTextField;
+	private TextField adminEmailTextField;
 
 	@FXML
-	private TextField AdminRegpasswordTextField;
+	private TextField adminPasswordTextField;
 
 	@FXML
-	private GridPane Adminregisterpane;
+	private GridPane adminRegisterPane;
 
 	@FXML
-	private TextField AdminrepasswordTextField;
+	private TextField adminRePasswordTextField;
 
 	@FXML
-	void AdminRegisterbuttonpressed(ActionEvent event) {
+	void adminRegisterButtonBressed(ActionEvent event) {
+
+		// Enter Admin Sign Up text fields and save it into the DataBase.
 		try {
+			String firstName = adminFirstNameTextField.getText();
+			String lastName = adminLastNameTextField.getText();
+			String email = adminEmailTextField.getText();
+			String password = adminPasswordTextField.getText();
+
+			Database db = new Database();
+
+			boolean success = db.signUpUser(firstName, lastName, email, password);
+
+			if (success) {
+				System.out.println("Admin Sign up Successful");
+
+			} else {
+
+				System.out.println("Sign Up failed. User might exist");
+			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene AdminregisterScene = new Scene(root);
-			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+			Stage stage = (Stage) adminRegisterPane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -363,13 +429,13 @@ public class GUIController {
 	}
 
 	@FXML
-	void Adminloginbuttonpressed(ActionEvent event) {
+	void adminLoginButtonPressed(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminlogin.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene AdminregisterScene = new Scene(root);
-			Stage stage = (Stage) Adminregisterpane.getScene().getWindow();
+			Stage stage = (Stage) adminRegisterPane.getScene().getWindow();
 			stage.setScene(AdminregisterScene);
 
 		} catch (IOException e) {
@@ -385,7 +451,6 @@ public class GUIController {
 	@FXML
 	private Button cameraButton;
 
-	//
 	@FXML
 	private ImageView image1;
 
@@ -395,7 +460,6 @@ public class GUIController {
 	@FXML
 	private ImageView image3;
 
-	//
 	@FXML
 	private Button lightButton;
 
@@ -677,7 +741,26 @@ public class GUIController {
 
 	}
 
-	///
+	/* -------------------- ABOUT US PAGE --------------------- */
+
+	@FXML
+	private Pane aboutUsPane;
+
+	@FXML
+	void Aboutbackbuttonpressed(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) aboutUsPane.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	/*---------------- ADMIN ROOM MENU ---------------------*/
 
@@ -1278,12 +1361,9 @@ public class GUIController {
 	// EDITED FROM HERE
 	private ImageView waterMovement1;
 
-
-	 
-	    public void WaterAnimator(ImageView waterMovement) {
-	        this.waterMovement = waterMovement;
-	    }
-
+	public void WaterAnimator(ImageView waterMovement) {
+		this.waterMovement = waterMovement;
+	}
 
 	public void setWaterVisible(boolean b) {
 		if (b) {
@@ -1454,26 +1534,6 @@ public class GUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	/* -------------------- ABOUT US PAGE --------------------- */
-
-	@FXML
-	private Pane aboutUsPane;
-
-	@FXML
-	void Aboutbackbuttonpressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) aboutUsPane.getScene().getWindow();
-			stage.setScene(mainMenuScene);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
