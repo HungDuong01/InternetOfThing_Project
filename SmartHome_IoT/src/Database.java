@@ -97,6 +97,7 @@ public class Database {
 	return false;
     }
 
+// 
     public boolean authenticateAdmin(String email, String password) {
 	String query = "SELECT COUNT(*) FROM Admin WHERE Email = ? AND Password = ?";
 
