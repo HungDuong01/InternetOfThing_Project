@@ -8,9 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="securityCameraPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="securityCameraPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="290.0" fitWidth="293.0" layoutX="348.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -58,17 +59,13 @@
             <Font name="Heiti TC Light" size="15.0" />
          </font>
       </Label>
-      <Slider fx:id="sliderAngleCamera" layoutX="110.0" layoutY="219.0" max="360.0" prefHeight="15.0" prefWidth="225.0" value="180.0" />
-      <Label layoutX="101.0" layoutY="227.0" prefHeight="15.0" prefWidth="8.0" text="0">
-         <font>
-            <Font name="Heiti TC Light" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="335.0" layoutY="227.0" prefHeight="15.0" prefWidth="27.0" text="360">
-         <font>
-            <Font name="Heiti TC Light" size="12.0" />
-         </font>
-      </Label>
+      <Slider fx:id="sliderAngleCamera" blockIncrement="0.0" layoutX="110.0" layoutY="219.0" majorTickUnit="45.0" max="180.0" minorTickCount="0" prefHeight="15.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="90.0" />
       <Button layoutX="174.0" layoutY="182.0" mnemonicParsing="false" onAction="#showFootageButtonPressed" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Show" />
+      <Label layoutX="315.0" layoutY="231.0" opacity="0.65" prefHeight="30.0" prefWidth="26.0" text="180">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Line endX="-7.946136474609375" endY="-0.88006591796875" layoutX="332.0" layoutY="238.0" opacity="0.4" startX="-7.946136474609375" startY="-5.1653900146484375" />
    </children>
 </Pane>

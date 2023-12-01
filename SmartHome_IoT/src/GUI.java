@@ -16,7 +16,6 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
@@ -32,19 +31,6 @@ public class GUI extends Application {
 	SmartHomeClient client = new SmartHomeClient("172.17.11.45", 2090, controller);
 	client.connectToServer();
 	controller.setClient(client);
-
-	// attach scene graph to scene
-	Scene scene = new Scene(root);
-
-	// show title on window
-	stage.setTitle("Smart Home Automation System");
-
-	// attach scene to stage
-	stage.setScene(scene);
-
-	// display stage
-	stage.show();
-
     }
 
     public static void main(String[] args) {
