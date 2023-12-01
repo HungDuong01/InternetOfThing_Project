@@ -412,7 +412,7 @@ public class GUIController {
 	@FXML
 	void adminRegisterButtonBressed(ActionEvent event) {
 
-		// Enter Admin Sign Up text fields and save it into the DataBase.
+		// Enter Admin Sign Up text fields and save it into the DataBase
 		try {
 			String firstName = adminFirstNameTextField.getText();
 			String lastName = adminLastNameTextField.getText();

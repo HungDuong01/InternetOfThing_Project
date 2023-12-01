@@ -112,7 +112,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	/* -------------------- ADMIN SIGN PAGE ------------------------- */
 
-	// Send Email and Password after User has Signed Up to Server
+	// Send Email and Password after User has Signed Up to Server.
 	public void adminSignUpToServer(String admin) {
 		try {
 			sendToServer(admin);
