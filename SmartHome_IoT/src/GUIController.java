@@ -1307,7 +1307,7 @@ public class GUIController {
 	}
 
 	public void showFootage() {
-		// Path to the fortunesVideo.mp4 file
+		// Path to the fortunesVideo.mp4 file.
 		String videoFilePath = "fortunesVideo.mp4"; // Replace with your video file path
 
 		File videoFile = new File(videoFilePath);
