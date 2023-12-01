@@ -15,8 +15,8 @@
  */
 public class User extends Account {
 
-    public User(String userName, String password) {
-	super(userName, password);
+    public User(String email, String password) {
+	super(email, password);
     }
 
 }
