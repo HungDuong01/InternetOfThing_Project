@@ -279,8 +279,7 @@ public class GUIController {
 				System.out.println("User Sign Up Successful");
 
 				// Send values to server
-				client.userSignUpToServer("User," + email);
-				client.userSignUpToServer("User," + password);
+				client.userSignUpToServer("User," + firstName + "," + lastName + "," + email + "," + password);
 
 			} else {
 
@@ -330,12 +329,22 @@ public class GUIController {
 	@FXML
 	void Loginbuttonpressed(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene AdminloginScene = new Scene(root);
-			Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
-			stage.setScene(AdminloginScene);
+			String email = AdminEmailTextField.getText();
+			String password = AdminpasswordTextField.getText();
+
+			Database db = new Database();
+
+			boolean success = db.authenticateAdmin(email, password);
+
+			if (success) {
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
+				loader.setController(this);
+				Parent root = loader.load();
+				Scene AdminloginScene = new Scene(root);
+				Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
+				stage.setScene(AdminloginScene);
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -403,7 +412,7 @@ public class GUIController {
 
 			Database db = new Database();
 
-			boolean success = db.signUpUser(firstName, lastName, email, password);
+			boolean success = db.signUpAdmin(firstName, lastName, email, password);
 
 			if (success) {
 				System.out.println("Admin Sign up Successful");
