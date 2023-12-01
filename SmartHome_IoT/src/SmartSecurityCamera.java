@@ -1,5 +1,3 @@
-import java.util.List;
-
 /* ------------------------------------------------------------------------------------
  * SmartSecurityCamera.java
  * 
@@ -16,12 +14,12 @@ import java.util.List;
  */
 public class SmartSecurityCamera extends SmartDevice {
     private Integer angle;
-    private List<String> videoResource;
+    private String videoResource = "fortuneVideo.mp4";
 
     public SmartSecurityCamera(Integer deviceID, boolean status) {
 	super(deviceID, status);
 	// TODO Auto-generated constructor stub
-	// THE VIDEO LIST SHOULD BE INITIALIZED HERE
+
     }
 
     // --- SETTER AND GETTER FUNCTIONS TO CHANGE THE CAMERA'S ANGLE ---
@@ -38,14 +36,9 @@ public class SmartSecurityCamera extends SmartDevice {
 
     // --- GETTER FUNCTIONS TO GET VIDEO FOOTAGE ---
 
-    public String getVideoResource(Integer index) {
-	return videoResource.get(index);
+    public String getVideoResource() {
+	return this.videoResource;
     }
-
-    // 2 TIME VALUES PASSED FROM THE CLIENT:
-    // ASSUME THAT EACH VIDEO IS 1 HOUR LONG
-    // START - END = timeDiff
-    //
 
     // --- END ---
 

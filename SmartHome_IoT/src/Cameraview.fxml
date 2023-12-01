@@ -14,7 +14,7 @@
    <children>
       <Button layoutX="21.0" layoutY="18.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Back" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="347.0" layoutX="10.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" width="779.0" />
-      <ImageView fitHeight="137.0" fitWidth="128.0" layoutX="706.0" layoutY="329.0">
+      <ImageView fitHeight="84.0" fitWidth="98.0" layoutX="718.0" layoutY="-8.0">
          <image>
             <Image url="@smart%20camera.png" />
          </image>

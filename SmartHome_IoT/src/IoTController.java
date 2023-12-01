@@ -192,8 +192,9 @@ public class IoTController {
 	return ((SmartSecurityCamera) devices.get(4)).getAngle();
     }
 
-    public String getVideoResource(Integer index) {
-	String cameraResource = ((SmartSecurityCamera) devices.get(4)).getVideoResource(index);
+    public String getVideoResource() {
+	// GET MP4 FILE AND SEND IT TO CLIENT
+	String cameraResource = ((SmartSecurityCamera) devices.get(4)).getVideoResource();
 	return cameraResource;
     }
 
