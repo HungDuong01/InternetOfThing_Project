@@ -204,16 +204,14 @@ public class IoTController {
 
     public String createUser(String fName, String lName, String email, String password) {
 	user = new User(fName, lName, email, password); // create an empty user
-	accounts.add(countIndex, user); // add newly created user to the account list
-	this.countIndex++;
-	return accounts.get(countIndex).toString();
+	accounts.add(user); // add newly created user to the account list
+	return accounts.toString();
     }
 
     public String createAdmin(String fName, String lName, String email, String password) {
 	admin = new Admin(fName, lName, email, password); // create an empty admin
-	accounts.add(countIndex, admin); // add newly created user to the account list
-	this.countIndex++;
-	return accounts.get(countIndex).toString();
+	accounts.add(admin); // add newly created user to the account list
+	return accounts.toString();
     }
 
     // --- END ---
