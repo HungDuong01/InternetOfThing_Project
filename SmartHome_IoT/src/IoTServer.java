@@ -396,6 +396,22 @@ public class IoTServer extends AbstractServer {
 
 	}
 
+	if (receivedMsg.startsWith("Admin")) {
+	    String[] parts = receivedMsg.split(",");
+	    if (parts.length == 5) {
+		String type = parts[0].trim(); // Assuming 'type' is used for something else
+		String fName = parts[1].trim();
+		String lName = parts[2].trim();
+		String email = parts[3].trim();
+		String password = parts[4].trim();
+
+		String userInfo = serverController.setAdminInformation(fName, lName, email, password);
+
+		System.out.println("Admin Information: \n" + userInfo);
+	    }
+
+	}
+
 	// --- END ---
 
     }
