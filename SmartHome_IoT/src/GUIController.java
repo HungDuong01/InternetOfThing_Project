@@ -176,27 +176,34 @@ public class GUIController {
 	@FXML
 	void loginButtonPressed(ActionEvent event) {
 		try {
+		    String email = emailTextField.getText();
+		    String password = passwordTextField.getText();
+		    Database db = new Database();
 
-			String email = emailTextField.getText();
-			String password = passwordTextField.getText();
-			Database db = new Database();
+		    boolean success = db.authenticateUser(email, password);
 
-			boolean success = db.authenticateUser(email, password);
+		    if (success) {
+		        // Proceed with login
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
+		        loader.setController(this);
+		        Parent root = loader.load();
+		        Scene mainMenuScene = new Scene(root);
+		        Stage stage = (Stage) loginPane.getScene().getWindow();
+		        stage.setScene(mainMenuScene);
+		    } else {
+		        // Incorrect password handling
+		        System.out.println("User has not signed up.");
 
-			if (success) {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
-				loader.setController(this);
-				Parent root = loader.load();
-				Scene mainMenuScene = new Scene(root);
-				Stage stage = (Stage) loginPane.getScene().getWindow();
-				stage.setScene(mainMenuScene);
-			} else {
-				System.out.println("User has not signed up.");
-			}
+		        // Update password field border color and prompt text
+		        passwordTextField.setStyle("-fx-border-color: red;"); // Change border color to red
 
+		        // Display prompt text in the password field
+		        passwordTextField.setPromptText("Incorrect password");
+		    }
 		} catch (IOException e) {
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
+
 	}
 
 	// Sign Up Button to Switch to Sign Up Page
@@ -257,34 +264,44 @@ public class GUIController {
 
 		// Enter User Sign Up text fields and save it into the DataBase.
 		try {
+		    String firstName = firstNameTextField.getText();
+		    String lastName = lastNameTextField.getText();
+		    String email = userEmailTextField.getText();
+		    String password = userPasswordTextField.getText();
+		    String reEnteredPassword = reEnterPasswordTetxtField.getText();
 
-			String firstName = firstNameTextField.getText();
-			String lastName = lastNameTextField.getText();
-			String email = userEmailTextField.getText();
-			String password = userPasswordTextField.getText();
+		    Database db = new Database();
+		    boolean passwordsMatch = password.equals(reEnteredPassword);
 
-			Database db = new Database();
+		    if (!passwordsMatch) {
+		        // Passwords don't match handling
+		        System.out.println("Passwords do not match.");
 
-			boolean success = db.signUpUser(firstName, lastName, email, password);
+		        // Display prompt text in the re-enter password field
+		        reEnterPasswordTetxtField.setStyle("-fx-border-color: red;"); // Change border color to red
+		        reEnterPasswordTetxtField.setPromptText("Wrong password"); // Display prompt text
+		    } else {
+		        // Passwords match, proceed with sign up
+		        boolean success = db.signUpUser(firstName, lastName, email, password);
 
-			if (success) {
-				System.out.println("User Sign Up Successful");
+		        if (success) {
+		            System.out.println("User Sign Up Successful");
+		        } else {
+		            System.out.println("Sign Up failed. User might exist");
+		        }
 
-			} else {
-
-				System.out.println("Sign Up failed. User might exist");
-			}
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene SignupScene = new Scene(root);
-			Stage stage = (Stage) signUpPane.getScene().getWindow();
-			stage.setScene(SignupScene);
-
+		        // Redirect to userLoginPage.fxml
+		        FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
+		        loader.setController(this);
+		        Parent root = loader.load();
+		        Scene signupScene = new Scene(root);
+		        Stage stage = (Stage) signUpPane.getScene().getWindow();
+		        stage.setScene(signupScene);
+		    }
 		} catch (Exception e) {
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
+
 	}
 
 	// Login Button pressed to Switch Scene
