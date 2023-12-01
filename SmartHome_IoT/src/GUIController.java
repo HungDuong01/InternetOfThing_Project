@@ -252,6 +252,16 @@ public class GUIController {
 
 			Database db = new Database();
 
+			boolean success = db.signUpUser(firstName, lastName, email, password);
+
+			if (success) {
+				System.out.println("Sign up Successful");
+
+			} else {
+
+				System.out.println("Sign Up failed. User might exist");
+			}
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("userLoginPage.fxml"));
 			loader.setController(this);
 			Parent root = loader.load();
