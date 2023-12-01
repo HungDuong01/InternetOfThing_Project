@@ -480,8 +480,6 @@ public class GUIController {
 	@FXML
 	private Button lockButton;
 
-	@FXML
-	private Label userNameMainMenu;
 
 	@FXML
 	private Button waterButton;
@@ -648,7 +646,7 @@ public class GUIController {
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene thermostatScene = new Scene(root);
-			Stage stage = (Stage) userNameMainMenu.getScene().getWindow();
+			Stage stage = (Stage) mainMenupane.getScene().getWindow();
 			stage.setScene(thermostatScene);
 
 			// SEND MSG TO SERVER TO RETRIEVE THERMOSTAT DATA
