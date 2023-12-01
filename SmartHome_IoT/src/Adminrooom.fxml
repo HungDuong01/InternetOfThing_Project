@@ -40,7 +40,7 @@
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
          <children>
-            <ImageView fitHeight="113.0" fitWidth="812.0" layoutX="-678.0" layoutY="-258.0" opacity="0.63">
+            <ImageView fitHeight="202.0" fitWidth="812.0" layoutX="-678.0" layoutY="-258.0" opacity="0.63">
                <image>
                   <Image url="@856de846e59271089eca26c4260c9bdb_w200.gif" />
                </image>
@@ -86,12 +86,12 @@
                   <Font name="Verdana Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="64.0" layoutY="49.0" text="Welcome to your smart home ">
+            <Label layoutX="64.0" layoutY="49.0" text="Admin Room">
                <font>
                   <Font name="Heiti TC Light" size="21.0" />
                </font>
             </Label>
-            <Label id="welcome message " layoutX="64.0" layoutY="8.0" prefHeight="40.0" prefWidth="38.0" text="Hi">
+            <Label id="welcome message " layoutX="64.0" layoutY="8.0" prefHeight="40.0" prefWidth="375.0" text="Welcome To Smart Home ">
                <font>
                   <Font name="Verdana Bold" size="25.0" />
                </font>
@@ -139,7 +139,7 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <ListView fx:id="Devicelistview" layoutX="-72.0" layoutY="-128.0" prefHeight="294.0" prefWidth="330.0" />
+            <ListView fx:id="Devicelistview" layoutX="-72.0" layoutY="-128.0" prefHeight="341.0" prefWidth="330.0" />
          </children>
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
