@@ -279,8 +279,7 @@ public class GUIController {
 				System.out.println("User Sign Up Successful");
 
 				// Send values to server
-				client.userSignUpToServer("User," + email);
-				client.userSignUpToServer("User," + password);
+				client.userSignUpToServer("User," + firstName + "," + lastName + "," + email + "," + password);
 
 			} else {
 
