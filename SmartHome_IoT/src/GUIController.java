@@ -1307,6 +1307,19 @@ public class GUIController {
 	}
 
 	public void showFootage() {
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Cameraview.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			Scene mainMenuScene = new Scene(root);
+			Stage stage = (Stage) mediaView.getScene().getWindow();
+			stage.setScene(mainMenuScene);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		// Path to the fortunesVideo.mp4 file.
 		String videoFilePath = "fortunesVideo.mp4"; // Replace with your video file path
 
