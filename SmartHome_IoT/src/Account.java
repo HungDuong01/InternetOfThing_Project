@@ -59,4 +59,9 @@ public abstract class Account {
 	return this.password;
     }
 
+    @Override
+    public String toString() {
+	return "  First Name: " + firstName + "\n" + "  Last Name: " + lastName + "\n" + "  Email: " + email + "\n";
+    }
+
 }
