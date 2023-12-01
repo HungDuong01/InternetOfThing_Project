@@ -68,14 +68,33 @@ public class GUIController {
 	// Client and GUI Controller Association
 	private SmartHomeClient client;
 	private int count;
+	private String startTime;
+	private String endTime;
 
-	// Setter for client
+	// Setter and Getters for client
 	public void setClient(SmartHomeClient client) {
 		this.client = client;
 	}
 
 	public boolean shouldUpdateSlider(boolean b) {
 		return b;
+	}
+
+	public void setStartTime(String stime) {
+		this.startTime = stime;
+
+	}
+
+	public void setEndTime(String etime) {
+		this.endTime = etime;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
 	}
 
 	public void initialize() {
@@ -1238,12 +1257,24 @@ public class GUIController {
 	@FXML
 	void showFootageButtonPressed(ActionEvent event) {
 
+		String fromHour = fromHourCamera.getText();
+		String fromMinute = fromMinuteCamera.getText();
+		String toHour = toHourCamera.getText();
+		String toMinute = toMinuteCamera.getText();
+
+		setStartTime(fromHour + ":" + fromMinute);
+		setEndTime(toHour + ":" + toMinute);
+
+		notificationCameraArea.setText("Showing footage from: " + getStartTime() + " to: " + getEndTime());
+
+		client.cameraFootageMsgToServer("Footage");
 	}
 
 	public void setCameraAngle(int angle) {
 		sliderAngleCamera.setValue(angle);
-
 	}
+
+	/* ---------------------- CameraView PAGE ------------------------- */
 
 	/* ---------------------- SMART WATER SYSTEM PAGE ------------------------- */
 

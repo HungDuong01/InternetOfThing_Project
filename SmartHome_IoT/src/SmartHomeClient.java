@@ -284,6 +284,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	/* --------------------------- SMART LOCK PAGE ----------------------- */
 
+	// Send Lock Door To Server
 	public void lockDoorMsgToServer() {
 		try {
 			sendToServer("lockON,");
@@ -292,6 +293,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	// Send Unlock Door with entered Password to Server
 	public void unlockDoorMsgToServer(String enteredPassword) {
 		try {
 			sendToServer("lockOFF," + enteredPassword);
@@ -300,6 +302,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	// Send the set password To Server
 	public void sendSetPasswordMsgToServer(String pass) {
 		setPass(pass);
 		try {
@@ -312,6 +315,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	/* --------------------------- SMART WATER PAGE ------------------------ */
 
+	// Send the time to set Duration of water to server.
 	public void waterTimeMsgToServer(String water) {
 		setWaterTime(water);
 		try {
@@ -321,6 +325,7 @@ public class SmartHomeClient extends AbstractClient {
 		}
 	}
 
+	// Send the Water Limit to Server.
 	public void waterLimitMsgToServer(String waterLimit) {
 		setWaterLimit(waterLimit);
 
@@ -334,6 +339,7 @@ public class SmartHomeClient extends AbstractClient {
 
 	/* -------------------- SMART SECURITY CAMERA PAGE ----------- */
 
+	// Send the camera angle to server.
 	public void cameraAngleMsgToServer(int angle) {
 		try {
 			sendToServer("Camera," + angle);
@@ -343,6 +349,15 @@ public class SmartHomeClient extends AbstractClient {
 			e.printStackTrace();
 		}
 
+	}
+
+	// Send a message to server to open the footage.
+	public void cameraFootageMsgToServer(String footage) {
+		try {
+			sendToServer(footage);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* ---------------------- HANDLE MESSAGES FROM SERVER ----------------------- */
