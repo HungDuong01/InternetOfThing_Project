@@ -344,9 +344,19 @@ public class GUIController {
 				Scene AdminloginScene = new Scene(root);
 				Stage stage = (Stage) AdminloginGridpane.getScene().getWindow();
 				stage.setScene(AdminloginScene);
+			}else {
+				System.out.println("Admin has not signed up.");
+
+				// Display border red if incorrect.
+				AdminpasswordTextField.setStyle("-fx-border-color: red;");
+
+				// prompt text
+				AdminpasswordTextField.setPromptText("Incorrect Password");
 			}
+			
 
 		} catch (IOException e) {
+			
 			e.printStackTrace();
 		}
 	}
@@ -486,19 +496,23 @@ public class GUIController {
 	private double originalOpacity3 = 1.0;
 	private double originalSize3 = 1.0;
 
-	@FXML
-	void AdminroombuttonPressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminrooom.fxml"));
-			loader.setController(this);
-			Parent root = loader.load();
-			Scene AdminloginScene = new Scene(root);
-			Stage stage = (Stage) mainMenupane.getScene().getWindow();
-			stage.setScene(AdminloginScene);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	private Database db = new Database(); // Instantiate your Database class
+
+    // Method triggered on login action (e.g., button click)
+    @FXML
+    private void onLoginButtonClicked() {
+        String userEmail = userEmailTextField.getText(); // Get the logged-in user's email
+
+        // Retrieve the first name associated with the logged-in user's email
+        String firstName = db.getFirstNameByEmail(userEmail);
+
+        if (firstName != null) {
+        	userNameMainMenu.setText("Welcome, " + firstName); // Set the retrieved first name to the label
+        } else {
+        	userNameMainMenu.setText("Welcome"); // Display a default message if first name not found
+        }
+    }
+
 
 	@FXML
 	void logoutMainMenuPressed(ActionEvent event) {
