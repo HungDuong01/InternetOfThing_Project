@@ -1313,7 +1313,7 @@ public class GUIController {
 			loader.setController(this);
 			Parent root = loader.load();
 			Scene mainMenuScene = new Scene(root);
-			Stage stage = (Stage) mediaView.getScene().getWindow();
+			Stage stage = (Stage) securityCameraPane.getScene().getWindow();
 			stage.setScene(mainMenuScene);
 
 		} catch (IOException e) {
