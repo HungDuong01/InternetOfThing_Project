@@ -381,14 +381,17 @@ public class IoTServer extends AbstractServer {
 	// --- HANDLE USER INFORMATION ---
 
 	if (receivedMsg.startsWith("User")) {
-	    String[] part = receivedMsg.split(",");
-	    String type = (part[0]);
-	    String fName = part[1];
-	    String lName = part[2];
-	    String email = part[3];
-	    String password = part[4];
-	    serverController.setUserInformation(fName, lName, email, password);
-	    System.out.println("User Infomation: " + serverController.getUserInfomation());
+	    String[] parts = receivedMsg.split(",");
+	    if (parts.length == 5) {
+		String type = parts[0].trim(); // Assuming 'type' is used for something else
+		String fName = parts[1].trim();
+		String lName = parts[2].trim();
+		String email = parts[3].trim();
+		String password = parts[4].trim();
+
+		serverController.setUserInformation(fName, lName, email, password);
+		System.out.println("User Information: " + serverController.getUserInfomation());
+	    }
 
 	}
 
