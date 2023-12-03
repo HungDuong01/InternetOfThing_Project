@@ -2,6 +2,7 @@
 /* ------------------------------------------------------------------------------------
  * IoTController.java
 
+
  * 
  * Copyright (c) 2023 Venos Tech. All rights reserved
  * 
@@ -37,13 +38,16 @@ public class IoTController {
 
     public IoTController() {
 	// --- INITIALIZE SMART DEVICES ---
+	// Create instance of a list of type SmartDevice
 	devices = new ArrayList<SmartDevice>();
+	// Create instances of smart devices
 	thermo = new SmartThermostat(0, true);
 	light = new SmartLight(1, true);
 	lock = new SmartLock(2, true);
 	water = new SmartWaterSystem(3, true);
 	camera = new SmartSecurityCamera(4, true);
 
+	// Add to the List<SmartDevice>
 	devices.add(thermo.deviceID(), thermo);
 	devices.add(light.deviceID(), light);
 	devices.add(lock.deviceID(), lock);
@@ -60,6 +64,7 @@ public class IoTController {
     // --- FUNCTIONS TO UPDATE AND RETURN THE STATUS OF DEVICES ---
 
     public void setDeviceStatus(String device, boolean status) {
+	// Switch case based on the name of the chosen device passed from the IoTServer
 	switch (device) {
 	case "thermo":
 	    devices.get(0).setDeviceStatus(status);
@@ -83,6 +88,7 @@ public class IoTController {
 
     public Boolean getDeviceStatus(int device) {
 	Boolean tempStatus = null;
+	// Get the status of the device based on the device ID
 	for (int i = 0; i < devices.size(); i++) {
 	    if (devices.get(i).deviceID() == device) {
 		tempStatus = devices.get(i).getDeviceStatus();
@@ -97,6 +103,7 @@ public class IoTController {
 
     public String getDeviceAlertMessage(int device) {
 	String tempStr = null;
+	// Get the alert message of the device based on the device ID
 	for (int i = 0; i < devices.size(); i++) {
 	    if (devices.get(i).deviceID() == device) {
 		tempStr = devices.get(i).alertMessage();
@@ -109,6 +116,8 @@ public class IoTController {
 
     // --- CALL FUNCTIONS FROM THE SMART THERMOSTAT CLASS ---
 
+    // The function receives an action string and an increment value of the
+    // temperature (in this case is 1)
     public void updateTemperature(String msg, Integer temperature) {
 	if ("thermoIncrease".equals(msg)) {
 	    ((SmartThermostat) devices.get(0)).increase(temperature);
@@ -134,6 +143,8 @@ public class IoTController {
 	return ((SmartLight) devices.get(1)).getColor();
     }
 
+    // The function receives an action string and an increment value of the
+    // brightness (in this case is 10)
     public void updateBrightness(String msg, Integer brightness) {
 	if ("lightBrightnessIncrease".equals(msg)) {
 	    ((SmartLight) devices.get(1)).increaseBrightness(brightness);
@@ -171,6 +182,8 @@ public class IoTController {
 	return ((SmartWaterSystem) devices.get(3)).getWaterLimit();
     }
 
+    // The function receives a time of type String, and it will convert from String
+    // to LocalTime data type
     public void setWaterTimer(String timeStr) {
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
 	LocalTime tempTimer = LocalTime.parse(timeStr, format);
