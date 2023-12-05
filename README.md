@@ -37,6 +37,21 @@ To run the application please follow these steps:
 6. To use the "Log in" and "Sign Up" functions, please create a small MySQL database on your computer. Here is a link about how to create MySql database from terminal:
    "https://blog.devart.com/mysql-command-line-client.html"
 
+7. In the MySql part, please create 2 tables with attributes as follow:
+   7.1 CREATE TABLE User(
+   FirstName VARCHAR(100),
+   LastName VARCHAR(100),
+   Email VARCHAR(50),
+   Password VARCHAR(50) );
+
+   7.2 CREATE TABLE Admin(
+   FirstName VARCHAR(100),
+   LastName VARCHAR(100),
+   Email VARCHAR(50),
+   Password VARCHAR(50) ),
+
+       
+
 
 
 
