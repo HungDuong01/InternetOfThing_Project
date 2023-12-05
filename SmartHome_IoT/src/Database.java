@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database {
-    private static final String URL = "jdbc:mysql://172.17.11.45:3306/SH_Account";
+    private static final String URL = "jdbc:mysql://localhost:3306/SH_Account";
     private static final String USER = "root";
     private static final String PASSWORD = "Hungyeuem123";
 
@@ -115,6 +115,26 @@ public class Database {
 	    System.out.println("SQLException: " + e.getMessage());
 	}
 	return false;
+    }
+
+    public String getFirstNameByEmail(String email) {
+	String query = "SELECT FirstName FROM User WHERE Email = ?";
+	String firstName = null;
+
+	try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+		PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	    pstmt.setString(1, email);
+
+	    try (ResultSet rs = pstmt.executeQuery()) {
+		if (rs.next()) {
+		    firstName = rs.getString("FirstName");
+		}
+	    }
+	} catch (SQLException e) {
+	    System.out.println("SQLException: " + e.getMessage());
+	}
+	return firstName; // Replace this with the retrieved first name
     }
 
 }
