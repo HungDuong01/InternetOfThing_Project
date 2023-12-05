@@ -38,13 +38,13 @@ To run the application please follow these steps:
    "https://blog.devart.com/mysql-command-line-client.html"
 
 7. In the MySql part, please create 2 tables with attributes as follow:
-   7.1 CREATE TABLE User(
+  \n 7.1 CREATE TABLE User(
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
    Password VARCHAR(50) );
 
-   7.2 CREATE TABLE Admin(
+  \n 7.2 CREATE TABLE Admin(
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
