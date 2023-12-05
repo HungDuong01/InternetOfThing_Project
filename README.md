@@ -16,14 +16,14 @@ To run the application please follow these steps:
 
 1. Configure the project build path and add these libraries:
   <br> +) javafx.base.jar <br>
-  <br> +) javafx.controls.jar
-   +) javafx.fxml.jar
-   +) javafx.graphics.jar
-   +) javafx.media.jar
-   +) javafx.swing.jar
-   +) javax.web.jar
-   +) javafx-swt.jar
-   +) mysql-connector-j-8.2.0.jar ("library to connect MySql to java program")
+  <br> +) javafx.controls.jar <br>
+  <br> +) javafx.fxml.jar <br>
+  <br> +) javafx.graphics.jar <br>
+  <br> +) javafx.media.jar <br>
+  <br> +) javafx.swing.jar <br>
+  <br> +) javax.web.jar <br>
+  <br> +) javafx-swt.jar <br>
+  <br> +) mysql-connector-j-8.2.0.jar ("library to connect MySql to java program") <br>
    
 2. Check your network IP address and port number.
 
@@ -38,17 +38,17 @@ To run the application please follow these steps:
    "https://blog.devart.com/mysql-command-line-client.html"
 
 7. In the MySql part, please create 2 tables with attributes as follow:
-  \n 7.1 CREATE TABLE User(
+ <br> 7.1 CREATE TABLE User(
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
-   Password VARCHAR(50) );
+   Password VARCHAR(50) ); <br>
 
-  \n 7.2 CREATE TABLE Admin(
+<br> 7.2 CREATE TABLE Admin(
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
-   Password VARCHAR(50) ),
+   Password VARCHAR(50) ), <br>
 
        
 
