@@ -47,7 +47,7 @@ To run the application please follow these steps:
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
-   Password VARCHAR(50) ), <br>
+   Password VARCHAR(50) ); <br>
 
        
 
