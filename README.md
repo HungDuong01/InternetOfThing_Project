@@ -15,7 +15,7 @@ This project integrates various smart devices and sensors to automate home funct
 To run the application please follow these steps:
 
 1. Configure the project build path and add these libraries:
-  <br> +) javafx.base.jar
+  <br> +) javafx.base.jar <br>
   <br> +) javafx.controls.jar
    +) javafx.fxml.jar
    +) javafx.graphics.jar
