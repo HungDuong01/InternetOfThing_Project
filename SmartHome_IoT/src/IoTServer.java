@@ -449,7 +449,7 @@ public class IoTServer extends AbstractServer {
 	    try {
 		cameraFootage = serverController.getVideoResource();
 		// Send back the footage to all clients
-		sendToAllClients("cameraFootage:" + cameraFootage);
+		client.sendToClient("cameraFootage:" + cameraFootage);
 		// Display a message indicates that the video resource has been sent
 		System.out.println("Sent back the video footage");
 	    } catch (Exception e) {
