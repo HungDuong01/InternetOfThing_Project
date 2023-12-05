@@ -43,8 +43,7 @@ To run the application please follow these steps:
    LastName VARCHAR(100),
    Email VARCHAR(50),
    Password VARCHAR(50) ); <br>
-
-<br> 7.2 CREATE TABLE Admin(
+<br>  7.2 CREATE TABLE Admin(
    FirstName VARCHAR(100),
    LastName VARCHAR(100),
    Email VARCHAR(50),
